@@ -4,8 +4,8 @@
 package config
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/go/pulumi/config"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
 )
 
 func GetApiKey(ctx *pulumi.Context) string {
@@ -13,8 +13,5 @@ func GetApiKey(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "MAILGUN_API_KEY").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "MAILGUN_API_KEY").(string)
 }

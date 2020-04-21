@@ -27,14 +27,14 @@ class Route(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, actions=None, description=None, expression=None, priority=None, region=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Mailgun Route resource. This can be used to create and manage routes on Mailgun.
-        
+
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] expression: A filter expression like `match_recipient('.*@gmail.com')`
         :param pulumi.Input[float] priority: Smaller number indicates higher priority. Higher priority routes are handled first.
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-mailgun/blob/master/website/docs/r/route.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -75,19 +75,18 @@ class Route(pulumi.CustomResource):
         """
         Get an existing Route resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] expression: A filter expression like `match_recipient('.*@gmail.com')`
         :param pulumi.Input[float] priority: Smaller number indicates higher priority. Higher priority routes are handled first.
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-mailgun/blob/master/website/docs/r/route.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["actions"] = actions
         __props__["description"] = description
         __props__["expression"] = expression
