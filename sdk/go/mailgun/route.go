@@ -4,20 +4,29 @@
 package mailgun
 
 import (
+	"reflect"
+
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provides a Mailgun Route resource. This can be used to create and manage routes on Mailgun.
-//
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-mailgun/blob/master/website/docs/r/route.html.markdown.
 type Route struct {
-	s *pulumi.ResourceState
+	pulumi.CustomResourceState
+
+	Actions     pulumi.StringArrayOutput `pulumi:"actions"`
+	Description pulumi.StringPtrOutput   `pulumi:"description"`
+	// A filter expression like `match_recipient('.*@gmail.com')`
+	Expression pulumi.StringOutput `pulumi:"expression"`
+	// Smaller number indicates higher priority. Higher priority routes are handled first.
+	Priority pulumi.IntOutput `pulumi:"priority"`
+	// The region where domain will be created. Default value is `us`.
+	Region pulumi.StringPtrOutput `pulumi:"region"`
 }
 
 // NewRoute registers a new resource with the given unique name, arguments, and options.
 func NewRoute(ctx *pulumi.Context,
-	name string, args *RouteArgs, opts ...pulumi.ResourceOpt) (*Route, error) {
+	name string, args *RouteArgs, opts ...pulumi.ResourceOption) (*Route, error) {
 	if args == nil || args.Actions == nil {
 		return nil, errors.New("missing required argument 'Actions'")
 	}
@@ -27,99 +36,79 @@ func NewRoute(ctx *pulumi.Context,
 	if args == nil || args.Priority == nil {
 		return nil, errors.New("missing required argument 'Priority'")
 	}
-	inputs := make(map[string]interface{})
 	if args == nil {
-		inputs["actions"] = nil
-		inputs["description"] = nil
-		inputs["expression"] = nil
-		inputs["priority"] = nil
-		inputs["region"] = nil
-	} else {
-		inputs["actions"] = args.Actions
-		inputs["description"] = args.Description
-		inputs["expression"] = args.Expression
-		inputs["priority"] = args.Priority
-		inputs["region"] = args.Region
+		args = &RouteArgs{}
 	}
-	s, err := ctx.RegisterResource("mailgun:index/route:Route", name, true, inputs, opts...)
+	var resource Route
+	err := ctx.RegisterResource("mailgun:index/route:Route", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &Route{s: s}, nil
+	return &resource, nil
 }
 
 // GetRoute gets an existing Route resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetRoute(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *RouteState, opts ...pulumi.ResourceOpt) (*Route, error) {
-	inputs := make(map[string]interface{})
-	if state != nil {
-		inputs["actions"] = state.Actions
-		inputs["description"] = state.Description
-		inputs["expression"] = state.Expression
-		inputs["priority"] = state.Priority
-		inputs["region"] = state.Region
-	}
-	s, err := ctx.ReadResource("mailgun:index/route:Route", name, id, inputs, opts...)
+	name string, id pulumi.IDInput, state *RouteState, opts ...pulumi.ResourceOption) (*Route, error) {
+	var resource Route
+	err := ctx.ReadResource("mailgun:index/route:Route", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &Route{s: s}, nil
-}
-
-// URN is this resource's unique name assigned by Pulumi.
-func (r *Route) URN() pulumi.URNOutput {
-	return r.s.URN()
-}
-
-// ID is this resource's unique identifier assigned by its provider.
-func (r *Route) ID() pulumi.IDOutput {
-	return r.s.ID()
-}
-
-func (r *Route) Actions() pulumi.ArrayOutput {
-	return (pulumi.ArrayOutput)(r.s.State["actions"])
-}
-
-func (r *Route) Description() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["description"])
-}
-
-// A filter expression like `match_recipient('.*@gmail.com')`
-func (r *Route) Expression() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["expression"])
-}
-
-// Smaller number indicates higher priority. Higher priority routes are handled first.
-func (r *Route) Priority() pulumi.IntOutput {
-	return (pulumi.IntOutput)(r.s.State["priority"])
-}
-
-// The region where domain will be created. Default value is `us`.
-func (r *Route) Region() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["region"])
+	return &resource, nil
 }
 
 // Input properties used for looking up and filtering Route resources.
-type RouteState struct {
-	Actions interface{}
-	Description interface{}
+type routeState struct {
+	Actions     []string `pulumi:"actions"`
+	Description *string  `pulumi:"description"`
 	// A filter expression like `match_recipient('.*@gmail.com')`
-	Expression interface{}
+	Expression *string `pulumi:"expression"`
 	// Smaller number indicates higher priority. Higher priority routes are handled first.
-	Priority interface{}
+	Priority *int `pulumi:"priority"`
 	// The region where domain will be created. Default value is `us`.
-	Region interface{}
+	Region *string `pulumi:"region"`
+}
+
+type RouteState struct {
+	Actions     pulumi.StringArrayInput
+	Description pulumi.StringPtrInput
+	// A filter expression like `match_recipient('.*@gmail.com')`
+	Expression pulumi.StringPtrInput
+	// Smaller number indicates higher priority. Higher priority routes are handled first.
+	Priority pulumi.IntPtrInput
+	// The region where domain will be created. Default value is `us`.
+	Region pulumi.StringPtrInput
+}
+
+func (RouteState) ElementType() reflect.Type {
+	return reflect.TypeOf((*routeState)(nil)).Elem()
+}
+
+type routeArgs struct {
+	Actions     []string `pulumi:"actions"`
+	Description *string  `pulumi:"description"`
+	// A filter expression like `match_recipient('.*@gmail.com')`
+	Expression string `pulumi:"expression"`
+	// Smaller number indicates higher priority. Higher priority routes are handled first.
+	Priority int `pulumi:"priority"`
+	// The region where domain will be created. Default value is `us`.
+	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a Route resource.
 type RouteArgs struct {
-	Actions interface{}
-	Description interface{}
+	Actions     pulumi.StringArrayInput
+	Description pulumi.StringPtrInput
 	// A filter expression like `match_recipient('.*@gmail.com')`
-	Expression interface{}
+	Expression pulumi.StringInput
 	// Smaller number indicates higher priority. Higher priority routes are handled first.
-	Priority interface{}
+	Priority pulumi.IntInput
 	// The region where domain will be created. Default value is `us`.
-	Region interface{}
+	Region pulumi.StringPtrInput
+}
+
+func (RouteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*routeArgs)(nil)).Elem()
 }

@@ -4,154 +4,143 @@
 package mailgun
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"reflect"
+
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Provides a Mailgun App resource. This can be used to
 // create and manage applications on Mailgun.
-// 
-// After DNS records are set, domain verification should be triggered manually using [PUT /domains/\<domain\>/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
 //
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-mailgun/blob/master/website/docs/r/domain.html.markdown.
+// After DNS records are set, domain verification should be triggered manually using [PUT /domains/\<domain\>/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
 type Domain struct {
-	s *pulumi.ResourceState
+	pulumi.CustomResourceState
+
+	// The domain to add to Mailgun
+	Name pulumi.StringOutput `pulumi:"name"`
+	// A list of DNS records for receiving validation.
+	ReceivingRecords DomainReceivingRecordArrayOutput `pulumi:"receivingRecords"`
+	// The region where domain will be created. Default value is `us`.
+	Region pulumi.StringPtrOutput `pulumi:"region"`
+	// A list of DNS records for sending validation.
+	SendingRecords DomainSendingRecordArrayOutput `pulumi:"sendingRecords"`
+	// The login email for the SMTP server.
+	SmtpLogin pulumi.StringOutput `pulumi:"smtpLogin"`
+	// The password to the SMTP server.
+	SmtpPassword pulumi.StringOutput `pulumi:"smtpPassword"`
+	// `disabled` or `tag` Disable, no spam
+	// filtering will occur for inbound messages. Tag, messages
+	// will be tagged with a spam header.
+	SpamAction pulumi.StringPtrOutput `pulumi:"spamAction"`
+	// Boolean that determines whether
+	// the domain will accept email for sub-domains.
+	Wildcard pulumi.BoolPtrOutput `pulumi:"wildcard"`
 }
 
 // NewDomain registers a new resource with the given unique name, arguments, and options.
 func NewDomain(ctx *pulumi.Context,
-	name string, args *DomainArgs, opts ...pulumi.ResourceOpt) (*Domain, error) {
-	inputs := make(map[string]interface{})
+	name string, args *DomainArgs, opts ...pulumi.ResourceOption) (*Domain, error) {
 	if args == nil {
-		inputs["name"] = nil
-		inputs["region"] = nil
-		inputs["spamAction"] = nil
-		inputs["wildcard"] = nil
-	} else {
-		inputs["name"] = args.Name
-		inputs["region"] = args.Region
-		inputs["spamAction"] = args.SpamAction
-		inputs["wildcard"] = args.Wildcard
+		args = &DomainArgs{}
 	}
-	inputs["receivingRecords"] = nil
-	inputs["sendingRecords"] = nil
-	inputs["smtpLogin"] = nil
-	inputs["smtpPassword"] = nil
-	s, err := ctx.RegisterResource("mailgun:index/domain:Domain", name, true, inputs, opts...)
+	var resource Domain
+	err := ctx.RegisterResource("mailgun:index/domain:Domain", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &Domain{s: s}, nil
+	return &resource, nil
 }
 
 // GetDomain gets an existing Domain resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
 func GetDomain(ctx *pulumi.Context,
-	name string, id pulumi.ID, state *DomainState, opts ...pulumi.ResourceOpt) (*Domain, error) {
-	inputs := make(map[string]interface{})
-	if state != nil {
-		inputs["name"] = state.Name
-		inputs["receivingRecords"] = state.ReceivingRecords
-		inputs["region"] = state.Region
-		inputs["sendingRecords"] = state.SendingRecords
-		inputs["smtpLogin"] = state.SmtpLogin
-		inputs["smtpPassword"] = state.SmtpPassword
-		inputs["spamAction"] = state.SpamAction
-		inputs["wildcard"] = state.Wildcard
-	}
-	s, err := ctx.ReadResource("mailgun:index/domain:Domain", name, id, inputs, opts...)
+	name string, id pulumi.IDInput, state *DomainState, opts ...pulumi.ResourceOption) (*Domain, error) {
+	var resource Domain
+	err := ctx.ReadResource("mailgun:index/domain:Domain", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
-	return &Domain{s: s}, nil
-}
-
-// URN is this resource's unique name assigned by Pulumi.
-func (r *Domain) URN() pulumi.URNOutput {
-	return r.s.URN()
-}
-
-// ID is this resource's unique identifier assigned by its provider.
-func (r *Domain) ID() pulumi.IDOutput {
-	return r.s.ID()
-}
-
-// The domain to add to Mailgun
-func (r *Domain) Name() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["name"])
-}
-
-// A list of DNS records for receiving validation.
-func (r *Domain) ReceivingRecords() pulumi.ArrayOutput {
-	return (pulumi.ArrayOutput)(r.s.State["receivingRecords"])
-}
-
-// The region where domain will be created. Default value is `us`.
-func (r *Domain) Region() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["region"])
-}
-
-// A list of DNS records for sending validation.
-func (r *Domain) SendingRecords() pulumi.ArrayOutput {
-	return (pulumi.ArrayOutput)(r.s.State["sendingRecords"])
-}
-
-// The login email for the SMTP server.
-func (r *Domain) SmtpLogin() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["smtpLogin"])
-}
-
-// The password to the SMTP server.
-func (r *Domain) SmtpPassword() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["smtpPassword"])
-}
-
-// `disabled` or `tag` Disable, no spam
-// filtering will occur for inbound messages. Tag, messages
-// will be tagged with a spam header.
-func (r *Domain) SpamAction() pulumi.StringOutput {
-	return (pulumi.StringOutput)(r.s.State["spamAction"])
-}
-
-// Boolean that determines whether
-// the domain will accept email for sub-domains.
-func (r *Domain) Wildcard() pulumi.BoolOutput {
-	return (pulumi.BoolOutput)(r.s.State["wildcard"])
+	return &resource, nil
 }
 
 // Input properties used for looking up and filtering Domain resources.
-type DomainState struct {
+type domainState struct {
 	// The domain to add to Mailgun
-	Name interface{}
+	Name *string `pulumi:"name"`
 	// A list of DNS records for receiving validation.
-	ReceivingRecords interface{}
+	ReceivingRecords []DomainReceivingRecord `pulumi:"receivingRecords"`
 	// The region where domain will be created. Default value is `us`.
-	Region interface{}
+	Region *string `pulumi:"region"`
 	// A list of DNS records for sending validation.
-	SendingRecords interface{}
+	SendingRecords []DomainSendingRecord `pulumi:"sendingRecords"`
 	// The login email for the SMTP server.
-	SmtpLogin interface{}
+	SmtpLogin *string `pulumi:"smtpLogin"`
 	// The password to the SMTP server.
-	SmtpPassword interface{}
+	SmtpPassword *string `pulumi:"smtpPassword"`
 	// `disabled` or `tag` Disable, no spam
 	// filtering will occur for inbound messages. Tag, messages
 	// will be tagged with a spam header.
-	SpamAction interface{}
+	SpamAction *string `pulumi:"spamAction"`
 	// Boolean that determines whether
 	// the domain will accept email for sub-domains.
-	Wildcard interface{}
+	Wildcard *bool `pulumi:"wildcard"`
+}
+
+type DomainState struct {
+	// The domain to add to Mailgun
+	Name pulumi.StringPtrInput
+	// A list of DNS records for receiving validation.
+	ReceivingRecords DomainReceivingRecordArrayInput
+	// The region where domain will be created. Default value is `us`.
+	Region pulumi.StringPtrInput
+	// A list of DNS records for sending validation.
+	SendingRecords DomainSendingRecordArrayInput
+	// The login email for the SMTP server.
+	SmtpLogin pulumi.StringPtrInput
+	// The password to the SMTP server.
+	SmtpPassword pulumi.StringPtrInput
+	// `disabled` or `tag` Disable, no spam
+	// filtering will occur for inbound messages. Tag, messages
+	// will be tagged with a spam header.
+	SpamAction pulumi.StringPtrInput
+	// Boolean that determines whether
+	// the domain will accept email for sub-domains.
+	Wildcard pulumi.BoolPtrInput
+}
+
+func (DomainState) ElementType() reflect.Type {
+	return reflect.TypeOf((*domainState)(nil)).Elem()
+}
+
+type domainArgs struct {
+	// The domain to add to Mailgun
+	Name *string `pulumi:"name"`
+	// The region where domain will be created. Default value is `us`.
+	Region *string `pulumi:"region"`
+	// `disabled` or `tag` Disable, no spam
+	// filtering will occur for inbound messages. Tag, messages
+	// will be tagged with a spam header.
+	SpamAction *string `pulumi:"spamAction"`
+	// Boolean that determines whether
+	// the domain will accept email for sub-domains.
+	Wildcard *bool `pulumi:"wildcard"`
 }
 
 // The set of arguments for constructing a Domain resource.
 type DomainArgs struct {
 	// The domain to add to Mailgun
-	Name interface{}
+	Name pulumi.StringPtrInput
 	// The region where domain will be created. Default value is `us`.
-	Region interface{}
+	Region pulumi.StringPtrInput
 	// `disabled` or `tag` Disable, no spam
 	// filtering will occur for inbound messages. Tag, messages
 	// will be tagged with a spam header.
-	SpamAction interface{}
+	SpamAction pulumi.StringPtrInput
 	// Boolean that determines whether
 	// the domain will accept email for sub-domains.
-	Wildcard interface{}
+	Wildcard pulumi.BoolPtrInput
+}
+
+func (DomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*domainArgs)(nil)).Elem()
 }

@@ -11,5 +11,5 @@ for pkg in __all__:
 
 # Export this package's modules as members:
 from .domain import *
-from .route import *
 from .provider import *
+from .route import *

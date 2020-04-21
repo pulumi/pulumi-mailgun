@@ -17,7 +17,7 @@ class Domain(pulumi.CustomResource):
     receiving_records: pulumi.Output[list]
     """
     A list of DNS records for receiving validation.
-    
+
       * `priority` (`str`) - The priority of the record.
       * `recordType` (`str`) - The record type.
       * `valid` (`str`) - `"valid"` if the record is valid.
@@ -30,7 +30,7 @@ class Domain(pulumi.CustomResource):
     sending_records: pulumi.Output[list]
     """
     A list of DNS records for sending validation.
-    
+
       * `name` (`str`) - The domain to add to Mailgun
       * `recordType` (`str`) - The record type.
       * `valid` (`str`) - `"valid"` if the record is valid.
@@ -59,9 +59,11 @@ class Domain(pulumi.CustomResource):
         """
         Provides a Mailgun App resource. This can be used to
         create and manage applications on Mailgun.
-        
+
         After DNS records are set, domain verification should be triggered manually using [PUT /domains/\<domain\>/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
-        
+
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The domain to add to Mailgun
@@ -71,8 +73,6 @@ class Domain(pulumi.CustomResource):
                will be tagged with a spam header.
         :param pulumi.Input[bool] wildcard: Boolean that determines whether
                the domain will accept email for sub-domains.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-mailgun/blob/master/website/docs/r/domain.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -110,7 +110,7 @@ class Domain(pulumi.CustomResource):
         """
         Get an existing Domain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -125,26 +125,25 @@ class Domain(pulumi.CustomResource):
                will be tagged with a spam header.
         :param pulumi.Input[bool] wildcard: Boolean that determines whether
                the domain will accept email for sub-domains.
-        
+
         The **receiving_records** object supports the following:
-        
+
           * `priority` (`pulumi.Input[str]`) - The priority of the record.
           * `recordType` (`pulumi.Input[str]`) - The record type.
           * `valid` (`pulumi.Input[str]`) - `"valid"` if the record is valid.
           * `value` (`pulumi.Input[str]`) - The value of the record.
-        
+
         The **sending_records** object supports the following:
-        
+
           * `name` (`pulumi.Input[str]`) - The domain to add to Mailgun
           * `recordType` (`pulumi.Input[str]`) - The record type.
           * `valid` (`pulumi.Input[str]`) - `"valid"` if the record is valid.
           * `value` (`pulumi.Input[str]`) - The value of the record.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-mailgun/blob/master/website/docs/r/domain.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["name"] = name
         __props__["receiving_records"] = receiving_records
         __props__["region"] = region

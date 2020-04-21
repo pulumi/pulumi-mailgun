@@ -12,16 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+//go:generate go run ./generate.go
+
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
-
-	mailgun "github.com/pulumi/pulumi-mailgun"
-	"github.com/pulumi/pulumi-mailgun/pkg/version"
+	mailgun "github.com/pulumi/pulumi-mailgun/provider/v2"
+	"github.com/pulumi/pulumi-mailgun/provider/v2/pkg/version"
+	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfbridge.Main("mailgun", version.Version, mailgun.Provider())
+	tfbridge.Main("mailgun", version.Version, mailgun.Provider(), pulumiSchema)
 }
