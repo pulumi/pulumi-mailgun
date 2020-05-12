@@ -28,6 +28,24 @@ class Route(pulumi.CustomResource):
         """
         Provides a Mailgun Route resource. This can be used to create and manage routes on Mailgun.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_mailgun as mailgun
+
+        # Create a new Mailgun route
+        default = mailgun.Route("default",
+            actions=[
+                "forward('http://example.com/api/v1/foos/')",
+                "stop()",
+            ],
+            description="inbound",
+            expression="match_recipient('.*@foo.example.com')",
+            priority="0")
+        ```
 
 
         :param str resource_name: The name of the resource.

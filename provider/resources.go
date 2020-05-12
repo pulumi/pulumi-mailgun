@@ -72,7 +72,6 @@ func Provider() tfbridge.ProviderInfo {
 			"mailgun_route":  {Tok: makeResource(mainMod, "Route")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			AsyncDataSources: true,
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^2.0.0",
 			},

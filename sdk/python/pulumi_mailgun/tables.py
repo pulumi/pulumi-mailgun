@@ -3,7 +3,6 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 _SNAKE_TO_CAMEL_CASE_TABLE = {
-    "api_key": "apiKey",
     "receiving_records": "receivingRecords",
     "sending_records": "sendingRecords",
     "smtp_login": "smtpLogin",
@@ -12,7 +11,6 @@ _SNAKE_TO_CAMEL_CASE_TABLE = {
 }
 
 _CAMEL_TO_SNAKE_CASE_TABLE = {
-    "apiKey": "api_key",
     "receivingRecords": "receiving_records",
     "sendingRecords": "sending_records",
     "smtpLogin": "smtp_login",
