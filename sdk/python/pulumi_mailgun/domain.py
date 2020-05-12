@@ -62,6 +62,19 @@ class Domain(pulumi.CustomResource):
 
         After DNS records are set, domain verification should be triggered manually using [PUT /domains/\<domain\>/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_mailgun as mailgun
+
+        # Create a new Mailgun domain
+        default = mailgun.Domain("default",
+            region="us",
+            spam_action="disabled")
+        ```
 
 
         :param str resource_name: The name of the resource.
