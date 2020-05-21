@@ -8,15 +8,15 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Mailgun Route resource. This can be used to create and manage routes on Mailgun.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mailgun from "@pulumi/mailgun";
- * 
+ *
  * // Create a new Mailgun route
  * const defaultRoute = new mailgun.Route("default", {
  *     actions: [
@@ -28,8 +28,6 @@ import * as utilities from "./utilities";
  *     priority: 0,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-mailgun/blob/master/website/docs/r/route.html.markdown.
  */
 export class Route extends pulumi.CustomResource {
     /**

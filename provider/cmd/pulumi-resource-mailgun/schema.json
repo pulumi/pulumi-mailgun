@@ -1,0 +1,355 @@
+{
+    "name": "mailgun",
+    "description": "A Pulumi package for creating and managing Mailgun resources.",
+    "keywords": [
+        "pulumi",
+        "mailgun"
+    ],
+    "homepage": "https://pulumi.io",
+    "license": "Apache-2.0",
+    "attribution": "This Pulumi package is based on the [`mailgun` Terraform Provider](https://github.com/terraform-providers/terraform-provider-mailgun).",
+    "repository": "https://github.com/pulumi/pulumi-mailgun",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "config": {
+        "variables": {
+            "apiKey": {
+                "type": "string",
+                "defaultInfo": {
+                    "environment": [
+                        "MAILGUN_API_KEY"
+                    ]
+                }
+            }
+        },
+        "defaults": [
+            "apiKey"
+        ]
+    },
+    "types": {
+        "mailgun:/DomainReceivingRecord:DomainReceivingRecord": {
+            "properties": {
+                "priority": {
+                    "type": "string",
+                    "description": "The priority of the record.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "recordType": {
+                    "type": "string",
+                    "description": "The record type.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "valid": {
+                    "type": "string",
+                    "description": "`\"valid\"` if the record is valid.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the record.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "mailgun:/DomainSendingRecord:DomainSendingRecord": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The domain to add to Mailgun\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "recordType": {
+                    "type": "string",
+                    "description": "The record type.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "valid": {
+                    "type": "string",
+                    "description": "`\"valid\"` if the record is valid.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the record.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        }
+    },
+    "provider": {
+        "description": "The provider type for the mailgun package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "inputProperties": {
+            "apiKey": {
+                "type": "string",
+                "defaultInfo": {
+                    "environment": [
+                        "MAILGUN_API_KEY"
+                    ]
+                }
+            }
+        }
+    },
+    "resources": {
+        "mailgun:index/domain:Domain": {
+            "description": "Provides a Mailgun App resource. This can be used to\ncreate and manage applications on Mailgun.\n\nAfter DNS records are set, domain verification should be triggered manually using [PUT /domains/\\\u003cdomain\\\u003e/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as mailgun from \"@pulumi/mailgun\";\n\n// Create a new Mailgun domain\nconst defaultDomain = new mailgun.Domain(\"default\", {\n    region: \"us\",\n    spamAction: \"disabled\",\n});\n```\n```python\nimport pulumi\nimport pulumi_mailgun as mailgun\n\n# Create a new Mailgun domain\ndefault = mailgun.Domain(\"default\",\n    region=\"us\",\n    spam_action=\"disabled\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The domain to add to Mailgun\n"
+                },
+                "receivingRecords": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/mailgun:/DomainReceivingRecord:DomainReceivingRecord"
+                    },
+                    "description": "A list of DNS records for receiving validation.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where domain will be created. Default value is `us`.\n"
+                },
+                "sendingRecords": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/mailgun:/DomainSendingRecord:DomainSendingRecord"
+                    },
+                    "description": "A list of DNS records for sending validation.\n"
+                },
+                "smtpLogin": {
+                    "type": "string",
+                    "description": "The login email for the SMTP server.\n"
+                },
+                "smtpPassword": {
+                    "type": "string",
+                    "description": "The password to the SMTP server.\n"
+                },
+                "spamAction": {
+                    "type": "string",
+                    "description": "`disabled` or `tag` Disable, no spam\nfiltering will occur for inbound messages. Tag, messages\nwill be tagged with a spam header.\n"
+                },
+                "wildcard": {
+                    "type": "boolean",
+                    "description": "Boolean that determines whether\nthe domain will accept email for sub-domains.\n"
+                }
+            },
+            "required": [
+                "name",
+                "receivingRecords",
+                "sendingRecords",
+                "smtpLogin",
+                "smtpPassword"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "The domain to add to Mailgun\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where domain will be created. Default value is `us`.\n"
+                },
+                "spamAction": {
+                    "type": "string",
+                    "description": "`disabled` or `tag` Disable, no spam\nfiltering will occur for inbound messages. Tag, messages\nwill be tagged with a spam header.\n"
+                },
+                "wildcard": {
+                    "type": "boolean",
+                    "description": "Boolean that determines whether\nthe domain will accept email for sub-domains.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Domain resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The domain to add to Mailgun\n"
+                    },
+                    "receivingRecords": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/mailgun:/DomainReceivingRecord:DomainReceivingRecord"
+                        },
+                        "description": "A list of DNS records for receiving validation.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region where domain will be created. Default value is `us`.\n"
+                    },
+                    "sendingRecords": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/mailgun:/DomainSendingRecord:DomainSendingRecord"
+                        },
+                        "description": "A list of DNS records for sending validation.\n"
+                    },
+                    "smtpLogin": {
+                        "type": "string",
+                        "description": "The login email for the SMTP server.\n"
+                    },
+                    "smtpPassword": {
+                        "type": "string",
+                        "description": "The password to the SMTP server.\n"
+                    },
+                    "spamAction": {
+                        "type": "string",
+                        "description": "`disabled` or `tag` Disable, no spam\nfiltering will occur for inbound messages. Tag, messages\nwill be tagged with a spam header.\n"
+                    },
+                    "wildcard": {
+                        "type": "boolean",
+                        "description": "Boolean that determines whether\nthe domain will accept email for sub-domains.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "mailgun:index/route:Route": {
+            "description": "Provides a Mailgun Route resource. This can be used to create and manage routes on Mailgun.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as mailgun from \"@pulumi/mailgun\";\n\n// Create a new Mailgun route\nconst defaultRoute = new mailgun.Route(\"default\", {\n    actions: [\n        \"forward('http://example.com/api/v1/foos/')\",\n        \"stop()\",\n    ],\n    description: \"inbound\",\n    expression: \"match_recipient('.*@foo.example.com')\",\n    priority: 0,\n});\n```\n```python\nimport pulumi\nimport pulumi_mailgun as mailgun\n\n# Create a new Mailgun route\ndefault = mailgun.Route(\"default\",\n    actions=[\n        \"forward('http://example.com/api/v1/foos/')\",\n        \"stop()\",\n    ],\n    description=\"inbound\",\n    expression=\"match_recipient('.*@foo.example.com')\",\n    priority=\"0\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "actions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "expression": {
+                    "type": "string",
+                    "description": "A filter expression like `match_recipient('.*@gmail.com')`\n"
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "Smaller number indicates higher priority. Higher priority routes are handled first.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where domain will be created. Default value is `us`.\n"
+                }
+            },
+            "required": [
+                "actions",
+                "expression",
+                "priority"
+            ],
+            "inputProperties": {
+                "actions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "description": {
+                    "type": "string"
+                },
+                "expression": {
+                    "type": "string",
+                    "description": "A filter expression like `match_recipient('.*@gmail.com')`\n"
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "Smaller number indicates higher priority. Higher priority routes are handled first.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where domain will be created. Default value is `us`.\n"
+                }
+            },
+            "requiredInputs": [
+                "actions",
+                "expression",
+                "priority"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Route resources.\n",
+                "properties": {
+                    "actions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "expression": {
+                        "type": "string",
+                        "description": "A filter expression like `match_recipient('.*@gmail.com')`\n"
+                    },
+                    "priority": {
+                        "type": "integer",
+                        "description": "Smaller number indicates higher priority. Higher priority routes are handled first.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region where domain will be created. Default value is `us`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "language": {
+        "csharp": {
+            "namespaces": {
+                "mailgun": "Mailgun"
+            },
+            "packageReferences": {
+                "Pulumi": "2.*",
+                "System.Collections.Immutable": "1.6.0"
+            }
+        },
+        "nodejs": {
+            "dependencies": {
+                "@pulumi/pulumi": "^2.0.0"
+            },
+            "devDependencies": {
+                "@types/mime": "^2.0.0",
+                "@types/node": "^8.0.25"
+            },
+            "packageDescription": "A Pulumi package for creating and managing Mailgun resources.",
+            "packageName": "",
+            "typescriptVersion": ""
+        },
+        "python": {
+            "requires": {
+                "pulumi": "\u003e=2.0.0,\u003c3.0.0"
+            }
+        }
+    }
+}

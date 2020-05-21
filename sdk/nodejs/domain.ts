@@ -9,25 +9,23 @@ import * as utilities from "./utilities";
 /**
  * Provides a Mailgun App resource. This can be used to
  * create and manage applications on Mailgun.
- * 
+ *
  * After DNS records are set, domain verification should be triggered manually using [PUT /domains/\<domain\>/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mailgun from "@pulumi/mailgun";
- * 
+ *
  * // Create a new Mailgun domain
  * const defaultDomain = new mailgun.Domain("default", {
  *     region: "us",
  *     spamAction: "disabled",
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-mailgun/blob/master/website/docs/r/domain.html.markdown.
  */
 export class Domain extends pulumi.CustomResource {
     /**
