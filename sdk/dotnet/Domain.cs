@@ -14,6 +14,29 @@ namespace Pulumi.Mailgun
     /// create and manage applications on Mailgun.
     /// 
     /// After DNS records are set, domain verification should be triggered manually using [PUT /domains/\&lt;domain\&gt;/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Mailgun = Pulumi.Mailgun;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new Mailgun domain
+    ///         var @default = new Mailgun.Domain("default", new Mailgun.DomainArgs
+    ///         {
+    ///             Region = "us",
+    ///             SpamAction = "disabled",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Domain : Pulumi.CustomResource
     {

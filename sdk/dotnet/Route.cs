@@ -11,6 +11,35 @@ namespace Pulumi.Mailgun
 {
     /// <summary>
     /// Provides a Mailgun Route resource. This can be used to create and manage routes on Mailgun.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Mailgun = Pulumi.Mailgun;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Create a new Mailgun route
+    ///         var @default = new Mailgun.Route("default", new Mailgun.RouteArgs
+    ///         {
+    ///             Actions = 
+    ///             {
+    ///                 "forward('http://example.com/api/v1/foos/')",
+    ///                 "stop()",
+    ///             },
+    ///             Description = "inbound",
+    ///             Expression = "match_recipient('.*@foo.example.com')",
+    ///             Priority = "0",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Route : Pulumi.CustomResource
     {
