@@ -67,7 +67,17 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "priority",
+                        "recordType",
+                        "valid",
+                        "value"
+                    ]
+                }
+            }
         },
         "mailgun:/DomainSendingRecord:DomainSendingRecord": {
             "properties": {
@@ -108,7 +118,17 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "name",
+                        "recordType",
+                        "valid",
+                        "value"
+                    ]
+                }
+            }
         }
     },
     "provider": {
@@ -238,7 +258,7 @@
             }
         },
         "mailgun:index/route:Route": {
-            "description": "Provides a Mailgun Route resource. This can be used to create and manage routes on Mailgun.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as mailgun from \"@pulumi/mailgun\";\n\n// Create a new Mailgun route\nconst defaultRoute = new mailgun.Route(\"default\", {\n    actions: [\n        \"forward('http://example.com/api/v1/foos/')\",\n        \"stop()\",\n    ],\n    description: \"inbound\",\n    expression: \"match_recipient('.*@foo.example.com')\",\n    priority: 0,\n});\n```\n```python\nimport pulumi\nimport pulumi_mailgun as mailgun\n\n# Create a new Mailgun route\ndefault = mailgun.Route(\"default\",\n    actions=[\n        \"forward('http://example.com/api/v1/foos/')\",\n        \"stop()\",\n    ],\n    description=\"inbound\",\n    expression=\"match_recipient('.*@foo.example.com')\",\n    priority=\"0\")\n```\n```csharp\nusing Pulumi;\nusing Mailgun = Pulumi.Mailgun;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new Mailgun route\n        var @default = new Mailgun.Route(\"default\", new Mailgun.RouteArgs\n        {\n            Actions = \n            {\n                \"forward('http://example.com/api/v1/foos/')\",\n                \"stop()\",\n            },\n            Description = \"inbound\",\n            Expression = \"match_recipient('.*@foo.example.com')\",\n            Priority = \"0\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "Provides a Mailgun Route resource. This can be used to create and manage routes on Mailgun.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as mailgun from \"@pulumi/mailgun\";\n\n// Create a new Mailgun route\nconst defaultRoute = new mailgun.Route(\"default\", {\n    actions: [\n        \"forward('http://example.com/api/v1/foos/')\",\n        \"stop()\",\n    ],\n    description: \"inbound\",\n    expression: \"match_recipient('.*@foo.example.com')\",\n    priority: 0,\n});\n```\n```python\nimport pulumi\nimport pulumi_mailgun as mailgun\n\n# Create a new Mailgun route\ndefault = mailgun.Route(\"default\",\n    actions=[\n        \"forward('http://example.com/api/v1/foos/')\",\n        \"stop()\",\n    ],\n    description=\"inbound\",\n    expression=\"match_recipient('.*@foo.example.com')\",\n    priority=\"0\")\n```\n```csharp\nusing Pulumi;\nusing Mailgun = Pulumi.Mailgun;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new Mailgun route\n        var @default = new Mailgun.Route(\"default\", new Mailgun.RouteArgs\n        {\n            Actions = \n            {\n                \"forward('http://example.com/api/v1/foos/')\",\n                \"stop()\",\n            },\n            Description = \"inbound\",\n            Expression = \"match_recipient('.*@foo.example.com')\",\n            Priority = 0,\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "actions": {
                     "type": "array",
@@ -342,8 +362,10 @@
                 "@types/mime": "^2.0.0",
                 "@types/node": "^8.0.25"
             },
+            "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing Mailgun resources.",
             "packageName": "",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-mailgun)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-mailgun` repo](https://github.com/pulumi/pulumi-mailgun/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-mailgun` repo](https://github.com/terraform-providers/terraform-provider-mailgun/issues).",
             "typescriptVersion": ""
         },
         "python": {

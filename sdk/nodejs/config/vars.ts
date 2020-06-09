@@ -2,8 +2,10 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 let __config = new pulumi.Config("mailgun");
 
-export let apiKey: string | undefined = <any>__config.get("apiKey") || utilities.getEnv("MAILGUN_API_KEY");
+export let apiKey: string | undefined = __config.get("apiKey") || utilities.getEnv("MAILGUN_API_KEY");
