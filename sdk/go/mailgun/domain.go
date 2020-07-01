@@ -13,6 +13,30 @@ import (
 // create and manage applications on Mailgun.
 //
 // After DNS records are set, domain verification should be triggered manually using [PUT /domains/\<domain\>/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-mailgun/sdk/v2/go/mailgun"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := mailgun.NewDomain(ctx, "_default", &mailgun.DomainArgs{
+// 			Region:     pulumi.String("us"),
+// 			SpamAction: pulumi.String("disabled"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Domain struct {
 	pulumi.CustomResourceState
 

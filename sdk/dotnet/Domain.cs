@@ -17,8 +17,6 @@ namespace Pulumi.Mailgun
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using Mailgun = Pulumi.Mailgun;

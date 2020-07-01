@@ -11,6 +11,35 @@ import (
 )
 
 // Provides a Mailgun Route resource. This can be used to create and manage routes on Mailgun.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-mailgun/sdk/v2/go/mailgun"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := mailgun.NewRoute(ctx, "_default", &mailgun.RouteArgs{
+// 			Actions: pulumi.StringArray{
+// 				pulumi.String("forward('http://example.com/api/v1/foos/')"),
+// 				pulumi.String("stop()"),
+// 			},
+// 			Description: pulumi.String("inbound"),
+// 			Expression:  pulumi.String("match_recipient('.*@foo.example.com')"),
+// 			Priority:    pulumi.Int(0),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Route struct {
 	pulumi.CustomResourceState
 
