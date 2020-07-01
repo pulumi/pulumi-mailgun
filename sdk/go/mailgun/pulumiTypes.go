@@ -24,8 +24,7 @@ type DomainReceivingRecord struct {
 // DomainReceivingRecordInput is an input type that accepts DomainReceivingRecordArgs and DomainReceivingRecordOutput values.
 // You can construct a concrete instance of `DomainReceivingRecordInput` via:
 //
-// 		 DomainReceivingRecordArgs{...}
-//
+//          DomainReceivingRecordArgs{...}
 type DomainReceivingRecordInput interface {
 	pulumi.Input
 
@@ -59,8 +58,7 @@ func (i DomainReceivingRecordArgs) ToDomainReceivingRecordOutputWithContext(ctx 
 // DomainReceivingRecordArrayInput is an input type that accepts DomainReceivingRecordArray and DomainReceivingRecordArrayOutput values.
 // You can construct a concrete instance of `DomainReceivingRecordArrayInput` via:
 //
-// 		 DomainReceivingRecordArray{ DomainReceivingRecordArgs{...} }
-//
+//          DomainReceivingRecordArray{ DomainReceivingRecordArgs{...} }
 type DomainReceivingRecordArrayInput interface {
 	pulumi.Input
 
@@ -150,8 +148,7 @@ type DomainSendingRecord struct {
 // DomainSendingRecordInput is an input type that accepts DomainSendingRecordArgs and DomainSendingRecordOutput values.
 // You can construct a concrete instance of `DomainSendingRecordInput` via:
 //
-// 		 DomainSendingRecordArgs{...}
-//
+//          DomainSendingRecordArgs{...}
 type DomainSendingRecordInput interface {
 	pulumi.Input
 
@@ -185,8 +182,7 @@ func (i DomainSendingRecordArgs) ToDomainSendingRecordOutputWithContext(ctx cont
 // DomainSendingRecordArrayInput is an input type that accepts DomainSendingRecordArray and DomainSendingRecordArrayOutput values.
 // You can construct a concrete instance of `DomainSendingRecordArrayInput` via:
 //
-// 		 DomainSendingRecordArray{ DomainSendingRecordArgs{...} }
-//
+//          DomainSendingRecordArray{ DomainSendingRecordArgs{...} }
 type DomainSendingRecordArrayInput interface {
 	pulumi.Input
 
