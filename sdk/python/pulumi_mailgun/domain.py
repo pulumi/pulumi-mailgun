@@ -42,7 +42,7 @@ class Domain(pulumi.CustomResource):
     """
     smtp_password: pulumi.Output[str]
     """
-    The password to the SMTP server.
+    Password for SMTP authentication
     """
     spam_action: pulumi.Output[str]
     """
@@ -55,7 +55,7 @@ class Domain(pulumi.CustomResource):
     Boolean that determines whether
     the domain will accept email for sub-domains.
     """
-    def __init__(__self__, resource_name, opts=None, name=None, region=None, spam_action=None, wildcard=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, name=None, region=None, smtp_password=None, spam_action=None, wildcard=None, __props__=None, __name__=None, __opts__=None):
         """
         Provides a Mailgun App resource. This can be used to
         create and manage applications on Mailgun.
@@ -71,6 +71,7 @@ class Domain(pulumi.CustomResource):
         # Create a new Mailgun domain
         default = mailgun.Domain("default",
             region="us",
+            smtp_password="supersecretpassword1234",
             spam_action="disabled")
         ```
 
@@ -78,6 +79,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The domain to add to Mailgun
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
+        :param pulumi.Input[str] smtp_password: Password for SMTP authentication
         :param pulumi.Input[str] spam_action: `disabled` or `tag` Disable, no spam
                filtering will occur for inbound messages. Tag, messages
                will be tagged with a spam header.
@@ -103,12 +105,12 @@ class Domain(pulumi.CustomResource):
 
             __props__['name'] = name
             __props__['region'] = region
+            __props__['smtp_password'] = smtp_password
             __props__['spam_action'] = spam_action
             __props__['wildcard'] = wildcard
             __props__['receiving_records'] = None
             __props__['sending_records'] = None
             __props__['smtp_login'] = None
-            __props__['smtp_password'] = None
         super(Domain, __self__).__init__(
             'mailgun:index/domain:Domain',
             resource_name,
@@ -129,7 +131,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
         :param pulumi.Input[list] sending_records: A list of DNS records for sending validation.
         :param pulumi.Input[str] smtp_login: The login email for the SMTP server.
-        :param pulumi.Input[str] smtp_password: The password to the SMTP server.
+        :param pulumi.Input[str] smtp_password: Password for SMTP authentication
         :param pulumi.Input[str] spam_action: `disabled` or `tag` Disable, no spam
                filtering will occur for inbound messages. Tag, messages
                will be tagged with a spam header.

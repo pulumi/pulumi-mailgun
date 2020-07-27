@@ -21,6 +21,7 @@ import * as utilities from "./utilities";
  * // Create a new Mailgun domain
  * const defaultDomain = new mailgun.Domain("default", {
  *     region: "us",
+ *     smtpPassword: "supersecretpassword1234",
  *     spamAction: "disabled",
  * });
  * ```
@@ -74,9 +75,9 @@ export class Domain extends pulumi.CustomResource {
      */
     public /*out*/ readonly smtpLogin!: pulumi.Output<string>;
     /**
-     * The password to the SMTP server.
+     * Password for SMTP authentication
      */
-    public /*out*/ readonly smtpPassword!: pulumi.Output<string>;
+    public readonly smtpPassword!: pulumi.Output<string | undefined>;
     /**
      * `disabled` or `tag` Disable, no spam
      * filtering will occur for inbound messages. Tag, messages
@@ -113,12 +114,12 @@ export class Domain extends pulumi.CustomResource {
             const args = argsOrState as DomainArgs | undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["smtpPassword"] = args ? args.smtpPassword : undefined;
             inputs["spamAction"] = args ? args.spamAction : undefined;
             inputs["wildcard"] = args ? args.wildcard : undefined;
             inputs["receivingRecords"] = undefined /*out*/;
             inputs["sendingRecords"] = undefined /*out*/;
             inputs["smtpLogin"] = undefined /*out*/;
-            inputs["smtpPassword"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -156,7 +157,7 @@ export interface DomainState {
      */
     readonly smtpLogin?: pulumi.Input<string>;
     /**
-     * The password to the SMTP server.
+     * Password for SMTP authentication
      */
     readonly smtpPassword?: pulumi.Input<string>;
     /**
@@ -184,6 +185,10 @@ export interface DomainArgs {
      * The region where domain will be created. Default value is `us`.
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * Password for SMTP authentication
+     */
+    readonly smtpPassword?: pulumi.Input<string>;
     /**
      * `disabled` or `tag` Disable, no spam
      * filtering will occur for inbound messages. Tag, messages

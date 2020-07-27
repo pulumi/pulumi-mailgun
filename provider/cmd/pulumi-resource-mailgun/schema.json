@@ -146,7 +146,7 @@
     },
     "resources": {
         "mailgun:index/domain:Domain": {
-            "description": "Provides a Mailgun App resource. This can be used to\ncreate and manage applications on Mailgun.\n\nAfter DNS records are set, domain verification should be triggered manually using [PUT /domains/\\\u003cdomain\\\u003e/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as mailgun from \"@pulumi/mailgun\";\n\n// Create a new Mailgun domain\nconst defaultDomain = new mailgun.Domain(\"default\", {\n    region: \"us\",\n    spamAction: \"disabled\",\n});\n```\n```python\nimport pulumi\nimport pulumi_mailgun as mailgun\n\n# Create a new Mailgun domain\ndefault = mailgun.Domain(\"default\",\n    region=\"us\",\n    spam_action=\"disabled\")\n```\n```csharp\nusing Pulumi;\nusing Mailgun = Pulumi.Mailgun;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new Mailgun domain\n        var @default = new Mailgun.Domain(\"default\", new Mailgun.DomainArgs\n        {\n            Region = \"us\",\n            SpamAction = \"disabled\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-mailgun/sdk/v2/go/mailgun\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := mailgun.NewDomain(ctx, \"_default\", \u0026mailgun.DomainArgs{\n\t\t\tRegion:     pulumi.String(\"us\"),\n\t\t\tSpamAction: pulumi.String(\"disabled\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a Mailgun App resource. This can be used to\ncreate and manage applications on Mailgun.\n\nAfter DNS records are set, domain verification should be triggered manually using [PUT /domains/\\\u003cdomain\\\u003e/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as mailgun from \"@pulumi/mailgun\";\n\n// Create a new Mailgun domain\nconst defaultDomain = new mailgun.Domain(\"default\", {\n    region: \"us\",\n    smtpPassword: \"supersecretpassword1234\",\n    spamAction: \"disabled\",\n});\n```\n```python\nimport pulumi\nimport pulumi_mailgun as mailgun\n\n# Create a new Mailgun domain\ndefault = mailgun.Domain(\"default\",\n    region=\"us\",\n    smtp_password=\"supersecretpassword1234\",\n    spam_action=\"disabled\")\n```\n```csharp\nusing Pulumi;\nusing Mailgun = Pulumi.Mailgun;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new Mailgun domain\n        var @default = new Mailgun.Domain(\"default\", new Mailgun.DomainArgs\n        {\n            Region = \"us\",\n            SmtpPassword = \"supersecretpassword1234\",\n            SpamAction = \"disabled\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-mailgun/sdk/v2/go/mailgun\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := mailgun.NewDomain(ctx, \"_default\", \u0026mailgun.DomainArgs{\n\t\t\tRegion:       pulumi.String(\"us\"),\n\t\t\tSmtpPassword: pulumi.String(\"supersecretpassword1234\"),\n\t\t\tSpamAction:   pulumi.String(\"disabled\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
                 "name": {
                     "type": "string",
@@ -176,7 +176,7 @@
                 },
                 "smtpPassword": {
                     "type": "string",
-                    "description": "The password to the SMTP server.\n"
+                    "description": "Password for SMTP authentication\n"
                 },
                 "spamAction": {
                     "type": "string",
@@ -191,8 +191,7 @@
                 "name",
                 "receivingRecords",
                 "sendingRecords",
-                "smtpLogin",
-                "smtpPassword"
+                "smtpLogin"
             ],
             "inputProperties": {
                 "name": {
@@ -202,6 +201,10 @@
                 "region": {
                     "type": "string",
                     "description": "The region where domain will be created. Default value is `us`.\n"
+                },
+                "smtpPassword": {
+                    "type": "string",
+                    "description": "Password for SMTP authentication\n"
                 },
                 "spamAction": {
                     "type": "string",
@@ -243,7 +246,7 @@
                     },
                     "smtpPassword": {
                         "type": "string",
-                        "description": "The password to the SMTP server.\n"
+                        "description": "Password for SMTP authentication\n"
                     },
                     "spamAction": {
                         "type": "string",
