@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v0.4.3 of the Mailgun Terraform Provider
+_(none)_
 
 ---
+
+## 2.1.4 (2020-07-28)
+* Upgrade to v0.4.3 of the Mailgun Terraform Provider
 
 ## v2.1.3 (2020-06-10)
 * Switch to GitHub actions for build
