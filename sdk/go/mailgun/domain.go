@@ -27,8 +27,9 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := mailgun.NewDomain(ctx, "_default", &mailgun.DomainArgs{
-// 			Region:     pulumi.String("us"),
-// 			SpamAction: pulumi.String("disabled"),
+// 			Region:       pulumi.String("us"),
+// 			SmtpPassword: pulumi.String("supersecretpassword1234"),
+// 			SpamAction:   pulumi.String("disabled"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -50,8 +51,8 @@ type Domain struct {
 	SendingRecords DomainSendingRecordArrayOutput `pulumi:"sendingRecords"`
 	// The login email for the SMTP server.
 	SmtpLogin pulumi.StringOutput `pulumi:"smtpLogin"`
-	// The password to the SMTP server.
-	SmtpPassword pulumi.StringOutput `pulumi:"smtpPassword"`
+	// Password for SMTP authentication
+	SmtpPassword pulumi.StringPtrOutput `pulumi:"smtpPassword"`
 	// `disabled` or `tag` Disable, no spam
 	// filtering will occur for inbound messages. Tag, messages
 	// will be tagged with a spam header.
@@ -99,7 +100,7 @@ type domainState struct {
 	SendingRecords []DomainSendingRecord `pulumi:"sendingRecords"`
 	// The login email for the SMTP server.
 	SmtpLogin *string `pulumi:"smtpLogin"`
-	// The password to the SMTP server.
+	// Password for SMTP authentication
 	SmtpPassword *string `pulumi:"smtpPassword"`
 	// `disabled` or `tag` Disable, no spam
 	// filtering will occur for inbound messages. Tag, messages
@@ -121,7 +122,7 @@ type DomainState struct {
 	SendingRecords DomainSendingRecordArrayInput
 	// The login email for the SMTP server.
 	SmtpLogin pulumi.StringPtrInput
-	// The password to the SMTP server.
+	// Password for SMTP authentication
 	SmtpPassword pulumi.StringPtrInput
 	// `disabled` or `tag` Disable, no spam
 	// filtering will occur for inbound messages. Tag, messages
@@ -141,6 +142,8 @@ type domainArgs struct {
 	Name *string `pulumi:"name"`
 	// The region where domain will be created. Default value is `us`.
 	Region *string `pulumi:"region"`
+	// Password for SMTP authentication
+	SmtpPassword *string `pulumi:"smtpPassword"`
 	// `disabled` or `tag` Disable, no spam
 	// filtering will occur for inbound messages. Tag, messages
 	// will be tagged with a spam header.
@@ -156,6 +159,8 @@ type DomainArgs struct {
 	Name pulumi.StringPtrInput
 	// The region where domain will be created. Default value is `us`.
 	Region pulumi.StringPtrInput
+	// Password for SMTP authentication
+	SmtpPassword pulumi.StringPtrInput
 	// `disabled` or `tag` Disable, no spam
 	// filtering will occur for inbound messages. Tag, messages
 	// will be tagged with a spam header.

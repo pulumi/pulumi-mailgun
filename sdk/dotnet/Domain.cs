@@ -29,6 +29,7 @@ namespace Pulumi.Mailgun
     ///         var @default = new Mailgun.Domain("default", new Mailgun.DomainArgs
     ///         {
     ///             Region = "us",
+    ///             SmtpPassword = "supersecretpassword1234",
     ///             SpamAction = "disabled",
     ///         });
     ///     }
@@ -69,10 +70,10 @@ namespace Pulumi.Mailgun
         public Output<string> SmtpLogin { get; private set; } = null!;
 
         /// <summary>
-        /// The password to the SMTP server.
+        /// Password for SMTP authentication
         /// </summary>
         [Output("smtpPassword")]
-        public Output<string> SmtpPassword { get; private set; } = null!;
+        public Output<string?> SmtpPassword { get; private set; } = null!;
 
         /// <summary>
         /// `disabled` or `tag` Disable, no spam
@@ -148,6 +149,12 @@ namespace Pulumi.Mailgun
         public Input<string>? Region { get; set; }
 
         /// <summary>
+        /// Password for SMTP authentication
+        /// </summary>
+        [Input("smtpPassword")]
+        public Input<string>? SmtpPassword { get; set; }
+
+        /// <summary>
         /// `disabled` or `tag` Disable, no spam
         /// filtering will occur for inbound messages. Tag, messages
         /// will be tagged with a spam header.
@@ -212,7 +219,7 @@ namespace Pulumi.Mailgun
         public Input<string>? SmtpLogin { get; set; }
 
         /// <summary>
-        /// The password to the SMTP server.
+        /// Password for SMTP authentication
         /// </summary>
         [Input("smtpPassword")]
         public Input<string>? SmtpPassword { get; set; }
