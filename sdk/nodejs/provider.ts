@@ -35,7 +35,9 @@ export class Provider extends pulumi.ProviderResource {
      */
     constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        inputs["apiKey"] = (args ? args.apiKey : undefined) || utilities.getEnv("MAILGUN_API_KEY");
+        {
+            inputs["apiKey"] = (args ? args.apiKey : undefined) || utilities.getEnv("MAILGUN_API_KEY");
+        }
         if (!opts) {
             opts = {}
         }
