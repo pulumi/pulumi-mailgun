@@ -5,10 +5,14 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'api_key',
+]
 
 __config__ = pulumi.Config('mailgun')
 
-api_key = __config__.get('apiKey') or utilities.get_env('MAILGUN_API_KEY')
+api_key = __config__.get('apiKey') or _utilities.get_env('MAILGUN_API_KEY')
 
