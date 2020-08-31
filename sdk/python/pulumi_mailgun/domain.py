@@ -15,7 +15,7 @@ __all__ = ['Domain']
 
 class Domain(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -133,7 +133,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The domain to add to Mailgun
         """
@@ -141,7 +141,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="receivingRecords")
-    def receiving_records(self) -> List['outputs.DomainReceivingRecord']:
+    def receiving_records(self) -> pulumi.Output[List['outputs.DomainReceivingRecord']]:
         """
         A list of DNS records for receiving validation.
         """
@@ -149,7 +149,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> Optional[str]:
+    def region(self) -> pulumi.Output[Optional[str]]:
         """
         The region where domain will be created. Default value is `us`.
         """
@@ -157,7 +157,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sendingRecords")
-    def sending_records(self) -> List['outputs.DomainSendingRecord']:
+    def sending_records(self) -> pulumi.Output[List['outputs.DomainSendingRecord']]:
         """
         A list of DNS records for sending validation.
         """
@@ -165,7 +165,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="smtpLogin")
-    def smtp_login(self) -> str:
+    def smtp_login(self) -> pulumi.Output[str]:
         """
         The login email for the SMTP server.
         """
@@ -173,7 +173,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="smtpPassword")
-    def smtp_password(self) -> Optional[str]:
+    def smtp_password(self) -> pulumi.Output[Optional[str]]:
         """
         Password for SMTP authentication
         """
@@ -181,7 +181,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="spamAction")
-    def spam_action(self) -> Optional[str]:
+    def spam_action(self) -> pulumi.Output[Optional[str]]:
         """
         `disabled` or `tag` Disable, no spam
         filtering will occur for inbound messages. Tag, messages
@@ -191,7 +191,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def wildcard(self) -> Optional[bool]:
+    def wildcard(self) -> pulumi.Output[Optional[bool]]:
         """
         Boolean that determines whether
         the domain will accept email for sub-domains.

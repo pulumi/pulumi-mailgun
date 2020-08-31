@@ -13,7 +13,7 @@ __all__ = ['Route']
 
 class Route(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  actions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -116,17 +116,17 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def actions(self) -> List[str]:
+    def actions(self) -> pulumi.Output[List[str]]:
         return pulumi.get(self, "actions")
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
-    def expression(self) -> str:
+    def expression(self) -> pulumi.Output[str]:
         """
         A filter expression like `match_recipient('.*@gmail.com')`
         """
@@ -134,7 +134,7 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> float:
+    def priority(self) -> pulumi.Output[float]:
         """
         Smaller number indicates higher priority. Higher priority routes are handled first.
         """
@@ -142,7 +142,7 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def region(self) -> Optional[str]:
+    def region(self) -> pulumi.Output[Optional[str]]:
         """
         The region where domain will be created. Default value is `us`.
         """
