@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Route']
@@ -15,10 +15,10 @@ class Route(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  expression: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -46,7 +46,7 @@ class Route(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] expression: A filter expression like `match_recipient('.*@gmail.com')`
-        :param pulumi.Input[float] priority: Smaller number indicates higher priority. Higher priority routes are handled first.
+        :param pulumi.Input[int] priority: Smaller number indicates higher priority. Higher priority routes are handled first.
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
         """
         if __name__ is not None:
@@ -87,10 +87,10 @@ class Route(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            actions: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             expression: Optional[pulumi.Input[str]] = None,
-            priority: Optional[pulumi.Input[float]] = None,
+            priority: Optional[pulumi.Input[int]] = None,
             region: Optional[pulumi.Input[str]] = None) -> 'Route':
         """
         Get an existing Route resource's state with the given name, id, and optional extra
@@ -100,7 +100,7 @@ class Route(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] expression: A filter expression like `match_recipient('.*@gmail.com')`
-        :param pulumi.Input[float] priority: Smaller number indicates higher priority. Higher priority routes are handled first.
+        :param pulumi.Input[int] priority: Smaller number indicates higher priority. Higher priority routes are handled first.
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -116,7 +116,7 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def actions(self) -> pulumi.Output[List[str]]:
+    def actions(self) -> pulumi.Output[Sequence[str]]:
         return pulumi.get(self, "actions")
 
     @property
@@ -134,7 +134,7 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[float]:
+    def priority(self) -> pulumi.Output[int]:
         """
         Smaller number indicates higher priority. Higher priority routes are handled first.
         """
