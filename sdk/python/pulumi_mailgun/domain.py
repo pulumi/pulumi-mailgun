@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -91,9 +91,9 @@ class Domain(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             name: Optional[pulumi.Input[str]] = None,
-            receiving_records: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DomainReceivingRecordArgs']]]]] = None,
+            receiving_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainReceivingRecordArgs']]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            sending_records: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['DomainSendingRecordArgs']]]]] = None,
+            sending_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSendingRecordArgs']]]]] = None,
             smtp_login: Optional[pulumi.Input[str]] = None,
             smtp_password: Optional[pulumi.Input[str]] = None,
             spam_action: Optional[pulumi.Input[str]] = None,
@@ -106,9 +106,9 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The domain to add to Mailgun
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DomainReceivingRecordArgs']]]] receiving_records: A list of DNS records for receiving validation.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainReceivingRecordArgs']]]] receiving_records: A list of DNS records for receiving validation.
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['DomainSendingRecordArgs']]]] sending_records: A list of DNS records for sending validation.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSendingRecordArgs']]]] sending_records: A list of DNS records for sending validation.
         :param pulumi.Input[str] smtp_login: The login email for the SMTP server.
         :param pulumi.Input[str] smtp_password: Password for SMTP authentication
         :param pulumi.Input[str] spam_action: `disabled` or `tag` Disable, no spam
@@ -141,7 +141,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="receivingRecords")
-    def receiving_records(self) -> pulumi.Output[List['outputs.DomainReceivingRecord']]:
+    def receiving_records(self) -> pulumi.Output[Sequence['outputs.DomainReceivingRecord']]:
         """
         A list of DNS records for receiving validation.
         """
@@ -157,7 +157,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sendingRecords")
-    def sending_records(self) -> pulumi.Output[List['outputs.DomainSendingRecord']]:
+    def sending_records(self) -> pulumi.Output[Sequence['outputs.DomainSendingRecord']]:
         """
         A list of DNS records for sending validation.
         """

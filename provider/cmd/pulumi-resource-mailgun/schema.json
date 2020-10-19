@@ -28,7 +28,7 @@
         ]
     },
     "types": {
-        "mailgun:/DomainReceivingRecord:DomainReceivingRecord": {
+        "mailgun:index/DomainReceivingRecord:DomainReceivingRecord": {
             "properties": {
                 "priority": {
                     "type": "string",
@@ -79,7 +79,7 @@
                 }
             }
         },
-        "mailgun:/DomainSendingRecord:DomainSendingRecord": {
+        "mailgun:index/DomainSendingRecord:DomainSendingRecord": {
             "properties": {
                 "name": {
                     "type": "string",
@@ -155,7 +155,7 @@
                 "receivingRecords": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/mailgun:/DomainReceivingRecord:DomainReceivingRecord"
+                        "$ref": "#/types/mailgun:index/DomainReceivingRecord:DomainReceivingRecord"
                     },
                     "description": "A list of DNS records for receiving validation.\n"
                 },
@@ -166,7 +166,7 @@
                 "sendingRecords": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/mailgun:/DomainSendingRecord:DomainSendingRecord"
+                        "$ref": "#/types/mailgun:index/DomainSendingRecord:DomainSendingRecord"
                     },
                     "description": "A list of DNS records for sending validation.\n"
                 },
@@ -225,7 +225,7 @@
                     "receivingRecords": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/mailgun:/DomainReceivingRecord:DomainReceivingRecord"
+                            "$ref": "#/types/mailgun:index/DomainReceivingRecord:DomainReceivingRecord"
                         },
                         "description": "A list of DNS records for receiving validation.\n"
                     },
@@ -236,7 +236,7 @@
                     "sendingRecords": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/mailgun:/DomainSendingRecord:DomainSendingRecord"
+                            "$ref": "#/types/mailgun:index/DomainSendingRecord:DomainSendingRecord"
                         },
                         "description": "A list of DNS records for sending validation.\n"
                     },
