@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -24,6 +23,16 @@ import * as utilities from "./utilities";
  *     smtpPassword: "supersecretpassword1234",
  *     spamAction: "disabled",
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Domains can be imported using `region:domain_name` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
+ *
+ * hcl
+ *
+ * ```sh
+ *  $ pulumi import mailgun:index/domain:Domain test us:example.domain.com
  * ```
  */
 export class Domain extends pulumi.CustomResource {
