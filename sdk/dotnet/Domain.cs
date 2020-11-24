@@ -36,6 +36,16 @@ namespace Pulumi.Mailgun
     /// 
     /// }
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Domains can be imported using `region:domain_name` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
+    /// 
+    /// hcl
+    /// 
+    /// ```sh
+    ///  $ pulumi import mailgun:index/domain:Domain test us:example.domain.com
+    /// ```
     /// </summary>
     public partial class Domain : Pulumi.CustomResource
     {
