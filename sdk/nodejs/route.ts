@@ -97,13 +97,13 @@ export class Route extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as RouteArgs | undefined;
-            if (!args || args.actions === undefined) {
+            if ((!args || args.actions === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'actions'");
             }
-            if (!args || args.expression === undefined) {
+            if ((!args || args.expression === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'expression'");
             }
-            if (!args || args.priority === undefined) {
+            if ((!args || args.priority === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'priority'");
             }
             inputs["actions"] = args ? args.actions : undefined;
