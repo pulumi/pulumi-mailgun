@@ -76,14 +76,14 @@ class Route(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if actions is None:
+            if actions is None and not opts.urn:
                 raise TypeError("Missing required property 'actions'")
             __props__['actions'] = actions
             __props__['description'] = description
-            if expression is None:
+            if expression is None and not opts.urn:
                 raise TypeError("Missing required property 'expression'")
             __props__['expression'] = expression
-            if priority is None:
+            if priority is None and not opts.urn:
                 raise TypeError("Missing required property 'priority'")
             __props__['priority'] = priority
             __props__['region'] = region
