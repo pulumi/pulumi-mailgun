@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-mailgun/sdk/v2/go/mailgun"
+// 	"github.com/pulumi/pulumi-mailgun/sdk/v2/go/mailgun/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -193,15 +193,15 @@ type DomainInput interface {
 	ToDomainOutputWithContext(ctx context.Context) DomainOutput
 }
 
-func (Domain) ElementType() reflect.Type {
-	return reflect.TypeOf((*Domain)(nil)).Elem()
+func (*Domain) ElementType() reflect.Type {
+	return reflect.TypeOf((*Domain)(nil))
 }
 
-func (i Domain) ToDomainOutput() DomainOutput {
+func (i *Domain) ToDomainOutput() DomainOutput {
 	return i.ToDomainOutputWithContext(context.Background())
 }
 
-func (i Domain) ToDomainOutputWithContext(ctx context.Context) DomainOutput {
+func (i *Domain) ToDomainOutputWithContext(ctx context.Context) DomainOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainOutput)
 }
 
@@ -210,7 +210,7 @@ type DomainOutput struct {
 }
 
 func (DomainOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainOutput)(nil)).Elem()
+	return reflect.TypeOf((*Domain)(nil))
 }
 
 func (o DomainOutput) ToDomainOutput() DomainOutput {

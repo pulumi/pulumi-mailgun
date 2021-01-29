@@ -47,6 +47,7 @@ namespace Pulumi.Mailgun
     ///  $ pulumi import mailgun:index/domain:Domain test us:example.domain.com
     /// ```
     /// </summary>
+    [MailgunResourceType("mailgun:index/domain:Domain")]
     public partial class Domain : Pulumi.CustomResource
     {
         /// <summary>

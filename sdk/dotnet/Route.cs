@@ -49,6 +49,7 @@ namespace Pulumi.Mailgun
     ///  $ pulumi import mailgun:index/route:Route test eu:123456789
     /// ```
     /// </summary>
+    [MailgunResourceType("mailgun:index/route:Route")]
     public partial class Route : Pulumi.CustomResource
     {
         [Output("actions")]
