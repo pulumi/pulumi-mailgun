@@ -77,4 +77,11 @@ namespace Pulumi.Mailgun
             }
         }
     }
+
+    internal sealed class MailgunResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    {
+        public MailgunResourceTypeAttribute(string type) : base(type, Utilities.Version)
+        {
+        }
+    }
 }

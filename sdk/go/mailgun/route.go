@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-mailgun/sdk/v2/go/mailgun"
+// 	"github.com/pulumi/pulumi-mailgun/sdk/v2/go/mailgun/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -161,15 +161,15 @@ type RouteInput interface {
 	ToRouteOutputWithContext(ctx context.Context) RouteOutput
 }
 
-func (Route) ElementType() reflect.Type {
-	return reflect.TypeOf((*Route)(nil)).Elem()
+func (*Route) ElementType() reflect.Type {
+	return reflect.TypeOf((*Route)(nil))
 }
 
-func (i Route) ToRouteOutput() RouteOutput {
+func (i *Route) ToRouteOutput() RouteOutput {
 	return i.ToRouteOutputWithContext(context.Background())
 }
 
-func (i Route) ToRouteOutputWithContext(ctx context.Context) RouteOutput {
+func (i *Route) ToRouteOutputWithContext(ctx context.Context) RouteOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouteOutput)
 }
 
@@ -178,7 +178,7 @@ type RouteOutput struct {
 }
 
 func (RouteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouteOutput)(nil)).Elem()
+	return reflect.TypeOf((*Route)(nil))
 }
 
 func (o RouteOutput) ToRouteOutput() RouteOutput {
