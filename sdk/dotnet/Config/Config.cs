@@ -8,7 +8,7 @@ namespace Pulumi.Mailgun
     public static class Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("mailgun");
-        public static string? ApiKey { get; set; } = __config.Get("apiKey") ?? Utilities.GetEnv("MAILGUN_API_KEY");
+        public static string? ApiKey { get; set; } = __config.Get("apiKey");
 
     }
 }
