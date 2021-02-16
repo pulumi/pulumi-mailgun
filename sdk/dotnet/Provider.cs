@@ -25,7 +25,7 @@ namespace Pulumi.Mailgun
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
             : base("mailgun", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -45,12 +45,11 @@ namespace Pulumi.Mailgun
 
     public sealed class ProviderArgs : Pulumi.ResourceArgs
     {
-        [Input("apiKey")]
-        public Input<string>? ApiKey { get; set; }
+        [Input("apiKey", required: true)]
+        public Input<string> ApiKey { get; set; } = null!;
 
         public ProviderArgs()
         {
-            ApiKey = Utilities.GetEnv("MAILGUN_API_KEY");
         }
     }
 }

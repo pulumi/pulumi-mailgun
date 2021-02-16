@@ -63,14 +63,7 @@ func Provider() tfbridge.ProviderInfo {
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-mailgun",
-		Config: map[string]*tfbridge.SchemaInfo{
-			"api_key": {
-				Type: "string",
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{"MAILGUN_API_KEY"},
-				},
-			},
-		},
+		Config:      map[string]*tfbridge.SchemaInfo{},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"mailgun_domain": {Tok: makeResource(mainMod, "Domain")},
 			"mailgun_route":  {Tok: makeResource(mainMod, "Route")},

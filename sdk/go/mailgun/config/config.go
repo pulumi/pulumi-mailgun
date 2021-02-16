@@ -9,9 +9,5 @@ import (
 )
 
 func GetApiKey(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "mailgun:apiKey")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "MAILGUN_API_KEY").(string)
+	return config.Get(ctx, "mailgun:apiKey")
 }

@@ -33,17 +33,17 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
+        opts = opts || {};
         {
-            inputs["apiKey"] = (args ? args.apiKey : undefined) || utilities.getEnv("MAILGUN_API_KEY");
+            if ((!args || args.apiKey === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'apiKey'");
+            }
+            inputs["apiKey"] = args ? args.apiKey : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Provider.__pulumiType, name, inputs, opts);
     }
@@ -53,5 +53,5 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
-    readonly apiKey?: pulumi.Input<string>;
+    readonly apiKey: pulumi.Input<string>;
 }

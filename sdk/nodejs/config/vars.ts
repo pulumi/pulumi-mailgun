@@ -6,4 +6,4 @@ import * as utilities from "../utilities";
 
 let __config = new pulumi.Config("mailgun");
 
-export let apiKey: string | undefined = __config.get("apiKey") || utilities.getEnv("MAILGUN_API_KEY");
+export let apiKey: string | undefined = __config.get("apiKey");
