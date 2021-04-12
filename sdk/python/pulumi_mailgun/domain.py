@@ -5,15 +5,109 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Domain']
+__all__ = ['DomainArgs', 'Domain']
+
+@pulumi.input_type
+class DomainArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 smtp_password: Optional[pulumi.Input[str]] = None,
+                 spam_action: Optional[pulumi.Input[str]] = None,
+                 wildcard: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a Domain resource.
+        :param pulumi.Input[str] name: The domain to add to Mailgun
+        :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
+        :param pulumi.Input[str] smtp_password: Password for SMTP authentication
+        :param pulumi.Input[str] spam_action: `disabled` or `tag` Disable, no spam
+               filtering will occur for inbound messages. Tag, messages
+               will be tagged with a spam header.
+        :param pulumi.Input[bool] wildcard: Boolean that determines whether
+               the domain will accept email for sub-domains.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if smtp_password is not None:
+            pulumi.set(__self__, "smtp_password", smtp_password)
+        if spam_action is not None:
+            pulumi.set(__self__, "spam_action", spam_action)
+        if wildcard is not None:
+            pulumi.set(__self__, "wildcard", wildcard)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain to add to Mailgun
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region where domain will be created. Default value is `us`.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="smtpPassword")
+    def smtp_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password for SMTP authentication
+        """
+        return pulumi.get(self, "smtp_password")
+
+    @smtp_password.setter
+    def smtp_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "smtp_password", value)
+
+    @property
+    @pulumi.getter(name="spamAction")
+    def spam_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        `disabled` or `tag` Disable, no spam
+        filtering will occur for inbound messages. Tag, messages
+        will be tagged with a spam header.
+        """
+        return pulumi.get(self, "spam_action")
+
+    @spam_action.setter
+    def spam_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spam_action", value)
+
+    @property
+    @pulumi.getter
+    def wildcard(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean that determines whether
+        the domain will accept email for sub-domains.
+        """
+        return pulumi.get(self, "wildcard")
+
+    @wildcard.setter
+    def wildcard(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wildcard", value)
 
 
 class Domain(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -65,6 +159,64 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[bool] wildcard: Boolean that determines whether
                the domain will accept email for sub-domains.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[DomainArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a Mailgun App resource. This can be used to
+        create and manage applications on Mailgun.
+
+        After DNS records are set, domain verification should be triggered manually using [PUT /domains/\<domain\>/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_mailgun as mailgun
+
+        # Create a new Mailgun domain
+        default = mailgun.Domain("default",
+            region="us",
+            smtp_password="supersecretpassword1234",
+            spam_action="disabled")
+        ```
+
+        ## Import
+
+        Domains can be imported using `region:domain_name` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
+
+        hcl
+
+        ```sh
+         $ pulumi import mailgun:index/domain:Domain test us:example.domain.com
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DomainArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DomainArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 smtp_password: Optional[pulumi.Input[str]] = None,
+                 spam_action: Optional[pulumi.Input[str]] = None,
+                 wildcard: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
