@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['RouteArgs', 'Route']
 
@@ -73,6 +73,86 @@ class RouteArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region where domain will be created. Default value is `us`.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class _RouteState:
+    def __init__(__self__, *,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 expression: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Route resources.
+        :param pulumi.Input[str] expression: A filter expression like `match_recipient('.*@gmail.com')`
+        :param pulumi.Input[int] priority: Smaller number indicates higher priority. Higher priority routes are handled first.
+        :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
+        """
+        if actions is not None:
+            pulumi.set(__self__, "actions", actions)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "actions")
+
+    @actions.setter
+    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "actions", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        A filter expression like `match_recipient('.*@gmail.com')`
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        Smaller number indicates higher priority. Higher priority routes are handled first.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
 
     @property
     @pulumi.getter
@@ -210,19 +290,19 @@ class Route(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RouteArgs.__new__(RouteArgs)
 
             if actions is None and not opts.urn:
                 raise TypeError("Missing required property 'actions'")
-            __props__['actions'] = actions
-            __props__['description'] = description
+            __props__.__dict__["actions"] = actions
+            __props__.__dict__["description"] = description
             if expression is None and not opts.urn:
                 raise TypeError("Missing required property 'expression'")
-            __props__['expression'] = expression
+            __props__.__dict__["expression"] = expression
             if priority is None and not opts.urn:
                 raise TypeError("Missing required property 'priority'")
-            __props__['priority'] = priority
-            __props__['region'] = region
+            __props__.__dict__["priority"] = priority
+            __props__.__dict__["region"] = region
         super(Route, __self__).__init__(
             'mailgun:index/route:Route',
             resource_name,
@@ -251,13 +331,13 @@ class Route(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RouteState.__new__(_RouteState)
 
-        __props__["actions"] = actions
-        __props__["description"] = description
-        __props__["expression"] = expression
-        __props__["priority"] = priority
-        __props__["region"] = region
+        __props__.__dict__["actions"] = actions
+        __props__.__dict__["description"] = description
+        __props__.__dict__["expression"] = expression
+        __props__.__dict__["priority"] = priority
+        __props__.__dict__["region"] = region
         return Route(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -293,10 +373,4 @@ class Route(pulumi.CustomResource):
         The region where domain will be created. Default value is `us`.
         """
         return pulumi.get(self, "region")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

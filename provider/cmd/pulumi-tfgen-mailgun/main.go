@@ -15,9 +15,9 @@
 package main
 
 import (
-	mailgun "github.com/pulumi/pulumi-mailgun/provider/v2"
-	"github.com/pulumi/pulumi-mailgun/provider/v2/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfgen"
+	mailgun "github.com/pulumi/pulumi-mailgun/provider/v3"
+	"github.com/pulumi/pulumi-mailgun/provider/v3/pkg/version"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 )
 
 func main() {
