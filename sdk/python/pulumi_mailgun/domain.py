@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 from . import outputs
 from ._inputs import *
 
@@ -65,6 +65,148 @@ class DomainArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="smtpPassword")
+    def smtp_password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Password for SMTP authentication
+        """
+        return pulumi.get(self, "smtp_password")
+
+    @smtp_password.setter
+    def smtp_password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "smtp_password", value)
+
+    @property
+    @pulumi.getter(name="spamAction")
+    def spam_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        `disabled` or `tag` Disable, no spam
+        filtering will occur for inbound messages. Tag, messages
+        will be tagged with a spam header.
+        """
+        return pulumi.get(self, "spam_action")
+
+    @spam_action.setter
+    def spam_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spam_action", value)
+
+    @property
+    @pulumi.getter
+    def wildcard(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Boolean that determines whether
+        the domain will accept email for sub-domains.
+        """
+        return pulumi.get(self, "wildcard")
+
+    @wildcard.setter
+    def wildcard(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "wildcard", value)
+
+
+@pulumi.input_type
+class _DomainState:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 receiving_records: Optional[pulumi.Input[Sequence[pulumi.Input['DomainReceivingRecordArgs']]]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 sending_records: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSendingRecordArgs']]]] = None,
+                 smtp_login: Optional[pulumi.Input[str]] = None,
+                 smtp_password: Optional[pulumi.Input[str]] = None,
+                 spam_action: Optional[pulumi.Input[str]] = None,
+                 wildcard: Optional[pulumi.Input[bool]] = None):
+        """
+        Input properties used for looking up and filtering Domain resources.
+        :param pulumi.Input[str] name: The domain to add to Mailgun
+        :param pulumi.Input[Sequence[pulumi.Input['DomainReceivingRecordArgs']]] receiving_records: A list of DNS records for receiving validation.
+        :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
+        :param pulumi.Input[Sequence[pulumi.Input['DomainSendingRecordArgs']]] sending_records: A list of DNS records for sending validation.
+        :param pulumi.Input[str] smtp_login: The login email for the SMTP server.
+        :param pulumi.Input[str] smtp_password: Password for SMTP authentication
+        :param pulumi.Input[str] spam_action: `disabled` or `tag` Disable, no spam
+               filtering will occur for inbound messages. Tag, messages
+               will be tagged with a spam header.
+        :param pulumi.Input[bool] wildcard: Boolean that determines whether
+               the domain will accept email for sub-domains.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if receiving_records is not None:
+            pulumi.set(__self__, "receiving_records", receiving_records)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if sending_records is not None:
+            pulumi.set(__self__, "sending_records", sending_records)
+        if smtp_login is not None:
+            pulumi.set(__self__, "smtp_login", smtp_login)
+        if smtp_password is not None:
+            pulumi.set(__self__, "smtp_password", smtp_password)
+        if spam_action is not None:
+            pulumi.set(__self__, "spam_action", spam_action)
+        if wildcard is not None:
+            pulumi.set(__self__, "wildcard", wildcard)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain to add to Mailgun
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="receivingRecords")
+    def receiving_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainReceivingRecordArgs']]]]:
+        """
+        A list of DNS records for receiving validation.
+        """
+        return pulumi.get(self, "receiving_records")
+
+    @receiving_records.setter
+    def receiving_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainReceivingRecordArgs']]]]):
+        pulumi.set(self, "receiving_records", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region where domain will be created. Default value is `us`.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="sendingRecords")
+    def sending_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainSendingRecordArgs']]]]:
+        """
+        A list of DNS records for sending validation.
+        """
+        return pulumi.get(self, "sending_records")
+
+    @sending_records.setter
+    def sending_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSendingRecordArgs']]]]):
+        pulumi.set(self, "sending_records", value)
+
+    @property
+    @pulumi.getter(name="smtpLogin")
+    def smtp_login(self) -> Optional[pulumi.Input[str]]:
+        """
+        The login email for the SMTP server.
+        """
+        return pulumi.get(self, "smtp_login")
+
+    @smtp_login.setter
+    def smtp_login(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "smtp_login", value)
 
     @property
     @pulumi.getter(name="smtpPassword")
@@ -232,16 +374,16 @@ class Domain(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DomainArgs.__new__(DomainArgs)
 
-            __props__['name'] = name
-            __props__['region'] = region
-            __props__['smtp_password'] = smtp_password
-            __props__['spam_action'] = spam_action
-            __props__['wildcard'] = wildcard
-            __props__['receiving_records'] = None
-            __props__['sending_records'] = None
-            __props__['smtp_login'] = None
+            __props__.__dict__["name"] = name
+            __props__.__dict__["region"] = region
+            __props__.__dict__["smtp_password"] = smtp_password
+            __props__.__dict__["spam_action"] = spam_action
+            __props__.__dict__["wildcard"] = wildcard
+            __props__.__dict__["receiving_records"] = None
+            __props__.__dict__["sending_records"] = None
+            __props__.__dict__["smtp_login"] = None
         super(Domain, __self__).__init__(
             'mailgun:index/domain:Domain',
             resource_name,
@@ -281,16 +423,16 @@ class Domain(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DomainState.__new__(_DomainState)
 
-        __props__["name"] = name
-        __props__["receiving_records"] = receiving_records
-        __props__["region"] = region
-        __props__["sending_records"] = sending_records
-        __props__["smtp_login"] = smtp_login
-        __props__["smtp_password"] = smtp_password
-        __props__["spam_action"] = spam_action
-        __props__["wildcard"] = wildcard
+        __props__.__dict__["name"] = name
+        __props__.__dict__["receiving_records"] = receiving_records
+        __props__.__dict__["region"] = region
+        __props__.__dict__["sending_records"] = sending_records
+        __props__.__dict__["smtp_login"] = smtp_login
+        __props__.__dict__["smtp_password"] = smtp_password
+        __props__.__dict__["spam_action"] = spam_action
+        __props__.__dict__["wildcard"] = wildcard
         return Domain(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -359,10 +501,4 @@ class Domain(pulumi.CustomResource):
         the domain will accept email for sub-domains.
         """
         return pulumi.get(self, "wildcard")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
