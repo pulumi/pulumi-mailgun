@@ -41,3 +41,41 @@ export interface DomainSendingRecord {
      */
     value: string;
 }
+
+export interface GetDomainReceivingRecord {
+    /**
+     * The priority of the record.
+     */
+    priority: string;
+    /**
+     * The record type.
+     */
+    recordType: string;
+    /**
+     * `"valid"` if the record is valid.
+     */
+    valid: string;
+    /**
+     * The value of the record.
+     */
+    value: string;
+}
+
+export interface GetDomainSendingRecord {
+    /**
+     * The name of the domain.
+     */
+    name: string;
+    /**
+     * The record type.
+     */
+    recordType: string;
+    /**
+     * `"valid"` if the record is valid.
+     */
+    valid: string;
+    /**
+     * The value of the record.
+     */
+    value: string;
+}

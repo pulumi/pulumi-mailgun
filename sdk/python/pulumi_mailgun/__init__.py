@@ -4,6 +4,8 @@
 
 # Export this package's modules as members:
 from .domain import *
+from .domain_credential import *
+from .get_domain import *
 from .provider import *
 from .route import *
 from ._inputs import *
@@ -28,6 +30,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "mailgun:index/domain:Domain":
                 return Domain(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "mailgun:index/domainCredential:DomainCredential":
+                return DomainCredential(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "mailgun:index/route:Route":
                 return Route(name, pulumi.ResourceOptions(urn=urn))
             else:
@@ -36,6 +40,7 @@ def _register_module():
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("mailgun", "index/domain", _module_instance)
+    pulumi.runtime.register_resource_module("mailgun", "index/domainCredential", _module_instance)
     pulumi.runtime.register_resource_module("mailgun", "index/route", _module_instance)
 
 

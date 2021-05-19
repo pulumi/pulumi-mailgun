@@ -11,6 +11,8 @@ from . import _utilities
 __all__ = [
     'DomainReceivingRecord',
     'DomainSendingRecord',
+    'GetDomainReceivingRecordResult',
+    'GetDomainSendingRecordResult',
 ]
 
 @pulumi.output_type
@@ -151,6 +153,108 @@ class DomainSendingRecord(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
+        """
+        The value of the record.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetDomainReceivingRecordResult(dict):
+    def __init__(__self__, *,
+                 priority: str,
+                 record_type: str,
+                 valid: str,
+                 value: str):
+        """
+        :param str priority: The priority of the record.
+        :param str record_type: The record type.
+        :param str valid: `"valid"` if the record is valid.
+        :param str value: The value of the record.
+        """
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "record_type", record_type)
+        pulumi.set(__self__, "valid", valid)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> str:
+        """
+        The priority of the record.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter(name="recordType")
+    def record_type(self) -> str:
+        """
+        The record type.
+        """
+        return pulumi.get(self, "record_type")
+
+    @property
+    @pulumi.getter
+    def valid(self) -> str:
+        """
+        `"valid"` if the record is valid.
+        """
+        return pulumi.get(self, "valid")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the record.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetDomainSendingRecordResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 record_type: str,
+                 valid: str,
+                 value: str):
+        """
+        :param str name: The name of the domain.
+        :param str record_type: The record type.
+        :param str valid: `"valid"` if the record is valid.
+        :param str value: The value of the record.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "record_type", record_type)
+        pulumi.set(__self__, "valid", valid)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the domain.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="recordType")
+    def record_type(self) -> str:
+        """
+        The record type.
+        """
+        return pulumi.get(self, "record_type")
+
+    @property
+    @pulumi.getter
+    def valid(self) -> str:
+        """
+        `"valid"` if the record is valid.
+        """
+        return pulumi.get(self, "valid")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
         """
         The value of the record.
         """

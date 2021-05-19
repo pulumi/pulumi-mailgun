@@ -19,12 +19,11 @@ import (
 	"path/filepath"
 	"unicode"
 
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-mailgun/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/terraform-providers/terraform-provider-mailgun/mailgun"
+	"github.com/wgebis/terraform-provider-mailgun/mailgun"
 )
 
 // all of the token components used below.
@@ -53,8 +52,16 @@ func makeResource(mod string, res string) tokens.Type {
 	return makeType(mod+"/"+fn, res)
 }
 
+// makeDataSource manufactures a standard resource token given a module and resource name.  It
+// automatically uses the main package and names the file by simply lower casing the data source's
+// first character.
+func makeDataSource(mod string, res string) tokens.ModuleMember {
+	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
+	return makeMember(mod+"/"+fn, res)
+}
+
 func Provider() tfbridge.ProviderInfo {
-	p := shimv1.NewProvider(mailgun.Provider().(*schema.Provider))
+	p := shimv2.NewProvider(mailgun.Provider())
 	prov := tfbridge.ProviderInfo{
 		P:           p,
 		Name:        "mailgun",
@@ -63,14 +70,19 @@ func Provider() tfbridge.ProviderInfo {
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-mailgun",
+		GitHubOrg:   "wgebis",
 		Config:      map[string]*tfbridge.SchemaInfo{},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"mailgun_domain": {Tok: makeResource(mainMod, "Domain")},
-			"mailgun_route":  {Tok: makeResource(mainMod, "Route")},
+			"mailgun_domain":            {Tok: makeResource(mainMod, "Domain")},
+			"mailgun_route":             {Tok: makeResource(mainMod, "Route")},
+			"mailgun_domain_credential": {Tok: makeResource(mainMod, "DomainCredential")},
+		},
+		DataSources: map[string]*tfbridge.DataSourceInfo{
+			"mailgun_domain": {Tok: makeDataSource(mainMod, "getDomain")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
-				"@pulumi/pulumi": "^3.0.0-alpha.0",
+				"@pulumi/pulumi": "^3.0.0",
 			},
 			DevDependencies: map[string]string{
 				"@types/node": "^10.0.0",
@@ -79,7 +91,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Python: &tfbridge.PythonInfo{
 			Requires: map[string]string{
-				"pulumi": ">=3.0.0a1,<4.0.0",
+				"pulumi": ">=3.0.0,<4.0.0",
 			},
 		},
 		Golang: &tfbridge.GolangInfo{
@@ -93,7 +105,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
-				"Pulumi":                       "3.*-*",
+				"Pulumi":                       "3.*",
 				"System.Collections.Immutable": "1.6.0",
 			},
 			Namespaces: map[string]string{
