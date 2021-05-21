@@ -15,6 +15,8 @@ __all__ = ['DomainArgs', 'Domain']
 @pulumi.input_type
 class DomainArgs:
     def __init__(__self__, *,
+                 dkim_key_size: Optional[pulumi.Input[int]] = None,
+                 dkim_selector: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  smtp_password: Optional[pulumi.Input[str]] = None,
@@ -22,6 +24,8 @@ class DomainArgs:
                  wildcard: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Domain resource.
+        :param pulumi.Input[int] dkim_key_size: The length of your domain’s generated DKIM key. Default value is `1024`.
+        :param pulumi.Input[str] dkim_selector: The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
         :param pulumi.Input[str] name: The domain to add to Mailgun
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
         :param pulumi.Input[str] smtp_password: Password for SMTP authentication
@@ -31,6 +35,10 @@ class DomainArgs:
         :param pulumi.Input[bool] wildcard: Boolean that determines whether
                the domain will accept email for sub-domains.
         """
+        if dkim_key_size is not None:
+            pulumi.set(__self__, "dkim_key_size", dkim_key_size)
+        if dkim_selector is not None:
+            pulumi.set(__self__, "dkim_selector", dkim_selector)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if region is not None:
@@ -41,6 +49,30 @@ class DomainArgs:
             pulumi.set(__self__, "spam_action", spam_action)
         if wildcard is not None:
             pulumi.set(__self__, "wildcard", wildcard)
+
+    @property
+    @pulumi.getter(name="dkimKeySize")
+    def dkim_key_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The length of your domain’s generated DKIM key. Default value is `1024`.
+        """
+        return pulumi.get(self, "dkim_key_size")
+
+    @dkim_key_size.setter
+    def dkim_key_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "dkim_key_size", value)
+
+    @property
+    @pulumi.getter(name="dkimSelector")
+    def dkim_selector(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
+        """
+        return pulumi.get(self, "dkim_selector")
+
+    @dkim_selector.setter
+    def dkim_selector(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dkim_selector", value)
 
     @property
     @pulumi.getter
@@ -109,6 +141,8 @@ class DomainArgs:
 @pulumi.input_type
 class _DomainState:
     def __init__(__self__, *,
+                 dkim_key_size: Optional[pulumi.Input[int]] = None,
+                 dkim_selector: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  receiving_records: Optional[pulumi.Input[Sequence[pulumi.Input['DomainReceivingRecordArgs']]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -119,6 +153,8 @@ class _DomainState:
                  wildcard: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
+        :param pulumi.Input[int] dkim_key_size: The length of your domain’s generated DKIM key. Default value is `1024`.
+        :param pulumi.Input[str] dkim_selector: The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
         :param pulumi.Input[str] name: The domain to add to Mailgun
         :param pulumi.Input[Sequence[pulumi.Input['DomainReceivingRecordArgs']]] receiving_records: A list of DNS records for receiving validation.
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
@@ -131,6 +167,10 @@ class _DomainState:
         :param pulumi.Input[bool] wildcard: Boolean that determines whether
                the domain will accept email for sub-domains.
         """
+        if dkim_key_size is not None:
+            pulumi.set(__self__, "dkim_key_size", dkim_key_size)
+        if dkim_selector is not None:
+            pulumi.set(__self__, "dkim_selector", dkim_selector)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if receiving_records is not None:
@@ -147,6 +187,30 @@ class _DomainState:
             pulumi.set(__self__, "spam_action", spam_action)
         if wildcard is not None:
             pulumi.set(__self__, "wildcard", wildcard)
+
+    @property
+    @pulumi.getter(name="dkimKeySize")
+    def dkim_key_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The length of your domain’s generated DKIM key. Default value is `1024`.
+        """
+        return pulumi.get(self, "dkim_key_size")
+
+    @dkim_key_size.setter
+    def dkim_key_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "dkim_key_size", value)
+
+    @property
+    @pulumi.getter(name="dkimSelector")
+    def dkim_selector(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
+        """
+        return pulumi.get(self, "dkim_selector")
+
+    @dkim_selector.setter
+    def dkim_selector(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dkim_selector", value)
 
     @property
     @pulumi.getter
@@ -253,6 +317,8 @@ class Domain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 dkim_key_size: Optional[pulumi.Input[int]] = None,
+                 dkim_selector: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  smtp_password: Optional[pulumi.Input[str]] = None,
@@ -273,6 +339,7 @@ class Domain(pulumi.CustomResource):
 
         # Create a new Mailgun domain
         default = mailgun.Domain("default",
+            dkim_key_size=1024,
             region="us",
             smtp_password="supersecretpassword1234",
             spam_action="disabled")
@@ -290,6 +357,8 @@ class Domain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] dkim_key_size: The length of your domain’s generated DKIM key. Default value is `1024`.
+        :param pulumi.Input[str] dkim_selector: The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
         :param pulumi.Input[str] name: The domain to add to Mailgun
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
         :param pulumi.Input[str] smtp_password: Password for SMTP authentication
@@ -319,6 +388,7 @@ class Domain(pulumi.CustomResource):
 
         # Create a new Mailgun domain
         default = mailgun.Domain("default",
+            dkim_key_size=1024,
             region="us",
             smtp_password="supersecretpassword1234",
             spam_action="disabled")
@@ -349,6 +419,8 @@ class Domain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 dkim_key_size: Optional[pulumi.Input[int]] = None,
+                 dkim_selector: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  smtp_password: Optional[pulumi.Input[str]] = None,
@@ -366,6 +438,8 @@ class Domain(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DomainArgs.__new__(DomainArgs)
 
+            __props__.__dict__["dkim_key_size"] = dkim_key_size
+            __props__.__dict__["dkim_selector"] = dkim_selector
             __props__.__dict__["name"] = name
             __props__.__dict__["region"] = region
             __props__.__dict__["smtp_password"] = smtp_password
@@ -384,6 +458,8 @@ class Domain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            dkim_key_size: Optional[pulumi.Input[int]] = None,
+            dkim_selector: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             receiving_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainReceivingRecordArgs']]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -399,6 +475,8 @@ class Domain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] dkim_key_size: The length of your domain’s generated DKIM key. Default value is `1024`.
+        :param pulumi.Input[str] dkim_selector: The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
         :param pulumi.Input[str] name: The domain to add to Mailgun
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainReceivingRecordArgs']]]] receiving_records: A list of DNS records for receiving validation.
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
@@ -415,6 +493,8 @@ class Domain(pulumi.CustomResource):
 
         __props__ = _DomainState.__new__(_DomainState)
 
+        __props__.__dict__["dkim_key_size"] = dkim_key_size
+        __props__.__dict__["dkim_selector"] = dkim_selector
         __props__.__dict__["name"] = name
         __props__.__dict__["receiving_records"] = receiving_records
         __props__.__dict__["region"] = region
@@ -424,6 +504,22 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["spam_action"] = spam_action
         __props__.__dict__["wildcard"] = wildcard
         return Domain(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="dkimKeySize")
+    def dkim_key_size(self) -> pulumi.Output[Optional[int]]:
+        """
+        The length of your domain’s generated DKIM key. Default value is `1024`.
+        """
+        return pulumi.get(self, "dkim_key_size")
+
+    @property
+    @pulumi.getter(name="dkimSelector")
+    def dkim_selector(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
+        """
+        return pulumi.get(self, "dkim_selector")
 
     @property
     @pulumi.getter
@@ -467,7 +563,7 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="smtpPassword")
-    def smtp_password(self) -> pulumi.Output[Optional[str]]:
+    def smtp_password(self) -> pulumi.Output[str]:
         """
         Password for SMTP authentication
         """

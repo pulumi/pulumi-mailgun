@@ -41,3 +41,4 @@ export interface DomainSendingRecord {
      */
     value?: pulumi.Input<string>;
 }
+

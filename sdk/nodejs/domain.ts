@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  *
  * // Create a new Mailgun domain
  * const defaultDomain = new mailgun.Domain("default", {
+ *     dkimKeySize: 1024,
  *     region: "us",
  *     smtpPassword: "supersecretpassword1234",
  *     spamAction: "disabled",
@@ -64,6 +65,14 @@ export class Domain extends pulumi.CustomResource {
     }
 
     /**
+     * The length of your domain’s generated DKIM key. Default value is `1024`.
+     */
+    public readonly dkimKeySize!: pulumi.Output<number | undefined>;
+    /**
+     * The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
+     */
+    public readonly dkimSelector!: pulumi.Output<string | undefined>;
+    /**
      * The domain to add to Mailgun
      */
     public readonly name!: pulumi.Output<string>;
@@ -86,7 +95,7 @@ export class Domain extends pulumi.CustomResource {
     /**
      * Password for SMTP authentication
      */
-    public readonly smtpPassword!: pulumi.Output<string | undefined>;
+    public readonly smtpPassword!: pulumi.Output<string>;
     /**
      * `disabled` or `tag` Disable, no spam
      * filtering will occur for inbound messages. Tag, messages
@@ -112,6 +121,8 @@ export class Domain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
+            inputs["dkimKeySize"] = state ? state.dkimKeySize : undefined;
+            inputs["dkimSelector"] = state ? state.dkimSelector : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["receivingRecords"] = state ? state.receivingRecords : undefined;
             inputs["region"] = state ? state.region : undefined;
@@ -122,6 +133,8 @@ export class Domain extends pulumi.CustomResource {
             inputs["wildcard"] = state ? state.wildcard : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
+            inputs["dkimKeySize"] = args ? args.dkimKeySize : undefined;
+            inputs["dkimSelector"] = args ? args.dkimSelector : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["smtpPassword"] = args ? args.smtpPassword : undefined;
@@ -142,6 +155,14 @@ export class Domain extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Domain resources.
  */
 export interface DomainState {
+    /**
+     * The length of your domain’s generated DKIM key. Default value is `1024`.
+     */
+    readonly dkimKeySize?: pulumi.Input<number>;
+    /**
+     * The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
+     */
+    readonly dkimSelector?: pulumi.Input<string>;
     /**
      * The domain to add to Mailgun
      */
@@ -183,6 +204,14 @@ export interface DomainState {
  * The set of arguments for constructing a Domain resource.
  */
 export interface DomainArgs {
+    /**
+     * The length of your domain’s generated DKIM key. Default value is `1024`.
+     */
+    readonly dkimKeySize?: pulumi.Input<number>;
+    /**
+     * The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
+     */
+    readonly dkimSelector?: pulumi.Input<string>;
     /**
      * The domain to add to Mailgun
      */

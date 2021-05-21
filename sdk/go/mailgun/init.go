@@ -22,6 +22,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "mailgun:index/domain:Domain":
 		r = &Domain{}
+	case "mailgun:index/domainCredential:DomainCredential":
+		r = &DomainCredential{}
 	case "mailgun:index/route:Route":
 		r = &Route{}
 	default:
@@ -58,6 +60,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"mailgun",
 		"index/domain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"mailgun",
+		"index/domainCredential",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

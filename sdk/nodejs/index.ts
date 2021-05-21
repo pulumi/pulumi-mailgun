@@ -6,6 +6,8 @@ import * as utilities from "./utilities";
 
 // Export members:
 export * from "./domain";
+export * from "./domainCredential";
+export * from "./getDomain";
 export * from "./provider";
 export * from "./route";
 
@@ -20,6 +22,7 @@ export {
 
 // Import resources to register:
 import { Domain } from "./domain";
+import { DomainCredential } from "./domainCredential";
 import { Route } from "./route";
 
 const _module = {
@@ -28,6 +31,8 @@ const _module = {
         switch (type) {
             case "mailgun:index/domain:Domain":
                 return new Domain(name, <any>undefined, { urn })
+            case "mailgun:index/domainCredential:DomainCredential":
+                return new DomainCredential(name, <any>undefined, { urn })
             case "mailgun:index/route:Route":
                 return new Route(name, <any>undefined, { urn })
             default:
@@ -36,6 +41,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("mailgun", "index/domain", _module)
+pulumi.runtime.registerResourceModule("mailgun", "index/domainCredential", _module)
 pulumi.runtime.registerResourceModule("mailgun", "index/route", _module)
 
 import { Provider } from "./provider";

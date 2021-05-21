@@ -28,6 +28,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := mailgun.NewDomain(ctx, "_default", &mailgun.DomainArgs{
+// 			DkimKeySize:  pulumi.Int(1024),
 // 			Region:       pulumi.String("us"),
 // 			SmtpPassword: pulumi.String("supersecretpassword1234"),
 // 			SpamAction:   pulumi.String("disabled"),
@@ -52,6 +53,10 @@ import (
 type Domain struct {
 	pulumi.CustomResourceState
 
+	// The length of your domain’s generated DKIM key. Default value is `1024`.
+	DkimKeySize pulumi.IntPtrOutput `pulumi:"dkimKeySize"`
+	// The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
+	DkimSelector pulumi.StringPtrOutput `pulumi:"dkimSelector"`
 	// The domain to add to Mailgun
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A list of DNS records for receiving validation.
@@ -63,7 +68,7 @@ type Domain struct {
 	// The login email for the SMTP server.
 	SmtpLogin pulumi.StringOutput `pulumi:"smtpLogin"`
 	// Password for SMTP authentication
-	SmtpPassword pulumi.StringPtrOutput `pulumi:"smtpPassword"`
+	SmtpPassword pulumi.StringOutput `pulumi:"smtpPassword"`
 	// `disabled` or `tag` Disable, no spam
 	// filtering will occur for inbound messages. Tag, messages
 	// will be tagged with a spam header.
@@ -102,6 +107,10 @@ func GetDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Domain resources.
 type domainState struct {
+	// The length of your domain’s generated DKIM key. Default value is `1024`.
+	DkimKeySize *int `pulumi:"dkimKeySize"`
+	// The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
+	DkimSelector *string `pulumi:"dkimSelector"`
 	// The domain to add to Mailgun
 	Name *string `pulumi:"name"`
 	// A list of DNS records for receiving validation.
@@ -124,6 +133,10 @@ type domainState struct {
 }
 
 type DomainState struct {
+	// The length of your domain’s generated DKIM key. Default value is `1024`.
+	DkimKeySize pulumi.IntPtrInput
+	// The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
+	DkimSelector pulumi.StringPtrInput
 	// The domain to add to Mailgun
 	Name pulumi.StringPtrInput
 	// A list of DNS records for receiving validation.
@@ -150,6 +163,10 @@ func (DomainState) ElementType() reflect.Type {
 }
 
 type domainArgs struct {
+	// The length of your domain’s generated DKIM key. Default value is `1024`.
+	DkimKeySize *int `pulumi:"dkimKeySize"`
+	// The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
+	DkimSelector *string `pulumi:"dkimSelector"`
 	// The domain to add to Mailgun
 	Name *string `pulumi:"name"`
 	// The region where domain will be created. Default value is `us`.
@@ -167,6 +184,10 @@ type domainArgs struct {
 
 // The set of arguments for constructing a Domain resource.
 type DomainArgs struct {
+	// The length of your domain’s generated DKIM key. Default value is `1024`.
+	DkimKeySize pulumi.IntPtrInput
+	// The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
+	DkimSelector pulumi.StringPtrInput
 	// The domain to add to Mailgun
 	Name pulumi.StringPtrInput
 	// The region where domain will be created. Default value is `us`.

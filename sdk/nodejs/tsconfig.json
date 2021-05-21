@@ -16,6 +16,8 @@
         "config/index.ts",
         "config/vars.ts",
         "domain.ts",
+        "domainCredential.ts",
+        "getDomain.ts",
         "index.ts",
         "provider.ts",
         "route.ts",

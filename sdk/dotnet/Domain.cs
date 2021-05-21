@@ -28,6 +28,7 @@ namespace Pulumi.Mailgun
     ///         // Create a new Mailgun domain
     ///         var @default = new Mailgun.Domain("default", new Mailgun.DomainArgs
     ///         {
+    ///             DkimKeySize = 1024,
     ///             Region = "us",
     ///             SmtpPassword = "supersecretpassword1234",
     ///             SpamAction = "disabled",
@@ -50,6 +51,18 @@ namespace Pulumi.Mailgun
     [MailgunResourceType("mailgun:index/domain:Domain")]
     public partial class Domain : Pulumi.CustomResource
     {
+        /// <summary>
+        /// The length of your domain’s generated DKIM key. Default value is `1024`.
+        /// </summary>
+        [Output("dkimKeySize")]
+        public Output<int?> DkimKeySize { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
+        /// </summary>
+        [Output("dkimSelector")]
+        public Output<string?> DkimSelector { get; private set; } = null!;
+
         /// <summary>
         /// The domain to add to Mailgun
         /// </summary>
@@ -84,7 +97,7 @@ namespace Pulumi.Mailgun
         /// Password for SMTP authentication
         /// </summary>
         [Output("smtpPassword")]
-        public Output<string?> SmtpPassword { get; private set; } = null!;
+        public Output<string> SmtpPassword { get; private set; } = null!;
 
         /// <summary>
         /// `disabled` or `tag` Disable, no spam
@@ -148,6 +161,18 @@ namespace Pulumi.Mailgun
     public sealed class DomainArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The length of your domain’s generated DKIM key. Default value is `1024`.
+        /// </summary>
+        [Input("dkimKeySize")]
+        public Input<int>? DkimKeySize { get; set; }
+
+        /// <summary>
+        /// The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
+        /// </summary>
+        [Input("dkimSelector")]
+        public Input<string>? DkimSelector { get; set; }
+
+        /// <summary>
         /// The domain to add to Mailgun
         /// </summary>
         [Input("name")]
@@ -187,6 +212,18 @@ namespace Pulumi.Mailgun
 
     public sealed class DomainState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The length of your domain’s generated DKIM key. Default value is `1024`.
+        /// </summary>
+        [Input("dkimKeySize")]
+        public Input<int>? DkimKeySize { get; set; }
+
+        /// <summary>
+        /// The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
+        /// </summary>
+        [Input("dkimSelector")]
+        public Input<string>? DkimSelector { get; set; }
+
         /// <summary>
         /// The domain to add to Mailgun
         /// </summary>
