@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v0.7.1 of the Mailgun Terraform Provider
+_(none)_
 
 ---
+
+## 3.2.0 (2021-10-19)
+* Upgrade to v0.7.1 of the Mailgun Terraform Provider
 
 ## 3.1.0 (2021-05-21)
 * Upgrade to v0.6.1 of the Mailgun Terraform Provider
