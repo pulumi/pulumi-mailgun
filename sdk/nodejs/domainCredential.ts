@@ -123,16 +123,16 @@ export interface DomainCredentialState {
     /**
      * The domain to add credential of Mailgun.
      */
-    readonly domain?: pulumi.Input<string>;
-    readonly login?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
+    login?: pulumi.Input<string>;
     /**
      * Password for user authentication.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * The region where domain will be created. Default value is `us`.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }
 
 /**
@@ -142,14 +142,14 @@ export interface DomainCredentialArgs {
     /**
      * The domain to add credential of Mailgun.
      */
-    readonly domain: pulumi.Input<string>;
-    readonly login: pulumi.Input<string>;
+    domain: pulumi.Input<string>;
+    login: pulumi.Input<string>;
     /**
      * Password for user authentication.
      */
-    readonly password: pulumi.Input<string>;
+    password: pulumi.Input<string>;
     /**
      * The region where domain will be created. Default value is `us`.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

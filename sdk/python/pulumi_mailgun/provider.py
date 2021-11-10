@@ -94,3 +94,8 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
+    @property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "api_key")
+

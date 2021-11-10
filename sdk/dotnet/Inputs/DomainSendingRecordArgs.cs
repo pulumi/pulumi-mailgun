@@ -9,4 +9,35 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Mailgun.Inputs
 {
+
+    public sealed class DomainSendingRecordArgs : Pulumi.ResourceArgs
+    {
+        /// <summary>
+        /// The domain to add to Mailgun
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The record type.
+        /// </summary>
+        [Input("recordType")]
+        public Input<string>? RecordType { get; set; }
+
+        /// <summary>
+        /// `"valid"` if the record is valid.
+        /// </summary>
+        [Input("valid")]
+        public Input<string>? Valid { get; set; }
+
+        /// <summary>
+        /// The value of the record.
+        /// </summary>
+        [Input("value")]
+        public Input<string>? Value { get; set; }
+
+        public DomainSendingRecordArgs()
+        {
+        }
+    }
 }

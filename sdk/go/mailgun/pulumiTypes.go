@@ -507,6 +507,14 @@ func (o GetDomainSendingRecordArrayOutput) Index(i pulumi.IntInput) GetDomainSen
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainReceivingRecordInput)(nil)).Elem(), DomainReceivingRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainReceivingRecordArrayInput)(nil)).Elem(), DomainReceivingRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainSendingRecordInput)(nil)).Elem(), DomainSendingRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainSendingRecordArrayInput)(nil)).Elem(), DomainSendingRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainReceivingRecordInput)(nil)).Elem(), GetDomainReceivingRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainReceivingRecordArrayInput)(nil)).Elem(), GetDomainReceivingRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainSendingRecordInput)(nil)).Elem(), GetDomainSendingRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainSendingRecordArrayInput)(nil)).Elem(), GetDomainSendingRecordArray{})
 	pulumi.RegisterOutputType(DomainReceivingRecordOutput{})
 	pulumi.RegisterOutputType(DomainReceivingRecordArrayOutput{})
 	pulumi.RegisterOutputType(DomainSendingRecordOutput{})

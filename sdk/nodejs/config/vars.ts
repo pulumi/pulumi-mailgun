@@ -4,6 +4,14 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-let __config = new pulumi.Config("mailgun");
+declare var exports: any;
+const __config = new pulumi.Config("mailgun");
 
-export let apiKey: string | undefined = __config.get("apiKey");
+export declare const apiKey: string | undefined;
+Object.defineProperty(exports, "apiKey", {
+    get() {
+        return __config.get("apiKey");
+    },
+    enumerable: true,
+});
+

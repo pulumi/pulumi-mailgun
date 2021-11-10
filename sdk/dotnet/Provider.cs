@@ -18,6 +18,10 @@ namespace Pulumi.Mailgun
     [MailgunResourceType("pulumi:providers:mailgun")]
     public partial class Provider : Pulumi.ProviderResource
     {
+        [Output("apiKey")]
+        public Output<string> ApiKey { get; private set; } = null!;
+
+
         /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>

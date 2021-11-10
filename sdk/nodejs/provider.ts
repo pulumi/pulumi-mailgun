@@ -25,6 +25,7 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    public readonly apiKey!: pulumi.Output<string>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -53,5 +54,5 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
-    readonly apiKey: pulumi.Input<string>;
+    apiKey: pulumi.Input<string>;
 }
