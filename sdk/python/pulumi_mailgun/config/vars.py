@@ -8,11 +8,13 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = [
-    'api_key',
-]
+import types
 
 __config__ = pulumi.Config('mailgun')
 
-api_key = __config__.get('apiKey')
+
+class _ExportableConfig(types.ModuleType):
+    @property
+    def api_key(self) -> Optional[str]:
+        return __config__.get('apiKey')
 

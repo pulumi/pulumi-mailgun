@@ -158,46 +158,46 @@ export interface DomainState {
     /**
      * The length of your domain’s generated DKIM key. Default value is `1024`.
      */
-    readonly dkimKeySize?: pulumi.Input<number>;
+    dkimKeySize?: pulumi.Input<number>;
     /**
      * The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
      */
-    readonly dkimSelector?: pulumi.Input<string>;
+    dkimSelector?: pulumi.Input<string>;
     /**
      * The domain to add to Mailgun
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A list of DNS records for receiving validation.
      */
-    readonly receivingRecords?: pulumi.Input<pulumi.Input<inputs.DomainReceivingRecord>[]>;
+    receivingRecords?: pulumi.Input<pulumi.Input<inputs.DomainReceivingRecord>[]>;
     /**
      * The region where domain will be created. Default value is `us`.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * A list of DNS records for sending validation.
      */
-    readonly sendingRecords?: pulumi.Input<pulumi.Input<inputs.DomainSendingRecord>[]>;
+    sendingRecords?: pulumi.Input<pulumi.Input<inputs.DomainSendingRecord>[]>;
     /**
      * The login email for the SMTP server.
      */
-    readonly smtpLogin?: pulumi.Input<string>;
+    smtpLogin?: pulumi.Input<string>;
     /**
      * Password for SMTP authentication
      */
-    readonly smtpPassword?: pulumi.Input<string>;
+    smtpPassword?: pulumi.Input<string>;
     /**
      * `disabled` or `tag` Disable, no spam
      * filtering will occur for inbound messages. Tag, messages
      * will be tagged with a spam header.
      */
-    readonly spamAction?: pulumi.Input<string>;
+    spamAction?: pulumi.Input<string>;
     /**
      * Boolean that determines whether
      * the domain will accept email for sub-domains.
      */
-    readonly wildcard?: pulumi.Input<boolean>;
+    wildcard?: pulumi.Input<boolean>;
 }
 
 /**
@@ -207,32 +207,32 @@ export interface DomainArgs {
     /**
      * The length of your domain’s generated DKIM key. Default value is `1024`.
      */
-    readonly dkimKeySize?: pulumi.Input<number>;
+    dkimKeySize?: pulumi.Input<number>;
     /**
      * The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
      */
-    readonly dkimSelector?: pulumi.Input<string>;
+    dkimSelector?: pulumi.Input<string>;
     /**
      * The domain to add to Mailgun
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The region where domain will be created. Default value is `us`.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     /**
      * Password for SMTP authentication
      */
-    readonly smtpPassword?: pulumi.Input<string>;
+    smtpPassword?: pulumi.Input<string>;
     /**
      * `disabled` or `tag` Disable, no spam
      * filtering will occur for inbound messages. Tag, messages
      * will be tagged with a spam header.
      */
-    readonly spamAction?: pulumi.Input<string>;
+    spamAction?: pulumi.Input<string>;
     /**
      * Boolean that determines whether
      * the domain will accept email for sub-domains.
      */
-    readonly wildcard?: pulumi.Input<boolean>;
+    wildcard?: pulumi.Input<boolean>;
 }

@@ -124,38 +124,38 @@ export class Route extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Route resources.
  */
 export interface RouteState {
-    readonly actions?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly description?: pulumi.Input<string>;
+    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    description?: pulumi.Input<string>;
     /**
      * A filter expression like `match_recipient('.*@gmail.com')`
      */
-    readonly expression?: pulumi.Input<string>;
+    expression?: pulumi.Input<string>;
     /**
      * Smaller number indicates higher priority. Higher priority routes are handled first.
      */
-    readonly priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number>;
     /**
      * The region where domain will be created. Default value is `us`.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a Route resource.
  */
 export interface RouteArgs {
-    readonly actions: pulumi.Input<pulumi.Input<string>[]>;
-    readonly description?: pulumi.Input<string>;
+    actions: pulumi.Input<pulumi.Input<string>[]>;
+    description?: pulumi.Input<string>;
     /**
      * A filter expression like `match_recipient('.*@gmail.com')`
      */
-    readonly expression: pulumi.Input<string>;
+    expression: pulumi.Input<string>;
     /**
      * Smaller number indicates higher priority. Higher priority routes are handled first.
      */
-    readonly priority: pulumi.Input<number>;
+    priority: pulumi.Input<number>;
     /**
      * The region where domain will be created. Default value is `us`.
      */
-    readonly region?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

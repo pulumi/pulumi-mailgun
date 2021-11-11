@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * const domain = pulumi.output(mailgun.getDomain({
  *     name: "test.example.com",
- * }, { async: true }));
+ * }));
  * const mailgun_mx = new aws.route53.Record("mailgun-mx", {
  *     name: mailgun_domain.name,
  *     records: [
@@ -53,25 +53,25 @@ export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getDomain.
  */
 export interface GetDomainArgs {
-    readonly dkimKeySize?: number;
-    readonly dkimSelector?: string;
+    dkimKeySize?: number;
+    dkimSelector?: string;
     /**
      * The name of the domain.
      */
-    readonly name: string;
-    readonly region?: string;
+    name: string;
+    region?: string;
     /**
      * The password to the SMTP server.
      */
-    readonly smtpPassword?: string;
+    smtpPassword?: string;
     /**
      * The spam filtering setting.
      */
-    readonly spamAction?: string;
+    spamAction?: string;
     /**
      * Whether or not the domain will accept email for sub-domains.
      */
-    readonly wildcard?: boolean;
+    wildcard?: boolean;
 }
 
 /**
@@ -113,4 +113,33 @@ export interface GetDomainResult {
      * Whether or not the domain will accept email for sub-domains.
      */
     readonly wildcard?: boolean;
+}
+
+export function getDomainOutput(args: GetDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainResult> {
+    return pulumi.output(args).apply(a => getDomain(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDomain.
+ */
+export interface GetDomainOutputArgs {
+    dkimKeySize?: pulumi.Input<number>;
+    dkimSelector?: pulumi.Input<string>;
+    /**
+     * The name of the domain.
+     */
+    name: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+    /**
+     * The password to the SMTP server.
+     */
+    smtpPassword?: pulumi.Input<string>;
+    /**
+     * The spam filtering setting.
+     */
+    spamAction?: pulumi.Input<string>;
+    /**
+     * Whether or not the domain will accept email for sub-domains.
+     */
+    wildcard?: pulumi.Input<boolean>;
 }

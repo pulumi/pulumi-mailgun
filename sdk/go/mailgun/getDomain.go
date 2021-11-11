@@ -4,6 +4,9 @@
 package mailgun
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +27,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		domain, err := mailgun.LookupDomain(ctx, &mailgun.LookupDomainArgs{
+// 		domain, err := mailgun.LookupDomain(ctx, &GetDomainArgs{
 // 			Name: "test.example.com",
 // 		}, nil)
 // 		if err != nil {
@@ -92,4 +95,103 @@ type LookupDomainResult struct {
 	SpamAction *string `pulumi:"spamAction"`
 	// Whether or not the domain will accept email for sub-domains.
 	Wildcard *bool `pulumi:"wildcard"`
+}
+
+func LookupDomainOutput(ctx *pulumi.Context, args LookupDomainOutputArgs, opts ...pulumi.InvokeOption) LookupDomainResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupDomainResult, error) {
+			args := v.(LookupDomainArgs)
+			r, err := LookupDomain(ctx, &args, opts...)
+			return *r, err
+		}).(LookupDomainResultOutput)
+}
+
+// A collection of arguments for invoking getDomain.
+type LookupDomainOutputArgs struct {
+	DkimKeySize  pulumi.IntPtrInput    `pulumi:"dkimKeySize"`
+	DkimSelector pulumi.StringPtrInput `pulumi:"dkimSelector"`
+	// The name of the domain.
+	Name   pulumi.StringInput    `pulumi:"name"`
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The password to the SMTP server.
+	SmtpPassword pulumi.StringPtrInput `pulumi:"smtpPassword"`
+	// The spam filtering setting.
+	SpamAction pulumi.StringPtrInput `pulumi:"spamAction"`
+	// Whether or not the domain will accept email for sub-domains.
+	Wildcard pulumi.BoolPtrInput `pulumi:"wildcard"`
+}
+
+func (LookupDomainOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDomainArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDomain.
+type LookupDomainResultOutput struct{ *pulumi.OutputState }
+
+func (LookupDomainResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupDomainResult)(nil)).Elem()
+}
+
+func (o LookupDomainResultOutput) ToLookupDomainResultOutput() LookupDomainResultOutput {
+	return o
+}
+
+func (o LookupDomainResultOutput) ToLookupDomainResultOutputWithContext(ctx context.Context) LookupDomainResultOutput {
+	return o
+}
+
+func (o LookupDomainResultOutput) DkimKeySize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupDomainResult) *int { return v.DkimKeySize }).(pulumi.IntPtrOutput)
+}
+
+func (o LookupDomainResultOutput) DkimSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDomainResult) *string { return v.DkimSelector }).(pulumi.StringPtrOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupDomainResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the record.
+func (o LookupDomainResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of DNS records for receiving validation.
+func (o LookupDomainResultOutput) ReceivingRecords() GetDomainReceivingRecordArrayOutput {
+	return o.ApplyT(func(v LookupDomainResult) []GetDomainReceivingRecord { return v.ReceivingRecords }).(GetDomainReceivingRecordArrayOutput)
+}
+
+func (o LookupDomainResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDomainResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// A list of DNS records for sending validation.
+func (o LookupDomainResultOutput) SendingRecords() GetDomainSendingRecordArrayOutput {
+	return o.ApplyT(func(v LookupDomainResult) []GetDomainSendingRecord { return v.SendingRecords }).(GetDomainSendingRecordArrayOutput)
+}
+
+// The login email for the SMTP server.
+func (o LookupDomainResultOutput) SmtpLogin() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainResult) string { return v.SmtpLogin }).(pulumi.StringOutput)
+}
+
+// The password to the SMTP server.
+func (o LookupDomainResultOutput) SmtpPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDomainResult) string { return v.SmtpPassword }).(pulumi.StringOutput)
+}
+
+// The spam filtering setting.
+func (o LookupDomainResultOutput) SpamAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDomainResult) *string { return v.SpamAction }).(pulumi.StringPtrOutput)
+}
+
+// Whether or not the domain will accept email for sub-domains.
+func (o LookupDomainResultOutput) Wildcard() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupDomainResult) *bool { return v.Wildcard }).(pulumi.BoolPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupDomainResultOutput{})
 }

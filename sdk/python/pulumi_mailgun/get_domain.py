@@ -13,6 +13,7 @@ __all__ = [
     'GetDomainResult',
     'AwaitableGetDomainResult',
     'get_domain',
+    'get_domain_output',
 ]
 
 @pulumi.output_type
@@ -216,3 +217,43 @@ def get_domain(dkim_key_size: Optional[int] = None,
         smtp_password=__ret__.smtp_password,
         spam_action=__ret__.spam_action,
         wildcard=__ret__.wildcard)
+
+
+@_utilities.lift_output_func(get_domain)
+def get_domain_output(dkim_key_size: Optional[pulumi.Input[Optional[int]]] = None,
+                      dkim_selector: Optional[pulumi.Input[Optional[str]]] = None,
+                      name: Optional[pulumi.Input[str]] = None,
+                      region: Optional[pulumi.Input[Optional[str]]] = None,
+                      smtp_password: Optional[pulumi.Input[Optional[str]]] = None,
+                      spam_action: Optional[pulumi.Input[Optional[str]]] = None,
+                      wildcard: Optional[pulumi.Input[Optional[bool]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainResult]:
+    """
+    `Domain` provides details about a Mailgun domain.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aws as aws
+    import pulumi_mailgun as mailgun
+
+    domain = mailgun.get_domain(name="test.example.com")
+    mailgun_mx = aws.route53.Record("mailgun-mx",
+        name=data["mailgun"]["domain"]["name"],
+        records=[
+            f"{domain.receiving_records[0].priority} {domain.receiving_records[0].value}.",
+            f"{domain.receiving_records[1].priority} {domain.receiving_records[1].value}.",
+        ],
+        ttl=3600,
+        type="MX",
+        zone_id=var["zone_id"])
+    ```
+
+
+    :param str name: The name of the domain.
+    :param str smtp_password: The password to the SMTP server.
+    :param str spam_action: The spam filtering setting.
+    :param bool wildcard: Whether or not the domain will accept email for sub-domains.
+    """
+    ...
