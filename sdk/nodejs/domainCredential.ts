@@ -85,14 +85,14 @@ export class DomainCredential extends pulumi.CustomResource {
      */
     constructor(name: string, args: DomainCredentialArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainCredentialArgs | DomainCredentialState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainCredentialState | undefined;
-            inputs["domain"] = state ? state.domain : undefined;
-            inputs["login"] = state ? state.login : undefined;
-            inputs["password"] = state ? state.password : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["login"] = state ? state.login : undefined;
+            resourceInputs["password"] = state ? state.password : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as DomainCredentialArgs | undefined;
             if ((!args || args.domain === undefined) && !opts.urn) {
@@ -104,15 +104,13 @@ export class DomainCredential extends pulumi.CustomResource {
             if ((!args || args.password === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            inputs["domain"] = args ? args.domain : undefined;
-            inputs["login"] = args ? args.login : undefined;
-            inputs["password"] = args ? args.password : undefined;
-            inputs["region"] = args ? args.region : undefined;
+            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["login"] = args ? args.login : undefined;
+            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DomainCredential.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DomainCredential.__pulumiType, name, resourceInputs, opts);
     }
 }
 

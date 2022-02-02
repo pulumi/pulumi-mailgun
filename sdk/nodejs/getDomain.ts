@@ -35,9 +35,7 @@ export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Pro
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("mailgun:index/getDomain:getDomain", {
         "dkimKeySize": args.dkimKeySize,
         "dkimSelector": args.dkimSelector,
