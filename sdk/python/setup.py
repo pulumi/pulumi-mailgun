@@ -55,6 +55,7 @@ setup(name='pulumi_mailgun',
       package_data={
           'pulumi_mailgun': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

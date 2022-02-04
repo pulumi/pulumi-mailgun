@@ -87,15 +87,15 @@ export class Route extends pulumi.CustomResource {
      */
     constructor(name: string, args: RouteArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouteArgs | RouteState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteState | undefined;
-            inputs["actions"] = state ? state.actions : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["expression"] = state ? state.expression : undefined;
-            inputs["priority"] = state ? state.priority : undefined;
-            inputs["region"] = state ? state.region : undefined;
+            resourceInputs["actions"] = state ? state.actions : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["expression"] = state ? state.expression : undefined;
+            resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as RouteArgs | undefined;
             if ((!args || args.actions === undefined) && !opts.urn) {
@@ -107,16 +107,14 @@ export class Route extends pulumi.CustomResource {
             if ((!args || args.priority === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            inputs["actions"] = args ? args.actions : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["expression"] = args ? args.expression : undefined;
-            inputs["priority"] = args ? args.priority : undefined;
-            inputs["region"] = args ? args.region : undefined;
+            resourceInputs["actions"] = args ? args.actions : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["expression"] = args ? args.expression : undefined;
+            resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Route.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Route.__pulumiType, name, resourceInputs, opts);
     }
 }
 

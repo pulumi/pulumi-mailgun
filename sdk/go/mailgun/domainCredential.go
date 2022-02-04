@@ -130,7 +130,7 @@ type DomainCredentialInput interface {
 }
 
 func (*DomainCredential) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainCredential)(nil))
+	return reflect.TypeOf((**DomainCredential)(nil)).Elem()
 }
 
 func (i *DomainCredential) ToDomainCredentialOutput() DomainCredentialOutput {
@@ -139,35 +139,6 @@ func (i *DomainCredential) ToDomainCredentialOutput() DomainCredentialOutput {
 
 func (i *DomainCredential) ToDomainCredentialOutputWithContext(ctx context.Context) DomainCredentialOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainCredentialOutput)
-}
-
-func (i *DomainCredential) ToDomainCredentialPtrOutput() DomainCredentialPtrOutput {
-	return i.ToDomainCredentialPtrOutputWithContext(context.Background())
-}
-
-func (i *DomainCredential) ToDomainCredentialPtrOutputWithContext(ctx context.Context) DomainCredentialPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainCredentialPtrOutput)
-}
-
-type DomainCredentialPtrInput interface {
-	pulumi.Input
-
-	ToDomainCredentialPtrOutput() DomainCredentialPtrOutput
-	ToDomainCredentialPtrOutputWithContext(ctx context.Context) DomainCredentialPtrOutput
-}
-
-type domainCredentialPtrType DomainCredentialArgs
-
-func (*domainCredentialPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainCredential)(nil))
-}
-
-func (i *domainCredentialPtrType) ToDomainCredentialPtrOutput() DomainCredentialPtrOutput {
-	return i.ToDomainCredentialPtrOutputWithContext(context.Background())
-}
-
-func (i *domainCredentialPtrType) ToDomainCredentialPtrOutputWithContext(ctx context.Context) DomainCredentialPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DomainCredentialPtrOutput)
 }
 
 // DomainCredentialArrayInput is an input type that accepts DomainCredentialArray and DomainCredentialArrayOutput values.
@@ -223,7 +194,7 @@ func (i DomainCredentialMap) ToDomainCredentialMapOutputWithContext(ctx context.
 type DomainCredentialOutput struct{ *pulumi.OutputState }
 
 func (DomainCredentialOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainCredential)(nil))
+	return reflect.TypeOf((**DomainCredential)(nil)).Elem()
 }
 
 func (o DomainCredentialOutput) ToDomainCredentialOutput() DomainCredentialOutput {
@@ -234,44 +205,10 @@ func (o DomainCredentialOutput) ToDomainCredentialOutputWithContext(ctx context.
 	return o
 }
 
-func (o DomainCredentialOutput) ToDomainCredentialPtrOutput() DomainCredentialPtrOutput {
-	return o.ToDomainCredentialPtrOutputWithContext(context.Background())
-}
-
-func (o DomainCredentialOutput) ToDomainCredentialPtrOutputWithContext(ctx context.Context) DomainCredentialPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainCredential) *DomainCredential {
-		return &v
-	}).(DomainCredentialPtrOutput)
-}
-
-type DomainCredentialPtrOutput struct{ *pulumi.OutputState }
-
-func (DomainCredentialPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DomainCredential)(nil))
-}
-
-func (o DomainCredentialPtrOutput) ToDomainCredentialPtrOutput() DomainCredentialPtrOutput {
-	return o
-}
-
-func (o DomainCredentialPtrOutput) ToDomainCredentialPtrOutputWithContext(ctx context.Context) DomainCredentialPtrOutput {
-	return o
-}
-
-func (o DomainCredentialPtrOutput) Elem() DomainCredentialOutput {
-	return o.ApplyT(func(v *DomainCredential) DomainCredential {
-		if v != nil {
-			return *v
-		}
-		var ret DomainCredential
-		return ret
-	}).(DomainCredentialOutput)
-}
-
 type DomainCredentialArrayOutput struct{ *pulumi.OutputState }
 
 func (DomainCredentialArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DomainCredential)(nil))
+	return reflect.TypeOf((*[]*DomainCredential)(nil)).Elem()
 }
 
 func (o DomainCredentialArrayOutput) ToDomainCredentialArrayOutput() DomainCredentialArrayOutput {
@@ -283,15 +220,15 @@ func (o DomainCredentialArrayOutput) ToDomainCredentialArrayOutputWithContext(ct
 }
 
 func (o DomainCredentialArrayOutput) Index(i pulumi.IntInput) DomainCredentialOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DomainCredential {
-		return vs[0].([]DomainCredential)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DomainCredential {
+		return vs[0].([]*DomainCredential)[vs[1].(int)]
 	}).(DomainCredentialOutput)
 }
 
 type DomainCredentialMapOutput struct{ *pulumi.OutputState }
 
 func (DomainCredentialMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DomainCredential)(nil))
+	return reflect.TypeOf((*map[string]*DomainCredential)(nil)).Elem()
 }
 
 func (o DomainCredentialMapOutput) ToDomainCredentialMapOutput() DomainCredentialMapOutput {
@@ -303,18 +240,16 @@ func (o DomainCredentialMapOutput) ToDomainCredentialMapOutputWithContext(ctx co
 }
 
 func (o DomainCredentialMapOutput) MapIndex(k pulumi.StringInput) DomainCredentialOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DomainCredential {
-		return vs[0].(map[string]DomainCredential)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DomainCredential {
+		return vs[0].(map[string]*DomainCredential)[vs[1].(string)]
 	}).(DomainCredentialOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainCredentialInput)(nil)).Elem(), &DomainCredential{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DomainCredentialPtrInput)(nil)).Elem(), &DomainCredential{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainCredentialArrayInput)(nil)).Elem(), DomainCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainCredentialMapInput)(nil)).Elem(), DomainCredentialMap{})
 	pulumi.RegisterOutputType(DomainCredentialOutput{})
-	pulumi.RegisterOutputType(DomainCredentialPtrOutput{})
 	pulumi.RegisterOutputType(DomainCredentialArrayOutput{})
 	pulumi.RegisterOutputType(DomainCredentialMapOutput{})
 }

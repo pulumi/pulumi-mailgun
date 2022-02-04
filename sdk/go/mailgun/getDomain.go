@@ -33,7 +33,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = route53.NewRecord(ctx, "mailgun_mx", &route53.RecordArgs{
+// 		_, err = route53.NewRecord(ctx, "mailgun-mx", &route53.RecordArgs{
 // 			Name: pulumi.Any(data.Mailgun.Domain.Name),
 // 			Records: pulumi.StringArray{
 // 				pulumi.String(fmt.Sprintf("%v%v%v%v", domain.ReceivingRecords[0].Priority, " ", domain.ReceivingRecords[0].Value, ".")),

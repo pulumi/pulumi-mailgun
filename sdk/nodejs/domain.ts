@@ -117,37 +117,35 @@ export class Domain extends pulumi.CustomResource {
      */
     constructor(name: string, args?: DomainArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainArgs | DomainState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
-            inputs["dkimKeySize"] = state ? state.dkimKeySize : undefined;
-            inputs["dkimSelector"] = state ? state.dkimSelector : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["receivingRecords"] = state ? state.receivingRecords : undefined;
-            inputs["region"] = state ? state.region : undefined;
-            inputs["sendingRecords"] = state ? state.sendingRecords : undefined;
-            inputs["smtpLogin"] = state ? state.smtpLogin : undefined;
-            inputs["smtpPassword"] = state ? state.smtpPassword : undefined;
-            inputs["spamAction"] = state ? state.spamAction : undefined;
-            inputs["wildcard"] = state ? state.wildcard : undefined;
+            resourceInputs["dkimKeySize"] = state ? state.dkimKeySize : undefined;
+            resourceInputs["dkimSelector"] = state ? state.dkimSelector : undefined;
+            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["receivingRecords"] = state ? state.receivingRecords : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["sendingRecords"] = state ? state.sendingRecords : undefined;
+            resourceInputs["smtpLogin"] = state ? state.smtpLogin : undefined;
+            resourceInputs["smtpPassword"] = state ? state.smtpPassword : undefined;
+            resourceInputs["spamAction"] = state ? state.spamAction : undefined;
+            resourceInputs["wildcard"] = state ? state.wildcard : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            inputs["dkimKeySize"] = args ? args.dkimKeySize : undefined;
-            inputs["dkimSelector"] = args ? args.dkimSelector : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["region"] = args ? args.region : undefined;
-            inputs["smtpPassword"] = args ? args.smtpPassword : undefined;
-            inputs["spamAction"] = args ? args.spamAction : undefined;
-            inputs["wildcard"] = args ? args.wildcard : undefined;
-            inputs["receivingRecords"] = undefined /*out*/;
-            inputs["sendingRecords"] = undefined /*out*/;
-            inputs["smtpLogin"] = undefined /*out*/;
+            resourceInputs["dkimKeySize"] = args ? args.dkimKeySize : undefined;
+            resourceInputs["dkimSelector"] = args ? args.dkimSelector : undefined;
+            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["smtpPassword"] = args ? args.smtpPassword : undefined;
+            resourceInputs["spamAction"] = args ? args.spamAction : undefined;
+            resourceInputs["wildcard"] = args ? args.wildcard : undefined;
+            resourceInputs["receivingRecords"] = undefined /*out*/;
+            resourceInputs["sendingRecords"] = undefined /*out*/;
+            resourceInputs["smtpLogin"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Domain.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Domain.__pulumiType, name, resourceInputs, opts);
     }
 }
 
