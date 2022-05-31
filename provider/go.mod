@@ -13,5 +13,5 @@ replace (
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20211019194827-62530c6537a4
 	github.com/hashicorp/terraform-plugin-test => github.com/hashicorp/terraform-plugin-test v1.3.0
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
-	github.com/wgebis/terraform-provider-mailgun => github.com/pulumi/terraform-provider-mailgun v0.6.2-0.20211019143514-9190f43774a5
+	github.com/wgebis/terraform-provider-mailgun => github.com/pulumi/terraform-provider-mailgun v0.6.2-0.20220531093944-ca94541b879a
 )

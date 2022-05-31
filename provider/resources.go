@@ -76,6 +76,7 @@ func Provider() tfbridge.ProviderInfo {
 			"mailgun_domain":            {Tok: makeResource(mainMod, "Domain")},
 			"mailgun_route":             {Tok: makeResource(mainMod, "Route")},
 			"mailgun_domain_credential": {Tok: makeResource(mainMod, "DomainCredential")},
+			"mailgun_webhook":           {Tok: makeResource(mainMod, "Webhook")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"mailgun_domain": {Tok: makeDataSource(mainMod, "getDomain")},

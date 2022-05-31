@@ -391,14 +391,15 @@
             }
         },
         "mailgun:index/domainCredential:DomainCredential": {
-            "description": "Provides a Mailgun domain credential resource. This can be used to create and manage credential in domain of Mailgun.\n\n\u003e **Note:** Please note that starting of v0.6.1 due to using new Mailgun Client API (v4), there is no possibility to retrieve previously created secrets via API. In order get it worked, it's recommended to mark `password` as ignored under `lifecycle` block. See below.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as mailgun from \"@pulumi/mailgun\";\n\n// Create a new Mailgun credential\nconst foobar = new mailgun.DomainCredential(\"foobar\", {\n    domain: \"toto.com\",\n    email: \"test@toto.com\",\n    password: \"supersecretpassword1234\",\n    region: \"us\",\n}, { ignoreChanges: [\"password\"] });\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDomain credential can be imported using `region:email` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).\n\nPassword is always exported to `null`. hcl\n\n```sh\n $ pulumi import mailgun:index/domainCredential:DomainCredential test us:test@domain.com\n```\n\n ",
+            "description": "Provides a Mailgun domain credential resource. This can be used to create and manage credential in domain of Mailgun.\n\n\u003e **Note:** Please note that starting of v0.6.1 due to using new Mailgun Client API (v4), there is no possibility to retrieve previously created secrets via API. In order get it worked, it's recommended to mark `password` as ignored under `lifecycle` block. See below.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as mailgun from \"@pulumi/mailgun\";\n\n// Create a new Mailgun credential\nconst foobar = new mailgun.DomainCredential(\"foobar\", {\n    domain: \"toto.com\",\n    login: \"test\",\n    password: \"supersecretpassword1234\",\n    region: \"us\",\n}, { ignoreChanges: [\"password\"] });\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDomain credential can be imported using `region:email` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).\n\nPassword is always exported to `null`. hcl\n\n```sh\n $ pulumi import mailgun:index/domainCredential:DomainCredential test us:test@domain.com\n```\n\n ",
             "properties": {
                 "domain": {
                     "type": "string",
                     "description": "The domain to add credential of Mailgun.\n"
                 },
                 "login": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The local-part of the email address to create.\n"
                 },
                 "password": {
                     "type": "string",
@@ -420,7 +421,8 @@
                     "description": "The domain to add credential of Mailgun.\n"
                 },
                 "login": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The local-part of the email address to create.\n"
                 },
                 "password": {
                     "type": "string",
@@ -444,7 +446,8 @@
                         "description": "The domain to add credential of Mailgun.\n"
                     },
                     "login": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The local-part of the email address to create.\n"
                     },
                     "password": {
                         "type": "string",
@@ -539,6 +542,86 @@
                     "region": {
                         "type": "string",
                         "description": "The region where domain will be created. Default value is `us`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "mailgun:index/webhook:Webhook": {
+            "description": "Provides a Mailgun App resource. This can be used to\ncreate and manage applications on Mailgun.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as mailgun from \"@pulumi/mailgun\";\n\n// Create a new Mailgun webhook\nconst defaultWebhook = new mailgun.Webhook(\"default\", {\n    domain: \"test.example.com\",\n    kind: \"delivered\",\n    region: \"us\",\n    urls: [\"https://example.com\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_mailgun as mailgun\n\n# Create a new Mailgun webhook\ndefault = mailgun.Webhook(\"default\",\n    domain=\"test.example.com\",\n    kind=\"delivered\",\n    region=\"us\",\n    urls=[\"https://example.com\"])\n```\n```csharp\nusing Pulumi;\nusing Mailgun = Pulumi.Mailgun;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Create a new Mailgun webhook\n        var @default = new Mailgun.Webhook(\"default\", new Mailgun.WebhookArgs\n        {\n            Domain = \"test.example.com\",\n            Kind = \"delivered\",\n            Region = \"us\",\n            Urls = \n            {\n                \"https://example.com\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := mailgun.NewWebhook(ctx, \"default\", \u0026mailgun.WebhookArgs{\n\t\t\tDomain: pulumi.String(\"test.example.com\"),\n\t\t\tKind:   pulumi.String(\"delivered\"),\n\t\t\tRegion: pulumi.String(\"us\"),\n\t\t\tUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "domain": {
+                    "type": "string",
+                    "description": "The domain to add to Mailgun\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where domain will be created. Default value is `us`.\n"
+                },
+                "urls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The urls of webhook\n"
+                }
+            },
+            "required": [
+                "domain",
+                "kind",
+                "urls"
+            ],
+            "inputProperties": {
+                "domain": {
+                    "type": "string",
+                    "description": "The domain to add to Mailgun\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where domain will be created. Default value is `us`.\n"
+                },
+                "urls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The urls of webhook\n"
+                }
+            },
+            "requiredInputs": [
+                "domain",
+                "kind",
+                "urls"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Webhook resources.\n",
+                "properties": {
+                    "domain": {
+                        "type": "string",
+                        "description": "The domain to add to Mailgun\n"
+                    },
+                    "kind": {
+                        "type": "string",
+                        "description": "The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region where domain will be created. Default value is `us`.\n"
+                    },
+                    "urls": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The urls of webhook\n"
                     }
                 },
                 "type": "object"

@@ -33,6 +33,9 @@ namespace Pulumi.Mailgun
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
 
+        /// <summary>
+        /// The local-part of the email address to create.
+        /// </summary>
         [Output("login")]
         public Output<string> Login { get; private set; } = null!;
 
@@ -100,6 +103,9 @@ namespace Pulumi.Mailgun
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
 
+        /// <summary>
+        /// The local-part of the email address to create.
+        /// </summary>
         [Input("login", required: true)]
         public Input<string> Login { get; set; } = null!;
 
@@ -128,6 +134,9 @@ namespace Pulumi.Mailgun
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
+        /// <summary>
+        /// The local-part of the email address to create.
+        /// </summary>
         [Input("login")]
         public Input<string>? Login { get; set; }
 

@@ -29,7 +29,8 @@ type DomainCredential struct {
 
 	// The domain to add credential of Mailgun.
 	Domain pulumi.StringOutput `pulumi:"domain"`
-	Login  pulumi.StringOutput `pulumi:"login"`
+	// The local-part of the email address to create.
+	Login pulumi.StringOutput `pulumi:"login"`
 	// Password for user authentication.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The region where domain will be created. Default value is `us`.
@@ -76,7 +77,8 @@ func GetDomainCredential(ctx *pulumi.Context,
 type domainCredentialState struct {
 	// The domain to add credential of Mailgun.
 	Domain *string `pulumi:"domain"`
-	Login  *string `pulumi:"login"`
+	// The local-part of the email address to create.
+	Login *string `pulumi:"login"`
 	// Password for user authentication.
 	Password *string `pulumi:"password"`
 	// The region where domain will be created. Default value is `us`.
@@ -86,7 +88,8 @@ type domainCredentialState struct {
 type DomainCredentialState struct {
 	// The domain to add credential of Mailgun.
 	Domain pulumi.StringPtrInput
-	Login  pulumi.StringPtrInput
+	// The local-part of the email address to create.
+	Login pulumi.StringPtrInput
 	// Password for user authentication.
 	Password pulumi.StringPtrInput
 	// The region where domain will be created. Default value is `us`.
@@ -100,7 +103,8 @@ func (DomainCredentialState) ElementType() reflect.Type {
 type domainCredentialArgs struct {
 	// The domain to add credential of Mailgun.
 	Domain string `pulumi:"domain"`
-	Login  string `pulumi:"login"`
+	// The local-part of the email address to create.
+	Login string `pulumi:"login"`
 	// Password for user authentication.
 	Password string `pulumi:"password"`
 	// The region where domain will be created. Default value is `us`.
@@ -111,7 +115,8 @@ type domainCredentialArgs struct {
 type DomainCredentialArgs struct {
 	// The domain to add credential of Mailgun.
 	Domain pulumi.StringInput
-	Login  pulumi.StringInput
+	// The local-part of the email address to create.
+	Login pulumi.StringInput
 	// Password for user authentication.
 	Password pulumi.StringInput
 	// The region where domain will be created. Default value is `us`.
