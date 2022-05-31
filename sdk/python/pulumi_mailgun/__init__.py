@@ -10,6 +10,7 @@ from .domain_credential import *
 from .get_domain import *
 from .provider import *
 from .route import *
+from .webhook import *
 from ._inputs import *
 from . import outputs
 
@@ -45,6 +46,14 @@ _utilities.register(
   "fqn": "pulumi_mailgun",
   "classes": {
    "mailgun:index/route:Route": "Route"
+  }
+ },
+ {
+  "pkg": "mailgun",
+  "mod": "index/webhook",
+  "fqn": "pulumi_mailgun",
+  "classes": {
+   "mailgun:index/webhook:Webhook": "Webhook"
   }
  }
 ]

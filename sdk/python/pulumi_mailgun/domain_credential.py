@@ -20,6 +20,7 @@ class DomainCredentialArgs:
         """
         The set of arguments for constructing a DomainCredential resource.
         :param pulumi.Input[str] domain: The domain to add credential of Mailgun.
+        :param pulumi.Input[str] login: The local-part of the email address to create.
         :param pulumi.Input[str] password: Password for user authentication.
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
         """
@@ -44,6 +45,9 @@ class DomainCredentialArgs:
     @property
     @pulumi.getter
     def login(self) -> pulumi.Input[str]:
+        """
+        The local-part of the email address to create.
+        """
         return pulumi.get(self, "login")
 
     @login.setter
@@ -85,6 +89,7 @@ class _DomainCredentialState:
         """
         Input properties used for looking up and filtering DomainCredential resources.
         :param pulumi.Input[str] domain: The domain to add credential of Mailgun.
+        :param pulumi.Input[str] login: The local-part of the email address to create.
         :param pulumi.Input[str] password: Password for user authentication.
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
         """
@@ -112,6 +117,9 @@ class _DomainCredentialState:
     @property
     @pulumi.getter
     def login(self) -> Optional[pulumi.Input[str]]:
+        """
+        The local-part of the email address to create.
+        """
         return pulumi.get(self, "login")
 
     @login.setter
@@ -171,6 +179,7 @@ class DomainCredential(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The domain to add credential of Mailgun.
+        :param pulumi.Input[str] login: The local-part of the email address to create.
         :param pulumi.Input[str] password: Password for user authentication.
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
         """
@@ -258,6 +267,7 @@ class DomainCredential(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The domain to add credential of Mailgun.
+        :param pulumi.Input[str] login: The local-part of the email address to create.
         :param pulumi.Input[str] password: Password for user authentication.
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
         """
@@ -282,6 +292,9 @@ class DomainCredential(pulumi.CustomResource):
     @property
     @pulumi.getter
     def login(self) -> pulumi.Output[str]:
+        """
+        The local-part of the email address to create.
+        """
         return pulumi.get(self, "login")
 
     @property

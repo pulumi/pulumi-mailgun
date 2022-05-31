@@ -10,6 +10,7 @@ export * from "./domainCredential";
 export * from "./getDomain";
 export * from "./provider";
 export * from "./route";
+export * from "./webhook";
 
 // Export sub-modules:
 import * as config from "./config";
@@ -24,6 +25,7 @@ export {
 import { Domain } from "./domain";
 import { DomainCredential } from "./domainCredential";
 import { Route } from "./route";
+import { Webhook } from "./webhook";
 
 const _module = {
     version: utilities.getVersion(),
@@ -35,6 +37,8 @@ const _module = {
                 return new DomainCredential(name, <any>undefined, { urn })
             case "mailgun:index/route:Route":
                 return new Route(name, <any>undefined, { urn })
+            case "mailgun:index/webhook:Webhook":
+                return new Webhook(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -43,6 +47,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("mailgun", "index/domain", _module)
 pulumi.runtime.registerResourceModule("mailgun", "index/domainCredential", _module)
 pulumi.runtime.registerResourceModule("mailgun", "index/route", _module)
+pulumi.runtime.registerResourceModule("mailgun", "index/webhook", _module)
 
 import { Provider } from "./provider";
 

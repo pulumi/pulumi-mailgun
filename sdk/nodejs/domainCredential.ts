@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * // Create a new Mailgun credential
  * const foobar = new mailgun.DomainCredential("foobar", {
  *     domain: "toto.com",
- *     email: "test@toto.com",
+ *     login: "test",
  *     password: "supersecretpassword1234",
  *     region: "us",
  * }, { ignoreChanges: ["password"] });
@@ -66,6 +66,9 @@ export class DomainCredential extends pulumi.CustomResource {
      * The domain to add credential of Mailgun.
      */
     public readonly domain!: pulumi.Output<string>;
+    /**
+     * The local-part of the email address to create.
+     */
     public readonly login!: pulumi.Output<string>;
     /**
      * Password for user authentication.
@@ -122,6 +125,9 @@ export interface DomainCredentialState {
      * The domain to add credential of Mailgun.
      */
     domain?: pulumi.Input<string>;
+    /**
+     * The local-part of the email address to create.
+     */
     login?: pulumi.Input<string>;
     /**
      * Password for user authentication.
@@ -141,6 +147,9 @@ export interface DomainCredentialArgs {
      * The domain to add credential of Mailgun.
      */
     domain: pulumi.Input<string>;
+    /**
+     * The local-part of the email address to create.
+     */
     login: pulumi.Input<string>;
     /**
      * Password for user authentication.

@@ -26,6 +26,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DomainCredential{}
 	case "mailgun:index/route:Route":
 		r = &Route{}
+	case "mailgun:index/webhook:Webhook":
+		r = &Webhook{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -67,6 +69,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"mailgun",
 		"index/route",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"mailgun",
+		"index/webhook",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(
