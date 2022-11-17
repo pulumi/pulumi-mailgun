@@ -22,7 +22,9 @@ import (
 // Password is always exported to `null`. hcl
 //
 // ```sh
-//  $ pulumi import mailgun:index/domainCredential:DomainCredential test us:test@domain.com
+//
+//	$ pulumi import mailgun:index/domainCredential:DomainCredential test us:test@domain.com
+//
 // ```
 type DomainCredential struct {
 	pulumi.CustomResourceState
@@ -149,7 +151,7 @@ func (i *DomainCredential) ToDomainCredentialOutputWithContext(ctx context.Conte
 // DomainCredentialArrayInput is an input type that accepts DomainCredentialArray and DomainCredentialArrayOutput values.
 // You can construct a concrete instance of `DomainCredentialArrayInput` via:
 //
-//          DomainCredentialArray{ DomainCredentialArgs{...} }
+//	DomainCredentialArray{ DomainCredentialArgs{...} }
 type DomainCredentialArrayInput interface {
 	pulumi.Input
 
@@ -174,7 +176,7 @@ func (i DomainCredentialArray) ToDomainCredentialArrayOutputWithContext(ctx cont
 // DomainCredentialMapInput is an input type that accepts DomainCredentialMap and DomainCredentialMapOutput values.
 // You can construct a concrete instance of `DomainCredentialMapInput` via:
 //
-//          DomainCredentialMap{ "key": DomainCredentialArgs{...} }
+//	DomainCredentialMap{ "key": DomainCredentialArgs{...} }
 type DomainCredentialMapInput interface {
 	pulumi.Input
 

@@ -19,27 +19,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := mailgun.NewRoute(ctx, "default", &mailgun.RouteArgs{
-// 			Actions: pulumi.StringArray{
-// 				pulumi.String("forward('http://example.com/api/v1/foos/')"),
-// 				pulumi.String("stop()"),
-// 			},
-// 			Description: pulumi.String("inbound"),
-// 			Expression:  pulumi.String("match_recipient('.*@foo.example.com')"),
-// 			Priority:    pulumi.Int(0),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := mailgun.NewRoute(ctx, "default", &mailgun.RouteArgs{
+//				Actions: pulumi.StringArray{
+//					pulumi.String("forward('http://example.com/api/v1/foos/')"),
+//					pulumi.String("stop()"),
+//				},
+//				Description: pulumi.String("inbound"),
+//				Expression:  pulumi.String("match_recipient('.*@foo.example.com')"),
+//				Priority:    pulumi.Int(0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -49,7 +52,9 @@ import (
 // hcl
 //
 // ```sh
-//  $ pulumi import mailgun:index/route:Route test eu:123456789
+//
+//	$ pulumi import mailgun:index/route:Route test eu:123456789
+//
 // ```
 type Route struct {
 	pulumi.CustomResourceState
@@ -176,7 +181,7 @@ func (i *Route) ToRouteOutputWithContext(ctx context.Context) RouteOutput {
 // RouteArrayInput is an input type that accepts RouteArray and RouteArrayOutput values.
 // You can construct a concrete instance of `RouteArrayInput` via:
 //
-//          RouteArray{ RouteArgs{...} }
+//	RouteArray{ RouteArgs{...} }
 type RouteArrayInput interface {
 	pulumi.Input
 
@@ -201,7 +206,7 @@ func (i RouteArray) ToRouteArrayOutputWithContext(ctx context.Context) RouteArra
 // RouteMapInput is an input type that accepts RouteMap and RouteMapOutput values.
 // You can construct a concrete instance of `RouteMapInput` via:
 //
-//          RouteMap{ "key": RouteArgs{...} }
+//	RouteMap{ "key": RouteArgs{...} }
 type RouteMapInput interface {
 	pulumi.Input
 
