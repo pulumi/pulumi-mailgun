@@ -48,6 +48,21 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+     * 
+     */
+    @Import(name="forceDkimAuthority")
+    private @Nullable Output<Boolean> forceDkimAuthority;
+
+    /**
+     * @return If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> forceDkimAuthority() {
+        return Optional.ofNullable(this.forceDkimAuthority);
+    }
+
+    /**
      * The domain to add to Mailgun
      * 
      */
@@ -60,6 +75,21 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
+     * 
+     */
+    @Import(name="openTracking")
+    private @Nullable Output<Boolean> openTracking;
+
+    /**
+     * @return (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
+     * 
+     */
+    public Optional<Output<Boolean>> openTracking() {
+        return Optional.ofNullable(this.openTracking);
     }
 
     /**
@@ -133,7 +163,9 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     private DomainArgs(DomainArgs $) {
         this.dkimKeySize = $.dkimKeySize;
         this.dkimSelector = $.dkimSelector;
+        this.forceDkimAuthority = $.forceDkimAuthority;
         this.name = $.name;
+        this.openTracking = $.openTracking;
         this.region = $.region;
         this.smtpPassword = $.smtpPassword;
         this.spamAction = $.spamAction;
@@ -201,6 +233,27 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param forceDkimAuthority If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDkimAuthority(@Nullable Output<Boolean> forceDkimAuthority) {
+            $.forceDkimAuthority = forceDkimAuthority;
+            return this;
+        }
+
+        /**
+         * @param forceDkimAuthority If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDkimAuthority(Boolean forceDkimAuthority) {
+            return forceDkimAuthority(Output.of(forceDkimAuthority));
+        }
+
+        /**
          * @param name The domain to add to Mailgun
          * 
          * @return builder
@@ -219,6 +272,27 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param openTracking (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openTracking(@Nullable Output<Boolean> openTracking) {
+            $.openTracking = openTracking;
+            return this;
+        }
+
+        /**
+         * @param openTracking (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openTracking(Boolean openTracking) {
+            return openTracking(Output.of(openTracking));
         }
 
         /**

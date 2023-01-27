@@ -18,24 +18,22 @@ namespace Pulumi.Mailgun
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Mailgun = Pulumi.Mailgun;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new Mailgun domain
+    ///     var @default = new Mailgun.Domain("default", new()
     ///     {
-    ///         // Create a new Mailgun domain
-    ///         var @default = new Mailgun.Domain("default", new Mailgun.DomainArgs
-    ///         {
-    ///             DkimKeySize = 1024,
-    ///             Region = "us",
-    ///             SmtpPassword = "supersecretpassword1234",
-    ///             SpamAction = "disabled",
-    ///         });
-    ///     }
+    ///         DkimKeySize = 1024,
+    ///         Region = "us",
+    ///         SmtpPassword = "supersecretpassword1234",
+    ///         SpamAction = "disabled",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +47,7 @@ namespace Pulumi.Mailgun
     /// ```
     /// </summary>
     [MailgunResourceType("mailgun:index/domain:Domain")]
-    public partial class Domain : Pulumi.CustomResource
+    public partial class Domain : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The length of your domain’s generated DKIM key. Default value is `1024`.
@@ -64,16 +62,34 @@ namespace Pulumi.Mailgun
         public Output<string?> DkimSelector { get; private set; } = null!;
 
         /// <summary>
+        /// If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+        /// </summary>
+        [Output("forceDkimAuthority")]
+        public Output<bool?> ForceDkimAuthority { get; private set; } = null!;
+
+        /// <summary>
         /// The domain to add to Mailgun
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A list of DNS records for receiving validation.
+        /// (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
+        /// </summary>
+        [Output("openTracking")]
+        public Output<bool?> OpenTracking { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
         /// </summary>
         [Output("receivingRecords")]
         public Output<ImmutableArray<Outputs.DomainReceivingRecord>> ReceivingRecords { get; private set; } = null!;
+
+        /// <summary>
+        /// A set of DNS records for receiving validation.
+        /// </summary>
+        [Output("receivingRecordsSets")]
+        public Output<ImmutableArray<Outputs.DomainReceivingRecordsSet>> ReceivingRecordsSets { get; private set; } = null!;
 
         /// <summary>
         /// The region where domain will be created. Default value is `us`.
@@ -82,10 +98,16 @@ namespace Pulumi.Mailgun
         public Output<string?> Region { get; private set; } = null!;
 
         /// <summary>
-        /// A list of DNS records for sending validation.
+        /// A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
         /// </summary>
         [Output("sendingRecords")]
         public Output<ImmutableArray<Outputs.DomainSendingRecord>> SendingRecords { get; private set; } = null!;
+
+        /// <summary>
+        /// A set of DNS records for sending validation.
+        /// </summary>
+        [Output("sendingRecordsSets")]
+        public Output<ImmutableArray<Outputs.DomainSendingRecordsSet>> SendingRecordsSets { get; private set; } = null!;
 
         /// <summary>
         /// The login email for the SMTP server.
@@ -97,7 +119,7 @@ namespace Pulumi.Mailgun
         /// Password for SMTP authentication
         /// </summary>
         [Output("smtpPassword")]
-        public Output<string> SmtpPassword { get; private set; } = null!;
+        public Output<string?> SmtpPassword { get; private set; } = null!;
 
         /// <summary>
         /// `disabled` or `tag` Disable, no spam
@@ -137,6 +159,10 @@ namespace Pulumi.Mailgun
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "smtpPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -158,7 +184,7 @@ namespace Pulumi.Mailgun
         }
     }
 
-    public sealed class DomainArgs : Pulumi.ResourceArgs
+    public sealed class DomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The length of your domain’s generated DKIM key. Default value is `1024`.
@@ -173,10 +199,22 @@ namespace Pulumi.Mailgun
         public Input<string>? DkimSelector { get; set; }
 
         /// <summary>
+        /// If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+        /// </summary>
+        [Input("forceDkimAuthority")]
+        public Input<bool>? ForceDkimAuthority { get; set; }
+
+        /// <summary>
         /// The domain to add to Mailgun
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
+        /// </summary>
+        [Input("openTracking")]
+        public Input<bool>? OpenTracking { get; set; }
 
         /// <summary>
         /// The region where domain will be created. Default value is `us`.
@@ -184,11 +222,21 @@ namespace Pulumi.Mailgun
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("smtpPassword")]
+        private Input<string>? _smtpPassword;
+
         /// <summary>
         /// Password for SMTP authentication
         /// </summary>
-        [Input("smtpPassword")]
-        public Input<string>? SmtpPassword { get; set; }
+        public Input<string>? SmtpPassword
+        {
+            get => _smtpPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _smtpPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// `disabled` or `tag` Disable, no spam
@@ -208,9 +256,10 @@ namespace Pulumi.Mailgun
         public DomainArgs()
         {
         }
+        public static new DomainArgs Empty => new DomainArgs();
     }
 
-    public sealed class DomainState : Pulumi.ResourceArgs
+    public sealed class DomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The length of your domain’s generated DKIM key. Default value is `1024`.
@@ -225,21 +274,46 @@ namespace Pulumi.Mailgun
         public Input<string>? DkimSelector { get; set; }
 
         /// <summary>
+        /// If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+        /// </summary>
+        [Input("forceDkimAuthority")]
+        public Input<bool>? ForceDkimAuthority { get; set; }
+
+        /// <summary>
         /// The domain to add to Mailgun
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
+        /// </summary>
+        [Input("openTracking")]
+        public Input<bool>? OpenTracking { get; set; }
+
         [Input("receivingRecords")]
         private InputList<Inputs.DomainReceivingRecordGetArgs>? _receivingRecords;
 
         /// <summary>
-        /// A list of DNS records for receiving validation.
+        /// A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
         /// </summary>
+        [Obsolete(@"Use `receiving_records_set` instead.")]
         public InputList<Inputs.DomainReceivingRecordGetArgs> ReceivingRecords
         {
             get => _receivingRecords ?? (_receivingRecords = new InputList<Inputs.DomainReceivingRecordGetArgs>());
             set => _receivingRecords = value;
+        }
+
+        [Input("receivingRecordsSets")]
+        private InputList<Inputs.DomainReceivingRecordsSetGetArgs>? _receivingRecordsSets;
+
+        /// <summary>
+        /// A set of DNS records for receiving validation.
+        /// </summary>
+        public InputList<Inputs.DomainReceivingRecordsSetGetArgs> ReceivingRecordsSets
+        {
+            get => _receivingRecordsSets ?? (_receivingRecordsSets = new InputList<Inputs.DomainReceivingRecordsSetGetArgs>());
+            set => _receivingRecordsSets = value;
         }
 
         /// <summary>
@@ -252,12 +326,25 @@ namespace Pulumi.Mailgun
         private InputList<Inputs.DomainSendingRecordGetArgs>? _sendingRecords;
 
         /// <summary>
-        /// A list of DNS records for sending validation.
+        /// A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
         /// </summary>
+        [Obsolete(@"Use `sending_records_set` instead.")]
         public InputList<Inputs.DomainSendingRecordGetArgs> SendingRecords
         {
             get => _sendingRecords ?? (_sendingRecords = new InputList<Inputs.DomainSendingRecordGetArgs>());
             set => _sendingRecords = value;
+        }
+
+        [Input("sendingRecordsSets")]
+        private InputList<Inputs.DomainSendingRecordsSetGetArgs>? _sendingRecordsSets;
+
+        /// <summary>
+        /// A set of DNS records for sending validation.
+        /// </summary>
+        public InputList<Inputs.DomainSendingRecordsSetGetArgs> SendingRecordsSets
+        {
+            get => _sendingRecordsSets ?? (_sendingRecordsSets = new InputList<Inputs.DomainSendingRecordsSetGetArgs>());
+            set => _sendingRecordsSets = value;
         }
 
         /// <summary>
@@ -266,11 +353,21 @@ namespace Pulumi.Mailgun
         [Input("smtpLogin")]
         public Input<string>? SmtpLogin { get; set; }
 
+        [Input("smtpPassword")]
+        private Input<string>? _smtpPassword;
+
         /// <summary>
         /// Password for SMTP authentication
         /// </summary>
-        [Input("smtpPassword")]
-        public Input<string>? SmtpPassword { get; set; }
+        public Input<string>? SmtpPassword
+        {
+            get => _smtpPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _smtpPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// `disabled` or `tag` Disable, no spam
@@ -290,5 +387,6 @@ namespace Pulumi.Mailgun
         public DomainState()
         {
         }
+        public static new DomainState Empty => new DomainState();
     }
 }

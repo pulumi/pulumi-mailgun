@@ -19,49 +19,48 @@ namespace Pulumi.Mailgun
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aws = Pulumi.Aws;
         /// using Mailgun = Pulumi.Mailgun;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var domain = Mailgun.GetDomain.Invoke(new()
         ///     {
-        ///         var domain = Output.Create(Mailgun.GetDomain.InvokeAsync(new Mailgun.GetDomainArgs
-        ///         {
-        ///             Name = "test.example.com",
-        ///         }));
-        ///         var mailgun_mx = new Aws.Route53.Record("mailgun-mx", new Aws.Route53.RecordArgs
-        ///         {
-        ///             Name = data.Mailgun.Domain.Name,
-        ///             Records = 
-        ///             {
-        ///                 Output.Tuple(domain, domain).Apply(values =&gt;
-        ///                 {
-        ///                     var domain = values.Item1;
-        ///                     var domain1 = values.Item2;
-        ///                     return $"{domain.ReceivingRecords?[0]?.Priority} {domain1.ReceivingRecords?[0]?.Value}.";
-        ///                 }),
-        ///                 Output.Tuple(domain, domain).Apply(values =&gt;
-        ///                 {
-        ///                     var domain = values.Item1;
-        ///                     var domain1 = values.Item2;
-        ///                     return $"{domain.ReceivingRecords?[1]?.Priority} {domain1.ReceivingRecords?[1]?.Value}.";
-        ///                 }),
-        ///             },
-        ///             Ttl = 3600,
-        ///             Type = "MX",
-        ///             ZoneId = @var.Zone_id,
-        ///         });
-        ///     }
+        ///         Name = "test.example.com",
+        ///     });
         /// 
-        /// }
+        ///     var mailgun_mx = new Aws.Route53.Record("mailgun-mx", new()
+        ///     {
+        ///         Name = data.Mailgun.Domain.Name,
+        ///         Records = new[]
+        ///         {
+        ///             Output.Tuple(domain.Apply(getDomainResult =&gt; getDomainResult), domain.Apply(getDomainResult =&gt; getDomainResult)).Apply(values =&gt;
+        ///             {
+        ///                 var domain = values.Item1;
+        ///                 var domain1 = values.Item2;
+        ///                 return $"{domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[0]?.Priority)} {domain1.ReceivingRecords[0]?.Value}.";
+        ///             }),
+        ///             Output.Tuple(domain.Apply(getDomainResult =&gt; getDomainResult), domain.Apply(getDomainResult =&gt; getDomainResult)).Apply(values =&gt;
+        ///             {
+        ///                 var domain = values.Item1;
+        ///                 var domain1 = values.Item2;
+        ///                 return $"{domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[1]?.Priority)} {domain1.ReceivingRecords[1]?.Value}.";
+        ///             }),
+        ///         },
+        ///         Ttl = 3600,
+        ///         Type = "MX",
+        ///         ZoneId = @var.Zone_id,
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetDomainResult> InvokeAsync(GetDomainArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("mailgun:index/getDomain:getDomain", args ?? new GetDomainArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("mailgun:index/getDomain:getDomain", args ?? new GetDomainArgs(), options.WithDefaults());
 
         /// <summary>
         /// `mailgun.Domain` provides details about a Mailgun domain.
@@ -71,53 +70,52 @@ namespace Pulumi.Mailgun
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using Aws = Pulumi.Aws;
         /// using Mailgun = Pulumi.Mailgun;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var domain = Mailgun.GetDomain.Invoke(new()
         ///     {
-        ///         var domain = Output.Create(Mailgun.GetDomain.InvokeAsync(new Mailgun.GetDomainArgs
-        ///         {
-        ///             Name = "test.example.com",
-        ///         }));
-        ///         var mailgun_mx = new Aws.Route53.Record("mailgun-mx", new Aws.Route53.RecordArgs
-        ///         {
-        ///             Name = data.Mailgun.Domain.Name,
-        ///             Records = 
-        ///             {
-        ///                 Output.Tuple(domain, domain).Apply(values =&gt;
-        ///                 {
-        ///                     var domain = values.Item1;
-        ///                     var domain1 = values.Item2;
-        ///                     return $"{domain.ReceivingRecords?[0]?.Priority} {domain1.ReceivingRecords?[0]?.Value}.";
-        ///                 }),
-        ///                 Output.Tuple(domain, domain).Apply(values =&gt;
-        ///                 {
-        ///                     var domain = values.Item1;
-        ///                     var domain1 = values.Item2;
-        ///                     return $"{domain.ReceivingRecords?[1]?.Priority} {domain1.ReceivingRecords?[1]?.Value}.";
-        ///                 }),
-        ///             },
-        ///             Ttl = 3600,
-        ///             Type = "MX",
-        ///             ZoneId = @var.Zone_id,
-        ///         });
-        ///     }
+        ///         Name = "test.example.com",
+        ///     });
         /// 
-        /// }
+        ///     var mailgun_mx = new Aws.Route53.Record("mailgun-mx", new()
+        ///     {
+        ///         Name = data.Mailgun.Domain.Name,
+        ///         Records = new[]
+        ///         {
+        ///             Output.Tuple(domain.Apply(getDomainResult =&gt; getDomainResult), domain.Apply(getDomainResult =&gt; getDomainResult)).Apply(values =&gt;
+        ///             {
+        ///                 var domain = values.Item1;
+        ///                 var domain1 = values.Item2;
+        ///                 return $"{domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[0]?.Priority)} {domain1.ReceivingRecords[0]?.Value}.";
+        ///             }),
+        ///             Output.Tuple(domain.Apply(getDomainResult =&gt; getDomainResult), domain.Apply(getDomainResult =&gt; getDomainResult)).Apply(values =&gt;
+        ///             {
+        ///                 var domain = values.Item1;
+        ///                 var domain1 = values.Item2;
+        ///                 return $"{domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[1]?.Priority)} {domain1.ReceivingRecords[1]?.Value}.";
+        ///             }),
+        ///         },
+        ///         Ttl = 3600,
+        ///         Type = "MX",
+        ///         ZoneId = @var.Zone_id,
+        ///     });
+        /// 
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetDomainResult> Invoke(GetDomainInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDomainResult>("mailgun:index/getDomain:getDomain", args ?? new GetDomainInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDomainResult>("mailgun:index/getDomain:getDomain", args ?? new GetDomainInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetDomainArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainArgs : global::Pulumi.InvokeArgs
     {
         [Input("dkimKeySize")]
         public int? DkimKeySize { get; set; }
@@ -125,20 +123,35 @@ namespace Pulumi.Mailgun
         [Input("dkimSelector")]
         public string? DkimSelector { get; set; }
 
+        [Input("forceDkimAuthority")]
+        public bool? ForceDkimAuthority { get; set; }
+
         /// <summary>
         /// The name of the domain.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        [Input("openTracking")]
+        public bool? OpenTracking { get; set; }
+
+        /// <summary>
+        /// The region where domain will be created. Default value is `us`.
+        /// </summary>
         [Input("region")]
         public string? Region { get; set; }
+
+        [Input("smtpPassword")]
+        private string? _smtpPassword;
 
         /// <summary>
         /// The password to the SMTP server.
         /// </summary>
-        [Input("smtpPassword")]
-        public string? SmtpPassword { get; set; }
+        public string? SmtpPassword
+        {
+            get => _smtpPassword;
+            set => _smtpPassword = value;
+        }
 
         /// <summary>
         /// The spam filtering setting.
@@ -155,9 +168,10 @@ namespace Pulumi.Mailgun
         public GetDomainArgs()
         {
         }
+        public static new GetDomainArgs Empty => new GetDomainArgs();
     }
 
-    public sealed class GetDomainInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("dkimKeySize")]
         public Input<int>? DkimKeySize { get; set; }
@@ -165,20 +179,39 @@ namespace Pulumi.Mailgun
         [Input("dkimSelector")]
         public Input<string>? DkimSelector { get; set; }
 
+        [Input("forceDkimAuthority")]
+        public Input<bool>? ForceDkimAuthority { get; set; }
+
         /// <summary>
         /// The name of the domain.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        [Input("openTracking")]
+        public Input<bool>? OpenTracking { get; set; }
+
+        /// <summary>
+        /// The region where domain will be created. Default value is `us`.
+        /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("smtpPassword")]
+        private Input<string>? _smtpPassword;
 
         /// <summary>
         /// The password to the SMTP server.
         /// </summary>
-        [Input("smtpPassword")]
-        public Input<string>? SmtpPassword { get; set; }
+        public Input<string>? SmtpPassword
+        {
+            get => _smtpPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _smtpPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The spam filtering setting.
@@ -195,6 +228,7 @@ namespace Pulumi.Mailgun
         public GetDomainInvokeArgs()
         {
         }
+        public static new GetDomainInvokeArgs Empty => new GetDomainInvokeArgs();
     }
 
 
@@ -203,6 +237,7 @@ namespace Pulumi.Mailgun
     {
         public readonly int? DkimKeySize;
         public readonly string? DkimSelector;
+        public readonly bool? ForceDkimAuthority;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -211,15 +246,18 @@ namespace Pulumi.Mailgun
         /// The name of the record.
         /// </summary>
         public readonly string Name;
+        public readonly bool? OpenTracking;
         /// <summary>
         /// A list of DNS records for receiving validation.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDomainReceivingRecordResult> ReceivingRecords;
+        public readonly ImmutableArray<Outputs.GetDomainReceivingRecordsSetResult> ReceivingRecordsSets;
         public readonly string? Region;
         /// <summary>
         /// A list of DNS records for sending validation.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDomainSendingRecordResult> SendingRecords;
+        public readonly ImmutableArray<Outputs.GetDomainSendingRecordsSetResult> SendingRecordsSets;
         /// <summary>
         /// The login email for the SMTP server.
         /// </summary>
@@ -227,7 +265,7 @@ namespace Pulumi.Mailgun
         /// <summary>
         /// The password to the SMTP server.
         /// </summary>
-        public readonly string SmtpPassword;
+        public readonly string? SmtpPassword;
         /// <summary>
         /// The spam filtering setting.
         /// </summary>
@@ -243,19 +281,27 @@ namespace Pulumi.Mailgun
 
             string? dkimSelector,
 
+            bool? forceDkimAuthority,
+
             string id,
 
             string name,
 
+            bool? openTracking,
+
             ImmutableArray<Outputs.GetDomainReceivingRecordResult> receivingRecords,
+
+            ImmutableArray<Outputs.GetDomainReceivingRecordsSetResult> receivingRecordsSets,
 
             string? region,
 
             ImmutableArray<Outputs.GetDomainSendingRecordResult> sendingRecords,
 
+            ImmutableArray<Outputs.GetDomainSendingRecordsSetResult> sendingRecordsSets,
+
             string smtpLogin,
 
-            string smtpPassword,
+            string? smtpPassword,
 
             string? spamAction,
 
@@ -263,11 +309,15 @@ namespace Pulumi.Mailgun
         {
             DkimKeySize = dkimKeySize;
             DkimSelector = dkimSelector;
+            ForceDkimAuthority = forceDkimAuthority;
             Id = id;
             Name = name;
+            OpenTracking = openTracking;
             ReceivingRecords = receivingRecords;
+            ReceivingRecordsSets = receivingRecordsSets;
             Region = region;
             SendingRecords = sendingRecords;
+            SendingRecordsSets = sendingRecordsSets;
             SmtpLogin = smtpLogin;
             SmtpPassword = smtpPassword;
             SpamAction = spamAction;

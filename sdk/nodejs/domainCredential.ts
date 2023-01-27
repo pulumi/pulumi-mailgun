@@ -9,21 +9,6 @@ import * as utilities from "./utilities";
  *
  * > **Note:** Please note that starting of v0.6.1 due to using new Mailgun Client API (v4), there is no possibility to retrieve previously created secrets via API. In order get it worked, it's recommended to mark `password` as ignored under `lifecycle` block. See below.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as mailgun from "@pulumi/mailgun";
- *
- * // Create a new Mailgun credential
- * const foobar = new mailgun.DomainCredential("foobar", {
- *     domain: "toto.com",
- *     login: "test",
- *     password: "supersecretpassword1234",
- *     region: "us",
- * }, { ignoreChanges: ["password"] });
- * ```
- *
  * ## Import
  *
  * Domain credential can be imported using `region:email` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
@@ -109,10 +94,12 @@ export class DomainCredential extends pulumi.CustomResource {
             }
             resourceInputs["domain"] = args ? args.domain : undefined;
             resourceInputs["login"] = args ? args.login : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(DomainCredential.__pulumiType, name, resourceInputs, opts);
     }
 }

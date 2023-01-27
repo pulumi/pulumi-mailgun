@@ -10,8 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Mailgun.Inputs
 {
 
-    public sealed class DomainReceivingRecordGetArgs : Pulumi.ResourceArgs
+    public sealed class DomainReceivingRecordGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
         /// <summary>
         /// The priority of the record.
         /// </summary>
@@ -39,5 +42,6 @@ namespace Pulumi.Mailgun.Inputs
         public DomainReceivingRecordGetArgs()
         {
         }
+        public static new DomainReceivingRecordGetArgs Empty => new DomainReceivingRecordGetArgs();
     }
 }

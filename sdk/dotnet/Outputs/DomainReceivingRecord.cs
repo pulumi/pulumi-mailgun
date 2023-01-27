@@ -13,6 +13,7 @@ namespace Pulumi.Mailgun.Outputs
     [OutputType]
     public sealed class DomainReceivingRecord
     {
+        public readonly string? Id;
         /// <summary>
         /// The priority of the record.
         /// </summary>
@@ -32,6 +33,8 @@ namespace Pulumi.Mailgun.Outputs
 
         [OutputConstructor]
         private DomainReceivingRecord(
+            string? id,
+
             string? priority,
 
             string? recordType,
@@ -40,6 +43,7 @@ namespace Pulumi.Mailgun.Outputs
 
             string? value)
         {
+            Id = id;
             Priority = priority;
             RecordType = recordType;
             Valid = valid;

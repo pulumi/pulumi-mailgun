@@ -8,7 +8,7 @@ import java.lang.String;
 import java.util.Objects;
 
 @CustomType
-public final class GetDomainReceivingRecord {
+public final class GetDomainReceivingRecordsSet {
     private String id;
     /**
      * @return The priority of the record.
@@ -31,7 +31,7 @@ public final class GetDomainReceivingRecord {
      */
     private String value;
 
-    private GetDomainReceivingRecord() {}
+    private GetDomainReceivingRecordsSet() {}
     public String id() {
         return this.id;
     }
@@ -68,7 +68,7 @@ public final class GetDomainReceivingRecord {
         return new Builder();
     }
 
-    public static Builder builder(GetDomainReceivingRecord defaults) {
+    public static Builder builder(GetDomainReceivingRecordsSet defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -79,7 +79,7 @@ public final class GetDomainReceivingRecord {
         private String valid;
         private String value;
         public Builder() {}
-        public Builder(GetDomainReceivingRecord defaults) {
+        public Builder(GetDomainReceivingRecordsSet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.priority = defaults.priority;
@@ -113,8 +113,8 @@ public final class GetDomainReceivingRecord {
             this.value = Objects.requireNonNull(value);
             return this;
         }
-        public GetDomainReceivingRecord build() {
-            final var o = new GetDomainReceivingRecord();
+        public GetDomainReceivingRecordsSet build() {
+            final var o = new GetDomainReceivingRecordsSet();
             o.id = id;
             o.priority = priority;
             o.recordType = recordType;

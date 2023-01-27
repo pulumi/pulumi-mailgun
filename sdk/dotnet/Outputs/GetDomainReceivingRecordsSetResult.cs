@@ -11,7 +11,7 @@ namespace Pulumi.Mailgun.Outputs
 {
 
     [OutputType]
-    public sealed class GetDomainReceivingRecordResult
+    public sealed class GetDomainReceivingRecordsSetResult
     {
         public readonly string Id;
         /// <summary>
@@ -32,7 +32,7 @@ namespace Pulumi.Mailgun.Outputs
         public readonly string Value;
 
         [OutputConstructor]
-        private GetDomainReceivingRecordResult(
+        private GetDomainReceivingRecordsSetResult(
             string id,
 
             string priority,

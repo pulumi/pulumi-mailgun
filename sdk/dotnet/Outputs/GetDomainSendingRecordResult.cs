@@ -13,6 +13,7 @@ namespace Pulumi.Mailgun.Outputs
     [OutputType]
     public sealed class GetDomainSendingRecordResult
     {
+        public readonly string Id;
         /// <summary>
         /// The name of the domain.
         /// </summary>
@@ -32,6 +33,8 @@ namespace Pulumi.Mailgun.Outputs
 
         [OutputConstructor]
         private GetDomainSendingRecordResult(
+            string id,
+
             string name,
 
             string recordType,
@@ -40,6 +43,7 @@ namespace Pulumi.Mailgun.Outputs
 
             string value)
         {
+            Id = id;
             Name = name;
             RecordType = recordType;
             Valid = valid;

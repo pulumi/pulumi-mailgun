@@ -6,82 +6,80 @@ package com.pulumi.mailgun.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
-public final class DomainSendingRecord {
-    private @Nullable String id;
+public final class GetDomainSendingRecordsSet {
+    private String id;
     /**
-     * @return The domain to add to Mailgun
+     * @return The name of the domain.
      * 
      */
-    private @Nullable String name;
+    private String name;
     /**
      * @return The record type.
      * 
      */
-    private @Nullable String recordType;
+    private String recordType;
     /**
      * @return `&#34;valid&#34;` if the record is valid.
      * 
      */
-    private @Nullable String valid;
+    private String valid;
     /**
      * @return The value of the record.
      * 
      */
-    private @Nullable String value;
+    private String value;
 
-    private DomainSendingRecord() {}
-    public Optional<String> id() {
-        return Optional.ofNullable(this.id);
+    private GetDomainSendingRecordsSet() {}
+    public String id() {
+        return this.id;
     }
     /**
-     * @return The domain to add to Mailgun
+     * @return The name of the domain.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     /**
      * @return The record type.
      * 
      */
-    public Optional<String> recordType() {
-        return Optional.ofNullable(this.recordType);
+    public String recordType() {
+        return this.recordType;
     }
     /**
      * @return `&#34;valid&#34;` if the record is valid.
      * 
      */
-    public Optional<String> valid() {
-        return Optional.ofNullable(this.valid);
+    public String valid() {
+        return this.valid;
     }
     /**
      * @return The value of the record.
      * 
      */
-    public Optional<String> value() {
-        return Optional.ofNullable(this.value);
+    public String value() {
+        return this.value;
     }
 
     public static Builder builder() {
         return new Builder();
     }
 
-    public static Builder builder(DomainSendingRecord defaults) {
+    public static Builder builder(GetDomainSendingRecordsSet defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String id;
-        private @Nullable String name;
-        private @Nullable String recordType;
-        private @Nullable String valid;
-        private @Nullable String value;
+        private String id;
+        private String name;
+        private String recordType;
+        private String valid;
+        private String value;
         public Builder() {}
-        public Builder(DomainSendingRecord defaults) {
+        public Builder(GetDomainSendingRecordsSet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.name = defaults.name;
@@ -91,32 +89,32 @@ public final class DomainSendingRecord {
         }
 
         @CustomType.Setter
-        public Builder id(@Nullable String id) {
-            this.id = id;
+        public Builder id(String id) {
+            this.id = Objects.requireNonNull(id);
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-            this.name = name;
+        public Builder name(String name) {
+            this.name = Objects.requireNonNull(name);
             return this;
         }
         @CustomType.Setter
-        public Builder recordType(@Nullable String recordType) {
-            this.recordType = recordType;
+        public Builder recordType(String recordType) {
+            this.recordType = Objects.requireNonNull(recordType);
             return this;
         }
         @CustomType.Setter
-        public Builder valid(@Nullable String valid) {
-            this.valid = valid;
+        public Builder valid(String valid) {
+            this.valid = Objects.requireNonNull(valid);
             return this;
         }
         @CustomType.Setter
-        public Builder value(@Nullable String value) {
-            this.value = value;
+        public Builder value(String value) {
+            this.value = Objects.requireNonNull(value);
             return this;
         }
-        public DomainSendingRecord build() {
-            final var o = new DomainSendingRecord();
+        public GetDomainSendingRecordsSet build() {
+            final var o = new GetDomainSendingRecordsSet();
             o.id = id;
             o.name = name;
             o.recordType = recordType;

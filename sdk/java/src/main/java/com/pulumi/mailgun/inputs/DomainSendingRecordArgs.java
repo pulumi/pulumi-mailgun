@@ -15,6 +15,13 @@ public final class DomainSendingRecordArgs extends com.pulumi.resources.Resource
 
     public static final DomainSendingRecordArgs Empty = new DomainSendingRecordArgs();
 
+    @Import(name="id")
+    private @Nullable Output<String> id;
+
+    public Optional<Output<String>> id() {
+        return Optional.ofNullable(this.id);
+    }
+
     /**
      * The domain to add to Mailgun
      * 
@@ -78,6 +85,7 @@ public final class DomainSendingRecordArgs extends com.pulumi.resources.Resource
     private DomainSendingRecordArgs() {}
 
     private DomainSendingRecordArgs(DomainSendingRecordArgs $) {
+        this.id = $.id;
         this.name = $.name;
         this.recordType = $.recordType;
         this.valid = $.valid;
@@ -100,6 +108,15 @@ public final class DomainSendingRecordArgs extends com.pulumi.resources.Resource
 
         public Builder(DomainSendingRecordArgs defaults) {
             $ = new DomainSendingRecordArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder id(@Nullable Output<String> id) {
+            $.id = id;
+            return this;
+        }
+
+        public Builder id(String id) {
+            return id(Output.of(id));
         }
 
         /**

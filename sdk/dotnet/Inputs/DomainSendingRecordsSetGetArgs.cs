@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Mailgun.Inputs
 {
 
-    public sealed class DomainSendingRecordArgs : global::Pulumi.ResourceArgs
+    public sealed class DomainSendingRecordsSetGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -39,9 +39,9 @@ namespace Pulumi.Mailgun.Inputs
         [Input("value")]
         public Input<string>? Value { get; set; }
 
-        public DomainSendingRecordArgs()
+        public DomainSendingRecordsSetGetArgs()
         {
         }
-        public static new DomainSendingRecordArgs Empty => new DomainSendingRecordArgs();
+        public static new DomainSendingRecordsSetGetArgs Empty => new DomainSendingRecordsSetGetArgs();
     }
 }

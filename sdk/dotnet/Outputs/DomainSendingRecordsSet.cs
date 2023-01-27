@@ -7,41 +7,47 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Mailgun.Inputs
+namespace Pulumi.Mailgun.Outputs
 {
 
-    public sealed class DomainSendingRecordArgs : global::Pulumi.ResourceArgs
+    [OutputType]
+    public sealed class DomainSendingRecordsSet
     {
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
+        public readonly string? Id;
         /// <summary>
         /// The domain to add to Mailgun
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
-
+        public readonly string? Name;
         /// <summary>
         /// The record type.
         /// </summary>
-        [Input("recordType")]
-        public Input<string>? RecordType { get; set; }
-
+        public readonly string? RecordType;
         /// <summary>
         /// `"valid"` if the record is valid.
         /// </summary>
-        [Input("valid")]
-        public Input<string>? Valid { get; set; }
-
+        public readonly string? Valid;
         /// <summary>
         /// The value of the record.
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        public readonly string? Value;
 
-        public DomainSendingRecordArgs()
+        [OutputConstructor]
+        private DomainSendingRecordsSet(
+            string? id,
+
+            string? name,
+
+            string? recordType,
+
+            string? valid,
+
+            string? value)
         {
+            Id = id;
+            Name = name;
+            RecordType = recordType;
+            Valid = valid;
+            Value = value;
         }
-        public static new DomainSendingRecordArgs Empty => new DomainSendingRecordArgs();
     }
 }

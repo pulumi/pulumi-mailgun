@@ -6,7 +6,9 @@ package com.pulumi.mailgun.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.mailgun.inputs.DomainReceivingRecordArgs;
+import com.pulumi.mailgun.inputs.DomainReceivingRecordsSetArgs;
 import com.pulumi.mailgun.inputs.DomainSendingRecordArgs;
+import com.pulumi.mailgun.inputs.DomainSendingRecordsSetArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -51,6 +53,21 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+     * 
+     */
+    @Import(name="forceDkimAuthority")
+    private @Nullable Output<Boolean> forceDkimAuthority;
+
+    /**
+     * @return If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> forceDkimAuthority() {
+        return Optional.ofNullable(this.forceDkimAuthority);
+    }
+
+    /**
      * The domain to add to Mailgun
      * 
      */
@@ -66,18 +83,56 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of DNS records for receiving validation.
+     * (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
      * 
      */
+    @Import(name="openTracking")
+    private @Nullable Output<Boolean> openTracking;
+
+    /**
+     * @return (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
+     * 
+     */
+    public Optional<Output<Boolean>> openTracking() {
+        return Optional.ofNullable(this.openTracking);
+    }
+
+    /**
+     * A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
+     * 
+     * @deprecated
+     * Use `receiving_records_set` instead.
+     * 
+     */
+    @Deprecated /* Use `receiving_records_set` instead. */
     @Import(name="receivingRecords")
     private @Nullable Output<List<DomainReceivingRecordArgs>> receivingRecords;
 
     /**
-     * @return A list of DNS records for receiving validation.
+     * @return A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
+     * 
+     * @deprecated
+     * Use `receiving_records_set` instead.
      * 
      */
+    @Deprecated /* Use `receiving_records_set` instead. */
     public Optional<Output<List<DomainReceivingRecordArgs>>> receivingRecords() {
         return Optional.ofNullable(this.receivingRecords);
+    }
+
+    /**
+     * A set of DNS records for receiving validation.
+     * 
+     */
+    @Import(name="receivingRecordsSets")
+    private @Nullable Output<List<DomainReceivingRecordsSetArgs>> receivingRecordsSets;
+
+    /**
+     * @return A set of DNS records for receiving validation.
+     * 
+     */
+    public Optional<Output<List<DomainReceivingRecordsSetArgs>>> receivingRecordsSets() {
+        return Optional.ofNullable(this.receivingRecordsSets);
     }
 
     /**
@@ -96,18 +151,41 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of DNS records for sending validation.
+     * A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
+     * 
+     * @deprecated
+     * Use `sending_records_set` instead.
      * 
      */
+    @Deprecated /* Use `sending_records_set` instead. */
     @Import(name="sendingRecords")
     private @Nullable Output<List<DomainSendingRecordArgs>> sendingRecords;
 
     /**
-     * @return A list of DNS records for sending validation.
+     * @return A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
+     * 
+     * @deprecated
+     * Use `sending_records_set` instead.
      * 
      */
+    @Deprecated /* Use `sending_records_set` instead. */
     public Optional<Output<List<DomainSendingRecordArgs>>> sendingRecords() {
         return Optional.ofNullable(this.sendingRecords);
+    }
+
+    /**
+     * A set of DNS records for sending validation.
+     * 
+     */
+    @Import(name="sendingRecordsSets")
+    private @Nullable Output<List<DomainSendingRecordsSetArgs>> sendingRecordsSets;
+
+    /**
+     * @return A set of DNS records for sending validation.
+     * 
+     */
+    public Optional<Output<List<DomainSendingRecordsSetArgs>>> sendingRecordsSets() {
+        return Optional.ofNullable(this.sendingRecordsSets);
     }
 
     /**
@@ -181,10 +259,14 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     private DomainState(DomainState $) {
         this.dkimKeySize = $.dkimKeySize;
         this.dkimSelector = $.dkimSelector;
+        this.forceDkimAuthority = $.forceDkimAuthority;
         this.name = $.name;
+        this.openTracking = $.openTracking;
         this.receivingRecords = $.receivingRecords;
+        this.receivingRecordsSets = $.receivingRecordsSets;
         this.region = $.region;
         this.sendingRecords = $.sendingRecords;
+        this.sendingRecordsSets = $.sendingRecordsSets;
         this.smtpLogin = $.smtpLogin;
         this.smtpPassword = $.smtpPassword;
         this.spamAction = $.spamAction;
@@ -252,6 +334,27 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param forceDkimAuthority If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDkimAuthority(@Nullable Output<Boolean> forceDkimAuthority) {
+            $.forceDkimAuthority = forceDkimAuthority;
+            return this;
+        }
+
+        /**
+         * @param forceDkimAuthority If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDkimAuthority(Boolean forceDkimAuthority) {
+            return forceDkimAuthority(Output.of(forceDkimAuthority));
+        }
+
+        /**
          * @param name The domain to add to Mailgun
          * 
          * @return builder
@@ -273,34 +376,98 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param receivingRecords A list of DNS records for receiving validation.
+         * @param openTracking (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
          * 
          * @return builder
          * 
          */
+        public Builder openTracking(@Nullable Output<Boolean> openTracking) {
+            $.openTracking = openTracking;
+            return this;
+        }
+
+        /**
+         * @param openTracking (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openTracking(Boolean openTracking) {
+            return openTracking(Output.of(openTracking));
+        }
+
+        /**
+         * @param receivingRecords A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use `receiving_records_set` instead.
+         * 
+         */
+        @Deprecated /* Use `receiving_records_set` instead. */
         public Builder receivingRecords(@Nullable Output<List<DomainReceivingRecordArgs>> receivingRecords) {
             $.receivingRecords = receivingRecords;
             return this;
         }
 
         /**
-         * @param receivingRecords A list of DNS records for receiving validation.
+         * @param receivingRecords A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `receiving_records_set` instead.
+         * 
          */
+        @Deprecated /* Use `receiving_records_set` instead. */
         public Builder receivingRecords(List<DomainReceivingRecordArgs> receivingRecords) {
             return receivingRecords(Output.of(receivingRecords));
         }
 
         /**
-         * @param receivingRecords A list of DNS records for receiving validation.
+         * @param receivingRecords A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use `receiving_records_set` instead.
+         * 
+         */
+        @Deprecated /* Use `receiving_records_set` instead. */
+        public Builder receivingRecords(DomainReceivingRecordArgs... receivingRecords) {
+            return receivingRecords(List.of(receivingRecords));
+        }
+
+        /**
+         * @param receivingRecordsSets A set of DNS records for receiving validation.
          * 
          * @return builder
          * 
          */
-        public Builder receivingRecords(DomainReceivingRecordArgs... receivingRecords) {
-            return receivingRecords(List.of(receivingRecords));
+        public Builder receivingRecordsSets(@Nullable Output<List<DomainReceivingRecordsSetArgs>> receivingRecordsSets) {
+            $.receivingRecordsSets = receivingRecordsSets;
+            return this;
+        }
+
+        /**
+         * @param receivingRecordsSets A set of DNS records for receiving validation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder receivingRecordsSets(List<DomainReceivingRecordsSetArgs> receivingRecordsSets) {
+            return receivingRecordsSets(Output.of(receivingRecordsSets));
+        }
+
+        /**
+         * @param receivingRecordsSets A set of DNS records for receiving validation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder receivingRecordsSets(DomainReceivingRecordsSetArgs... receivingRecordsSets) {
+            return receivingRecordsSets(List.of(receivingRecordsSets));
         }
 
         /**
@@ -325,34 +492,77 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sendingRecords A list of DNS records for sending validation.
+         * @param sendingRecords A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `sending_records_set` instead.
+         * 
          */
+        @Deprecated /* Use `sending_records_set` instead. */
         public Builder sendingRecords(@Nullable Output<List<DomainSendingRecordArgs>> sendingRecords) {
             $.sendingRecords = sendingRecords;
             return this;
         }
 
         /**
-         * @param sendingRecords A list of DNS records for sending validation.
+         * @param sendingRecords A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Use `sending_records_set` instead.
+         * 
          */
+        @Deprecated /* Use `sending_records_set` instead. */
         public Builder sendingRecords(List<DomainSendingRecordArgs> sendingRecords) {
             return sendingRecords(Output.of(sendingRecords));
         }
 
         /**
-         * @param sendingRecords A list of DNS records for sending validation.
+         * @param sendingRecords A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Use `sending_records_set` instead.
+         * 
+         */
+        @Deprecated /* Use `sending_records_set` instead. */
+        public Builder sendingRecords(DomainSendingRecordArgs... sendingRecords) {
+            return sendingRecords(List.of(sendingRecords));
+        }
+
+        /**
+         * @param sendingRecordsSets A set of DNS records for sending validation.
          * 
          * @return builder
          * 
          */
-        public Builder sendingRecords(DomainSendingRecordArgs... sendingRecords) {
-            return sendingRecords(List.of(sendingRecords));
+        public Builder sendingRecordsSets(@Nullable Output<List<DomainSendingRecordsSetArgs>> sendingRecordsSets) {
+            $.sendingRecordsSets = sendingRecordsSets;
+            return this;
+        }
+
+        /**
+         * @param sendingRecordsSets A set of DNS records for sending validation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendingRecordsSets(List<DomainSendingRecordsSetArgs> sendingRecordsSets) {
+            return sendingRecordsSets(Output.of(sendingRecordsSets));
+        }
+
+        /**
+         * @param sendingRecordsSets A set of DNS records for sending validation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sendingRecordsSets(DomainSendingRecordsSetArgs... sendingRecordsSets) {
+            return sendingRecordsSets(List.of(sendingRecordsSets));
         }
 
         /**

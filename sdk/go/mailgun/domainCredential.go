@@ -55,6 +55,13 @@ func NewDomainCredential(ctx *pulumi.Context,
 	if args.Password == nil {
 		return nil, errors.New("invalid value for required argument 'Password'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource DomainCredential
 	err := ctx.RegisterResource("mailgun:index/domainCredential:DomainCredential", name, args, &resource, opts...)
 	if err != nil {
@@ -210,6 +217,26 @@ func (o DomainCredentialOutput) ToDomainCredentialOutput() DomainCredentialOutpu
 
 func (o DomainCredentialOutput) ToDomainCredentialOutputWithContext(ctx context.Context) DomainCredentialOutput {
 	return o
+}
+
+// The domain to add credential of Mailgun.
+func (o DomainCredentialOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainCredential) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The local-part of the email address to create.
+func (o DomainCredentialOutput) Login() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainCredential) pulumi.StringOutput { return v.Login }).(pulumi.StringOutput)
+}
+
+// Password for user authentication.
+func (o DomainCredentialOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainCredential) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+}
+
+// The region where domain will be created. Default value is `us`.
+func (o DomainCredentialOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DomainCredential) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 type DomainCredentialArrayOutput struct{ *pulumi.OutputState }

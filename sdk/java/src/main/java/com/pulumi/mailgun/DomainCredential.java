@@ -11,6 +11,7 @@ import com.pulumi.mailgun.DomainCredentialArgs;
 import com.pulumi.mailgun.Utilities;
 import com.pulumi.mailgun.inputs.DomainCredentialState;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -20,6 +21,39 @@ import javax.annotation.Nullable;
  * &gt; **Note:** Please note that starting of v0.6.1 due to using new Mailgun Client API (v4), there is no possibility to retrieve previously created secrets via API. In order get it worked, it&#39;s recommended to mark `password` as ignored under `lifecycle` block. See below.
  * 
  * ## Example Usage
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.mailgun.DomainCredential;
+ * import com.pulumi.mailgun.DomainCredentialArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foobar = new DomainCredential(&#34;foobar&#34;, DomainCredentialArgs.builder()        
+ *             .domain(&#34;toto.com&#34;)
+ *             .lifecycle(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *             .login(&#34;test&#34;)
+ *             .password(&#34;supersecretpassword1234&#34;)
+ *             .region(&#34;us&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -123,6 +157,9 @@ public class DomainCredential extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "password"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

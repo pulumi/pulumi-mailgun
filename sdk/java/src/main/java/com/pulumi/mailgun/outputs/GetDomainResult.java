@@ -5,7 +5,9 @@ package com.pulumi.mailgun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.mailgun.outputs.GetDomainReceivingRecord;
+import com.pulumi.mailgun.outputs.GetDomainReceivingRecordsSet;
 import com.pulumi.mailgun.outputs.GetDomainSendingRecord;
+import com.pulumi.mailgun.outputs.GetDomainSendingRecordsSet;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -18,6 +20,7 @@ import javax.annotation.Nullable;
 public final class GetDomainResult {
     private @Nullable Integer dkimKeySize;
     private @Nullable String dkimSelector;
+    private @Nullable Boolean forceDkimAuthority;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -28,17 +31,28 @@ public final class GetDomainResult {
      * 
      */
     private String name;
+    private @Nullable Boolean openTracking;
     /**
      * @return A list of DNS records for receiving validation.
      * 
+     * @deprecated
+     * Use `receiving_records_set` instead.
+     * 
      */
+    @Deprecated /* Use `receiving_records_set` instead. */
     private List<GetDomainReceivingRecord> receivingRecords;
+    private List<GetDomainReceivingRecordsSet> receivingRecordsSets;
     private @Nullable String region;
     /**
      * @return A list of DNS records for sending validation.
      * 
+     * @deprecated
+     * Use `sending_records_set` instead.
+     * 
      */
+    @Deprecated /* Use `sending_records_set` instead. */
     private List<GetDomainSendingRecord> sendingRecords;
+    private List<GetDomainSendingRecordsSet> sendingRecordsSets;
     /**
      * @return The login email for the SMTP server.
      * 
@@ -48,7 +62,7 @@ public final class GetDomainResult {
      * @return The password to the SMTP server.
      * 
      */
-    private String smtpPassword;
+    private @Nullable String smtpPassword;
     /**
      * @return The spam filtering setting.
      * 
@@ -67,6 +81,9 @@ public final class GetDomainResult {
     public Optional<String> dkimSelector() {
         return Optional.ofNullable(this.dkimSelector);
     }
+    public Optional<Boolean> forceDkimAuthority() {
+        return Optional.ofNullable(this.forceDkimAuthority);
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -81,12 +98,22 @@ public final class GetDomainResult {
     public String name() {
         return this.name;
     }
+    public Optional<Boolean> openTracking() {
+        return Optional.ofNullable(this.openTracking);
+    }
     /**
      * @return A list of DNS records for receiving validation.
      * 
+     * @deprecated
+     * Use `receiving_records_set` instead.
+     * 
      */
+    @Deprecated /* Use `receiving_records_set` instead. */
     public List<GetDomainReceivingRecord> receivingRecords() {
         return this.receivingRecords;
+    }
+    public List<GetDomainReceivingRecordsSet> receivingRecordsSets() {
+        return this.receivingRecordsSets;
     }
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
@@ -94,9 +121,16 @@ public final class GetDomainResult {
     /**
      * @return A list of DNS records for sending validation.
      * 
+     * @deprecated
+     * Use `sending_records_set` instead.
+     * 
      */
+    @Deprecated /* Use `sending_records_set` instead. */
     public List<GetDomainSendingRecord> sendingRecords() {
         return this.sendingRecords;
+    }
+    public List<GetDomainSendingRecordsSet> sendingRecordsSets() {
+        return this.sendingRecordsSets;
     }
     /**
      * @return The login email for the SMTP server.
@@ -109,8 +143,8 @@ public final class GetDomainResult {
      * @return The password to the SMTP server.
      * 
      */
-    public String smtpPassword() {
-        return this.smtpPassword;
+    public Optional<String> smtpPassword() {
+        return Optional.ofNullable(this.smtpPassword);
     }
     /**
      * @return The spam filtering setting.
@@ -138,13 +172,17 @@ public final class GetDomainResult {
     public static final class Builder {
         private @Nullable Integer dkimKeySize;
         private @Nullable String dkimSelector;
+        private @Nullable Boolean forceDkimAuthority;
         private String id;
         private String name;
+        private @Nullable Boolean openTracking;
         private List<GetDomainReceivingRecord> receivingRecords;
+        private List<GetDomainReceivingRecordsSet> receivingRecordsSets;
         private @Nullable String region;
         private List<GetDomainSendingRecord> sendingRecords;
+        private List<GetDomainSendingRecordsSet> sendingRecordsSets;
         private String smtpLogin;
-        private String smtpPassword;
+        private @Nullable String smtpPassword;
         private @Nullable String spamAction;
         private @Nullable Boolean wildcard;
         public Builder() {}
@@ -152,11 +190,15 @@ public final class GetDomainResult {
     	      Objects.requireNonNull(defaults);
     	      this.dkimKeySize = defaults.dkimKeySize;
     	      this.dkimSelector = defaults.dkimSelector;
+    	      this.forceDkimAuthority = defaults.forceDkimAuthority;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.openTracking = defaults.openTracking;
     	      this.receivingRecords = defaults.receivingRecords;
+    	      this.receivingRecordsSets = defaults.receivingRecordsSets;
     	      this.region = defaults.region;
     	      this.sendingRecords = defaults.sendingRecords;
+    	      this.sendingRecordsSets = defaults.sendingRecordsSets;
     	      this.smtpLogin = defaults.smtpLogin;
     	      this.smtpPassword = defaults.smtpPassword;
     	      this.spamAction = defaults.spamAction;
@@ -174,6 +216,11 @@ public final class GetDomainResult {
             return this;
         }
         @CustomType.Setter
+        public Builder forceDkimAuthority(@Nullable Boolean forceDkimAuthority) {
+            this.forceDkimAuthority = forceDkimAuthority;
+            return this;
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
@@ -184,12 +231,25 @@ public final class GetDomainResult {
             return this;
         }
         @CustomType.Setter
+        public Builder openTracking(@Nullable Boolean openTracking) {
+            this.openTracking = openTracking;
+            return this;
+        }
+        @CustomType.Setter
         public Builder receivingRecords(List<GetDomainReceivingRecord> receivingRecords) {
             this.receivingRecords = Objects.requireNonNull(receivingRecords);
             return this;
         }
         public Builder receivingRecords(GetDomainReceivingRecord... receivingRecords) {
             return receivingRecords(List.of(receivingRecords));
+        }
+        @CustomType.Setter
+        public Builder receivingRecordsSets(List<GetDomainReceivingRecordsSet> receivingRecordsSets) {
+            this.receivingRecordsSets = Objects.requireNonNull(receivingRecordsSets);
+            return this;
+        }
+        public Builder receivingRecordsSets(GetDomainReceivingRecordsSet... receivingRecordsSets) {
+            return receivingRecordsSets(List.of(receivingRecordsSets));
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
@@ -205,13 +265,21 @@ public final class GetDomainResult {
             return sendingRecords(List.of(sendingRecords));
         }
         @CustomType.Setter
+        public Builder sendingRecordsSets(List<GetDomainSendingRecordsSet> sendingRecordsSets) {
+            this.sendingRecordsSets = Objects.requireNonNull(sendingRecordsSets);
+            return this;
+        }
+        public Builder sendingRecordsSets(GetDomainSendingRecordsSet... sendingRecordsSets) {
+            return sendingRecordsSets(List.of(sendingRecordsSets));
+        }
+        @CustomType.Setter
         public Builder smtpLogin(String smtpLogin) {
             this.smtpLogin = Objects.requireNonNull(smtpLogin);
             return this;
         }
         @CustomType.Setter
-        public Builder smtpPassword(String smtpPassword) {
-            this.smtpPassword = Objects.requireNonNull(smtpPassword);
+        public Builder smtpPassword(@Nullable String smtpPassword) {
+            this.smtpPassword = smtpPassword;
             return this;
         }
         @CustomType.Setter
@@ -228,11 +296,15 @@ public final class GetDomainResult {
             final var o = new GetDomainResult();
             o.dkimKeySize = dkimKeySize;
             o.dkimSelector = dkimSelector;
+            o.forceDkimAuthority = forceDkimAuthority;
             o.id = id;
             o.name = name;
+            o.openTracking = openTracking;
             o.receivingRecords = receivingRecords;
+            o.receivingRecordsSets = receivingRecordsSets;
             o.region = region;
             o.sendingRecords = sendingRecords;
+            o.sendingRecordsSets = sendingRecordsSets;
             o.smtpLogin = smtpLogin;
             o.smtpPassword = smtpPassword;
             o.spamAction = spamAction;

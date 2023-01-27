@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			domain, err := mailgun.LookupDomain(ctx, &GetDomainArgs{
+//			domain, err := mailgun.LookupDomain(ctx, &mailgun.LookupDomainArgs{
 //				Name: "test.example.com",
 //			}, nil)
 //			if err != nil {
@@ -38,8 +38,8 @@ import (
 //			_, err = route53.NewRecord(ctx, "mailgun-mx", &route53.RecordArgs{
 //				Name: pulumi.Any(data.Mailgun.Domain.Name),
 //				Records: pulumi.StringArray{
-//					pulumi.String(fmt.Sprintf("%v%v%v%v", domain.ReceivingRecords[0].Priority, " ", domain.ReceivingRecords[0].Value, ".")),
-//					pulumi.String(fmt.Sprintf("%v%v%v%v", domain.ReceivingRecords[1].Priority, " ", domain.ReceivingRecords[1].Value, ".")),
+//					pulumi.String(fmt.Sprintf("%v %v.", domain.ReceivingRecords[0].Priority, domain.ReceivingRecords[0].Value)),
+//					pulumi.String(fmt.Sprintf("%v %v.", domain.ReceivingRecords[1].Priority, domain.ReceivingRecords[1].Value)),
 //				},
 //				Ttl:    pulumi.Int(3600),
 //				Type:   pulumi.String("MX"),
@@ -64,10 +64,13 @@ func LookupDomain(ctx *pulumi.Context, args *LookupDomainArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getDomain.
 type LookupDomainArgs struct {
-	DkimKeySize  *int    `pulumi:"dkimKeySize"`
-	DkimSelector *string `pulumi:"dkimSelector"`
+	DkimKeySize        *int    `pulumi:"dkimKeySize"`
+	DkimSelector       *string `pulumi:"dkimSelector"`
+	ForceDkimAuthority *bool   `pulumi:"forceDkimAuthority"`
 	// The name of the domain.
-	Name   string  `pulumi:"name"`
+	Name         string `pulumi:"name"`
+	OpenTracking *bool  `pulumi:"openTracking"`
+	// The region where domain will be created. Default value is `us`.
 	Region *string `pulumi:"region"`
 	// The password to the SMTP server.
 	SmtpPassword *string `pulumi:"smtpPassword"`
@@ -79,21 +82,29 @@ type LookupDomainArgs struct {
 
 // A collection of values returned by getDomain.
 type LookupDomainResult struct {
-	DkimKeySize  *int    `pulumi:"dkimKeySize"`
-	DkimSelector *string `pulumi:"dkimSelector"`
+	DkimKeySize        *int    `pulumi:"dkimKeySize"`
+	DkimSelector       *string `pulumi:"dkimSelector"`
+	ForceDkimAuthority *bool   `pulumi:"forceDkimAuthority"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The name of the record.
-	Name string `pulumi:"name"`
+	Name         string `pulumi:"name"`
+	OpenTracking *bool  `pulumi:"openTracking"`
 	// A list of DNS records for receiving validation.
-	ReceivingRecords []GetDomainReceivingRecord `pulumi:"receivingRecords"`
-	Region           *string                    `pulumi:"region"`
+	//
+	// Deprecated: Use `receiving_records_set` instead.
+	ReceivingRecords     []GetDomainReceivingRecord     `pulumi:"receivingRecords"`
+	ReceivingRecordsSets []GetDomainReceivingRecordsSet `pulumi:"receivingRecordsSets"`
+	Region               *string                        `pulumi:"region"`
 	// A list of DNS records for sending validation.
-	SendingRecords []GetDomainSendingRecord `pulumi:"sendingRecords"`
+	//
+	// Deprecated: Use `sending_records_set` instead.
+	SendingRecords     []GetDomainSendingRecord     `pulumi:"sendingRecords"`
+	SendingRecordsSets []GetDomainSendingRecordsSet `pulumi:"sendingRecordsSets"`
 	// The login email for the SMTP server.
 	SmtpLogin string `pulumi:"smtpLogin"`
 	// The password to the SMTP server.
-	SmtpPassword string `pulumi:"smtpPassword"`
+	SmtpPassword *string `pulumi:"smtpPassword"`
 	// The spam filtering setting.
 	SpamAction *string `pulumi:"spamAction"`
 	// Whether or not the domain will accept email for sub-domains.
@@ -115,10 +126,13 @@ func LookupDomainOutput(ctx *pulumi.Context, args LookupDomainOutputArgs, opts .
 
 // A collection of arguments for invoking getDomain.
 type LookupDomainOutputArgs struct {
-	DkimKeySize  pulumi.IntPtrInput    `pulumi:"dkimKeySize"`
-	DkimSelector pulumi.StringPtrInput `pulumi:"dkimSelector"`
+	DkimKeySize        pulumi.IntPtrInput    `pulumi:"dkimKeySize"`
+	DkimSelector       pulumi.StringPtrInput `pulumi:"dkimSelector"`
+	ForceDkimAuthority pulumi.BoolPtrInput   `pulumi:"forceDkimAuthority"`
 	// The name of the domain.
-	Name   pulumi.StringInput    `pulumi:"name"`
+	Name         pulumi.StringInput  `pulumi:"name"`
+	OpenTracking pulumi.BoolPtrInput `pulumi:"openTracking"`
+	// The region where domain will be created. Default value is `us`.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The password to the SMTP server.
 	SmtpPassword pulumi.StringPtrInput `pulumi:"smtpPassword"`
@@ -155,6 +169,10 @@ func (o LookupDomainResultOutput) DkimSelector() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDomainResult) *string { return v.DkimSelector }).(pulumi.StringPtrOutput)
 }
 
+func (o LookupDomainResultOutput) ForceDkimAuthority() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupDomainResult) *bool { return v.ForceDkimAuthority }).(pulumi.BoolPtrOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupDomainResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainResult) string { return v.Id }).(pulumi.StringOutput)
@@ -165,9 +183,19 @@ func (o LookupDomainResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o LookupDomainResultOutput) OpenTracking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupDomainResult) *bool { return v.OpenTracking }).(pulumi.BoolPtrOutput)
+}
+
 // A list of DNS records for receiving validation.
+//
+// Deprecated: Use `receiving_records_set` instead.
 func (o LookupDomainResultOutput) ReceivingRecords() GetDomainReceivingRecordArrayOutput {
 	return o.ApplyT(func(v LookupDomainResult) []GetDomainReceivingRecord { return v.ReceivingRecords }).(GetDomainReceivingRecordArrayOutput)
+}
+
+func (o LookupDomainResultOutput) ReceivingRecordsSets() GetDomainReceivingRecordsSetArrayOutput {
+	return o.ApplyT(func(v LookupDomainResult) []GetDomainReceivingRecordsSet { return v.ReceivingRecordsSets }).(GetDomainReceivingRecordsSetArrayOutput)
 }
 
 func (o LookupDomainResultOutput) Region() pulumi.StringPtrOutput {
@@ -175,8 +203,14 @@ func (o LookupDomainResultOutput) Region() pulumi.StringPtrOutput {
 }
 
 // A list of DNS records for sending validation.
+//
+// Deprecated: Use `sending_records_set` instead.
 func (o LookupDomainResultOutput) SendingRecords() GetDomainSendingRecordArrayOutput {
 	return o.ApplyT(func(v LookupDomainResult) []GetDomainSendingRecord { return v.SendingRecords }).(GetDomainSendingRecordArrayOutput)
+}
+
+func (o LookupDomainResultOutput) SendingRecordsSets() GetDomainSendingRecordsSetArrayOutput {
+	return o.ApplyT(func(v LookupDomainResult) []GetDomainSendingRecordsSet { return v.SendingRecordsSets }).(GetDomainSendingRecordsSetArrayOutput)
 }
 
 // The login email for the SMTP server.
@@ -185,8 +219,8 @@ func (o LookupDomainResultOutput) SmtpLogin() pulumi.StringOutput {
 }
 
 // The password to the SMTP server.
-func (o LookupDomainResultOutput) SmtpPassword() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDomainResult) string { return v.SmtpPassword }).(pulumi.StringOutput)
+func (o LookupDomainResultOutput) SmtpPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDomainResult) *string { return v.SmtpPassword }).(pulumi.StringPtrOutput)
 }
 
 // The spam filtering setting.

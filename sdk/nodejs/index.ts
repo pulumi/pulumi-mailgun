@@ -5,12 +5,36 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./domain";
-export * from "./domainCredential";
-export * from "./getDomain";
-export * from "./provider";
-export * from "./route";
-export * from "./webhook";
+export { DomainArgs, DomainState } from "./domain";
+export type Domain = import("./domain").Domain;
+export const Domain: typeof import("./domain").Domain = null as any;
+utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
+
+export { DomainCredentialArgs, DomainCredentialState } from "./domainCredential";
+export type DomainCredential = import("./domainCredential").DomainCredential;
+export const DomainCredential: typeof import("./domainCredential").DomainCredential = null as any;
+utilities.lazyLoad(exports, ["DomainCredential"], () => require("./domainCredential"));
+
+export { GetDomainArgs, GetDomainResult, GetDomainOutputArgs } from "./getDomain";
+export const getDomain: typeof import("./getDomain").getDomain = null as any;
+export const getDomainOutput: typeof import("./getDomain").getDomainOutput = null as any;
+utilities.lazyLoad(exports, ["getDomain","getDomainOutput"], () => require("./getDomain"));
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { RouteArgs, RouteState } from "./route";
+export type Route = import("./route").Route;
+export const Route: typeof import("./route").Route = null as any;
+utilities.lazyLoad(exports, ["Route"], () => require("./route"));
+
+export { WebhookArgs, WebhookState } from "./webhook";
+export type Webhook = import("./webhook").Webhook;
+export const Webhook: typeof import("./webhook").Webhook = null as any;
+utilities.lazyLoad(exports, ["Webhook"], () => require("./webhook"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -20,12 +44,6 @@ export {
     config,
     types,
 };
-
-// Import resources to register:
-import { Domain } from "./domain";
-import { DomainCredential } from "./domainCredential";
-import { Route } from "./route";
-import { Webhook } from "./webhook";
 
 const _module = {
     version: utilities.getVersion(),
@@ -48,9 +66,6 @@ pulumi.runtime.registerResourceModule("mailgun", "index/domain", _module)
 pulumi.runtime.registerResourceModule("mailgun", "index/domainCredential", _module)
 pulumi.runtime.registerResourceModule("mailgun", "index/route", _module)
 pulumi.runtime.registerResourceModule("mailgun", "index/webhook", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("mailgun", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

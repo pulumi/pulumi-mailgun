@@ -10,7 +10,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class DomainSendingRecord {
+public final class DomainSendingRecordsSet {
     private @Nullable String id;
     /**
      * @return The domain to add to Mailgun
@@ -33,7 +33,7 @@ public final class DomainSendingRecord {
      */
     private @Nullable String value;
 
-    private DomainSendingRecord() {}
+    private DomainSendingRecordsSet() {}
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
@@ -70,7 +70,7 @@ public final class DomainSendingRecord {
         return new Builder();
     }
 
-    public static Builder builder(DomainSendingRecord defaults) {
+    public static Builder builder(DomainSendingRecordsSet defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -81,7 +81,7 @@ public final class DomainSendingRecord {
         private @Nullable String valid;
         private @Nullable String value;
         public Builder() {}
-        public Builder(DomainSendingRecord defaults) {
+        public Builder(DomainSendingRecordsSet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.name = defaults.name;
@@ -115,8 +115,8 @@ public final class DomainSendingRecord {
             this.value = value;
             return this;
         }
-        public DomainSendingRecord build() {
-            final var o = new DomainSendingRecord();
+        public DomainSendingRecordsSet build() {
+            final var o = new DomainSendingRecordsSet();
             o.id = id;
             o.name = name;
             o.recordType = recordType;

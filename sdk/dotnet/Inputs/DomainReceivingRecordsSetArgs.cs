@@ -10,16 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Mailgun.Inputs
 {
 
-    public sealed class DomainSendingRecordArgs : global::Pulumi.ResourceArgs
+    public sealed class DomainReceivingRecordsSetArgs : global::Pulumi.ResourceArgs
     {
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The domain to add to Mailgun
+        /// The priority of the record.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("priority")]
+        public Input<string>? Priority { get; set; }
 
         /// <summary>
         /// The record type.
@@ -39,9 +39,9 @@ namespace Pulumi.Mailgun.Inputs
         [Input("value")]
         public Input<string>? Value { get; set; }
 
-        public DomainSendingRecordArgs()
+        public DomainReceivingRecordsSetArgs()
         {
         }
-        public static new DomainSendingRecordArgs Empty => new DomainSendingRecordArgs();
+        public static new DomainReceivingRecordsSetArgs Empty => new DomainReceivingRecordsSetArgs();
     }
 }

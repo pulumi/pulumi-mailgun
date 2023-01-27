@@ -230,6 +230,26 @@ func (o WebhookOutput) ToWebhookOutputWithContext(ctx context.Context) WebhookOu
 	return o
 }
 
+// The domain to add to Mailgun
+func (o WebhookOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
+func (o WebhookOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
+}
+
+// The region where domain will be created. Default value is `us`.
+func (o WebhookOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Webhook) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The urls of webhook
+func (o WebhookOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Webhook) pulumi.StringArrayOutput { return v.Urls }).(pulumi.StringArrayOutput)
+}
+
 type WebhookArrayOutput struct{ *pulumi.OutputState }
 
 func (WebhookArrayOutput) ElementType() reflect.Type {

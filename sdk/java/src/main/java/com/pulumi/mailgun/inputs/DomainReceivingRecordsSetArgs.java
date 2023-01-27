@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class DomainReceivingRecordArgs extends com.pulumi.resources.ResourceArgs {
+public final class DomainReceivingRecordsSetArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final DomainReceivingRecordArgs Empty = new DomainReceivingRecordArgs();
+    public static final DomainReceivingRecordsSetArgs Empty = new DomainReceivingRecordsSetArgs();
 
     @Import(name="id")
     private @Nullable Output<String> id;
@@ -82,9 +82,9 @@ public final class DomainReceivingRecordArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.value);
     }
 
-    private DomainReceivingRecordArgs() {}
+    private DomainReceivingRecordsSetArgs() {}
 
-    private DomainReceivingRecordArgs(DomainReceivingRecordArgs $) {
+    private DomainReceivingRecordsSetArgs(DomainReceivingRecordsSetArgs $) {
         this.id = $.id;
         this.priority = $.priority;
         this.recordType = $.recordType;
@@ -95,19 +95,19 @@ public final class DomainReceivingRecordArgs extends com.pulumi.resources.Resour
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(DomainReceivingRecordArgs defaults) {
+    public static Builder builder(DomainReceivingRecordsSetArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private DomainReceivingRecordArgs $;
+        private DomainReceivingRecordsSetArgs $;
 
         public Builder() {
-            $ = new DomainReceivingRecordArgs();
+            $ = new DomainReceivingRecordsSetArgs();
         }
 
-        public Builder(DomainReceivingRecordArgs defaults) {
-            $ = new DomainReceivingRecordArgs(Objects.requireNonNull(defaults));
+        public Builder(DomainReceivingRecordsSetArgs defaults) {
+            $ = new DomainReceivingRecordsSetArgs(Objects.requireNonNull(defaults));
         }
 
         public Builder id(@Nullable Output<String> id) {
@@ -203,7 +203,7 @@ public final class DomainReceivingRecordArgs extends com.pulumi.resources.Resour
             return value(Output.of(value));
         }
 
-        public DomainReceivingRecordArgs build() {
+        public DomainReceivingRecordsSetArgs build() {
             return $;
         }
     }

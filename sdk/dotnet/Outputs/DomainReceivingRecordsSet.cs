@@ -11,37 +11,37 @@ namespace Pulumi.Mailgun.Outputs
 {
 
     [OutputType]
-    public sealed class GetDomainReceivingRecordResult
+    public sealed class DomainReceivingRecordsSet
     {
-        public readonly string Id;
+        public readonly string? Id;
         /// <summary>
         /// The priority of the record.
         /// </summary>
-        public readonly string Priority;
+        public readonly string? Priority;
         /// <summary>
         /// The record type.
         /// </summary>
-        public readonly string RecordType;
+        public readonly string? RecordType;
         /// <summary>
         /// `"valid"` if the record is valid.
         /// </summary>
-        public readonly string Valid;
+        public readonly string? Valid;
         /// <summary>
         /// The value of the record.
         /// </summary>
-        public readonly string Value;
+        public readonly string? Value;
 
         [OutputConstructor]
-        private GetDomainReceivingRecordResult(
-            string id,
+        private DomainReceivingRecordsSet(
+            string? id,
 
-            string priority,
+            string? priority,
 
-            string recordType,
+            string? recordType,
 
-            string valid,
+            string? valid,
 
-            string value)
+            string? value)
         {
             Id = id;
             Priority = priority;

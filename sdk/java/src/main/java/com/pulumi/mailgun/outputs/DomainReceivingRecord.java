@@ -11,6 +11,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DomainReceivingRecord {
+    private @Nullable String id;
     /**
      * @return The priority of the record.
      * 
@@ -33,6 +34,9 @@ public final class DomainReceivingRecord {
     private @Nullable String value;
 
     private DomainReceivingRecord() {}
+    public Optional<String> id() {
+        return Optional.ofNullable(this.id);
+    }
     /**
      * @return The priority of the record.
      * 
@@ -71,6 +75,7 @@ public final class DomainReceivingRecord {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String id;
         private @Nullable String priority;
         private @Nullable String recordType;
         private @Nullable String valid;
@@ -78,12 +83,18 @@ public final class DomainReceivingRecord {
         public Builder() {}
         public Builder(DomainReceivingRecord defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.id = defaults.id;
     	      this.priority = defaults.priority;
     	      this.recordType = defaults.recordType;
     	      this.valid = defaults.valid;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
+        public Builder id(@Nullable String id) {
+            this.id = id;
+            return this;
+        }
         @CustomType.Setter
         public Builder priority(@Nullable String priority) {
             this.priority = priority;
@@ -106,6 +117,7 @@ public final class DomainReceivingRecord {
         }
         public DomainReceivingRecord build() {
             final var o = new DomainReceivingRecord();
+            o.id = id;
             o.priority = priority;
             o.recordType = recordType;
             o.valid = valid;

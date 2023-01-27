@@ -20,6 +20,39 @@ import javax.annotation.Nullable;
  * Provides a Mailgun Route resource. This can be used to create and manage routes on Mailgun.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.mailgun.Route;
+ * import com.pulumi.mailgun.RouteArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Route(&#34;default&#34;, RouteArgs.builder()        
+ *             .actions(            
+ *                 &#34;forward(&#39;http://example.com/api/v1/foos/&#39;)&#34;,
+ *                 &#34;stop()&#34;)
+ *             .description(&#34;inbound&#34;)
+ *             .expression(&#34;match_recipient(&#39;.*@foo.example.com&#39;)&#34;)
+ *             .priority(&#34;0&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

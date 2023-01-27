@@ -20,6 +20,37 @@ import javax.annotation.Nullable;
  * create and manage applications on Mailgun.
  * 
  * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.mailgun.Webhook;
+ * import com.pulumi.mailgun.WebhookArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Webhook(&#34;default&#34;, WebhookArgs.builder()        
+ *             .domain(&#34;test.example.com&#34;)
+ *             .kind(&#34;delivered&#34;)
+ *             .region(&#34;us&#34;)
+ *             .urls(&#34;https://example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  */
 @ResourceType(type="mailgun:index/webhook:Webhook")
