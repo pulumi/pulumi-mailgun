@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class DomainReceivingRecordArgs extends com.pulumi.resources.ResourceArgs {
+public final class DomainSendingRecordsSetArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final DomainReceivingRecordArgs Empty = new DomainReceivingRecordArgs();
+    public static final DomainSendingRecordsSetArgs Empty = new DomainSendingRecordsSetArgs();
 
     @Import(name="id")
     private @Nullable Output<String> id;
@@ -23,18 +23,18 @@ public final class DomainReceivingRecordArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The priority of the record.
+     * The domain to add to Mailgun
      * 
      */
-    @Import(name="priority")
-    private @Nullable Output<String> priority;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
-     * @return The priority of the record.
+     * @return The domain to add to Mailgun
      * 
      */
-    public Optional<Output<String>> priority() {
-        return Optional.ofNullable(this.priority);
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -82,11 +82,11 @@ public final class DomainReceivingRecordArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.value);
     }
 
-    private DomainReceivingRecordArgs() {}
+    private DomainSendingRecordsSetArgs() {}
 
-    private DomainReceivingRecordArgs(DomainReceivingRecordArgs $) {
+    private DomainSendingRecordsSetArgs(DomainSendingRecordsSetArgs $) {
         this.id = $.id;
-        this.priority = $.priority;
+        this.name = $.name;
         this.recordType = $.recordType;
         this.valid = $.valid;
         this.value = $.value;
@@ -95,19 +95,19 @@ public final class DomainReceivingRecordArgs extends com.pulumi.resources.Resour
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(DomainReceivingRecordArgs defaults) {
+    public static Builder builder(DomainSendingRecordsSetArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private DomainReceivingRecordArgs $;
+        private DomainSendingRecordsSetArgs $;
 
         public Builder() {
-            $ = new DomainReceivingRecordArgs();
+            $ = new DomainSendingRecordsSetArgs();
         }
 
-        public Builder(DomainReceivingRecordArgs defaults) {
-            $ = new DomainReceivingRecordArgs(Objects.requireNonNull(defaults));
+        public Builder(DomainSendingRecordsSetArgs defaults) {
+            $ = new DomainSendingRecordsSetArgs(Objects.requireNonNull(defaults));
         }
 
         public Builder id(@Nullable Output<String> id) {
@@ -120,24 +120,24 @@ public final class DomainReceivingRecordArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param priority The priority of the record.
+         * @param name The domain to add to Mailgun
          * 
          * @return builder
          * 
          */
-        public Builder priority(@Nullable Output<String> priority) {
-            $.priority = priority;
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
             return this;
         }
 
         /**
-         * @param priority The priority of the record.
+         * @param name The domain to add to Mailgun
          * 
          * @return builder
          * 
          */
-        public Builder priority(String priority) {
-            return priority(Output.of(priority));
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**
@@ -203,7 +203,7 @@ public final class DomainReceivingRecordArgs extends com.pulumi.resources.Resour
             return value(Output.of(value));
         }
 
-        public DomainReceivingRecordArgs build() {
+        public DomainSendingRecordsSetArgs build() {
             return $;
         }
     }

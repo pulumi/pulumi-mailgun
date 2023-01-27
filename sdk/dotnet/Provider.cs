@@ -16,7 +16,7 @@ namespace Pulumi.Mailgun
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [MailgunResourceType("pulumi:providers:mailgun")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         [Output("apiKey")]
         public Output<string> ApiKey { get; private set; } = null!;
@@ -47,7 +47,7 @@ namespace Pulumi.Mailgun
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         [Input("apiKey", required: true)]
         public Input<string> ApiKey { get; set; } = null!;
@@ -55,5 +55,6 @@ namespace Pulumi.Mailgun
         public ProviderArgs()
         {
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

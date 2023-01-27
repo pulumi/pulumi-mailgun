@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -18,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as mailgun from "@pulumi/mailgun";
  *
  * // Create a new Mailgun domain
- * const defaultDomain = new mailgun.Domain("default", {
+ * const _default = new mailgun.Domain("default", {
  *     dkimKeySize: 1024,
  *     region: "us",
  *     smtpPassword: "supersecretpassword1234",
@@ -73,21 +74,41 @@ export class Domain extends pulumi.CustomResource {
      */
     public readonly dkimSelector!: pulumi.Output<string | undefined>;
     /**
+     * If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+     */
+    public readonly forceDkimAuthority!: pulumi.Output<boolean | undefined>;
+    /**
      * The domain to add to Mailgun
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A list of DNS records for receiving validation.
+     * (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
+     */
+    public readonly openTracking!: pulumi.Output<boolean | undefined>;
+    /**
+     * A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
+     *
+     * @deprecated Use `receiving_records_set` instead.
      */
     public /*out*/ readonly receivingRecords!: pulumi.Output<outputs.DomainReceivingRecord[]>;
+    /**
+     * A set of DNS records for receiving validation.
+     */
+    public /*out*/ readonly receivingRecordsSets!: pulumi.Output<outputs.DomainReceivingRecordsSet[]>;
     /**
      * The region where domain will be created. Default value is `us`.
      */
     public readonly region!: pulumi.Output<string | undefined>;
     /**
-     * A list of DNS records for sending validation.
+     * A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
+     *
+     * @deprecated Use `sending_records_set` instead.
      */
     public /*out*/ readonly sendingRecords!: pulumi.Output<outputs.DomainSendingRecord[]>;
+    /**
+     * A set of DNS records for sending validation.
+     */
+    public /*out*/ readonly sendingRecordsSets!: pulumi.Output<outputs.DomainSendingRecordsSet[]>;
     /**
      * The login email for the SMTP server.
      */
@@ -95,7 +116,7 @@ export class Domain extends pulumi.CustomResource {
     /**
      * Password for SMTP authentication
      */
-    public readonly smtpPassword!: pulumi.Output<string>;
+    public readonly smtpPassword!: pulumi.Output<string | undefined>;
     /**
      * `disabled` or `tag` Disable, no spam
      * filtering will occur for inbound messages. Tag, messages
@@ -123,10 +144,14 @@ export class Domain extends pulumi.CustomResource {
             const state = argsOrState as DomainState | undefined;
             resourceInputs["dkimKeySize"] = state ? state.dkimKeySize : undefined;
             resourceInputs["dkimSelector"] = state ? state.dkimSelector : undefined;
+            resourceInputs["forceDkimAuthority"] = state ? state.forceDkimAuthority : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["openTracking"] = state ? state.openTracking : undefined;
             resourceInputs["receivingRecords"] = state ? state.receivingRecords : undefined;
+            resourceInputs["receivingRecordsSets"] = state ? state.receivingRecordsSets : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["sendingRecords"] = state ? state.sendingRecords : undefined;
+            resourceInputs["sendingRecordsSets"] = state ? state.sendingRecordsSets : undefined;
             resourceInputs["smtpLogin"] = state ? state.smtpLogin : undefined;
             resourceInputs["smtpPassword"] = state ? state.smtpPassword : undefined;
             resourceInputs["spamAction"] = state ? state.spamAction : undefined;
@@ -135,16 +160,22 @@ export class Domain extends pulumi.CustomResource {
             const args = argsOrState as DomainArgs | undefined;
             resourceInputs["dkimKeySize"] = args ? args.dkimKeySize : undefined;
             resourceInputs["dkimSelector"] = args ? args.dkimSelector : undefined;
+            resourceInputs["forceDkimAuthority"] = args ? args.forceDkimAuthority : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["openTracking"] = args ? args.openTracking : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["smtpPassword"] = args ? args.smtpPassword : undefined;
+            resourceInputs["smtpPassword"] = args?.smtpPassword ? pulumi.secret(args.smtpPassword) : undefined;
             resourceInputs["spamAction"] = args ? args.spamAction : undefined;
             resourceInputs["wildcard"] = args ? args.wildcard : undefined;
             resourceInputs["receivingRecords"] = undefined /*out*/;
+            resourceInputs["receivingRecordsSets"] = undefined /*out*/;
             resourceInputs["sendingRecords"] = undefined /*out*/;
+            resourceInputs["sendingRecordsSets"] = undefined /*out*/;
             resourceInputs["smtpLogin"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["smtpPassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Domain.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -162,21 +193,41 @@ export interface DomainState {
      */
     dkimSelector?: pulumi.Input<string>;
     /**
+     * If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+     */
+    forceDkimAuthority?: pulumi.Input<boolean>;
+    /**
      * The domain to add to Mailgun
      */
     name?: pulumi.Input<string>;
     /**
-     * A list of DNS records for receiving validation.
+     * (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
+     */
+    openTracking?: pulumi.Input<boolean>;
+    /**
+     * A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
+     *
+     * @deprecated Use `receiving_records_set` instead.
      */
     receivingRecords?: pulumi.Input<pulumi.Input<inputs.DomainReceivingRecord>[]>;
+    /**
+     * A set of DNS records for receiving validation.
+     */
+    receivingRecordsSets?: pulumi.Input<pulumi.Input<inputs.DomainReceivingRecordsSet>[]>;
     /**
      * The region where domain will be created. Default value is `us`.
      */
     region?: pulumi.Input<string>;
     /**
-     * A list of DNS records for sending validation.
+     * A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
+     *
+     * @deprecated Use `sending_records_set` instead.
      */
     sendingRecords?: pulumi.Input<pulumi.Input<inputs.DomainSendingRecord>[]>;
+    /**
+     * A set of DNS records for sending validation.
+     */
+    sendingRecordsSets?: pulumi.Input<pulumi.Input<inputs.DomainSendingRecordsSet>[]>;
     /**
      * The login email for the SMTP server.
      */
@@ -211,9 +262,17 @@ export interface DomainArgs {
      */
     dkimSelector?: pulumi.Input<string>;
     /**
+     * If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+     */
+    forceDkimAuthority?: pulumi.Input<boolean>;
+    /**
      * The domain to add to Mailgun
      */
     name?: pulumi.Input<string>;
+    /**
+     * (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
+     */
+    openTracking?: pulumi.Input<boolean>;
     /**
      * The region where domain will be created. Default value is `us`.
      */

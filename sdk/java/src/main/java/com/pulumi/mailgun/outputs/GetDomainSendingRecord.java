@@ -9,6 +9,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDomainSendingRecord {
+    private String id;
     /**
      * @return The name of the domain.
      * 
@@ -31,6 +32,9 @@ public final class GetDomainSendingRecord {
     private String value;
 
     private GetDomainSendingRecord() {}
+    public String id() {
+        return this.id;
+    }
     /**
      * @return The name of the domain.
      * 
@@ -69,6 +73,7 @@ public final class GetDomainSendingRecord {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String id;
         private String name;
         private String recordType;
         private String valid;
@@ -76,12 +81,18 @@ public final class GetDomainSendingRecord {
         public Builder() {}
         public Builder(GetDomainSendingRecord defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.recordType = defaults.recordType;
     	      this.valid = defaults.valid;
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
+        public Builder id(String id) {
+            this.id = Objects.requireNonNull(id);
+            return this;
+        }
         @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
@@ -104,6 +115,7 @@ public final class GetDomainSendingRecord {
         }
         public GetDomainSendingRecord build() {
             final var o = new GetDomainSendingRecord();
+            o.id = id;
             o.name = name;
             o.recordType = recordType;
             o.valid = valid;

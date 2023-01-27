@@ -242,6 +242,29 @@ func (o RouteOutput) ToRouteOutputWithContext(ctx context.Context) RouteOutput {
 	return o
 }
 
+func (o RouteOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Route) pulumi.StringArrayOutput { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+func (o RouteOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Route) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A filter expression like `match_recipient('.*@gmail.com')`
+func (o RouteOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.Expression }).(pulumi.StringOutput)
+}
+
+// Smaller number indicates higher priority. Higher priority routes are handled first.
+func (o RouteOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v *Route) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The region where domain will be created. Default value is `us`.
+func (o RouteOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Route) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+}
+
 type RouteArrayOutput struct{ *pulumi.OutputState }
 
 func (RouteArrayOutput) ElementType() reflect.Type {

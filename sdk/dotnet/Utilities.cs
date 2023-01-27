@@ -74,7 +74,7 @@ namespace Pulumi.Mailgun
         }
     }
 
-    internal sealed class MailgunResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    internal sealed class MailgunResourceTypeAttribute : global::Pulumi.ResourceTypeAttribute
     {
         public MailgunResourceTypeAttribute(string type) : base(type, Utilities.Version)
         {

@@ -11,6 +11,7 @@ import (
 )
 
 type DomainReceivingRecord struct {
+	Id *string `pulumi:"id"`
 	// The priority of the record.
 	Priority *string `pulumi:"priority"`
 	// The record type.
@@ -33,6 +34,7 @@ type DomainReceivingRecordInput interface {
 }
 
 type DomainReceivingRecordArgs struct {
+	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The priority of the record.
 	Priority pulumi.StringPtrInput `pulumi:"priority"`
 	// The record type.
@@ -94,6 +96,10 @@ func (o DomainReceivingRecordOutput) ToDomainReceivingRecordOutputWithContext(ct
 	return o
 }
 
+func (o DomainReceivingRecordOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainReceivingRecord) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
 // The priority of the record.
 func (o DomainReceivingRecordOutput) Priority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainReceivingRecord) *string { return v.Priority }).(pulumi.StringPtrOutput)
@@ -134,7 +140,138 @@ func (o DomainReceivingRecordArrayOutput) Index(i pulumi.IntInput) DomainReceivi
 	}).(DomainReceivingRecordOutput)
 }
 
+type DomainReceivingRecordsSet struct {
+	Id *string `pulumi:"id"`
+	// The priority of the record.
+	Priority *string `pulumi:"priority"`
+	// The record type.
+	RecordType *string `pulumi:"recordType"`
+	// `"valid"` if the record is valid.
+	Valid *string `pulumi:"valid"`
+	// The value of the record.
+	Value *string `pulumi:"value"`
+}
+
+// DomainReceivingRecordsSetInput is an input type that accepts DomainReceivingRecordsSetArgs and DomainReceivingRecordsSetOutput values.
+// You can construct a concrete instance of `DomainReceivingRecordsSetInput` via:
+//
+//	DomainReceivingRecordsSetArgs{...}
+type DomainReceivingRecordsSetInput interface {
+	pulumi.Input
+
+	ToDomainReceivingRecordsSetOutput() DomainReceivingRecordsSetOutput
+	ToDomainReceivingRecordsSetOutputWithContext(context.Context) DomainReceivingRecordsSetOutput
+}
+
+type DomainReceivingRecordsSetArgs struct {
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The priority of the record.
+	Priority pulumi.StringPtrInput `pulumi:"priority"`
+	// The record type.
+	RecordType pulumi.StringPtrInput `pulumi:"recordType"`
+	// `"valid"` if the record is valid.
+	Valid pulumi.StringPtrInput `pulumi:"valid"`
+	// The value of the record.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (DomainReceivingRecordsSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainReceivingRecordsSet)(nil)).Elem()
+}
+
+func (i DomainReceivingRecordsSetArgs) ToDomainReceivingRecordsSetOutput() DomainReceivingRecordsSetOutput {
+	return i.ToDomainReceivingRecordsSetOutputWithContext(context.Background())
+}
+
+func (i DomainReceivingRecordsSetArgs) ToDomainReceivingRecordsSetOutputWithContext(ctx context.Context) DomainReceivingRecordsSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainReceivingRecordsSetOutput)
+}
+
+// DomainReceivingRecordsSetArrayInput is an input type that accepts DomainReceivingRecordsSetArray and DomainReceivingRecordsSetArrayOutput values.
+// You can construct a concrete instance of `DomainReceivingRecordsSetArrayInput` via:
+//
+//	DomainReceivingRecordsSetArray{ DomainReceivingRecordsSetArgs{...} }
+type DomainReceivingRecordsSetArrayInput interface {
+	pulumi.Input
+
+	ToDomainReceivingRecordsSetArrayOutput() DomainReceivingRecordsSetArrayOutput
+	ToDomainReceivingRecordsSetArrayOutputWithContext(context.Context) DomainReceivingRecordsSetArrayOutput
+}
+
+type DomainReceivingRecordsSetArray []DomainReceivingRecordsSetInput
+
+func (DomainReceivingRecordsSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DomainReceivingRecordsSet)(nil)).Elem()
+}
+
+func (i DomainReceivingRecordsSetArray) ToDomainReceivingRecordsSetArrayOutput() DomainReceivingRecordsSetArrayOutput {
+	return i.ToDomainReceivingRecordsSetArrayOutputWithContext(context.Background())
+}
+
+func (i DomainReceivingRecordsSetArray) ToDomainReceivingRecordsSetArrayOutputWithContext(ctx context.Context) DomainReceivingRecordsSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainReceivingRecordsSetArrayOutput)
+}
+
+type DomainReceivingRecordsSetOutput struct{ *pulumi.OutputState }
+
+func (DomainReceivingRecordsSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainReceivingRecordsSet)(nil)).Elem()
+}
+
+func (o DomainReceivingRecordsSetOutput) ToDomainReceivingRecordsSetOutput() DomainReceivingRecordsSetOutput {
+	return o
+}
+
+func (o DomainReceivingRecordsSetOutput) ToDomainReceivingRecordsSetOutputWithContext(ctx context.Context) DomainReceivingRecordsSetOutput {
+	return o
+}
+
+func (o DomainReceivingRecordsSetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainReceivingRecordsSet) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The priority of the record.
+func (o DomainReceivingRecordsSetOutput) Priority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainReceivingRecordsSet) *string { return v.Priority }).(pulumi.StringPtrOutput)
+}
+
+// The record type.
+func (o DomainReceivingRecordsSetOutput) RecordType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainReceivingRecordsSet) *string { return v.RecordType }).(pulumi.StringPtrOutput)
+}
+
+// `"valid"` if the record is valid.
+func (o DomainReceivingRecordsSetOutput) Valid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainReceivingRecordsSet) *string { return v.Valid }).(pulumi.StringPtrOutput)
+}
+
+// The value of the record.
+func (o DomainReceivingRecordsSetOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainReceivingRecordsSet) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DomainReceivingRecordsSetArrayOutput struct{ *pulumi.OutputState }
+
+func (DomainReceivingRecordsSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DomainReceivingRecordsSet)(nil)).Elem()
+}
+
+func (o DomainReceivingRecordsSetArrayOutput) ToDomainReceivingRecordsSetArrayOutput() DomainReceivingRecordsSetArrayOutput {
+	return o
+}
+
+func (o DomainReceivingRecordsSetArrayOutput) ToDomainReceivingRecordsSetArrayOutputWithContext(ctx context.Context) DomainReceivingRecordsSetArrayOutput {
+	return o
+}
+
+func (o DomainReceivingRecordsSetArrayOutput) Index(i pulumi.IntInput) DomainReceivingRecordsSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DomainReceivingRecordsSet {
+		return vs[0].([]DomainReceivingRecordsSet)[vs[1].(int)]
+	}).(DomainReceivingRecordsSetOutput)
+}
+
 type DomainSendingRecord struct {
+	Id *string `pulumi:"id"`
 	// The domain to add to Mailgun
 	Name *string `pulumi:"name"`
 	// The record type.
@@ -157,6 +294,7 @@ type DomainSendingRecordInput interface {
 }
 
 type DomainSendingRecordArgs struct {
+	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The domain to add to Mailgun
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The record type.
@@ -218,6 +356,10 @@ func (o DomainSendingRecordOutput) ToDomainSendingRecordOutputWithContext(ctx co
 	return o
 }
 
+func (o DomainSendingRecordOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainSendingRecord) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
 // The domain to add to Mailgun
 func (o DomainSendingRecordOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainSendingRecord) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -258,7 +400,138 @@ func (o DomainSendingRecordArrayOutput) Index(i pulumi.IntInput) DomainSendingRe
 	}).(DomainSendingRecordOutput)
 }
 
+type DomainSendingRecordsSet struct {
+	Id *string `pulumi:"id"`
+	// The domain to add to Mailgun
+	Name *string `pulumi:"name"`
+	// The record type.
+	RecordType *string `pulumi:"recordType"`
+	// `"valid"` if the record is valid.
+	Valid *string `pulumi:"valid"`
+	// The value of the record.
+	Value *string `pulumi:"value"`
+}
+
+// DomainSendingRecordsSetInput is an input type that accepts DomainSendingRecordsSetArgs and DomainSendingRecordsSetOutput values.
+// You can construct a concrete instance of `DomainSendingRecordsSetInput` via:
+//
+//	DomainSendingRecordsSetArgs{...}
+type DomainSendingRecordsSetInput interface {
+	pulumi.Input
+
+	ToDomainSendingRecordsSetOutput() DomainSendingRecordsSetOutput
+	ToDomainSendingRecordsSetOutputWithContext(context.Context) DomainSendingRecordsSetOutput
+}
+
+type DomainSendingRecordsSetArgs struct {
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The domain to add to Mailgun
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The record type.
+	RecordType pulumi.StringPtrInput `pulumi:"recordType"`
+	// `"valid"` if the record is valid.
+	Valid pulumi.StringPtrInput `pulumi:"valid"`
+	// The value of the record.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (DomainSendingRecordsSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainSendingRecordsSet)(nil)).Elem()
+}
+
+func (i DomainSendingRecordsSetArgs) ToDomainSendingRecordsSetOutput() DomainSendingRecordsSetOutput {
+	return i.ToDomainSendingRecordsSetOutputWithContext(context.Background())
+}
+
+func (i DomainSendingRecordsSetArgs) ToDomainSendingRecordsSetOutputWithContext(ctx context.Context) DomainSendingRecordsSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainSendingRecordsSetOutput)
+}
+
+// DomainSendingRecordsSetArrayInput is an input type that accepts DomainSendingRecordsSetArray and DomainSendingRecordsSetArrayOutput values.
+// You can construct a concrete instance of `DomainSendingRecordsSetArrayInput` via:
+//
+//	DomainSendingRecordsSetArray{ DomainSendingRecordsSetArgs{...} }
+type DomainSendingRecordsSetArrayInput interface {
+	pulumi.Input
+
+	ToDomainSendingRecordsSetArrayOutput() DomainSendingRecordsSetArrayOutput
+	ToDomainSendingRecordsSetArrayOutputWithContext(context.Context) DomainSendingRecordsSetArrayOutput
+}
+
+type DomainSendingRecordsSetArray []DomainSendingRecordsSetInput
+
+func (DomainSendingRecordsSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DomainSendingRecordsSet)(nil)).Elem()
+}
+
+func (i DomainSendingRecordsSetArray) ToDomainSendingRecordsSetArrayOutput() DomainSendingRecordsSetArrayOutput {
+	return i.ToDomainSendingRecordsSetArrayOutputWithContext(context.Background())
+}
+
+func (i DomainSendingRecordsSetArray) ToDomainSendingRecordsSetArrayOutputWithContext(ctx context.Context) DomainSendingRecordsSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainSendingRecordsSetArrayOutput)
+}
+
+type DomainSendingRecordsSetOutput struct{ *pulumi.OutputState }
+
+func (DomainSendingRecordsSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainSendingRecordsSet)(nil)).Elem()
+}
+
+func (o DomainSendingRecordsSetOutput) ToDomainSendingRecordsSetOutput() DomainSendingRecordsSetOutput {
+	return o
+}
+
+func (o DomainSendingRecordsSetOutput) ToDomainSendingRecordsSetOutputWithContext(ctx context.Context) DomainSendingRecordsSetOutput {
+	return o
+}
+
+func (o DomainSendingRecordsSetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainSendingRecordsSet) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The domain to add to Mailgun
+func (o DomainSendingRecordsSetOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainSendingRecordsSet) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The record type.
+func (o DomainSendingRecordsSetOutput) RecordType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainSendingRecordsSet) *string { return v.RecordType }).(pulumi.StringPtrOutput)
+}
+
+// `"valid"` if the record is valid.
+func (o DomainSendingRecordsSetOutput) Valid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainSendingRecordsSet) *string { return v.Valid }).(pulumi.StringPtrOutput)
+}
+
+// The value of the record.
+func (o DomainSendingRecordsSetOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DomainSendingRecordsSet) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DomainSendingRecordsSetArrayOutput struct{ *pulumi.OutputState }
+
+func (DomainSendingRecordsSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DomainSendingRecordsSet)(nil)).Elem()
+}
+
+func (o DomainSendingRecordsSetArrayOutput) ToDomainSendingRecordsSetArrayOutput() DomainSendingRecordsSetArrayOutput {
+	return o
+}
+
+func (o DomainSendingRecordsSetArrayOutput) ToDomainSendingRecordsSetArrayOutputWithContext(ctx context.Context) DomainSendingRecordsSetArrayOutput {
+	return o
+}
+
+func (o DomainSendingRecordsSetArrayOutput) Index(i pulumi.IntInput) DomainSendingRecordsSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DomainSendingRecordsSet {
+		return vs[0].([]DomainSendingRecordsSet)[vs[1].(int)]
+	}).(DomainSendingRecordsSetOutput)
+}
+
 type GetDomainReceivingRecord struct {
+	Id string `pulumi:"id"`
 	// The priority of the record.
 	Priority string `pulumi:"priority"`
 	// The record type.
@@ -281,6 +554,7 @@ type GetDomainReceivingRecordInput interface {
 }
 
 type GetDomainReceivingRecordArgs struct {
+	Id pulumi.StringInput `pulumi:"id"`
 	// The priority of the record.
 	Priority pulumi.StringInput `pulumi:"priority"`
 	// The record type.
@@ -342,6 +616,10 @@ func (o GetDomainReceivingRecordOutput) ToGetDomainReceivingRecordOutputWithCont
 	return o
 }
 
+func (o GetDomainReceivingRecordOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainReceivingRecord) string { return v.Id }).(pulumi.StringOutput)
+}
+
 // The priority of the record.
 func (o GetDomainReceivingRecordOutput) Priority() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainReceivingRecord) string { return v.Priority }).(pulumi.StringOutput)
@@ -382,7 +660,138 @@ func (o GetDomainReceivingRecordArrayOutput) Index(i pulumi.IntInput) GetDomainR
 	}).(GetDomainReceivingRecordOutput)
 }
 
+type GetDomainReceivingRecordsSet struct {
+	Id string `pulumi:"id"`
+	// The priority of the record.
+	Priority string `pulumi:"priority"`
+	// The record type.
+	RecordType string `pulumi:"recordType"`
+	// `"valid"` if the record is valid.
+	Valid string `pulumi:"valid"`
+	// The value of the record.
+	Value string `pulumi:"value"`
+}
+
+// GetDomainReceivingRecordsSetInput is an input type that accepts GetDomainReceivingRecordsSetArgs and GetDomainReceivingRecordsSetOutput values.
+// You can construct a concrete instance of `GetDomainReceivingRecordsSetInput` via:
+//
+//	GetDomainReceivingRecordsSetArgs{...}
+type GetDomainReceivingRecordsSetInput interface {
+	pulumi.Input
+
+	ToGetDomainReceivingRecordsSetOutput() GetDomainReceivingRecordsSetOutput
+	ToGetDomainReceivingRecordsSetOutputWithContext(context.Context) GetDomainReceivingRecordsSetOutput
+}
+
+type GetDomainReceivingRecordsSetArgs struct {
+	Id pulumi.StringInput `pulumi:"id"`
+	// The priority of the record.
+	Priority pulumi.StringInput `pulumi:"priority"`
+	// The record type.
+	RecordType pulumi.StringInput `pulumi:"recordType"`
+	// `"valid"` if the record is valid.
+	Valid pulumi.StringInput `pulumi:"valid"`
+	// The value of the record.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetDomainReceivingRecordsSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainReceivingRecordsSet)(nil)).Elem()
+}
+
+func (i GetDomainReceivingRecordsSetArgs) ToGetDomainReceivingRecordsSetOutput() GetDomainReceivingRecordsSetOutput {
+	return i.ToGetDomainReceivingRecordsSetOutputWithContext(context.Background())
+}
+
+func (i GetDomainReceivingRecordsSetArgs) ToGetDomainReceivingRecordsSetOutputWithContext(ctx context.Context) GetDomainReceivingRecordsSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainReceivingRecordsSetOutput)
+}
+
+// GetDomainReceivingRecordsSetArrayInput is an input type that accepts GetDomainReceivingRecordsSetArray and GetDomainReceivingRecordsSetArrayOutput values.
+// You can construct a concrete instance of `GetDomainReceivingRecordsSetArrayInput` via:
+//
+//	GetDomainReceivingRecordsSetArray{ GetDomainReceivingRecordsSetArgs{...} }
+type GetDomainReceivingRecordsSetArrayInput interface {
+	pulumi.Input
+
+	ToGetDomainReceivingRecordsSetArrayOutput() GetDomainReceivingRecordsSetArrayOutput
+	ToGetDomainReceivingRecordsSetArrayOutputWithContext(context.Context) GetDomainReceivingRecordsSetArrayOutput
+}
+
+type GetDomainReceivingRecordsSetArray []GetDomainReceivingRecordsSetInput
+
+func (GetDomainReceivingRecordsSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainReceivingRecordsSet)(nil)).Elem()
+}
+
+func (i GetDomainReceivingRecordsSetArray) ToGetDomainReceivingRecordsSetArrayOutput() GetDomainReceivingRecordsSetArrayOutput {
+	return i.ToGetDomainReceivingRecordsSetArrayOutputWithContext(context.Background())
+}
+
+func (i GetDomainReceivingRecordsSetArray) ToGetDomainReceivingRecordsSetArrayOutputWithContext(ctx context.Context) GetDomainReceivingRecordsSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainReceivingRecordsSetArrayOutput)
+}
+
+type GetDomainReceivingRecordsSetOutput struct{ *pulumi.OutputState }
+
+func (GetDomainReceivingRecordsSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainReceivingRecordsSet)(nil)).Elem()
+}
+
+func (o GetDomainReceivingRecordsSetOutput) ToGetDomainReceivingRecordsSetOutput() GetDomainReceivingRecordsSetOutput {
+	return o
+}
+
+func (o GetDomainReceivingRecordsSetOutput) ToGetDomainReceivingRecordsSetOutputWithContext(ctx context.Context) GetDomainReceivingRecordsSetOutput {
+	return o
+}
+
+func (o GetDomainReceivingRecordsSetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainReceivingRecordsSet) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The priority of the record.
+func (o GetDomainReceivingRecordsSetOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainReceivingRecordsSet) string { return v.Priority }).(pulumi.StringOutput)
+}
+
+// The record type.
+func (o GetDomainReceivingRecordsSetOutput) RecordType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainReceivingRecordsSet) string { return v.RecordType }).(pulumi.StringOutput)
+}
+
+// `"valid"` if the record is valid.
+func (o GetDomainReceivingRecordsSetOutput) Valid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainReceivingRecordsSet) string { return v.Valid }).(pulumi.StringOutput)
+}
+
+// The value of the record.
+func (o GetDomainReceivingRecordsSetOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainReceivingRecordsSet) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetDomainReceivingRecordsSetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDomainReceivingRecordsSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainReceivingRecordsSet)(nil)).Elem()
+}
+
+func (o GetDomainReceivingRecordsSetArrayOutput) ToGetDomainReceivingRecordsSetArrayOutput() GetDomainReceivingRecordsSetArrayOutput {
+	return o
+}
+
+func (o GetDomainReceivingRecordsSetArrayOutput) ToGetDomainReceivingRecordsSetArrayOutputWithContext(ctx context.Context) GetDomainReceivingRecordsSetArrayOutput {
+	return o
+}
+
+func (o GetDomainReceivingRecordsSetArrayOutput) Index(i pulumi.IntInput) GetDomainReceivingRecordsSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainReceivingRecordsSet {
+		return vs[0].([]GetDomainReceivingRecordsSet)[vs[1].(int)]
+	}).(GetDomainReceivingRecordsSetOutput)
+}
+
 type GetDomainSendingRecord struct {
+	Id string `pulumi:"id"`
 	// The name of the domain.
 	Name string `pulumi:"name"`
 	// The record type.
@@ -405,6 +814,7 @@ type GetDomainSendingRecordInput interface {
 }
 
 type GetDomainSendingRecordArgs struct {
+	Id pulumi.StringInput `pulumi:"id"`
 	// The name of the domain.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The record type.
@@ -466,6 +876,10 @@ func (o GetDomainSendingRecordOutput) ToGetDomainSendingRecordOutputWithContext(
 	return o
 }
 
+func (o GetDomainSendingRecordOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainSendingRecord) string { return v.Id }).(pulumi.StringOutput)
+}
+
 // The name of the domain.
 func (o GetDomainSendingRecordOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainSendingRecord) string { return v.Name }).(pulumi.StringOutput)
@@ -506,21 +920,167 @@ func (o GetDomainSendingRecordArrayOutput) Index(i pulumi.IntInput) GetDomainSen
 	}).(GetDomainSendingRecordOutput)
 }
 
+type GetDomainSendingRecordsSet struct {
+	Id string `pulumi:"id"`
+	// The name of the domain.
+	Name string `pulumi:"name"`
+	// The record type.
+	RecordType string `pulumi:"recordType"`
+	// `"valid"` if the record is valid.
+	Valid string `pulumi:"valid"`
+	// The value of the record.
+	Value string `pulumi:"value"`
+}
+
+// GetDomainSendingRecordsSetInput is an input type that accepts GetDomainSendingRecordsSetArgs and GetDomainSendingRecordsSetOutput values.
+// You can construct a concrete instance of `GetDomainSendingRecordsSetInput` via:
+//
+//	GetDomainSendingRecordsSetArgs{...}
+type GetDomainSendingRecordsSetInput interface {
+	pulumi.Input
+
+	ToGetDomainSendingRecordsSetOutput() GetDomainSendingRecordsSetOutput
+	ToGetDomainSendingRecordsSetOutputWithContext(context.Context) GetDomainSendingRecordsSetOutput
+}
+
+type GetDomainSendingRecordsSetArgs struct {
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the domain.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The record type.
+	RecordType pulumi.StringInput `pulumi:"recordType"`
+	// `"valid"` if the record is valid.
+	Valid pulumi.StringInput `pulumi:"valid"`
+	// The value of the record.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetDomainSendingRecordsSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainSendingRecordsSet)(nil)).Elem()
+}
+
+func (i GetDomainSendingRecordsSetArgs) ToGetDomainSendingRecordsSetOutput() GetDomainSendingRecordsSetOutput {
+	return i.ToGetDomainSendingRecordsSetOutputWithContext(context.Background())
+}
+
+func (i GetDomainSendingRecordsSetArgs) ToGetDomainSendingRecordsSetOutputWithContext(ctx context.Context) GetDomainSendingRecordsSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainSendingRecordsSetOutput)
+}
+
+// GetDomainSendingRecordsSetArrayInput is an input type that accepts GetDomainSendingRecordsSetArray and GetDomainSendingRecordsSetArrayOutput values.
+// You can construct a concrete instance of `GetDomainSendingRecordsSetArrayInput` via:
+//
+//	GetDomainSendingRecordsSetArray{ GetDomainSendingRecordsSetArgs{...} }
+type GetDomainSendingRecordsSetArrayInput interface {
+	pulumi.Input
+
+	ToGetDomainSendingRecordsSetArrayOutput() GetDomainSendingRecordsSetArrayOutput
+	ToGetDomainSendingRecordsSetArrayOutputWithContext(context.Context) GetDomainSendingRecordsSetArrayOutput
+}
+
+type GetDomainSendingRecordsSetArray []GetDomainSendingRecordsSetInput
+
+func (GetDomainSendingRecordsSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainSendingRecordsSet)(nil)).Elem()
+}
+
+func (i GetDomainSendingRecordsSetArray) ToGetDomainSendingRecordsSetArrayOutput() GetDomainSendingRecordsSetArrayOutput {
+	return i.ToGetDomainSendingRecordsSetArrayOutputWithContext(context.Background())
+}
+
+func (i GetDomainSendingRecordsSetArray) ToGetDomainSendingRecordsSetArrayOutputWithContext(ctx context.Context) GetDomainSendingRecordsSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDomainSendingRecordsSetArrayOutput)
+}
+
+type GetDomainSendingRecordsSetOutput struct{ *pulumi.OutputState }
+
+func (GetDomainSendingRecordsSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainSendingRecordsSet)(nil)).Elem()
+}
+
+func (o GetDomainSendingRecordsSetOutput) ToGetDomainSendingRecordsSetOutput() GetDomainSendingRecordsSetOutput {
+	return o
+}
+
+func (o GetDomainSendingRecordsSetOutput) ToGetDomainSendingRecordsSetOutputWithContext(ctx context.Context) GetDomainSendingRecordsSetOutput {
+	return o
+}
+
+func (o GetDomainSendingRecordsSetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainSendingRecordsSet) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the domain.
+func (o GetDomainSendingRecordsSetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainSendingRecordsSet) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The record type.
+func (o GetDomainSendingRecordsSetOutput) RecordType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainSendingRecordsSet) string { return v.RecordType }).(pulumi.StringOutput)
+}
+
+// `"valid"` if the record is valid.
+func (o GetDomainSendingRecordsSetOutput) Valid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainSendingRecordsSet) string { return v.Valid }).(pulumi.StringOutput)
+}
+
+// The value of the record.
+func (o GetDomainSendingRecordsSetOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainSendingRecordsSet) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetDomainSendingRecordsSetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDomainSendingRecordsSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDomainSendingRecordsSet)(nil)).Elem()
+}
+
+func (o GetDomainSendingRecordsSetArrayOutput) ToGetDomainSendingRecordsSetArrayOutput() GetDomainSendingRecordsSetArrayOutput {
+	return o
+}
+
+func (o GetDomainSendingRecordsSetArrayOutput) ToGetDomainSendingRecordsSetArrayOutputWithContext(ctx context.Context) GetDomainSendingRecordsSetArrayOutput {
+	return o
+}
+
+func (o GetDomainSendingRecordsSetArrayOutput) Index(i pulumi.IntInput) GetDomainSendingRecordsSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDomainSendingRecordsSet {
+		return vs[0].([]GetDomainSendingRecordsSet)[vs[1].(int)]
+	}).(GetDomainSendingRecordsSetOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainReceivingRecordInput)(nil)).Elem(), DomainReceivingRecordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainReceivingRecordArrayInput)(nil)).Elem(), DomainReceivingRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainReceivingRecordsSetInput)(nil)).Elem(), DomainReceivingRecordsSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainReceivingRecordsSetArrayInput)(nil)).Elem(), DomainReceivingRecordsSetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainSendingRecordInput)(nil)).Elem(), DomainSendingRecordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainSendingRecordArrayInput)(nil)).Elem(), DomainSendingRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainSendingRecordsSetInput)(nil)).Elem(), DomainSendingRecordsSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DomainSendingRecordsSetArrayInput)(nil)).Elem(), DomainSendingRecordsSetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainReceivingRecordInput)(nil)).Elem(), GetDomainReceivingRecordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainReceivingRecordArrayInput)(nil)).Elem(), GetDomainReceivingRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainReceivingRecordsSetInput)(nil)).Elem(), GetDomainReceivingRecordsSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainReceivingRecordsSetArrayInput)(nil)).Elem(), GetDomainReceivingRecordsSetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainSendingRecordInput)(nil)).Elem(), GetDomainSendingRecordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainSendingRecordArrayInput)(nil)).Elem(), GetDomainSendingRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainSendingRecordsSetInput)(nil)).Elem(), GetDomainSendingRecordsSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainSendingRecordsSetArrayInput)(nil)).Elem(), GetDomainSendingRecordsSetArray{})
 	pulumi.RegisterOutputType(DomainReceivingRecordOutput{})
 	pulumi.RegisterOutputType(DomainReceivingRecordArrayOutput{})
+	pulumi.RegisterOutputType(DomainReceivingRecordsSetOutput{})
+	pulumi.RegisterOutputType(DomainReceivingRecordsSetArrayOutput{})
 	pulumi.RegisterOutputType(DomainSendingRecordOutput{})
 	pulumi.RegisterOutputType(DomainSendingRecordArrayOutput{})
+	pulumi.RegisterOutputType(DomainSendingRecordsSetOutput{})
+	pulumi.RegisterOutputType(DomainSendingRecordsSetArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainReceivingRecordOutput{})
 	pulumi.RegisterOutputType(GetDomainReceivingRecordArrayOutput{})
+	pulumi.RegisterOutputType(GetDomainReceivingRecordsSetOutput{})
+	pulumi.RegisterOutputType(GetDomainReceivingRecordsSetArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainSendingRecordOutput{})
 	pulumi.RegisterOutputType(GetDomainSendingRecordArrayOutput{})
+	pulumi.RegisterOutputType(GetDomainSendingRecordsSetOutput{})
+	pulumi.RegisterOutputType(GetDomainSendingRecordsSetArrayOutput{})
 }

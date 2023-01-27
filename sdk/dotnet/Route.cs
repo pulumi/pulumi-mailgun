@@ -15,28 +15,26 @@ namespace Pulumi.Mailgun
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Mailgun = Pulumi.Mailgun;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new Mailgun route
+    ///     var @default = new Mailgun.Route("default", new()
     ///     {
-    ///         // Create a new Mailgun route
-    ///         var @default = new Mailgun.Route("default", new Mailgun.RouteArgs
+    ///         Actions = new[]
     ///         {
-    ///             Actions = 
-    ///             {
-    ///                 "forward('http://example.com/api/v1/foos/')",
-    ///                 "stop()",
-    ///             },
-    ///             Description = "inbound",
-    ///             Expression = "match_recipient('.*@foo.example.com')",
-    ///             Priority = 0,
-    ///         });
-    ///     }
+    ///             "forward('http://example.com/api/v1/foos/')",
+    ///             "stop()",
+    ///         },
+    ///         Description = "inbound",
+    ///         Expression = "match_recipient('.*@foo.example.com')",
+    ///         Priority = 0,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -50,7 +48,7 @@ namespace Pulumi.Mailgun
     /// ```
     /// </summary>
     [MailgunResourceType("mailgun:index/route:Route")]
-    public partial class Route : Pulumi.CustomResource
+    public partial class Route : global::Pulumi.CustomResource
     {
         [Output("actions")]
         public Output<ImmutableArray<string>> Actions { get; private set; } = null!;
@@ -120,7 +118,7 @@ namespace Pulumi.Mailgun
         }
     }
 
-    public sealed class RouteArgs : Pulumi.ResourceArgs
+    public sealed class RouteArgs : global::Pulumi.ResourceArgs
     {
         [Input("actions", required: true)]
         private InputList<string>? _actions;
@@ -154,9 +152,10 @@ namespace Pulumi.Mailgun
         public RouteArgs()
         {
         }
+        public static new RouteArgs Empty => new RouteArgs();
     }
 
-    public sealed class RouteState : Pulumi.ResourceArgs
+    public sealed class RouteState : global::Pulumi.ResourceArgs
     {
         [Input("actions")]
         private InputList<string>? _actions;
@@ -190,5 +189,6 @@ namespace Pulumi.Mailgun
         public RouteState()
         {
         }
+        public static new RouteState Empty => new RouteState();
     }
 }

@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as mailgun from "@pulumi/mailgun";
  *
  * // Create a new Mailgun webhook
- * const defaultWebhook = new mailgun.Webhook("default", {
+ * const _default = new mailgun.Webhook("default", {
  *     domain: "test.example.com",
  *     kind: "delivered",
  *     region: "us",

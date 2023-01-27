@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -15,31 +16,30 @@ import * as utilities from "./utilities";
  * import * as aws from "@pulumi/aws";
  * import * as mailgun from "@pulumi/mailgun";
  *
- * const domain = pulumi.output(mailgun.getDomain({
+ * const domain = mailgun.getDomain({
  *     name: "test.example.com",
- * }));
+ * });
  * const mailgun_mx = new aws.route53.Record("mailgun-mx", {
- *     name: mailgun_domain.name,
+ *     name: data.mailgun.domain.name,
  *     records: [
- *         pulumi.interpolate`${domain.receivingRecords[0].priority} ${domain.receivingRecords[0].value}.`,
- *         pulumi.interpolate`${domain.receivingRecords[1].priority} ${domain.receivingRecords[1].value}.`,
+ *         Promise.all([domain, domain]).then(([domain, domain1]) => `${domain.receivingRecords?.[0]?.priority} ${domain1.receivingRecords?.[0]?.value}.`),
+ *         Promise.all([domain, domain]).then(([domain, domain1]) => `${domain.receivingRecords?.[1]?.priority} ${domain1.receivingRecords?.[1]?.value}.`),
  *     ],
  *     ttl: 3600,
  *     type: "MX",
- *     zoneId: var_zone_id,
+ *     zoneId: _var.zone_id,
  * });
  * ```
  */
 export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("mailgun:index/getDomain:getDomain", {
         "dkimKeySize": args.dkimKeySize,
         "dkimSelector": args.dkimSelector,
+        "forceDkimAuthority": args.forceDkimAuthority,
         "name": args.name,
+        "openTracking": args.openTracking,
         "region": args.region,
         "smtpPassword": args.smtpPassword,
         "spamAction": args.spamAction,
@@ -53,10 +53,15 @@ export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Pro
 export interface GetDomainArgs {
     dkimKeySize?: number;
     dkimSelector?: string;
+    forceDkimAuthority?: boolean;
     /**
      * The name of the domain.
      */
     name: string;
+    openTracking?: boolean;
+    /**
+     * The region where domain will be created. Default value is `us`.
+     */
     region?: string;
     /**
      * The password to the SMTP server.
@@ -78,6 +83,7 @@ export interface GetDomainArgs {
 export interface GetDomainResult {
     readonly dkimKeySize?: number;
     readonly dkimSelector?: string;
+    readonly forceDkimAuthority?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -86,15 +92,22 @@ export interface GetDomainResult {
      * The name of the record.
      */
     readonly name: string;
+    readonly openTracking?: boolean;
     /**
      * A list of DNS records for receiving validation.
+     *
+     * @deprecated Use `receiving_records_set` instead.
      */
     readonly receivingRecords: outputs.GetDomainReceivingRecord[];
+    readonly receivingRecordsSets: outputs.GetDomainReceivingRecordsSet[];
     readonly region?: string;
     /**
      * A list of DNS records for sending validation.
+     *
+     * @deprecated Use `sending_records_set` instead.
      */
     readonly sendingRecords: outputs.GetDomainSendingRecord[];
+    readonly sendingRecordsSets: outputs.GetDomainSendingRecordsSet[];
     /**
      * The login email for the SMTP server.
      */
@@ -102,7 +115,7 @@ export interface GetDomainResult {
     /**
      * The password to the SMTP server.
      */
-    readonly smtpPassword: string;
+    readonly smtpPassword?: string;
     /**
      * The spam filtering setting.
      */
@@ -112,9 +125,33 @@ export interface GetDomainResult {
      */
     readonly wildcard?: boolean;
 }
-
+/**
+ * `mailgun.Domain` provides details about a Mailgun domain.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aws from "@pulumi/aws";
+ * import * as mailgun from "@pulumi/mailgun";
+ *
+ * const domain = mailgun.getDomain({
+ *     name: "test.example.com",
+ * });
+ * const mailgun_mx = new aws.route53.Record("mailgun-mx", {
+ *     name: data.mailgun.domain.name,
+ *     records: [
+ *         Promise.all([domain, domain]).then(([domain, domain1]) => `${domain.receivingRecords?.[0]?.priority} ${domain1.receivingRecords?.[0]?.value}.`),
+ *         Promise.all([domain, domain]).then(([domain, domain1]) => `${domain.receivingRecords?.[1]?.priority} ${domain1.receivingRecords?.[1]?.value}.`),
+ *     ],
+ *     ttl: 3600,
+ *     type: "MX",
+ *     zoneId: _var.zone_id,
+ * });
+ * ```
+ */
 export function getDomainOutput(args: GetDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainResult> {
-    return pulumi.output(args).apply(a => getDomain(a, opts))
+    return pulumi.output(args).apply((a: any) => getDomain(a, opts))
 }
 
 /**
@@ -123,10 +160,15 @@ export function getDomainOutput(args: GetDomainOutputArgs, opts?: pulumi.InvokeO
 export interface GetDomainOutputArgs {
     dkimKeySize?: pulumi.Input<number>;
     dkimSelector?: pulumi.Input<string>;
+    forceDkimAuthority?: pulumi.Input<boolean>;
     /**
      * The name of the domain.
      */
     name: pulumi.Input<string>;
+    openTracking?: pulumi.Input<boolean>;
+    /**
+     * The region where domain will be created. Default value is `us`.
+     */
     region?: pulumi.Input<string>;
     /**
      * The password to the SMTP server.

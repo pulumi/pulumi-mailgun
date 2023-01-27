@@ -16,31 +16,29 @@ namespace Pulumi.Mailgun
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using Mailgun = Pulumi.Mailgun;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     // Create a new Mailgun webhook
+    ///     var @default = new Mailgun.Webhook("default", new()
     ///     {
-    ///         // Create a new Mailgun webhook
-    ///         var @default = new Mailgun.Webhook("default", new Mailgun.WebhookArgs
+    ///         Domain = "test.example.com",
+    ///         Kind = "delivered",
+    ///         Region = "us",
+    ///         Urls = new[]
     ///         {
-    ///             Domain = "test.example.com",
-    ///             Kind = "delivered",
-    ///             Region = "us",
-    ///             Urls = 
-    ///             {
-    ///                 "https://example.com",
-    ///             },
-    ///         });
-    ///     }
+    ///             "https://example.com",
+    ///         },
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// </summary>
     [MailgunResourceType("mailgun:index/webhook:Webhook")]
-    public partial class Webhook : Pulumi.CustomResource
+    public partial class Webhook : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The domain to add to Mailgun
@@ -110,7 +108,7 @@ namespace Pulumi.Mailgun
         }
     }
 
-    public sealed class WebhookArgs : Pulumi.ResourceArgs
+    public sealed class WebhookArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The domain to add to Mailgun
@@ -145,9 +143,10 @@ namespace Pulumi.Mailgun
         public WebhookArgs()
         {
         }
+        public static new WebhookArgs Empty => new WebhookArgs();
     }
 
-    public sealed class WebhookState : Pulumi.ResourceArgs
+    public sealed class WebhookState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The domain to add to Mailgun
@@ -182,5 +181,6 @@ namespace Pulumi.Mailgun
         public WebhookState()
         {
         }
+        public static new WebhookState Empty => new WebhookState();
     }
 }

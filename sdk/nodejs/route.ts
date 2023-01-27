@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as mailgun from "@pulumi/mailgun";
  *
  * // Create a new Mailgun route
- * const defaultRoute = new mailgun.Route("default", {
+ * const _default = new mailgun.Route("default", {
  *     actions: [
  *         "forward('http://example.com/api/v1/foos/')",
  *         "stop()",

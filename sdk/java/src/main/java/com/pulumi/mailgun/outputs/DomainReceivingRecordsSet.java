@@ -10,13 +10,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class DomainSendingRecord {
+public final class DomainReceivingRecordsSet {
     private @Nullable String id;
     /**
-     * @return The domain to add to Mailgun
+     * @return The priority of the record.
      * 
      */
-    private @Nullable String name;
+    private @Nullable String priority;
     /**
      * @return The record type.
      * 
@@ -33,16 +33,16 @@ public final class DomainSendingRecord {
      */
     private @Nullable String value;
 
-    private DomainSendingRecord() {}
+    private DomainReceivingRecordsSet() {}
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return The domain to add to Mailgun
+     * @return The priority of the record.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public Optional<String> priority() {
+        return Optional.ofNullable(this.priority);
     }
     /**
      * @return The record type.
@@ -70,21 +70,21 @@ public final class DomainSendingRecord {
         return new Builder();
     }
 
-    public static Builder builder(DomainSendingRecord defaults) {
+    public static Builder builder(DomainReceivingRecordsSet defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String id;
-        private @Nullable String name;
+        private @Nullable String priority;
         private @Nullable String recordType;
         private @Nullable String valid;
         private @Nullable String value;
         public Builder() {}
-        public Builder(DomainSendingRecord defaults) {
+        public Builder(DomainReceivingRecordsSet defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
-    	      this.name = defaults.name;
+    	      this.priority = defaults.priority;
     	      this.recordType = defaults.recordType;
     	      this.valid = defaults.valid;
     	      this.value = defaults.value;
@@ -96,8 +96,8 @@ public final class DomainSendingRecord {
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-            this.name = name;
+        public Builder priority(@Nullable String priority) {
+            this.priority = priority;
             return this;
         }
         @CustomType.Setter
@@ -115,10 +115,10 @@ public final class DomainSendingRecord {
             this.value = value;
             return this;
         }
-        public DomainSendingRecord build() {
-            final var o = new DomainSendingRecord();
+        public DomainReceivingRecordsSet build() {
+            final var o = new DomainReceivingRecordsSet();
             o.id = id;
-            o.name = name;
+            o.priority = priority;
             o.recordType = recordType;
             o.valid = valid;
             o.value = value;

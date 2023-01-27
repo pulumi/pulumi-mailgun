@@ -31,6 +31,13 @@ public final class GetDomainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.dkimSelector);
     }
 
+    @Import(name="forceDkimAuthority")
+    private @Nullable Output<Boolean> forceDkimAuthority;
+
+    public Optional<Output<Boolean>> forceDkimAuthority() {
+        return Optional.ofNullable(this.forceDkimAuthority);
+    }
+
     /**
      * The name of the domain.
      * 
@@ -46,9 +53,24 @@ public final class GetDomainArgs extends com.pulumi.resources.InvokeArgs {
         return this.name;
     }
 
+    @Import(name="openTracking")
+    private @Nullable Output<Boolean> openTracking;
+
+    public Optional<Output<Boolean>> openTracking() {
+        return Optional.ofNullable(this.openTracking);
+    }
+
+    /**
+     * The region where domain will be created. Default value is `us`.
+     * 
+     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
+    /**
+     * @return The region where domain will be created. Default value is `us`.
+     * 
+     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
@@ -103,7 +125,9 @@ public final class GetDomainArgs extends com.pulumi.resources.InvokeArgs {
     private GetDomainArgs(GetDomainArgs $) {
         this.dkimKeySize = $.dkimKeySize;
         this.dkimSelector = $.dkimSelector;
+        this.forceDkimAuthority = $.forceDkimAuthority;
         this.name = $.name;
+        this.openTracking = $.openTracking;
         this.region = $.region;
         this.smtpPassword = $.smtpPassword;
         this.spamAction = $.spamAction;
@@ -146,6 +170,15 @@ public final class GetDomainArgs extends com.pulumi.resources.InvokeArgs {
             return dkimSelector(Output.of(dkimSelector));
         }
 
+        public Builder forceDkimAuthority(@Nullable Output<Boolean> forceDkimAuthority) {
+            $.forceDkimAuthority = forceDkimAuthority;
+            return this;
+        }
+
+        public Builder forceDkimAuthority(Boolean forceDkimAuthority) {
+            return forceDkimAuthority(Output.of(forceDkimAuthority));
+        }
+
         /**
          * @param name The name of the domain.
          * 
@@ -167,11 +200,32 @@ public final class GetDomainArgs extends com.pulumi.resources.InvokeArgs {
             return name(Output.of(name));
         }
 
+        public Builder openTracking(@Nullable Output<Boolean> openTracking) {
+            $.openTracking = openTracking;
+            return this;
+        }
+
+        public Builder openTracking(Boolean openTracking) {
+            return openTracking(Output.of(openTracking));
+        }
+
+        /**
+         * @param region The region where domain will be created. Default value is `us`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param region The region where domain will be created. Default value is `us`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(String region) {
             return region(Output.of(region));
         }

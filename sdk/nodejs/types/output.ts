@@ -2,9 +2,31 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface DomainReceivingRecord {
+    id: string;
+    /**
+     * The priority of the record.
+     */
+    priority: string;
+    /**
+     * The record type.
+     */
+    recordType: string;
+    /**
+     * `"valid"` if the record is valid.
+     */
+    valid: string;
+    /**
+     * The value of the record.
+     */
+    value: string;
+}
+
+export interface DomainReceivingRecordsSet {
+    id: string;
     /**
      * The priority of the record.
      */
@@ -24,6 +46,27 @@ export interface DomainReceivingRecord {
 }
 
 export interface DomainSendingRecord {
+    id: string;
+    /**
+     * The domain to add to Mailgun
+     */
+    name: string;
+    /**
+     * The record type.
+     */
+    recordType: string;
+    /**
+     * `"valid"` if the record is valid.
+     */
+    valid: string;
+    /**
+     * The value of the record.
+     */
+    value: string;
+}
+
+export interface DomainSendingRecordsSet {
+    id: string;
     /**
      * The domain to add to Mailgun
      */
@@ -43,6 +86,27 @@ export interface DomainSendingRecord {
 }
 
 export interface GetDomainReceivingRecord {
+    id: string;
+    /**
+     * The priority of the record.
+     */
+    priority: string;
+    /**
+     * The record type.
+     */
+    recordType: string;
+    /**
+     * `"valid"` if the record is valid.
+     */
+    valid: string;
+    /**
+     * The value of the record.
+     */
+    value: string;
+}
+
+export interface GetDomainReceivingRecordsSet {
+    id: string;
     /**
      * The priority of the record.
      */
@@ -62,6 +126,27 @@ export interface GetDomainReceivingRecord {
 }
 
 export interface GetDomainSendingRecord {
+    id: string;
+    /**
+     * The name of the domain.
+     */
+    name: string;
+    /**
+     * The record type.
+     */
+    recordType: string;
+    /**
+     * `"valid"` if the record is valid.
+     */
+    valid: string;
+    /**
+     * The value of the record.
+     */
+    value: string;
+}
+
+export interface GetDomainSendingRecordsSet {
+    id: string;
     /**
      * The name of the domain.
      */

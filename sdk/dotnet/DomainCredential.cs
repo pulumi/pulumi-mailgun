@@ -25,7 +25,7 @@ namespace Pulumi.Mailgun
     /// ```
     /// </summary>
     [MailgunResourceType("mailgun:index/domainCredential:DomainCredential")]
-    public partial class DomainCredential : Pulumi.CustomResource
+    public partial class DomainCredential : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The domain to add credential of Mailgun.
@@ -74,6 +74,10 @@ namespace Pulumi.Mailgun
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -95,7 +99,7 @@ namespace Pulumi.Mailgun
         }
     }
 
-    public sealed class DomainCredentialArgs : Pulumi.ResourceArgs
+    public sealed class DomainCredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The domain to add credential of Mailgun.
@@ -109,11 +113,21 @@ namespace Pulumi.Mailgun
         [Input("login", required: true)]
         public Input<string> Login { get; set; } = null!;
 
+        [Input("password", required: true)]
+        private Input<string>? _password;
+
         /// <summary>
         /// Password for user authentication.
         /// </summary>
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The region where domain will be created. Default value is `us`.
@@ -124,9 +138,10 @@ namespace Pulumi.Mailgun
         public DomainCredentialArgs()
         {
         }
+        public static new DomainCredentialArgs Empty => new DomainCredentialArgs();
     }
 
-    public sealed class DomainCredentialState : Pulumi.ResourceArgs
+    public sealed class DomainCredentialState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The domain to add credential of Mailgun.
@@ -140,11 +155,21 @@ namespace Pulumi.Mailgun
         [Input("login")]
         public Input<string>? Login { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// Password for user authentication.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The region where domain will be created. Default value is `us`.
@@ -155,5 +180,6 @@ namespace Pulumi.Mailgun
         public DomainCredentialState()
         {
         }
+        public static new DomainCredentialState Empty => new DomainCredentialState();
     }
 }

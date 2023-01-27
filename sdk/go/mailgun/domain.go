@@ -62,18 +62,30 @@ type Domain struct {
 	DkimKeySize pulumi.IntPtrOutput `pulumi:"dkimKeySize"`
 	// The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
 	DkimSelector pulumi.StringPtrOutput `pulumi:"dkimSelector"`
+	// If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+	ForceDkimAuthority pulumi.BoolPtrOutput `pulumi:"forceDkimAuthority"`
 	// The domain to add to Mailgun
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A list of DNS records for receiving validation.
+	// (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
+	OpenTracking pulumi.BoolPtrOutput `pulumi:"openTracking"`
+	// A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
+	//
+	// Deprecated: Use `receiving_records_set` instead.
 	ReceivingRecords DomainReceivingRecordArrayOutput `pulumi:"receivingRecords"`
+	// A set of DNS records for receiving validation.
+	ReceivingRecordsSets DomainReceivingRecordsSetArrayOutput `pulumi:"receivingRecordsSets"`
 	// The region where domain will be created. Default value is `us`.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
-	// A list of DNS records for sending validation.
+	// A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
+	//
+	// Deprecated: Use `sending_records_set` instead.
 	SendingRecords DomainSendingRecordArrayOutput `pulumi:"sendingRecords"`
+	// A set of DNS records for sending validation.
+	SendingRecordsSets DomainSendingRecordsSetArrayOutput `pulumi:"sendingRecordsSets"`
 	// The login email for the SMTP server.
 	SmtpLogin pulumi.StringOutput `pulumi:"smtpLogin"`
 	// Password for SMTP authentication
-	SmtpPassword pulumi.StringOutput `pulumi:"smtpPassword"`
+	SmtpPassword pulumi.StringPtrOutput `pulumi:"smtpPassword"`
 	// `disabled` or `tag` Disable, no spam
 	// filtering will occur for inbound messages. Tag, messages
 	// will be tagged with a spam header.
@@ -90,6 +102,13 @@ func NewDomain(ctx *pulumi.Context,
 		args = &DomainArgs{}
 	}
 
+	if args.SmtpPassword != nil {
+		args.SmtpPassword = pulumi.ToSecret(args.SmtpPassword).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"smtpPassword",
+	})
+	opts = append(opts, secrets)
 	var resource Domain
 	err := ctx.RegisterResource("mailgun:index/domain:Domain", name, args, &resource, opts...)
 	if err != nil {
@@ -116,14 +135,26 @@ type domainState struct {
 	DkimKeySize *int `pulumi:"dkimKeySize"`
 	// The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
 	DkimSelector *string `pulumi:"dkimSelector"`
+	// If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+	ForceDkimAuthority *bool `pulumi:"forceDkimAuthority"`
 	// The domain to add to Mailgun
 	Name *string `pulumi:"name"`
-	// A list of DNS records for receiving validation.
+	// (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
+	OpenTracking *bool `pulumi:"openTracking"`
+	// A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
+	//
+	// Deprecated: Use `receiving_records_set` instead.
 	ReceivingRecords []DomainReceivingRecord `pulumi:"receivingRecords"`
+	// A set of DNS records for receiving validation.
+	ReceivingRecordsSets []DomainReceivingRecordsSet `pulumi:"receivingRecordsSets"`
 	// The region where domain will be created. Default value is `us`.
 	Region *string `pulumi:"region"`
-	// A list of DNS records for sending validation.
+	// A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
+	//
+	// Deprecated: Use `sending_records_set` instead.
 	SendingRecords []DomainSendingRecord `pulumi:"sendingRecords"`
+	// A set of DNS records for sending validation.
+	SendingRecordsSets []DomainSendingRecordsSet `pulumi:"sendingRecordsSets"`
 	// The login email for the SMTP server.
 	SmtpLogin *string `pulumi:"smtpLogin"`
 	// Password for SMTP authentication
@@ -142,14 +173,26 @@ type DomainState struct {
 	DkimKeySize pulumi.IntPtrInput
 	// The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
 	DkimSelector pulumi.StringPtrInput
+	// If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+	ForceDkimAuthority pulumi.BoolPtrInput
 	// The domain to add to Mailgun
 	Name pulumi.StringPtrInput
-	// A list of DNS records for receiving validation.
+	// (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
+	OpenTracking pulumi.BoolPtrInput
+	// A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
+	//
+	// Deprecated: Use `receiving_records_set` instead.
 	ReceivingRecords DomainReceivingRecordArrayInput
+	// A set of DNS records for receiving validation.
+	ReceivingRecordsSets DomainReceivingRecordsSetArrayInput
 	// The region where domain will be created. Default value is `us`.
 	Region pulumi.StringPtrInput
-	// A list of DNS records for sending validation.
+	// A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
+	//
+	// Deprecated: Use `sending_records_set` instead.
 	SendingRecords DomainSendingRecordArrayInput
+	// A set of DNS records for sending validation.
+	SendingRecordsSets DomainSendingRecordsSetArrayInput
 	// The login email for the SMTP server.
 	SmtpLogin pulumi.StringPtrInput
 	// Password for SMTP authentication
@@ -172,8 +215,12 @@ type domainArgs struct {
 	DkimKeySize *int `pulumi:"dkimKeySize"`
 	// The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
 	DkimSelector *string `pulumi:"dkimSelector"`
+	// If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+	ForceDkimAuthority *bool `pulumi:"forceDkimAuthority"`
 	// The domain to add to Mailgun
 	Name *string `pulumi:"name"`
+	// (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
+	OpenTracking *bool `pulumi:"openTracking"`
 	// The region where domain will be created. Default value is `us`.
 	Region *string `pulumi:"region"`
 	// Password for SMTP authentication
@@ -193,8 +240,12 @@ type DomainArgs struct {
 	DkimKeySize pulumi.IntPtrInput
 	// The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
 	DkimSelector pulumi.StringPtrInput
+	// If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+	ForceDkimAuthority pulumi.BoolPtrInput
 	// The domain to add to Mailgun
 	Name pulumi.StringPtrInput
+	// (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
+	OpenTracking pulumi.BoolPtrInput
 	// The region where domain will be created. Default value is `us`.
 	Region pulumi.StringPtrInput
 	// Password for SMTP authentication
@@ -293,6 +344,83 @@ func (o DomainOutput) ToDomainOutput() DomainOutput {
 
 func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutput {
 	return o
+}
+
+// The length of your domain’s generated DKIM key. Default value is `1024`.
+func (o DomainOutput) DkimKeySize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.IntPtrOutput { return v.DkimKeySize }).(pulumi.IntPtrOutput)
+}
+
+// The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
+func (o DomainOutput) DkimSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.DkimSelector }).(pulumi.StringPtrOutput)
+}
+
+// If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+func (o DomainOutput) ForceDkimAuthority() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.BoolPtrOutput { return v.ForceDkimAuthority }).(pulumi.BoolPtrOutput)
+}
+
+// The domain to add to Mailgun
+func (o DomainOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
+func (o DomainOutput) OpenTracking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.BoolPtrOutput { return v.OpenTracking }).(pulumi.BoolPtrOutput)
+}
+
+// A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
+//
+// Deprecated: Use `receiving_records_set` instead.
+func (o DomainOutput) ReceivingRecords() DomainReceivingRecordArrayOutput {
+	return o.ApplyT(func(v *Domain) DomainReceivingRecordArrayOutput { return v.ReceivingRecords }).(DomainReceivingRecordArrayOutput)
+}
+
+// A set of DNS records for receiving validation.
+func (o DomainOutput) ReceivingRecordsSets() DomainReceivingRecordsSetArrayOutput {
+	return o.ApplyT(func(v *Domain) DomainReceivingRecordsSetArrayOutput { return v.ReceivingRecordsSets }).(DomainReceivingRecordsSetArrayOutput)
+}
+
+// The region where domain will be created. Default value is `us`.
+func (o DomainOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
+//
+// Deprecated: Use `sending_records_set` instead.
+func (o DomainOutput) SendingRecords() DomainSendingRecordArrayOutput {
+	return o.ApplyT(func(v *Domain) DomainSendingRecordArrayOutput { return v.SendingRecords }).(DomainSendingRecordArrayOutput)
+}
+
+// A set of DNS records for sending validation.
+func (o DomainOutput) SendingRecordsSets() DomainSendingRecordsSetArrayOutput {
+	return o.ApplyT(func(v *Domain) DomainSendingRecordsSetArrayOutput { return v.SendingRecordsSets }).(DomainSendingRecordsSetArrayOutput)
+}
+
+// The login email for the SMTP server.
+func (o DomainOutput) SmtpLogin() pulumi.StringOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.SmtpLogin }).(pulumi.StringOutput)
+}
+
+// Password for SMTP authentication
+func (o DomainOutput) SmtpPassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.SmtpPassword }).(pulumi.StringPtrOutput)
+}
+
+// `disabled` or `tag` Disable, no spam
+// filtering will occur for inbound messages. Tag, messages
+// will be tagged with a spam header.
+func (o DomainOutput) SpamAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.SpamAction }).(pulumi.StringPtrOutput)
+}
+
+// Boolean that determines whether
+// the domain will accept email for sub-domains.
+func (o DomainOutput) Wildcard() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.BoolPtrOutput { return v.Wildcard }).(pulumi.BoolPtrOutput)
 }
 
 type DomainArrayOutput struct{ *pulumi.OutputState }

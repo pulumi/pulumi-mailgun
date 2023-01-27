@@ -30,6 +30,13 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.dkimSelector);
     }
 
+    @Import(name="forceDkimAuthority")
+    private @Nullable Boolean forceDkimAuthority;
+
+    public Optional<Boolean> forceDkimAuthority() {
+        return Optional.ofNullable(this.forceDkimAuthority);
+    }
+
     /**
      * The name of the domain.
      * 
@@ -45,9 +52,24 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
         return this.name;
     }
 
+    @Import(name="openTracking")
+    private @Nullable Boolean openTracking;
+
+    public Optional<Boolean> openTracking() {
+        return Optional.ofNullable(this.openTracking);
+    }
+
+    /**
+     * The region where domain will be created. Default value is `us`.
+     * 
+     */
     @Import(name="region")
     private @Nullable String region;
 
+    /**
+     * @return The region where domain will be created. Default value is `us`.
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
@@ -102,7 +124,9 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetDomainPlainArgs(GetDomainPlainArgs $) {
         this.dkimKeySize = $.dkimKeySize;
         this.dkimSelector = $.dkimSelector;
+        this.forceDkimAuthority = $.forceDkimAuthority;
         this.name = $.name;
+        this.openTracking = $.openTracking;
         this.region = $.region;
         this.smtpPassword = $.smtpPassword;
         this.spamAction = $.spamAction;
@@ -137,6 +161,11 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        public Builder forceDkimAuthority(@Nullable Boolean forceDkimAuthority) {
+            $.forceDkimAuthority = forceDkimAuthority;
+            return this;
+        }
+
         /**
          * @param name The name of the domain.
          * 
@@ -148,6 +177,17 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        public Builder openTracking(@Nullable Boolean openTracking) {
+            $.openTracking = openTracking;
+            return this;
+        }
+
+        /**
+         * @param region The region where domain will be created. Default value is `us`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable String region) {
             $.region = region;
             return this;
