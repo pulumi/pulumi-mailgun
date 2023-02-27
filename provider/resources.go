@@ -63,15 +63,16 @@ func makeDataSource(mod string, res string) tokens.ModuleMember {
 func Provider() tfbridge.ProviderInfo {
 	p := shimv2.NewProvider(mailgun.Provider())
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "mailgun",
-		Description: "A Pulumi package for creating and managing Mailgun resources.",
-		Keywords:    []string{"pulumi", "mailgun"},
-		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/pulumi/pulumi-mailgun",
-		GitHubOrg:   "wgebis",
-		Config:      map[string]*tfbridge.SchemaInfo{},
+		P:                p,
+		Name:             "mailgun",
+		Description:      "A Pulumi package for creating and managing Mailgun resources.",
+		Keywords:         []string{"pulumi", "mailgun"},
+		License:          "Apache-2.0",
+		Homepage:         "https://pulumi.io",
+		Repository:       "https://github.com/pulumi/pulumi-mailgun",
+		GitHubOrg:        "wgebis",
+		Config:           map[string]*tfbridge.SchemaInfo{},
+		UpstreamRepoPath: "./upstream",
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"mailgun_domain":            {Tok: makeResource(mainMod, "Domain")},
 			"mailgun_route":             {Tok: makeResource(mainMod, "Route")},

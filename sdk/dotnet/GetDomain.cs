@@ -36,13 +36,13 @@ namespace Pulumi.Mailgun
         ///         Name = data.Mailgun.Domain.Name,
         ///         Records = new[]
         ///         {
-        ///             Output.Tuple(domain.Apply(getDomainResult =&gt; getDomainResult), domain.Apply(getDomainResult =&gt; getDomainResult)).Apply(values =&gt;
+        ///             Output.Tuple(domain, domain).Apply(values =&gt;
         ///             {
         ///                 var domain = values.Item1;
         ///                 var domain1 = values.Item2;
         ///                 return $"{domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[0]?.Priority)} {domain1.ReceivingRecords[0]?.Value}.";
         ///             }),
-        ///             Output.Tuple(domain.Apply(getDomainResult =&gt; getDomainResult), domain.Apply(getDomainResult =&gt; getDomainResult)).Apply(values =&gt;
+        ///             Output.Tuple(domain, domain).Apply(values =&gt;
         ///             {
         ///                 var domain = values.Item1;
         ///                 var domain1 = values.Item2;
@@ -87,13 +87,13 @@ namespace Pulumi.Mailgun
         ///         Name = data.Mailgun.Domain.Name,
         ///         Records = new[]
         ///         {
-        ///             Output.Tuple(domain.Apply(getDomainResult =&gt; getDomainResult), domain.Apply(getDomainResult =&gt; getDomainResult)).Apply(values =&gt;
+        ///             Output.Tuple(domain, domain).Apply(values =&gt;
         ///             {
         ///                 var domain = values.Item1;
         ///                 var domain1 = values.Item2;
         ///                 return $"{domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[0]?.Priority)} {domain1.ReceivingRecords[0]?.Value}.";
         ///             }),
-        ///             Output.Tuple(domain.Apply(getDomainResult =&gt; getDomainResult), domain.Apply(getDomainResult =&gt; getDomainResult)).Apply(values =&gt;
+        ///             Output.Tuple(domain, domain).Apply(values =&gt;
         ///             {
         ///                 var domain = values.Item1;
         ///                 var domain1 = values.Item2;
