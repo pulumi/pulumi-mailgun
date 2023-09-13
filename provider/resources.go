@@ -18,13 +18,14 @@ import (
 	"fmt"
 	"path/filepath"
 	"unicode"
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
 
 	"github.com/pulumi/pulumi-mailgun/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
+	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 	"github.com/wgebis/terraform-provider-mailgun/mailgun"
 )
 
@@ -115,12 +116,16 @@ func Provider() tfbridge.ProviderInfo {
 				mainPkg: "Mailgun",
 			},
 		},
+		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
-	err := x.ComputeDefaults(&prov, x.TokensSingleModule("mailgun_", mainMod,
-		x.MakeStandardToken(mainPkg)))
-	contract.AssertNoError(err)
+	prov.MustComputeTokens(tfbridgetokens.SingleModule("mailgun_", mainMod,
+		tfbridgetokens.MakeStandard(mainPkg)))
+	prov.MustApplyAutoAliases()
 	prov.SetAutonaming(255, "-")
 
 	return prov
 }
+
+//go:embed cmd/pulumi-resource-mailgun/bridge-metadata.json
+var metadata []byte
