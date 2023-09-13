@@ -20,6 +20,7 @@ namespace Pulumi.Mailgun
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Aws = Pulumi.Aws;
         /// using Mailgun = Pulumi.Mailgun;
@@ -71,6 +72,7 @@ namespace Pulumi.Mailgun
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Aws = Pulumi.Aws;
         /// using Mailgun = Pulumi.Mailgun;
