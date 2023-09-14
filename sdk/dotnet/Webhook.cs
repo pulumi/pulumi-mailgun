@@ -17,6 +17,7 @@ namespace Pulumi.Mailgun
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Mailgun = Pulumi.Mailgun;
     /// 

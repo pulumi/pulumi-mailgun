@@ -7,8 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type DomainReceivingRecord struct {
 	Id *string `pulumi:"id"`
@@ -57,6 +61,12 @@ func (i DomainReceivingRecordArgs) ToDomainReceivingRecordOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DomainReceivingRecordOutput)
 }
 
+func (i DomainReceivingRecordArgs) ToOutput(ctx context.Context) pulumix.Output[DomainReceivingRecord] {
+	return pulumix.Output[DomainReceivingRecord]{
+		OutputState: i.ToDomainReceivingRecordOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DomainReceivingRecordArrayInput is an input type that accepts DomainReceivingRecordArray and DomainReceivingRecordArrayOutput values.
 // You can construct a concrete instance of `DomainReceivingRecordArrayInput` via:
 //
@@ -82,6 +92,12 @@ func (i DomainReceivingRecordArray) ToDomainReceivingRecordArrayOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(DomainReceivingRecordArrayOutput)
 }
 
+func (i DomainReceivingRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]DomainReceivingRecord] {
+	return pulumix.Output[[]DomainReceivingRecord]{
+		OutputState: i.ToDomainReceivingRecordArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DomainReceivingRecordOutput struct{ *pulumi.OutputState }
 
 func (DomainReceivingRecordOutput) ElementType() reflect.Type {
@@ -94,6 +110,12 @@ func (o DomainReceivingRecordOutput) ToDomainReceivingRecordOutput() DomainRecei
 
 func (o DomainReceivingRecordOutput) ToDomainReceivingRecordOutputWithContext(ctx context.Context) DomainReceivingRecordOutput {
 	return o
+}
+
+func (o DomainReceivingRecordOutput) ToOutput(ctx context.Context) pulumix.Output[DomainReceivingRecord] {
+	return pulumix.Output[DomainReceivingRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DomainReceivingRecordOutput) Id() pulumi.StringPtrOutput {
@@ -132,6 +154,12 @@ func (o DomainReceivingRecordArrayOutput) ToDomainReceivingRecordArrayOutput() D
 
 func (o DomainReceivingRecordArrayOutput) ToDomainReceivingRecordArrayOutputWithContext(ctx context.Context) DomainReceivingRecordArrayOutput {
 	return o
+}
+
+func (o DomainReceivingRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DomainReceivingRecord] {
+	return pulumix.Output[[]DomainReceivingRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DomainReceivingRecordArrayOutput) Index(i pulumi.IntInput) DomainReceivingRecordOutput {
@@ -187,6 +215,12 @@ func (i DomainReceivingRecordsSetArgs) ToDomainReceivingRecordsSetOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DomainReceivingRecordsSetOutput)
 }
 
+func (i DomainReceivingRecordsSetArgs) ToOutput(ctx context.Context) pulumix.Output[DomainReceivingRecordsSet] {
+	return pulumix.Output[DomainReceivingRecordsSet]{
+		OutputState: i.ToDomainReceivingRecordsSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DomainReceivingRecordsSetArrayInput is an input type that accepts DomainReceivingRecordsSetArray and DomainReceivingRecordsSetArrayOutput values.
 // You can construct a concrete instance of `DomainReceivingRecordsSetArrayInput` via:
 //
@@ -212,6 +246,12 @@ func (i DomainReceivingRecordsSetArray) ToDomainReceivingRecordsSetArrayOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(DomainReceivingRecordsSetArrayOutput)
 }
 
+func (i DomainReceivingRecordsSetArray) ToOutput(ctx context.Context) pulumix.Output[[]DomainReceivingRecordsSet] {
+	return pulumix.Output[[]DomainReceivingRecordsSet]{
+		OutputState: i.ToDomainReceivingRecordsSetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DomainReceivingRecordsSetOutput struct{ *pulumi.OutputState }
 
 func (DomainReceivingRecordsSetOutput) ElementType() reflect.Type {
@@ -224,6 +264,12 @@ func (o DomainReceivingRecordsSetOutput) ToDomainReceivingRecordsSetOutput() Dom
 
 func (o DomainReceivingRecordsSetOutput) ToDomainReceivingRecordsSetOutputWithContext(ctx context.Context) DomainReceivingRecordsSetOutput {
 	return o
+}
+
+func (o DomainReceivingRecordsSetOutput) ToOutput(ctx context.Context) pulumix.Output[DomainReceivingRecordsSet] {
+	return pulumix.Output[DomainReceivingRecordsSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DomainReceivingRecordsSetOutput) Id() pulumi.StringPtrOutput {
@@ -262,6 +308,12 @@ func (o DomainReceivingRecordsSetArrayOutput) ToDomainReceivingRecordsSetArrayOu
 
 func (o DomainReceivingRecordsSetArrayOutput) ToDomainReceivingRecordsSetArrayOutputWithContext(ctx context.Context) DomainReceivingRecordsSetArrayOutput {
 	return o
+}
+
+func (o DomainReceivingRecordsSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DomainReceivingRecordsSet] {
+	return pulumix.Output[[]DomainReceivingRecordsSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DomainReceivingRecordsSetArrayOutput) Index(i pulumi.IntInput) DomainReceivingRecordsSetOutput {
@@ -317,6 +369,12 @@ func (i DomainSendingRecordArgs) ToDomainSendingRecordOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(DomainSendingRecordOutput)
 }
 
+func (i DomainSendingRecordArgs) ToOutput(ctx context.Context) pulumix.Output[DomainSendingRecord] {
+	return pulumix.Output[DomainSendingRecord]{
+		OutputState: i.ToDomainSendingRecordOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DomainSendingRecordArrayInput is an input type that accepts DomainSendingRecordArray and DomainSendingRecordArrayOutput values.
 // You can construct a concrete instance of `DomainSendingRecordArrayInput` via:
 //
@@ -342,6 +400,12 @@ func (i DomainSendingRecordArray) ToDomainSendingRecordArrayOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(DomainSendingRecordArrayOutput)
 }
 
+func (i DomainSendingRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]DomainSendingRecord] {
+	return pulumix.Output[[]DomainSendingRecord]{
+		OutputState: i.ToDomainSendingRecordArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DomainSendingRecordOutput struct{ *pulumi.OutputState }
 
 func (DomainSendingRecordOutput) ElementType() reflect.Type {
@@ -354,6 +418,12 @@ func (o DomainSendingRecordOutput) ToDomainSendingRecordOutput() DomainSendingRe
 
 func (o DomainSendingRecordOutput) ToDomainSendingRecordOutputWithContext(ctx context.Context) DomainSendingRecordOutput {
 	return o
+}
+
+func (o DomainSendingRecordOutput) ToOutput(ctx context.Context) pulumix.Output[DomainSendingRecord] {
+	return pulumix.Output[DomainSendingRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DomainSendingRecordOutput) Id() pulumi.StringPtrOutput {
@@ -392,6 +462,12 @@ func (o DomainSendingRecordArrayOutput) ToDomainSendingRecordArrayOutput() Domai
 
 func (o DomainSendingRecordArrayOutput) ToDomainSendingRecordArrayOutputWithContext(ctx context.Context) DomainSendingRecordArrayOutput {
 	return o
+}
+
+func (o DomainSendingRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DomainSendingRecord] {
+	return pulumix.Output[[]DomainSendingRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DomainSendingRecordArrayOutput) Index(i pulumi.IntInput) DomainSendingRecordOutput {
@@ -447,6 +523,12 @@ func (i DomainSendingRecordsSetArgs) ToDomainSendingRecordsSetOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(DomainSendingRecordsSetOutput)
 }
 
+func (i DomainSendingRecordsSetArgs) ToOutput(ctx context.Context) pulumix.Output[DomainSendingRecordsSet] {
+	return pulumix.Output[DomainSendingRecordsSet]{
+		OutputState: i.ToDomainSendingRecordsSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DomainSendingRecordsSetArrayInput is an input type that accepts DomainSendingRecordsSetArray and DomainSendingRecordsSetArrayOutput values.
 // You can construct a concrete instance of `DomainSendingRecordsSetArrayInput` via:
 //
@@ -472,6 +554,12 @@ func (i DomainSendingRecordsSetArray) ToDomainSendingRecordsSetArrayOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(DomainSendingRecordsSetArrayOutput)
 }
 
+func (i DomainSendingRecordsSetArray) ToOutput(ctx context.Context) pulumix.Output[[]DomainSendingRecordsSet] {
+	return pulumix.Output[[]DomainSendingRecordsSet]{
+		OutputState: i.ToDomainSendingRecordsSetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DomainSendingRecordsSetOutput struct{ *pulumi.OutputState }
 
 func (DomainSendingRecordsSetOutput) ElementType() reflect.Type {
@@ -484,6 +572,12 @@ func (o DomainSendingRecordsSetOutput) ToDomainSendingRecordsSetOutput() DomainS
 
 func (o DomainSendingRecordsSetOutput) ToDomainSendingRecordsSetOutputWithContext(ctx context.Context) DomainSendingRecordsSetOutput {
 	return o
+}
+
+func (o DomainSendingRecordsSetOutput) ToOutput(ctx context.Context) pulumix.Output[DomainSendingRecordsSet] {
+	return pulumix.Output[DomainSendingRecordsSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DomainSendingRecordsSetOutput) Id() pulumi.StringPtrOutput {
@@ -522,6 +616,12 @@ func (o DomainSendingRecordsSetArrayOutput) ToDomainSendingRecordsSetArrayOutput
 
 func (o DomainSendingRecordsSetArrayOutput) ToDomainSendingRecordsSetArrayOutputWithContext(ctx context.Context) DomainSendingRecordsSetArrayOutput {
 	return o
+}
+
+func (o DomainSendingRecordsSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]DomainSendingRecordsSet] {
+	return pulumix.Output[[]DomainSendingRecordsSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DomainSendingRecordsSetArrayOutput) Index(i pulumi.IntInput) DomainSendingRecordsSetOutput {
@@ -577,6 +677,12 @@ func (i GetDomainReceivingRecordArgs) ToGetDomainReceivingRecordOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainReceivingRecordOutput)
 }
 
+func (i GetDomainReceivingRecordArgs) ToOutput(ctx context.Context) pulumix.Output[GetDomainReceivingRecord] {
+	return pulumix.Output[GetDomainReceivingRecord]{
+		OutputState: i.ToGetDomainReceivingRecordOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDomainReceivingRecordArrayInput is an input type that accepts GetDomainReceivingRecordArray and GetDomainReceivingRecordArrayOutput values.
 // You can construct a concrete instance of `GetDomainReceivingRecordArrayInput` via:
 //
@@ -602,6 +708,12 @@ func (i GetDomainReceivingRecordArray) ToGetDomainReceivingRecordArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainReceivingRecordArrayOutput)
 }
 
+func (i GetDomainReceivingRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainReceivingRecord] {
+	return pulumix.Output[[]GetDomainReceivingRecord]{
+		OutputState: i.ToGetDomainReceivingRecordArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDomainReceivingRecordOutput struct{ *pulumi.OutputState }
 
 func (GetDomainReceivingRecordOutput) ElementType() reflect.Type {
@@ -614,6 +726,12 @@ func (o GetDomainReceivingRecordOutput) ToGetDomainReceivingRecordOutput() GetDo
 
 func (o GetDomainReceivingRecordOutput) ToGetDomainReceivingRecordOutputWithContext(ctx context.Context) GetDomainReceivingRecordOutput {
 	return o
+}
+
+func (o GetDomainReceivingRecordOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainReceivingRecord] {
+	return pulumix.Output[GetDomainReceivingRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDomainReceivingRecordOutput) Id() pulumi.StringOutput {
@@ -652,6 +770,12 @@ func (o GetDomainReceivingRecordArrayOutput) ToGetDomainReceivingRecordArrayOutp
 
 func (o GetDomainReceivingRecordArrayOutput) ToGetDomainReceivingRecordArrayOutputWithContext(ctx context.Context) GetDomainReceivingRecordArrayOutput {
 	return o
+}
+
+func (o GetDomainReceivingRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainReceivingRecord] {
+	return pulumix.Output[[]GetDomainReceivingRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDomainReceivingRecordArrayOutput) Index(i pulumi.IntInput) GetDomainReceivingRecordOutput {
@@ -707,6 +831,12 @@ func (i GetDomainReceivingRecordsSetArgs) ToGetDomainReceivingRecordsSetOutputWi
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainReceivingRecordsSetOutput)
 }
 
+func (i GetDomainReceivingRecordsSetArgs) ToOutput(ctx context.Context) pulumix.Output[GetDomainReceivingRecordsSet] {
+	return pulumix.Output[GetDomainReceivingRecordsSet]{
+		OutputState: i.ToGetDomainReceivingRecordsSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDomainReceivingRecordsSetArrayInput is an input type that accepts GetDomainReceivingRecordsSetArray and GetDomainReceivingRecordsSetArrayOutput values.
 // You can construct a concrete instance of `GetDomainReceivingRecordsSetArrayInput` via:
 //
@@ -732,6 +862,12 @@ func (i GetDomainReceivingRecordsSetArray) ToGetDomainReceivingRecordsSetArrayOu
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainReceivingRecordsSetArrayOutput)
 }
 
+func (i GetDomainReceivingRecordsSetArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainReceivingRecordsSet] {
+	return pulumix.Output[[]GetDomainReceivingRecordsSet]{
+		OutputState: i.ToGetDomainReceivingRecordsSetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDomainReceivingRecordsSetOutput struct{ *pulumi.OutputState }
 
 func (GetDomainReceivingRecordsSetOutput) ElementType() reflect.Type {
@@ -744,6 +880,12 @@ func (o GetDomainReceivingRecordsSetOutput) ToGetDomainReceivingRecordsSetOutput
 
 func (o GetDomainReceivingRecordsSetOutput) ToGetDomainReceivingRecordsSetOutputWithContext(ctx context.Context) GetDomainReceivingRecordsSetOutput {
 	return o
+}
+
+func (o GetDomainReceivingRecordsSetOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainReceivingRecordsSet] {
+	return pulumix.Output[GetDomainReceivingRecordsSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDomainReceivingRecordsSetOutput) Id() pulumi.StringOutput {
@@ -782,6 +924,12 @@ func (o GetDomainReceivingRecordsSetArrayOutput) ToGetDomainReceivingRecordsSetA
 
 func (o GetDomainReceivingRecordsSetArrayOutput) ToGetDomainReceivingRecordsSetArrayOutputWithContext(ctx context.Context) GetDomainReceivingRecordsSetArrayOutput {
 	return o
+}
+
+func (o GetDomainReceivingRecordsSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainReceivingRecordsSet] {
+	return pulumix.Output[[]GetDomainReceivingRecordsSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDomainReceivingRecordsSetArrayOutput) Index(i pulumi.IntInput) GetDomainReceivingRecordsSetOutput {
@@ -837,6 +985,12 @@ func (i GetDomainSendingRecordArgs) ToGetDomainSendingRecordOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainSendingRecordOutput)
 }
 
+func (i GetDomainSendingRecordArgs) ToOutput(ctx context.Context) pulumix.Output[GetDomainSendingRecord] {
+	return pulumix.Output[GetDomainSendingRecord]{
+		OutputState: i.ToGetDomainSendingRecordOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDomainSendingRecordArrayInput is an input type that accepts GetDomainSendingRecordArray and GetDomainSendingRecordArrayOutput values.
 // You can construct a concrete instance of `GetDomainSendingRecordArrayInput` via:
 //
@@ -862,6 +1016,12 @@ func (i GetDomainSendingRecordArray) ToGetDomainSendingRecordArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainSendingRecordArrayOutput)
 }
 
+func (i GetDomainSendingRecordArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainSendingRecord] {
+	return pulumix.Output[[]GetDomainSendingRecord]{
+		OutputState: i.ToGetDomainSendingRecordArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDomainSendingRecordOutput struct{ *pulumi.OutputState }
 
 func (GetDomainSendingRecordOutput) ElementType() reflect.Type {
@@ -874,6 +1034,12 @@ func (o GetDomainSendingRecordOutput) ToGetDomainSendingRecordOutput() GetDomain
 
 func (o GetDomainSendingRecordOutput) ToGetDomainSendingRecordOutputWithContext(ctx context.Context) GetDomainSendingRecordOutput {
 	return o
+}
+
+func (o GetDomainSendingRecordOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainSendingRecord] {
+	return pulumix.Output[GetDomainSendingRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDomainSendingRecordOutput) Id() pulumi.StringOutput {
@@ -912,6 +1078,12 @@ func (o GetDomainSendingRecordArrayOutput) ToGetDomainSendingRecordArrayOutput()
 
 func (o GetDomainSendingRecordArrayOutput) ToGetDomainSendingRecordArrayOutputWithContext(ctx context.Context) GetDomainSendingRecordArrayOutput {
 	return o
+}
+
+func (o GetDomainSendingRecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainSendingRecord] {
+	return pulumix.Output[[]GetDomainSendingRecord]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDomainSendingRecordArrayOutput) Index(i pulumi.IntInput) GetDomainSendingRecordOutput {
@@ -967,6 +1139,12 @@ func (i GetDomainSendingRecordsSetArgs) ToGetDomainSendingRecordsSetOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainSendingRecordsSetOutput)
 }
 
+func (i GetDomainSendingRecordsSetArgs) ToOutput(ctx context.Context) pulumix.Output[GetDomainSendingRecordsSet] {
+	return pulumix.Output[GetDomainSendingRecordsSet]{
+		OutputState: i.ToGetDomainSendingRecordsSetOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GetDomainSendingRecordsSetArrayInput is an input type that accepts GetDomainSendingRecordsSetArray and GetDomainSendingRecordsSetArrayOutput values.
 // You can construct a concrete instance of `GetDomainSendingRecordsSetArrayInput` via:
 //
@@ -992,6 +1170,12 @@ func (i GetDomainSendingRecordsSetArray) ToGetDomainSendingRecordsSetArrayOutput
 	return pulumi.ToOutputWithContext(ctx, i).(GetDomainSendingRecordsSetArrayOutput)
 }
 
+func (i GetDomainSendingRecordsSetArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainSendingRecordsSet] {
+	return pulumix.Output[[]GetDomainSendingRecordsSet]{
+		OutputState: i.ToGetDomainSendingRecordsSetArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GetDomainSendingRecordsSetOutput struct{ *pulumi.OutputState }
 
 func (GetDomainSendingRecordsSetOutput) ElementType() reflect.Type {
@@ -1004,6 +1188,12 @@ func (o GetDomainSendingRecordsSetOutput) ToGetDomainSendingRecordsSetOutput() G
 
 func (o GetDomainSendingRecordsSetOutput) ToGetDomainSendingRecordsSetOutputWithContext(ctx context.Context) GetDomainSendingRecordsSetOutput {
 	return o
+}
+
+func (o GetDomainSendingRecordsSetOutput) ToOutput(ctx context.Context) pulumix.Output[GetDomainSendingRecordsSet] {
+	return pulumix.Output[GetDomainSendingRecordsSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDomainSendingRecordsSetOutput) Id() pulumi.StringOutput {
@@ -1042,6 +1232,12 @@ func (o GetDomainSendingRecordsSetArrayOutput) ToGetDomainSendingRecordsSetArray
 
 func (o GetDomainSendingRecordsSetArrayOutput) ToGetDomainSendingRecordsSetArrayOutputWithContext(ctx context.Context) GetDomainSendingRecordsSetArrayOutput {
 	return o
+}
+
+func (o GetDomainSendingRecordsSetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDomainSendingRecordsSet] {
+	return pulumix.Output[[]GetDomainSendingRecordsSet]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetDomainSendingRecordsSetArrayOutput) Index(i pulumi.IntInput) GetDomainSendingRecordsSetOutput {

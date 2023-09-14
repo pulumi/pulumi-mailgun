@@ -43,10 +43,6 @@ class GetDomainResult:
         pulumi.set(__self__, "open_tracking", open_tracking)
         if receiving_records and not isinstance(receiving_records, list):
             raise TypeError("Expected argument 'receiving_records' to be a list")
-        if receiving_records is not None:
-            warnings.warn("""Use `receiving_records_set` instead.""", DeprecationWarning)
-            pulumi.log.warn("""receiving_records is deprecated: Use `receiving_records_set` instead.""")
-
         pulumi.set(__self__, "receiving_records", receiving_records)
         if receiving_records_sets and not isinstance(receiving_records_sets, list):
             raise TypeError("Expected argument 'receiving_records_sets' to be a list")
@@ -56,10 +52,6 @@ class GetDomainResult:
         pulumi.set(__self__, "region", region)
         if sending_records and not isinstance(sending_records, list):
             raise TypeError("Expected argument 'sending_records' to be a list")
-        if sending_records is not None:
-            warnings.warn("""Use `sending_records_set` instead.""", DeprecationWarning)
-            pulumi.log.warn("""sending_records is deprecated: Use `sending_records_set` instead.""")
-
         pulumi.set(__self__, "sending_records", sending_records)
         if sending_records_sets and not isinstance(sending_records_sets, list):
             raise TypeError("Expected argument 'sending_records_sets' to be a list")
@@ -119,6 +111,9 @@ class GetDomainResult:
         """
         A list of DNS records for receiving validation.
         """
+        warnings.warn("""Use `receiving_records_set` instead.""", DeprecationWarning)
+        pulumi.log.warn("""receiving_records is deprecated: Use `receiving_records_set` instead.""")
+
         return pulumi.get(self, "receiving_records")
 
     @property
@@ -137,6 +132,9 @@ class GetDomainResult:
         """
         A list of DNS records for sending validation.
         """
+        warnings.warn("""Use `sending_records_set` instead.""", DeprecationWarning)
+        pulumi.log.warn("""sending_records is deprecated: Use `sending_records_set` instead.""")
+
         return pulumi.get(self, "sending_records")
 
     @property
@@ -253,21 +251,21 @@ def get_domain(dkim_key_size: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('mailgun:index/getDomain:getDomain', __args__, opts=opts, typ=GetDomainResult).value
 
     return AwaitableGetDomainResult(
-        dkim_key_size=__ret__.dkim_key_size,
-        dkim_selector=__ret__.dkim_selector,
-        force_dkim_authority=__ret__.force_dkim_authority,
-        id=__ret__.id,
-        name=__ret__.name,
-        open_tracking=__ret__.open_tracking,
-        receiving_records=__ret__.receiving_records,
-        receiving_records_sets=__ret__.receiving_records_sets,
-        region=__ret__.region,
-        sending_records=__ret__.sending_records,
-        sending_records_sets=__ret__.sending_records_sets,
-        smtp_login=__ret__.smtp_login,
-        smtp_password=__ret__.smtp_password,
-        spam_action=__ret__.spam_action,
-        wildcard=__ret__.wildcard)
+        dkim_key_size=pulumi.get(__ret__, 'dkim_key_size'),
+        dkim_selector=pulumi.get(__ret__, 'dkim_selector'),
+        force_dkim_authority=pulumi.get(__ret__, 'force_dkim_authority'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        open_tracking=pulumi.get(__ret__, 'open_tracking'),
+        receiving_records=pulumi.get(__ret__, 'receiving_records'),
+        receiving_records_sets=pulumi.get(__ret__, 'receiving_records_sets'),
+        region=pulumi.get(__ret__, 'region'),
+        sending_records=pulumi.get(__ret__, 'sending_records'),
+        sending_records_sets=pulumi.get(__ret__, 'sending_records_sets'),
+        smtp_login=pulumi.get(__ret__, 'smtp_login'),
+        smtp_password=pulumi.get(__ret__, 'smtp_password'),
+        spam_action=pulumi.get(__ret__, 'spam_action'),
+        wildcard=pulumi.get(__ret__, 'wildcard'))
 
 
 @_utilities.lift_output_func(get_domain)
