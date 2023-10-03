@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -51,16 +51,33 @@ class DomainReceivingRecord(dict):
         :param str valid: `"valid"` if the record is valid.
         :param str value: The value of the record.
         """
+        DomainReceivingRecord._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            priority=priority,
+            record_type=record_type,
+            valid=valid,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             priority: Optional[str] = None,
+             record_type: Optional[str] = None,
+             valid: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if record_type is not None:
-            pulumi.set(__self__, "record_type", record_type)
+            _setter("record_type", record_type)
         if valid is not None:
-            pulumi.set(__self__, "valid", valid)
+            _setter("valid", valid)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -131,16 +148,33 @@ class DomainReceivingRecordsSet(dict):
         :param str valid: `"valid"` if the record is valid.
         :param str value: The value of the record.
         """
+        DomainReceivingRecordsSet._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            priority=priority,
+            record_type=record_type,
+            valid=valid,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             priority: Optional[str] = None,
+             record_type: Optional[str] = None,
+             valid: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if record_type is not None:
-            pulumi.set(__self__, "record_type", record_type)
+            _setter("record_type", record_type)
         if valid is not None:
-            pulumi.set(__self__, "valid", valid)
+            _setter("valid", valid)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -211,16 +245,33 @@ class DomainSendingRecord(dict):
         :param str valid: `"valid"` if the record is valid.
         :param str value: The value of the record.
         """
+        DomainSendingRecord._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name=name,
+            record_type=record_type,
+            valid=valid,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             record_type: Optional[str] = None,
+             valid: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if record_type is not None:
-            pulumi.set(__self__, "record_type", record_type)
+            _setter("record_type", record_type)
         if valid is not None:
-            pulumi.set(__self__, "valid", valid)
+            _setter("valid", valid)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -291,16 +342,33 @@ class DomainSendingRecordsSet(dict):
         :param str valid: `"valid"` if the record is valid.
         :param str value: The value of the record.
         """
+        DomainSendingRecordsSet._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name=name,
+            record_type=record_type,
+            valid=valid,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             record_type: Optional[str] = None,
+             valid: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if record_type is not None:
-            pulumi.set(__self__, "record_type", record_type)
+            _setter("record_type", record_type)
         if valid is not None:
-            pulumi.set(__self__, "valid", valid)
+            _setter("valid", valid)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -354,11 +422,28 @@ class GetDomainReceivingRecordResult(dict):
         :param str valid: `"valid"` if the record is valid.
         :param str value: The value of the record.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "record_type", record_type)
-        pulumi.set(__self__, "valid", valid)
-        pulumi.set(__self__, "value", value)
+        GetDomainReceivingRecordResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            priority=priority,
+            record_type=record_type,
+            valid=valid,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             priority: str,
+             record_type: str,
+             valid: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("priority", priority)
+        _setter("record_type", record_type)
+        _setter("valid", valid)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -412,11 +497,28 @@ class GetDomainReceivingRecordsSetResult(dict):
         :param str valid: `"valid"` if the record is valid.
         :param str value: The value of the record.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "record_type", record_type)
-        pulumi.set(__self__, "valid", valid)
-        pulumi.set(__self__, "value", value)
+        GetDomainReceivingRecordsSetResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            priority=priority,
+            record_type=record_type,
+            valid=valid,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             priority: str,
+             record_type: str,
+             valid: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("priority", priority)
+        _setter("record_type", record_type)
+        _setter("valid", valid)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -470,11 +572,28 @@ class GetDomainSendingRecordResult(dict):
         :param str valid: `"valid"` if the record is valid.
         :param str value: The value of the record.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "record_type", record_type)
-        pulumi.set(__self__, "valid", valid)
-        pulumi.set(__self__, "value", value)
+        GetDomainSendingRecordResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name=name,
+            record_type=record_type,
+            valid=valid,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             name: str,
+             record_type: str,
+             valid: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("name", name)
+        _setter("record_type", record_type)
+        _setter("valid", valid)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -528,11 +647,28 @@ class GetDomainSendingRecordsSetResult(dict):
         :param str valid: `"valid"` if the record is valid.
         :param str value: The value of the record.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "record_type", record_type)
-        pulumi.set(__self__, "valid", valid)
-        pulumi.set(__self__, "value", value)
+        GetDomainSendingRecordsSetResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name=name,
+            record_type=record_type,
+            valid=valid,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             name: str,
+             record_type: str,
+             valid: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("name", name)
+        _setter("record_type", record_type)
+        _setter("valid", valid)
+        _setter("value", value)
 
     @property
     @pulumi.getter

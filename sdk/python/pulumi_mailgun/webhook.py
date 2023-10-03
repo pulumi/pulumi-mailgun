@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['WebhookArgs', 'Webhook']
@@ -25,11 +25,26 @@ class WebhookArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: The urls of webhook
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
         """
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "kind", kind)
-        pulumi.set(__self__, "urls", urls)
+        WebhookArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain=domain,
+            kind=kind,
+            urls=urls,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain: pulumi.Input[str],
+             kind: pulumi.Input[str],
+             urls: pulumi.Input[Sequence[pulumi.Input[str]]],
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("domain", domain)
+        _setter("kind", kind)
+        _setter("urls", urls)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter
@@ -94,14 +109,29 @@ class _WebhookState:
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: The urls of webhook
         """
+        _WebhookState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain=domain,
+            kind=kind,
+            region=region,
+            urls=urls,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain: Optional[pulumi.Input[str]] = None,
+             kind: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if kind is not None:
-            pulumi.set(__self__, "kind", kind)
+            _setter("kind", kind)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if urls is not None:
-            pulumi.set(__self__, "urls", urls)
+            _setter("urls", urls)
 
     @property
     @pulumi.getter
@@ -221,6 +251,10 @@ class Webhook(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WebhookArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
