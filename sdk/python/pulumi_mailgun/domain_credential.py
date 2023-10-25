@@ -35,11 +35,19 @@ class DomainCredentialArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: pulumi.Input[str],
-             login: pulumi.Input[str],
-             password: pulumi.Input[str],
+             domain: Optional[pulumi.Input[str]] = None,
+             login: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if login is None:
+            raise TypeError("Missing 'login' argument")
+        if password is None:
+            raise TypeError("Missing 'password' argument")
+
         _setter("domain", domain)
         _setter("login", login)
         _setter("password", password)
@@ -123,7 +131,9 @@ class _DomainCredentialState:
              login: Optional[pulumi.Input[str]] = None,
              password: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if domain is not None:
             _setter("domain", domain)
         if login is not None:

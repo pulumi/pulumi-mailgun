@@ -12,31 +12,6 @@ namespace Pulumi.Mailgun
     /// <summary>
     /// Provides a Mailgun App resource. This can be used to
     /// create and manage applications on Mailgun.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Mailgun = Pulumi.Mailgun;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a new Mailgun webhook
-    ///     var @default = new Mailgun.Webhook("default", new()
-    ///     {
-    ///         Domain = "test.example.com",
-    ///         Kind = "delivered",
-    ///         Region = "us",
-    ///         Urls = new[]
-    ///         {
-    ///             "https://example.com",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [MailgunResourceType("mailgun:index/webhook:Webhook")]
     public partial class Webhook : global::Pulumi.CustomResource

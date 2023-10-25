@@ -12,32 +12,6 @@ namespace Pulumi.Mailgun
     /// <summary>
     /// Provides a Mailgun Route resource. This can be used to create and manage routes on Mailgun.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Mailgun = Pulumi.Mailgun;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a new Mailgun route
-    ///     var @default = new Mailgun.Route("default", new()
-    ///     {
-    ///         Actions = new[]
-    ///         {
-    ///             "forward('http://example.com/api/v1/foos/')",
-    ///             "stop()",
-    ///         },
-    ///         Description = "inbound",
-    ///         Expression = "match_recipient('.*@foo.example.com')",
-    ///         Priority = 0,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Routes can be imported using `ROUTE_ID` and `region` via `import` command. Route ID can be found on Mailgun portal in section `Receiving/Routes`. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).

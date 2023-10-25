@@ -12,21 +12,6 @@ import * as utilities from "./utilities";
  *
  * After DNS records are set, domain verification should be triggered manually using [PUT /domains/\<domain\>/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as mailgun from "@pulumi/mailgun";
- *
- * // Create a new Mailgun domain
- * const _default = new mailgun.Domain("default", {
- *     dkimKeySize: 1024,
- *     region: "us",
- *     smtpPassword: "supersecretpassword1234",
- *     spamAction: "disabled",
- * });
- * ```
- *
  * ## Import
  *
  * Domains can be imported using `region:domain_name` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).

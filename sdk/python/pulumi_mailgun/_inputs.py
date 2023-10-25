@@ -46,7 +46,11 @@ class DomainReceivingRecordArgs:
              record_type: Optional[pulumi.Input[str]] = None,
              valid: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if record_type is None and 'recordType' in kwargs:
+            record_type = kwargs['recordType']
+
         if id is not None:
             _setter("id", id)
         if priority is not None:
@@ -146,7 +150,11 @@ class DomainReceivingRecordsSetArgs:
              record_type: Optional[pulumi.Input[str]] = None,
              valid: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if record_type is None and 'recordType' in kwargs:
+            record_type = kwargs['recordType']
+
         if id is not None:
             _setter("id", id)
         if priority is not None:
@@ -246,7 +254,11 @@ class DomainSendingRecordArgs:
              record_type: Optional[pulumi.Input[str]] = None,
              valid: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if record_type is None and 'recordType' in kwargs:
+            record_type = kwargs['recordType']
+
         if id is not None:
             _setter("id", id)
         if name is not None:
@@ -346,7 +358,11 @@ class DomainSendingRecordsSetArgs:
              record_type: Optional[pulumi.Input[str]] = None,
              valid: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if record_type is None and 'recordType' in kwargs:
+            record_type = kwargs['recordType']
+
         if id is not None:
             _setter("id", id)
         if name is not None:

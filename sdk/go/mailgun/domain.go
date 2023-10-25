@@ -17,35 +17,6 @@ import (
 //
 // After DNS records are set, domain verification should be triggered manually using [PUT /domains/\<domain\>/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := mailgun.NewDomain(ctx, "default", &mailgun.DomainArgs{
-//				DkimKeySize:  pulumi.Int(1024),
-//				Region:       pulumi.String("us"),
-//				SmtpPassword: pulumi.String("supersecretpassword1234"),
-//				SpamAction:   pulumi.String("disabled"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Domains can be imported using `region:domain_name` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
