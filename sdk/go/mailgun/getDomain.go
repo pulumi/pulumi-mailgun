@@ -13,6 +13,48 @@ import (
 )
 
 // `Domain` provides details about a Mailgun domain.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/route53"
+//	"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			domain, err := mailgun.LookupDomain(ctx, &mailgun.LookupDomainArgs{
+//				Name: "test.example.com",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = route53.NewRecord(ctx, "mailgun-mx", &route53.RecordArgs{
+//				Name: pulumi.Any(data.Mailgun.Domain.Name),
+//				Records: pulumi.StringArray{
+//					pulumi.String(fmt.Sprintf("%v %v.", domain.ReceivingRecords[0].Priority, domain.ReceivingRecords[0].Value)),
+//					pulumi.String(fmt.Sprintf("%v %v.", domain.ReceivingRecords[1].Priority, domain.ReceivingRecords[1].Value)),
+//				},
+//				Ttl:    pulumi.Int(3600),
+//				Type:   pulumi.String("MX"),
+//				ZoneId: pulumi.Any(_var.Zone_id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupDomain(ctx *pulumi.Context, args *LookupDomainArgs, opts ...pulumi.InvokeOption) (*LookupDomainResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDomainResult

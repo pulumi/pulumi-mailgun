@@ -15,6 +15,38 @@ import (
 
 // Provides a Mailgun Route resource. This can be used to create and manage routes on Mailgun.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := mailgun.NewRoute(ctx, "default", &mailgun.RouteArgs{
+//				Actions: pulumi.StringArray{
+//					pulumi.String("forward('http://example.com/api/v1/foos/')"),
+//					pulumi.String("stop()"),
+//				},
+//				Description: pulumi.String("inbound"),
+//				Expression:  pulumi.String("match_recipient('.*@foo.example.com')"),
+//				Priority:    pulumi.Int(0),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Routes can be imported using `ROUTE_ID` and `region` via `import` command. Route ID can be found on Mailgun portal in section `Receiving/Routes`. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).

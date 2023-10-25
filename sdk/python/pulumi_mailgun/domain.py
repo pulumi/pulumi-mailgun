@@ -540,6 +540,20 @@ class Domain(pulumi.CustomResource):
 
         After DNS records are set, domain verification should be triggered manually using [PUT /domains/\\<domain\\>/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_mailgun as mailgun
+
+        # Create a new Mailgun domain
+        default = mailgun.Domain("default",
+            dkim_key_size=1024,
+            region="us",
+            smtp_password="supersecretpassword1234",
+            spam_action="disabled")
+        ```
+
         ## Import
 
         Domains can be imported using `region:domain_name` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
@@ -576,6 +590,20 @@ class Domain(pulumi.CustomResource):
         create and manage applications on Mailgun.
 
         After DNS records are set, domain verification should be triggered manually using [PUT /domains/\\<domain\\>/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_mailgun as mailgun
+
+        # Create a new Mailgun domain
+        default = mailgun.Domain("default",
+            dkim_key_size=1024,
+            region="us",
+            smtp_password="supersecretpassword1234",
+            spam_action="disabled")
+        ```
 
         ## Import
 

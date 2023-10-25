@@ -13,12 +13,104 @@ namespace Pulumi.Mailgun
     {
         /// <summary>
         /// `mailgun.Domain` provides details about a Mailgun domain.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aws = Pulumi.Aws;
+        /// using Mailgun = Pulumi.Mailgun;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var domain = Mailgun.GetDomain.Invoke(new()
+        ///     {
+        ///         Name = "test.example.com",
+        ///     });
+        /// 
+        ///     var mailgun_mx = new Aws.Route53.Record("mailgun-mx", new()
+        ///     {
+        ///         Name = data.Mailgun.Domain.Name,
+        ///         Records = new[]
+        ///         {
+        ///             Output.Tuple(domain, domain).Apply(values =&gt;
+        ///             {
+        ///                 var domain = values.Item1;
+        ///                 var domain1 = values.Item2;
+        ///                 return $"{domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[0]?.Priority)} {domain1.ReceivingRecords[0]?.Value}.";
+        ///             }),
+        ///             Output.Tuple(domain, domain).Apply(values =&gt;
+        ///             {
+        ///                 var domain = values.Item1;
+        ///                 var domain1 = values.Item2;
+        ///                 return $"{domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[1]?.Priority)} {domain1.ReceivingRecords[1]?.Value}.";
+        ///             }),
+        ///         },
+        ///         Ttl = 3600,
+        ///         Type = "MX",
+        ///         ZoneId = @var.Zone_id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDomainResult> InvokeAsync(GetDomainArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("mailgun:index/getDomain:getDomain", args ?? new GetDomainArgs(), options.WithDefaults());
 
         /// <summary>
         /// `mailgun.Domain` provides details about a Mailgun domain.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aws = Pulumi.Aws;
+        /// using Mailgun = Pulumi.Mailgun;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var domain = Mailgun.GetDomain.Invoke(new()
+        ///     {
+        ///         Name = "test.example.com",
+        ///     });
+        /// 
+        ///     var mailgun_mx = new Aws.Route53.Record("mailgun-mx", new()
+        ///     {
+        ///         Name = data.Mailgun.Domain.Name,
+        ///         Records = new[]
+        ///         {
+        ///             Output.Tuple(domain, domain).Apply(values =&gt;
+        ///             {
+        ///                 var domain = values.Item1;
+        ///                 var domain1 = values.Item2;
+        ///                 return $"{domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[0]?.Priority)} {domain1.ReceivingRecords[0]?.Value}.";
+        ///             }),
+        ///             Output.Tuple(domain, domain).Apply(values =&gt;
+        ///             {
+        ///                 var domain = values.Item1;
+        ///                 var domain1 = values.Item2;
+        ///                 return $"{domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[1]?.Priority)} {domain1.ReceivingRecords[1]?.Value}.";
+        ///             }),
+        ///         },
+        ///         Ttl = 3600,
+        ///         Type = "MX",
+        ///         ZoneId = @var.Zone_id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDomainResult> Invoke(GetDomainInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainResult>("mailgun:index/getDomain:getDomain", args ?? new GetDomainInvokeArgs(), options.WithDefaults());

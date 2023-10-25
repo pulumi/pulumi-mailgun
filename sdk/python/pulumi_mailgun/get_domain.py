@@ -211,6 +211,25 @@ def get_domain(dkim_key_size: Optional[int] = None,
     """
     `Domain` provides details about a Mailgun domain.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aws as aws
+    import pulumi_mailgun as mailgun
+
+    domain = mailgun.get_domain(name="test.example.com")
+    mailgun_mx = aws.route53.Record("mailgun-mx",
+        name=data["mailgun"]["domain"]["name"],
+        records=[
+            f"{domain.receiving_records[0].priority} {domain.receiving_records[0].value}.",
+            f"{domain.receiving_records[1].priority} {domain.receiving_records[1].value}.",
+        ],
+        ttl=3600,
+        type="MX",
+        zone_id=var["zone_id"])
+    ```
+
 
     :param str name: The name of the domain.
     :param str region: The region where domain will be created. Default value is `us`.
@@ -262,6 +281,25 @@ def get_domain_output(dkim_key_size: Optional[pulumi.Input[Optional[int]]] = Non
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainResult]:
     """
     `Domain` provides details about a Mailgun domain.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aws as aws
+    import pulumi_mailgun as mailgun
+
+    domain = mailgun.get_domain(name="test.example.com")
+    mailgun_mx = aws.route53.Record("mailgun-mx",
+        name=data["mailgun"]["domain"]["name"],
+        records=[
+            f"{domain.receiving_records[0].priority} {domain.receiving_records[0].value}.",
+            f"{domain.receiving_records[1].priority} {domain.receiving_records[1].value}.",
+        ],
+        ttl=3600,
+        type="MX",
+        zone_id=var["zone_id"])
+    ```
 
 
     :param str name: The name of the domain.
