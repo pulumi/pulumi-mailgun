@@ -67,7 +67,11 @@ class DomainReceivingRecord(dict):
              record_type: Optional[str] = None,
              valid: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if record_type is None and 'recordType' in kwargs:
+            record_type = kwargs['recordType']
+
         if id is not None:
             _setter("id", id)
         if priority is not None:
@@ -164,7 +168,11 @@ class DomainReceivingRecordsSet(dict):
              record_type: Optional[str] = None,
              valid: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if record_type is None and 'recordType' in kwargs:
+            record_type = kwargs['recordType']
+
         if id is not None:
             _setter("id", id)
         if priority is not None:
@@ -261,7 +269,11 @@ class DomainSendingRecord(dict):
              record_type: Optional[str] = None,
              valid: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if record_type is None and 'recordType' in kwargs:
+            record_type = kwargs['recordType']
+
         if id is not None:
             _setter("id", id)
         if name is not None:
@@ -358,7 +370,11 @@ class DomainSendingRecordsSet(dict):
              record_type: Optional[str] = None,
              valid: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if record_type is None and 'recordType' in kwargs:
+            record_type = kwargs['recordType']
+
         if id is not None:
             _setter("id", id)
         if name is not None:
@@ -433,12 +449,26 @@ class GetDomainReceivingRecordResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             priority: str,
-             record_type: str,
-             valid: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[str] = None,
+             priority: Optional[str] = None,
+             record_type: Optional[str] = None,
+             valid: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if record_type is None and 'recordType' in kwargs:
+            record_type = kwargs['recordType']
+        if record_type is None:
+            raise TypeError("Missing 'record_type' argument")
+        if valid is None:
+            raise TypeError("Missing 'valid' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("id", id)
         _setter("priority", priority)
         _setter("record_type", record_type)
@@ -508,12 +538,26 @@ class GetDomainReceivingRecordsSetResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             priority: str,
-             record_type: str,
-             valid: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[str] = None,
+             priority: Optional[str] = None,
+             record_type: Optional[str] = None,
+             valid: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if record_type is None and 'recordType' in kwargs:
+            record_type = kwargs['recordType']
+        if record_type is None:
+            raise TypeError("Missing 'record_type' argument")
+        if valid is None:
+            raise TypeError("Missing 'valid' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("id", id)
         _setter("priority", priority)
         _setter("record_type", record_type)
@@ -583,12 +627,26 @@ class GetDomainSendingRecordResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             name: str,
-             record_type: str,
-             valid: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             record_type: Optional[str] = None,
+             valid: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if record_type is None and 'recordType' in kwargs:
+            record_type = kwargs['recordType']
+        if record_type is None:
+            raise TypeError("Missing 'record_type' argument")
+        if valid is None:
+            raise TypeError("Missing 'valid' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("id", id)
         _setter("name", name)
         _setter("record_type", record_type)
@@ -658,12 +716,26 @@ class GetDomainSendingRecordsSetResult(dict):
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: str,
-             name: str,
-             record_type: str,
-             valid: str,
-             value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             record_type: Optional[str] = None,
+             valid: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if record_type is None and 'recordType' in kwargs:
+            record_type = kwargs['recordType']
+        if record_type is None:
+            raise TypeError("Missing 'record_type' argument")
+        if valid is None:
+            raise TypeError("Missing 'valid' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("id", id)
         _setter("name", name)
         _setter("record_type", record_type)

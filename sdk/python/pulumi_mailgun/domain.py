@@ -64,7 +64,21 @@ class DomainArgs:
              smtp_password: Optional[pulumi.Input[str]] = None,
              spam_action: Optional[pulumi.Input[str]] = None,
              wildcard: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dkim_key_size is None and 'dkimKeySize' in kwargs:
+            dkim_key_size = kwargs['dkimKeySize']
+        if dkim_selector is None and 'dkimSelector' in kwargs:
+            dkim_selector = kwargs['dkimSelector']
+        if force_dkim_authority is None and 'forceDkimAuthority' in kwargs:
+            force_dkim_authority = kwargs['forceDkimAuthority']
+        if open_tracking is None and 'openTracking' in kwargs:
+            open_tracking = kwargs['openTracking']
+        if smtp_password is None and 'smtpPassword' in kwargs:
+            smtp_password = kwargs['smtpPassword']
+        if spam_action is None and 'spamAction' in kwargs:
+            spam_action = kwargs['spamAction']
+
         if dkim_key_size is not None:
             _setter("dkim_key_size", dkim_key_size)
         if dkim_selector is not None:
@@ -267,7 +281,31 @@ class _DomainState:
              smtp_password: Optional[pulumi.Input[str]] = None,
              spam_action: Optional[pulumi.Input[str]] = None,
              wildcard: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if dkim_key_size is None and 'dkimKeySize' in kwargs:
+            dkim_key_size = kwargs['dkimKeySize']
+        if dkim_selector is None and 'dkimSelector' in kwargs:
+            dkim_selector = kwargs['dkimSelector']
+        if force_dkim_authority is None and 'forceDkimAuthority' in kwargs:
+            force_dkim_authority = kwargs['forceDkimAuthority']
+        if open_tracking is None and 'openTracking' in kwargs:
+            open_tracking = kwargs['openTracking']
+        if receiving_records is None and 'receivingRecords' in kwargs:
+            receiving_records = kwargs['receivingRecords']
+        if receiving_records_sets is None and 'receivingRecordsSets' in kwargs:
+            receiving_records_sets = kwargs['receivingRecordsSets']
+        if sending_records is None and 'sendingRecords' in kwargs:
+            sending_records = kwargs['sendingRecords']
+        if sending_records_sets is None and 'sendingRecordsSets' in kwargs:
+            sending_records_sets = kwargs['sendingRecordsSets']
+        if smtp_login is None and 'smtpLogin' in kwargs:
+            smtp_login = kwargs['smtpLogin']
+        if smtp_password is None and 'smtpPassword' in kwargs:
+            smtp_password = kwargs['smtpPassword']
+        if spam_action is None and 'spamAction' in kwargs:
+            spam_action = kwargs['spamAction']
+
         if dkim_key_size is not None:
             _setter("dkim_key_size", dkim_key_size)
         if dkim_selector is not None:
@@ -502,20 +540,6 @@ class Domain(pulumi.CustomResource):
 
         After DNS records are set, domain verification should be triggered manually using [PUT /domains/\\<domain\\>/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_mailgun as mailgun
-
-        # Create a new Mailgun domain
-        default = mailgun.Domain("default",
-            dkim_key_size=1024,
-            region="us",
-            smtp_password="supersecretpassword1234",
-            spam_action="disabled")
-        ```
-
         ## Import
 
         Domains can be imported using `region:domain_name` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
@@ -552,20 +576,6 @@ class Domain(pulumi.CustomResource):
         create and manage applications on Mailgun.
 
         After DNS records are set, domain verification should be triggered manually using [PUT /domains/\\<domain\\>/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_mailgun as mailgun
-
-        # Create a new Mailgun domain
-        default = mailgun.Domain("default",
-            dkim_key_size=1024,
-            region="us",
-            smtp_password="supersecretpassword1234",
-            spam_action="disabled")
-        ```
 
         ## Import
 

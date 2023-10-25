@@ -8,28 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * `mailgun.Domain` provides details about a Mailgun domain.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as mailgun from "@pulumi/mailgun";
- *
- * const domain = mailgun.getDomain({
- *     name: "test.example.com",
- * });
- * const mailgun_mx = new aws.route53.Record("mailgun-mx", {
- *     name: data.mailgun.domain.name,
- *     records: [
- *         Promise.all([domain, domain]).then(([domain, domain1]) => `${domain.receivingRecords?.[0]?.priority} ${domain1.receivingRecords?.[0]?.value}.`),
- *         Promise.all([domain, domain]).then(([domain, domain1]) => `${domain.receivingRecords?.[1]?.priority} ${domain1.receivingRecords?.[1]?.value}.`),
- *     ],
- *     ttl: 3600,
- *     type: "MX",
- *     zoneId: _var.zone_id,
- * });
- * ```
  */
 export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {
 
@@ -127,28 +105,6 @@ export interface GetDomainResult {
 }
 /**
  * `mailgun.Domain` provides details about a Mailgun domain.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as aws from "@pulumi/aws";
- * import * as mailgun from "@pulumi/mailgun";
- *
- * const domain = mailgun.getDomain({
- *     name: "test.example.com",
- * });
- * const mailgun_mx = new aws.route53.Record("mailgun-mx", {
- *     name: data.mailgun.domain.name,
- *     records: [
- *         Promise.all([domain, domain]).then(([domain, domain1]) => `${domain.receivingRecords?.[0]?.priority} ${domain1.receivingRecords?.[0]?.value}.`),
- *         Promise.all([domain, domain]).then(([domain, domain1]) => `${domain.receivingRecords?.[1]?.priority} ${domain1.receivingRecords?.[1]?.value}.`),
- *     ],
- *     ttl: 3600,
- *     type: "MX",
- *     zoneId: _var.zone_id,
- * });
- * ```
  */
 export function getDomainOutput(args: GetDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainResult> {
     return pulumi.output(args).apply((a: any) => getDomain(a, opts))

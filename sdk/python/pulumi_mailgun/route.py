@@ -36,12 +36,20 @@ class RouteArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             actions: pulumi.Input[Sequence[pulumi.Input[str]]],
-             expression: pulumi.Input[str],
-             priority: pulumi.Input[int],
+             actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             expression: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
              description: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if actions is None:
+            raise TypeError("Missing 'actions' argument")
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+
         _setter("actions", actions)
         _setter("expression", expression)
         _setter("priority", priority)
@@ -135,7 +143,9 @@ class _RouteState:
              expression: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if actions is not None:
             _setter("actions", actions)
         if description is not None:
@@ -216,23 +226,6 @@ class Route(pulumi.CustomResource):
         """
         Provides a Mailgun Route resource. This can be used to create and manage routes on Mailgun.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_mailgun as mailgun
-
-        # Create a new Mailgun route
-        default = mailgun.Route("default",
-            actions=[
-                "forward('http://example.com/api/v1/foos/')",
-                "stop()",
-            ],
-            description="inbound",
-            expression="match_recipient('.*@foo.example.com')",
-            priority=0)
-        ```
-
         ## Import
 
         Routes can be imported using `ROUTE_ID` and `region` via `import` command. Route ID can be found on Mailgun portal in section `Receiving/Routes`. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
@@ -257,23 +250,6 @@ class Route(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Mailgun Route resource. This can be used to create and manage routes on Mailgun.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_mailgun as mailgun
-
-        # Create a new Mailgun route
-        default = mailgun.Route("default",
-            actions=[
-                "forward('http://example.com/api/v1/foos/')",
-                "stop()",
-            ],
-            description="inbound",
-            expression="match_recipient('.*@foo.example.com')",
-            priority=0)
-        ```
 
         ## Import
 

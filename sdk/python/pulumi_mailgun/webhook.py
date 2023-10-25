@@ -35,11 +35,19 @@ class WebhookArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: pulumi.Input[str],
-             kind: pulumi.Input[str],
-             urls: pulumi.Input[Sequence[pulumi.Input[str]]],
+             domain: Optional[pulumi.Input[str]] = None,
+             kind: Optional[pulumi.Input[str]] = None,
+             urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if kind is None:
+            raise TypeError("Missing 'kind' argument")
+        if urls is None:
+            raise TypeError("Missing 'urls' argument")
+
         _setter("domain", domain)
         _setter("kind", kind)
         _setter("urls", urls)
@@ -123,7 +131,9 @@ class _WebhookState:
              kind: Optional[pulumi.Input[str]] = None,
              region: Optional[pulumi.Input[str]] = None,
              urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+
         if domain is not None:
             _setter("domain", domain)
         if kind is not None:
@@ -196,20 +206,6 @@ class Webhook(pulumi.CustomResource):
         Provides a Mailgun App resource. This can be used to
         create and manage applications on Mailgun.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_mailgun as mailgun
-
-        # Create a new Mailgun webhook
-        default = mailgun.Webhook("default",
-            domain="test.example.com",
-            kind="delivered",
-            region="us",
-            urls=["https://example.com"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The domain to add to Mailgun
@@ -226,20 +222,6 @@ class Webhook(pulumi.CustomResource):
         """
         Provides a Mailgun App resource. This can be used to
         create and manage applications on Mailgun.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_mailgun as mailgun
-
-        # Create a new Mailgun webhook
-        default = mailgun.Webhook("default",
-            domain="test.example.com",
-            kind="delivered",
-            region="us",
-            urls=["https://example.com"])
-        ```
 
         :param str resource_name: The name of the resource.
         :param WebhookArgs args: The arguments to use to populate this resource's properties.
