@@ -7,6 +7,21 @@ import * as utilities from "./utilities";
 /**
  * Provides a Mailgun App resource. This can be used to
  * create and manage applications on Mailgun.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as mailgun from "@pulumi/mailgun";
+ *
+ * // Create a new Mailgun webhook
+ * const _default = new mailgun.Webhook("default", {
+ *     domain: "test.example.com",
+ *     kind: "delivered",
+ *     region: "us",
+ *     urls: ["https://example.com"],
+ * });
+ * ```
  */
 export class Webhook extends pulumi.CustomResource {
     /**

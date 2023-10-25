@@ -7,6 +7,24 @@ import * as utilities from "./utilities";
 /**
  * Provides a Mailgun Route resource. This can be used to create and manage routes on Mailgun.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as mailgun from "@pulumi/mailgun";
+ *
+ * // Create a new Mailgun route
+ * const _default = new mailgun.Route("default", {
+ *     actions: [
+ *         "forward('http://example.com/api/v1/foos/')",
+ *         "stop()",
+ *     ],
+ *     description: "inbound",
+ *     expression: "match_recipient('.*@foo.example.com')",
+ *     priority: 0,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Routes can be imported using `ROUTE_ID` and `region` via `import` command. Route ID can be found on Mailgun portal in section `Receiving/Routes`. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).

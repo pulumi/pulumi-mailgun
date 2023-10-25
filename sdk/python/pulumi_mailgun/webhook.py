@@ -206,6 +206,20 @@ class Webhook(pulumi.CustomResource):
         Provides a Mailgun App resource. This can be used to
         create and manage applications on Mailgun.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_mailgun as mailgun
+
+        # Create a new Mailgun webhook
+        default = mailgun.Webhook("default",
+            domain="test.example.com",
+            kind="delivered",
+            region="us",
+            urls=["https://example.com"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The domain to add to Mailgun
@@ -222,6 +236,20 @@ class Webhook(pulumi.CustomResource):
         """
         Provides a Mailgun App resource. This can be used to
         create and manage applications on Mailgun.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_mailgun as mailgun
+
+        # Create a new Mailgun webhook
+        default = mailgun.Webhook("default",
+            domain="test.example.com",
+            kind="delivered",
+            region="us",
+            urls=["https://example.com"])
+        ```
 
         :param str resource_name: The name of the resource.
         :param WebhookArgs args: The arguments to use to populate this resource's properties.

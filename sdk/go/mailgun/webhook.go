@@ -15,6 +15,37 @@ import (
 
 // Provides a Mailgun App resource. This can be used to
 // create and manage applications on Mailgun.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := mailgun.NewWebhook(ctx, "default", &mailgun.WebhookArgs{
+//				Domain: pulumi.String("test.example.com"),
+//				Kind:   pulumi.String("delivered"),
+//				Region: pulumi.String("us"),
+//				Urls: pulumi.StringArray{
+//					pulumi.String("https://example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Webhook struct {
 	pulumi.CustomResourceState
 

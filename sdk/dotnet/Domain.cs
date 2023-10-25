@@ -15,6 +15,28 @@ namespace Pulumi.Mailgun
     /// 
     /// After DNS records are set, domain verification should be triggered manually using [PUT /domains/\&lt;domain\&gt;/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Mailgun = Pulumi.Mailgun;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new Mailgun domain
+    ///     var @default = new Mailgun.Domain("default", new()
+    ///     {
+    ///         DkimKeySize = 1024,
+    ///         Region = "us",
+    ///         SmtpPassword = "supersecretpassword1234",
+    ///         SpamAction = "disabled",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Domains can be imported using `region:domain_name` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
