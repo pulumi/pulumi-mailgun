@@ -221,7 +221,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     /**
      * `disabled` or `tag` Disable, no spam
      * filtering will occur for inbound messages. Tag, messages
-     * will be tagged with a spam header.
+     * will be tagged with a spam header. Default value is `disabled`.
      * 
      */
     @Import(name="spamAction")
@@ -230,7 +230,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return `disabled` or `tag` Disable, no spam
      * filtering will occur for inbound messages. Tag, messages
-     * will be tagged with a spam header.
+     * will be tagged with a spam header. Default value is `disabled`.
      * 
      */
     public Optional<Output<String>> spamAction() {
@@ -610,7 +610,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param spamAction `disabled` or `tag` Disable, no spam
          * filtering will occur for inbound messages. Tag, messages
-         * will be tagged with a spam header.
+         * will be tagged with a spam header. Default value is `disabled`.
          * 
          * @return builder
          * 
@@ -623,7 +623,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param spamAction `disabled` or `tag` Disable, no spam
          * filtering will occur for inbound messages. Tag, messages
-         * will be tagged with a spam header.
+         * will be tagged with a spam header. Default value is `disabled`.
          * 
          * @return builder
          * 

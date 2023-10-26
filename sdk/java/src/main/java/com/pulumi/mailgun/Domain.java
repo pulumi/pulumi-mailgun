@@ -252,7 +252,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
     /**
      * `disabled` or `tag` Disable, no spam
      * filtering will occur for inbound messages. Tag, messages
-     * will be tagged with a spam header.
+     * will be tagged with a spam header. Default value is `disabled`.
      * 
      */
     @Export(name="spamAction", type=String.class, parameters={})
@@ -261,7 +261,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
     /**
      * @return `disabled` or `tag` Disable, no spam
      * filtering will occur for inbound messages. Tag, messages
-     * will be tagged with a spam header.
+     * will be tagged with a spam header. Default value is `disabled`.
      * 
      */
     public Output<Optional<String>> spamAction() {

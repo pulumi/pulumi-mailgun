@@ -125,7 +125,7 @@ namespace Pulumi.Mailgun
         /// <summary>
         /// `disabled` or `tag` Disable, no spam
         /// filtering will occur for inbound messages. Tag, messages
-        /// will be tagged with a spam header.
+        /// will be tagged with a spam header. Default value is `disabled`.
         /// </summary>
         [Output("spamAction")]
         public Output<string?> SpamAction { get; private set; } = null!;
@@ -242,7 +242,7 @@ namespace Pulumi.Mailgun
         /// <summary>
         /// `disabled` or `tag` Disable, no spam
         /// filtering will occur for inbound messages. Tag, messages
-        /// will be tagged with a spam header.
+        /// will be tagged with a spam header. Default value is `disabled`.
         /// </summary>
         [Input("spamAction")]
         public Input<string>? SpamAction { get; set; }
@@ -373,7 +373,7 @@ namespace Pulumi.Mailgun
         /// <summary>
         /// `disabled` or `tag` Disable, no spam
         /// filtering will occur for inbound messages. Tag, messages
-        /// will be tagged with a spam header.
+        /// will be tagged with a spam header. Default value is `disabled`.
         /// </summary>
         [Input("spamAction")]
         public Input<string>? SpamAction { get; set; }
