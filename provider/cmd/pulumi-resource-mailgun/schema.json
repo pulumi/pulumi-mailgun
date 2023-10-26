@@ -435,7 +435,7 @@
                 },
                 "spamAction": {
                     "type": "string",
-                    "description": "`disabled` or `tag` Disable, no spam\nfiltering will occur for inbound messages. Tag, messages\nwill be tagged with a spam header.\n"
+                    "description": "`disabled` or `tag` Disable, no spam\nfiltering will occur for inbound messages. Tag, messages\nwill be tagged with a spam header. Default value is `disabled`.\n"
                 },
                 "wildcard": {
                     "type": "boolean",
@@ -487,7 +487,7 @@
                 },
                 "spamAction": {
                     "type": "string",
-                    "description": "`disabled` or `tag` Disable, no spam\nfiltering will occur for inbound messages. Tag, messages\nwill be tagged with a spam header.\n",
+                    "description": "`disabled` or `tag` Disable, no spam\nfiltering will occur for inbound messages. Tag, messages\nwill be tagged with a spam header. Default value is `disabled`.\n",
                     "willReplaceOnChanges": true
                 },
                 "wildcard": {
@@ -569,7 +569,7 @@
                     },
                     "spamAction": {
                         "type": "string",
-                        "description": "`disabled` or `tag` Disable, no spam\nfiltering will occur for inbound messages. Tag, messages\nwill be tagged with a spam header.\n",
+                        "description": "`disabled` or `tag` Disable, no spam\nfiltering will occur for inbound messages. Tag, messages\nwill be tagged with a spam header. Default value is `disabled`.\n",
                         "willReplaceOnChanges": true
                     },
                     "wildcard": {
