@@ -3,8 +3,8 @@ module github.com/pulumi/pulumi-mailgun/provider/v3
 go 1.21
 
 require (
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.63.1
-	github.com/pulumi/pulumi/sdk/v3 v3.90.1
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.63.2-0.20231027211323-cefb369296c9
+	github.com/pulumi/pulumi/sdk/v3 v3.91.0
 	github.com/wgebis/terraform-provider-mailgun v0.0.0
 )
 
@@ -244,3 +244,7 @@ replace (
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 	github.com/wgebis/terraform-provider-mailgun => ../upstream
 )
+
+replace github.com/pulumi/pulumi/pkg/v3 => github.com/pulumi/pulumi/pkg/v3 v3.78.2-0.20231027191454-9941f901c988
+
+replace github.com/pulumi/pulumi/sdk/v3 => github.com/pulumi/pulumi/sdk/v3 v3.91.1-0.20231027191454-9941f901c988
