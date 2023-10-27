@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DomainCredentialArgs', 'DomainCredential']
@@ -25,34 +25,11 @@ class DomainCredentialArgs:
         :param pulumi.Input[str] password: Password for user authentication.
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
         """
-        DomainCredentialArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domain=domain,
-            login=login,
-            password=password,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domain: Optional[pulumi.Input[str]] = None,
-             login: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if domain is None:
-            raise TypeError("Missing 'domain' argument")
-        if login is None:
-            raise TypeError("Missing 'login' argument")
-        if password is None:
-            raise TypeError("Missing 'password' argument")
-
-        _setter("domain", domain)
-        _setter("login", login)
-        _setter("password", password)
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "login", login)
+        pulumi.set(__self__, "password", password)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -117,31 +94,14 @@ class _DomainCredentialState:
         :param pulumi.Input[str] password: Password for user authentication.
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
         """
-        _DomainCredentialState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            domain=domain,
-            login=login,
-            password=password,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             domain: Optional[pulumi.Input[str]] = None,
-             login: Optional[pulumi.Input[str]] = None,
-             password: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if login is not None:
-            _setter("login", login)
+            pulumi.set(__self__, "login", login)
         if password is not None:
-            _setter("password", password)
+            pulumi.set(__self__, "password", password)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -255,10 +215,6 @@ class DomainCredential(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DomainCredentialArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
