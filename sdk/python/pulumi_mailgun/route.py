@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['RouteArgs', 'Route']
@@ -25,38 +25,13 @@ class RouteArgs:
         :param pulumi.Input[int] priority: Smaller number indicates higher priority. Higher priority routes are handled first.
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
         """
-        RouteArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            actions=actions,
-            expression=expression,
-            priority=priority,
-            description=description,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             expression: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if actions is None:
-            raise TypeError("Missing 'actions' argument")
-        if expression is None:
-            raise TypeError("Missing 'expression' argument")
-        if priority is None:
-            raise TypeError("Missing 'priority' argument")
-
-        _setter("actions", actions)
-        _setter("expression", expression)
-        _setter("priority", priority)
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "priority", priority)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -127,35 +102,16 @@ class _RouteState:
         :param pulumi.Input[int] priority: Smaller number indicates higher priority. Higher priority routes are handled first.
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
         """
-        _RouteState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            actions=actions,
-            description=description,
-            expression=expression,
-            priority=priority,
-            region=region,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             expression: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-
         if actions is not None:
-            _setter("actions", actions)
+            pulumi.set(__self__, "actions", actions)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if expression is not None:
-            _setter("expression", expression)
+            pulumi.set(__self__, "expression", expression)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
 
     @property
     @pulumi.getter
@@ -305,10 +261,6 @@ class Route(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RouteArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
