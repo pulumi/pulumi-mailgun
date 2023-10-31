@@ -120,7 +120,7 @@ export class Domain extends pulumi.CustomResource {
     /**
      * `disabled` or `tag` Disable, no spam
      * filtering will occur for inbound messages. Tag, messages
-     * will be tagged with a spam header.
+     * will be tagged with a spam header. Default value is `disabled`.
      */
     public readonly spamAction!: pulumi.Output<string | undefined>;
     /**
@@ -239,7 +239,7 @@ export interface DomainState {
     /**
      * `disabled` or `tag` Disable, no spam
      * filtering will occur for inbound messages. Tag, messages
-     * will be tagged with a spam header.
+     * will be tagged with a spam header. Default value is `disabled`.
      */
     spamAction?: pulumi.Input<string>;
     /**
@@ -284,7 +284,7 @@ export interface DomainArgs {
     /**
      * `disabled` or `tag` Disable, no spam
      * filtering will occur for inbound messages. Tag, messages
-     * will be tagged with a spam header.
+     * will be tagged with a spam header. Default value is `disabled`.
      */
     spamAction?: pulumi.Input<string>;
     /**

@@ -36,7 +36,7 @@ class DomainArgs:
         :param pulumi.Input[str] smtp_password: Password for SMTP authentication
         :param pulumi.Input[str] spam_action: `disabled` or `tag` Disable, no spam
                filtering will occur for inbound messages. Tag, messages
-               will be tagged with a spam header.
+               will be tagged with a spam header. Default value is `disabled`.
         :param pulumi.Input[bool] wildcard: Boolean that determines whether
                the domain will accept email for sub-domains.
         """
@@ -149,7 +149,7 @@ class DomainArgs:
         """
         `disabled` or `tag` Disable, no spam
         filtering will occur for inbound messages. Tag, messages
-        will be tagged with a spam header.
+        will be tagged with a spam header. Default value is `disabled`.
         """
         return pulumi.get(self, "spam_action")
 
@@ -204,7 +204,7 @@ class _DomainState:
         :param pulumi.Input[str] smtp_password: Password for SMTP authentication
         :param pulumi.Input[str] spam_action: `disabled` or `tag` Disable, no spam
                filtering will occur for inbound messages. Tag, messages
-               will be tagged with a spam header.
+               will be tagged with a spam header. Default value is `disabled`.
         :param pulumi.Input[bool] wildcard: Boolean that determines whether
                the domain will accept email for sub-domains.
         """
@@ -399,7 +399,7 @@ class _DomainState:
         """
         `disabled` or `tag` Disable, no spam
         filtering will occur for inbound messages. Tag, messages
-        will be tagged with a spam header.
+        will be tagged with a spam header. Default value is `disabled`.
         """
         return pulumi.get(self, "spam_action")
 
@@ -477,7 +477,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] smtp_password: Password for SMTP authentication
         :param pulumi.Input[str] spam_action: `disabled` or `tag` Disable, no spam
                filtering will occur for inbound messages. Tag, messages
-               will be tagged with a spam header.
+               will be tagged with a spam header. Default value is `disabled`.
         :param pulumi.Input[bool] wildcard: Boolean that determines whether
                the domain will accept email for sub-domains.
         """
@@ -611,7 +611,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[str] smtp_password: Password for SMTP authentication
         :param pulumi.Input[str] spam_action: `disabled` or `tag` Disable, no spam
                filtering will occur for inbound messages. Tag, messages
-               will be tagged with a spam header.
+               will be tagged with a spam header. Default value is `disabled`.
         :param pulumi.Input[bool] wildcard: Boolean that determines whether
                the domain will accept email for sub-domains.
         """
@@ -743,7 +743,7 @@ class Domain(pulumi.CustomResource):
         """
         `disabled` or `tag` Disable, no spam
         filtering will occur for inbound messages. Tag, messages
-        will be tagged with a spam header.
+        will be tagged with a spam header. Default value is `disabled`.
         """
         return pulumi.get(self, "spam_action")
 

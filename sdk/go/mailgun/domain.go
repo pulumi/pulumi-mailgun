@@ -90,7 +90,7 @@ type Domain struct {
 	SmtpPassword pulumi.StringPtrOutput `pulumi:"smtpPassword"`
 	// `disabled` or `tag` Disable, no spam
 	// filtering will occur for inbound messages. Tag, messages
-	// will be tagged with a spam header.
+	// will be tagged with a spam header. Default value is `disabled`.
 	SpamAction pulumi.StringPtrOutput `pulumi:"spamAction"`
 	// Boolean that determines whether
 	// the domain will accept email for sub-domains.
@@ -164,7 +164,7 @@ type domainState struct {
 	SmtpPassword *string `pulumi:"smtpPassword"`
 	// `disabled` or `tag` Disable, no spam
 	// filtering will occur for inbound messages. Tag, messages
-	// will be tagged with a spam header.
+	// will be tagged with a spam header. Default value is `disabled`.
 	SpamAction *string `pulumi:"spamAction"`
 	// Boolean that determines whether
 	// the domain will accept email for sub-domains.
@@ -202,7 +202,7 @@ type DomainState struct {
 	SmtpPassword pulumi.StringPtrInput
 	// `disabled` or `tag` Disable, no spam
 	// filtering will occur for inbound messages. Tag, messages
-	// will be tagged with a spam header.
+	// will be tagged with a spam header. Default value is `disabled`.
 	SpamAction pulumi.StringPtrInput
 	// Boolean that determines whether
 	// the domain will accept email for sub-domains.
@@ -230,7 +230,7 @@ type domainArgs struct {
 	SmtpPassword *string `pulumi:"smtpPassword"`
 	// `disabled` or `tag` Disable, no spam
 	// filtering will occur for inbound messages. Tag, messages
-	// will be tagged with a spam header.
+	// will be tagged with a spam header. Default value is `disabled`.
 	SpamAction *string `pulumi:"spamAction"`
 	// Boolean that determines whether
 	// the domain will accept email for sub-domains.
@@ -255,7 +255,7 @@ type DomainArgs struct {
 	SmtpPassword pulumi.StringPtrInput
 	// `disabled` or `tag` Disable, no spam
 	// filtering will occur for inbound messages. Tag, messages
-	// will be tagged with a spam header.
+	// will be tagged with a spam header. Default value is `disabled`.
 	SpamAction pulumi.StringPtrInput
 	// Boolean that determines whether
 	// the domain will accept email for sub-domains.
@@ -439,7 +439,7 @@ func (o DomainOutput) SmtpPassword() pulumi.StringPtrOutput {
 
 // `disabled` or `tag` Disable, no spam
 // filtering will occur for inbound messages. Tag, messages
-// will be tagged with a spam header.
+// will be tagged with a spam header. Default value is `disabled`.
 func (o DomainOutput) SpamAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.SpamAction }).(pulumi.StringPtrOutput)
 }
