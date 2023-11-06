@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,24 +40,63 @@ class DomainArgs:
         :param pulumi.Input[bool] wildcard: Boolean that determines whether
                the domain will accept email for sub-domains.
         """
+        DomainArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dkim_key_size=dkim_key_size,
+            dkim_selector=dkim_selector,
+            force_dkim_authority=force_dkim_authority,
+            name=name,
+            open_tracking=open_tracking,
+            region=region,
+            smtp_password=smtp_password,
+            spam_action=spam_action,
+            wildcard=wildcard,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dkim_key_size: Optional[pulumi.Input[int]] = None,
+             dkim_selector: Optional[pulumi.Input[str]] = None,
+             force_dkim_authority: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             open_tracking: Optional[pulumi.Input[bool]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             smtp_password: Optional[pulumi.Input[str]] = None,
+             spam_action: Optional[pulumi.Input[str]] = None,
+             wildcard: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dkim_key_size is None and 'dkimKeySize' in kwargs:
+            dkim_key_size = kwargs['dkimKeySize']
+        if dkim_selector is None and 'dkimSelector' in kwargs:
+            dkim_selector = kwargs['dkimSelector']
+        if force_dkim_authority is None and 'forceDkimAuthority' in kwargs:
+            force_dkim_authority = kwargs['forceDkimAuthority']
+        if open_tracking is None and 'openTracking' in kwargs:
+            open_tracking = kwargs['openTracking']
+        if smtp_password is None and 'smtpPassword' in kwargs:
+            smtp_password = kwargs['smtpPassword']
+        if spam_action is None and 'spamAction' in kwargs:
+            spam_action = kwargs['spamAction']
+
         if dkim_key_size is not None:
-            pulumi.set(__self__, "dkim_key_size", dkim_key_size)
+            _setter("dkim_key_size", dkim_key_size)
         if dkim_selector is not None:
-            pulumi.set(__self__, "dkim_selector", dkim_selector)
+            _setter("dkim_selector", dkim_selector)
         if force_dkim_authority is not None:
-            pulumi.set(__self__, "force_dkim_authority", force_dkim_authority)
+            _setter("force_dkim_authority", force_dkim_authority)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if open_tracking is not None:
-            pulumi.set(__self__, "open_tracking", open_tracking)
+            _setter("open_tracking", open_tracking)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if smtp_password is not None:
-            pulumi.set(__self__, "smtp_password", smtp_password)
+            _setter("smtp_password", smtp_password)
         if spam_action is not None:
-            pulumi.set(__self__, "spam_action", spam_action)
+            _setter("spam_action", spam_action)
         if wildcard is not None:
-            pulumi.set(__self__, "wildcard", wildcard)
+            _setter("wildcard", wildcard)
 
     @property
     @pulumi.getter(name="dkimKeySize")
@@ -208,40 +247,99 @@ class _DomainState:
         :param pulumi.Input[bool] wildcard: Boolean that determines whether
                the domain will accept email for sub-domains.
         """
+        _DomainState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dkim_key_size=dkim_key_size,
+            dkim_selector=dkim_selector,
+            force_dkim_authority=force_dkim_authority,
+            name=name,
+            open_tracking=open_tracking,
+            receiving_records=receiving_records,
+            receiving_records_sets=receiving_records_sets,
+            region=region,
+            sending_records=sending_records,
+            sending_records_sets=sending_records_sets,
+            smtp_login=smtp_login,
+            smtp_password=smtp_password,
+            spam_action=spam_action,
+            wildcard=wildcard,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dkim_key_size: Optional[pulumi.Input[int]] = None,
+             dkim_selector: Optional[pulumi.Input[str]] = None,
+             force_dkim_authority: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             open_tracking: Optional[pulumi.Input[bool]] = None,
+             receiving_records: Optional[pulumi.Input[Sequence[pulumi.Input['DomainReceivingRecordArgs']]]] = None,
+             receiving_records_sets: Optional[pulumi.Input[Sequence[pulumi.Input['DomainReceivingRecordsSetArgs']]]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             sending_records: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSendingRecordArgs']]]] = None,
+             sending_records_sets: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSendingRecordsSetArgs']]]] = None,
+             smtp_login: Optional[pulumi.Input[str]] = None,
+             smtp_password: Optional[pulumi.Input[str]] = None,
+             spam_action: Optional[pulumi.Input[str]] = None,
+             wildcard: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dkim_key_size is None and 'dkimKeySize' in kwargs:
+            dkim_key_size = kwargs['dkimKeySize']
+        if dkim_selector is None and 'dkimSelector' in kwargs:
+            dkim_selector = kwargs['dkimSelector']
+        if force_dkim_authority is None and 'forceDkimAuthority' in kwargs:
+            force_dkim_authority = kwargs['forceDkimAuthority']
+        if open_tracking is None and 'openTracking' in kwargs:
+            open_tracking = kwargs['openTracking']
+        if receiving_records is None and 'receivingRecords' in kwargs:
+            receiving_records = kwargs['receivingRecords']
+        if receiving_records_sets is None and 'receivingRecordsSets' in kwargs:
+            receiving_records_sets = kwargs['receivingRecordsSets']
+        if sending_records is None and 'sendingRecords' in kwargs:
+            sending_records = kwargs['sendingRecords']
+        if sending_records_sets is None and 'sendingRecordsSets' in kwargs:
+            sending_records_sets = kwargs['sendingRecordsSets']
+        if smtp_login is None and 'smtpLogin' in kwargs:
+            smtp_login = kwargs['smtpLogin']
+        if smtp_password is None and 'smtpPassword' in kwargs:
+            smtp_password = kwargs['smtpPassword']
+        if spam_action is None and 'spamAction' in kwargs:
+            spam_action = kwargs['spamAction']
+
         if dkim_key_size is not None:
-            pulumi.set(__self__, "dkim_key_size", dkim_key_size)
+            _setter("dkim_key_size", dkim_key_size)
         if dkim_selector is not None:
-            pulumi.set(__self__, "dkim_selector", dkim_selector)
+            _setter("dkim_selector", dkim_selector)
         if force_dkim_authority is not None:
-            pulumi.set(__self__, "force_dkim_authority", force_dkim_authority)
+            _setter("force_dkim_authority", force_dkim_authority)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if open_tracking is not None:
-            pulumi.set(__self__, "open_tracking", open_tracking)
+            _setter("open_tracking", open_tracking)
         if receiving_records is not None:
             warnings.warn("""Use `receiving_records_set` instead.""", DeprecationWarning)
             pulumi.log.warn("""receiving_records is deprecated: Use `receiving_records_set` instead.""")
         if receiving_records is not None:
-            pulumi.set(__self__, "receiving_records", receiving_records)
+            _setter("receiving_records", receiving_records)
         if receiving_records_sets is not None:
-            pulumi.set(__self__, "receiving_records_sets", receiving_records_sets)
+            _setter("receiving_records_sets", receiving_records_sets)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if sending_records is not None:
             warnings.warn("""Use `sending_records_set` instead.""", DeprecationWarning)
             pulumi.log.warn("""sending_records is deprecated: Use `sending_records_set` instead.""")
         if sending_records is not None:
-            pulumi.set(__self__, "sending_records", sending_records)
+            _setter("sending_records", sending_records)
         if sending_records_sets is not None:
-            pulumi.set(__self__, "sending_records_sets", sending_records_sets)
+            _setter("sending_records_sets", sending_records_sets)
         if smtp_login is not None:
-            pulumi.set(__self__, "smtp_login", smtp_login)
+            _setter("smtp_login", smtp_login)
         if smtp_password is not None:
-            pulumi.set(__self__, "smtp_password", smtp_password)
+            _setter("smtp_password", smtp_password)
         if spam_action is not None:
-            pulumi.set(__self__, "spam_action", spam_action)
+            _setter("spam_action", spam_action)
         if wildcard is not None:
-            pulumi.set(__self__, "wildcard", wildcard)
+            _setter("wildcard", wildcard)
 
     @property
     @pulumi.getter(name="dkimKeySize")
@@ -527,6 +625,10 @@ class Domain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DomainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
