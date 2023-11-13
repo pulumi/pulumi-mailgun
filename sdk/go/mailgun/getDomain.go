@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // `Domain` provides details about a Mailgun domain.
@@ -162,12 +161,6 @@ func (o LookupDomainResultOutput) ToLookupDomainResultOutput() LookupDomainResul
 
 func (o LookupDomainResultOutput) ToLookupDomainResultOutputWithContext(ctx context.Context) LookupDomainResultOutput {
 	return o
-}
-
-func (o LookupDomainResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupDomainResult] {
-	return pulumix.Output[LookupDomainResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LookupDomainResultOutput) DkimKeySize() pulumi.IntPtrOutput {
