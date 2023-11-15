@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Mailgun domain credential resource. This can be used to create and manage credential in domain of Mailgun.
@@ -158,12 +157,6 @@ func (i *DomainCredential) ToDomainCredentialOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DomainCredentialOutput)
 }
 
-func (i *DomainCredential) ToOutput(ctx context.Context) pulumix.Output[*DomainCredential] {
-	return pulumix.Output[*DomainCredential]{
-		OutputState: i.ToDomainCredentialOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DomainCredentialArrayInput is an input type that accepts DomainCredentialArray and DomainCredentialArrayOutput values.
 // You can construct a concrete instance of `DomainCredentialArrayInput` via:
 //
@@ -187,12 +180,6 @@ func (i DomainCredentialArray) ToDomainCredentialArrayOutput() DomainCredentialA
 
 func (i DomainCredentialArray) ToDomainCredentialArrayOutputWithContext(ctx context.Context) DomainCredentialArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainCredentialArrayOutput)
-}
-
-func (i DomainCredentialArray) ToOutput(ctx context.Context) pulumix.Output[[]*DomainCredential] {
-	return pulumix.Output[[]*DomainCredential]{
-		OutputState: i.ToDomainCredentialArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DomainCredentialMapInput is an input type that accepts DomainCredentialMap and DomainCredentialMapOutput values.
@@ -220,12 +207,6 @@ func (i DomainCredentialMap) ToDomainCredentialMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(DomainCredentialMapOutput)
 }
 
-func (i DomainCredentialMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DomainCredential] {
-	return pulumix.Output[map[string]*DomainCredential]{
-		OutputState: i.ToDomainCredentialMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DomainCredentialOutput struct{ *pulumi.OutputState }
 
 func (DomainCredentialOutput) ElementType() reflect.Type {
@@ -238,12 +219,6 @@ func (o DomainCredentialOutput) ToDomainCredentialOutput() DomainCredentialOutpu
 
 func (o DomainCredentialOutput) ToDomainCredentialOutputWithContext(ctx context.Context) DomainCredentialOutput {
 	return o
-}
-
-func (o DomainCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[*DomainCredential] {
-	return pulumix.Output[*DomainCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The domain to add credential of Mailgun.
@@ -280,12 +255,6 @@ func (o DomainCredentialArrayOutput) ToDomainCredentialArrayOutputWithContext(ct
 	return o
 }
 
-func (o DomainCredentialArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DomainCredential] {
-	return pulumix.Output[[]*DomainCredential]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DomainCredentialArrayOutput) Index(i pulumi.IntInput) DomainCredentialOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DomainCredential {
 		return vs[0].([]*DomainCredential)[vs[1].(int)]
@@ -304,12 +273,6 @@ func (o DomainCredentialMapOutput) ToDomainCredentialMapOutput() DomainCredentia
 
 func (o DomainCredentialMapOutput) ToDomainCredentialMapOutputWithContext(ctx context.Context) DomainCredentialMapOutput {
 	return o
-}
-
-func (o DomainCredentialMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DomainCredential] {
-	return pulumix.Output[map[string]*DomainCredential]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DomainCredentialMapOutput) MapIndex(k pulumi.StringInput) DomainCredentialOutput {
