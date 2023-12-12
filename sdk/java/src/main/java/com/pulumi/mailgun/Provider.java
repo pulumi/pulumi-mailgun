@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="pulumi:providers:mailgun")
 public class Provider extends com.pulumi.resources.ProviderResource {
-    @Export(name="apiKey", type=String.class, parameters={})
+    @Export(name="apiKey", refs={String.class}, tree="[0]")
     private Output<String> apiKey;
 
     public Output<String> apiKey() {

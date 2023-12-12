@@ -59,7 +59,7 @@ public class Webhook extends com.pulumi.resources.CustomResource {
      * The domain to add to Mailgun
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
@@ -73,7 +73,7 @@ public class Webhook extends com.pulumi.resources.CustomResource {
      * The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
      * 
      */
-    @Export(name="kind", type=String.class, parameters={})
+    @Export(name="kind", refs={String.class}, tree="[0]")
     private Output<String> kind;
 
     /**
@@ -87,7 +87,7 @@ public class Webhook extends com.pulumi.resources.CustomResource {
      * The region where domain will be created. Default value is `us`.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**
@@ -101,7 +101,7 @@ public class Webhook extends com.pulumi.resources.CustomResource {
      * The urls of webhook
      * 
      */
-    @Export(name="urls", type=List.class, parameters={String.class})
+    @Export(name="urls", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> urls;
 
     /**

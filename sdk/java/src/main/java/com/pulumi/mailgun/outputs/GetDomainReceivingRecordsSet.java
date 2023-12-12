@@ -114,13 +114,13 @@ public final class GetDomainReceivingRecordsSet {
             return this;
         }
         public GetDomainReceivingRecordsSet build() {
-            final var o = new GetDomainReceivingRecordsSet();
-            o.id = id;
-            o.priority = priority;
-            o.recordType = recordType;
-            o.valid = valid;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetDomainReceivingRecordsSet();
+            _resultValue.id = id;
+            _resultValue.priority = priority;
+            _resultValue.recordType = recordType;
+            _resultValue.valid = valid;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

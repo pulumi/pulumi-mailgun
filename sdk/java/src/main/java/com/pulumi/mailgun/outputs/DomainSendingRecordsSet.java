@@ -116,13 +116,13 @@ public final class DomainSendingRecordsSet {
             return this;
         }
         public DomainSendingRecordsSet build() {
-            final var o = new DomainSendingRecordsSet();
-            o.id = id;
-            o.name = name;
-            o.recordType = recordType;
-            o.valid = valid;
-            o.value = value;
-            return o;
+            final var _resultValue = new DomainSendingRecordsSet();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.recordType = recordType;
+            _resultValue.valid = valid;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -77,7 +77,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The length of your domain’s generated DKIM key. Default value is `1024`.
      * 
      */
-    @Export(name="dkimKeySize", type=Integer.class, parameters={})
+    @Export(name="dkimKeySize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> dkimKeySize;
 
     /**
@@ -91,7 +91,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The name of your DKIM selector if you want to specify it whereas MailGun will make it&#39;s own choice.
      * 
      */
-    @Export(name="dkimSelector", type=String.class, parameters={})
+    @Export(name="dkimSelector", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dkimSelector;
 
     /**
@@ -105,7 +105,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
      * 
      */
-    @Export(name="forceDkimAuthority", type=Boolean.class, parameters={})
+    @Export(name="forceDkimAuthority", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDkimAuthority;
 
     /**
@@ -119,7 +119,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The domain to add to Mailgun
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -133,7 +133,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
      * 
      */
-    @Export(name="openTracking", type=Boolean.class, parameters={})
+    @Export(name="openTracking", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> openTracking;
 
     /**
@@ -151,7 +151,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use `receiving_records_set` instead. */
-    @Export(name="receivingRecords", type=List.class, parameters={DomainReceivingRecord.class})
+    @Export(name="receivingRecords", refs={List.class,DomainReceivingRecord.class}, tree="[0,1]")
     private Output<List<DomainReceivingRecord>> receivingRecords;
 
     /**
@@ -165,7 +165,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * A set of DNS records for receiving validation.
      * 
      */
-    @Export(name="receivingRecordsSets", type=List.class, parameters={DomainReceivingRecordsSet.class})
+    @Export(name="receivingRecordsSets", refs={List.class,DomainReceivingRecordsSet.class}, tree="[0,1]")
     private Output<List<DomainReceivingRecordsSet>> receivingRecordsSets;
 
     /**
@@ -179,7 +179,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The region where domain will be created. Default value is `us`.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**
@@ -197,7 +197,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Use `sending_records_set` instead. */
-    @Export(name="sendingRecords", type=List.class, parameters={DomainSendingRecord.class})
+    @Export(name="sendingRecords", refs={List.class,DomainSendingRecord.class}, tree="[0,1]")
     private Output<List<DomainSendingRecord>> sendingRecords;
 
     /**
@@ -211,7 +211,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * A set of DNS records for sending validation.
      * 
      */
-    @Export(name="sendingRecordsSets", type=List.class, parameters={DomainSendingRecordsSet.class})
+    @Export(name="sendingRecordsSets", refs={List.class,DomainSendingRecordsSet.class}, tree="[0,1]")
     private Output<List<DomainSendingRecordsSet>> sendingRecordsSets;
 
     /**
@@ -225,7 +225,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The login email for the SMTP server.
      * 
      */
-    @Export(name="smtpLogin", type=String.class, parameters={})
+    @Export(name="smtpLogin", refs={String.class}, tree="[0]")
     private Output<String> smtpLogin;
 
     /**
@@ -239,7 +239,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * Password for SMTP authentication
      * 
      */
-    @Export(name="smtpPassword", type=String.class, parameters={})
+    @Export(name="smtpPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> smtpPassword;
 
     /**
@@ -255,7 +255,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * will be tagged with a spam header. Default value is `disabled`.
      * 
      */
-    @Export(name="spamAction", type=String.class, parameters={})
+    @Export(name="spamAction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> spamAction;
 
     /**
@@ -272,7 +272,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * the domain will accept email for sub-domains.
      * 
      */
-    @Export(name="wildcard", type=Boolean.class, parameters={})
+    @Export(name="wildcard", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> wildcard;
 
     /**

@@ -293,23 +293,23 @@ public final class GetDomainResult {
             return this;
         }
         public GetDomainResult build() {
-            final var o = new GetDomainResult();
-            o.dkimKeySize = dkimKeySize;
-            o.dkimSelector = dkimSelector;
-            o.forceDkimAuthority = forceDkimAuthority;
-            o.id = id;
-            o.name = name;
-            o.openTracking = openTracking;
-            o.receivingRecords = receivingRecords;
-            o.receivingRecordsSets = receivingRecordsSets;
-            o.region = region;
-            o.sendingRecords = sendingRecords;
-            o.sendingRecordsSets = sendingRecordsSets;
-            o.smtpLogin = smtpLogin;
-            o.smtpPassword = smtpPassword;
-            o.spamAction = spamAction;
-            o.wildcard = wildcard;
-            return o;
+            final var _resultValue = new GetDomainResult();
+            _resultValue.dkimKeySize = dkimKeySize;
+            _resultValue.dkimSelector = dkimSelector;
+            _resultValue.forceDkimAuthority = forceDkimAuthority;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.openTracking = openTracking;
+            _resultValue.receivingRecords = receivingRecords;
+            _resultValue.receivingRecordsSets = receivingRecordsSets;
+            _resultValue.region = region;
+            _resultValue.sendingRecords = sendingRecords;
+            _resultValue.sendingRecordsSets = sendingRecordsSets;
+            _resultValue.smtpLogin = smtpLogin;
+            _resultValue.smtpPassword = smtpPassword;
+            _resultValue.spamAction = spamAction;
+            _resultValue.wildcard = wildcard;
+            return _resultValue;
         }
     }
 }
