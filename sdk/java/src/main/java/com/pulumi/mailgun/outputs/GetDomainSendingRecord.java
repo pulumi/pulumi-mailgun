@@ -114,13 +114,13 @@ public final class GetDomainSendingRecord {
             return this;
         }
         public GetDomainSendingRecord build() {
-            final var o = new GetDomainSendingRecord();
-            o.id = id;
-            o.name = name;
-            o.recordType = recordType;
-            o.valid = valid;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetDomainSendingRecord();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.recordType = recordType;
+            _resultValue.valid = valid;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

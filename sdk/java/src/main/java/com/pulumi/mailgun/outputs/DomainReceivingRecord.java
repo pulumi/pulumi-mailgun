@@ -116,13 +116,13 @@ public final class DomainReceivingRecord {
             return this;
         }
         public DomainReceivingRecord build() {
-            final var o = new DomainReceivingRecord();
-            o.id = id;
-            o.priority = priority;
-            o.recordType = recordType;
-            o.valid = valid;
-            o.value = value;
-            return o;
+            final var _resultValue = new DomainReceivingRecord();
+            _resultValue.id = id;
+            _resultValue.priority = priority;
+            _resultValue.recordType = recordType;
+            _resultValue.valid = valid;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

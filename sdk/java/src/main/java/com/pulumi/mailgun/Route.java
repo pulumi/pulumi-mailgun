@@ -67,13 +67,13 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="mailgun:index/route:Route")
 public class Route extends com.pulumi.resources.CustomResource {
-    @Export(name="actions", type=List.class, parameters={String.class})
+    @Export(name="actions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> actions;
 
     public Output<List<String>> actions() {
         return this.actions;
     }
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     public Output<Optional<String>> description() {
@@ -83,7 +83,7 @@ public class Route extends com.pulumi.resources.CustomResource {
      * A filter expression like `match_recipient(&#39;.*@gmail.com&#39;)`
      * 
      */
-    @Export(name="expression", type=String.class, parameters={})
+    @Export(name="expression", refs={String.class}, tree="[0]")
     private Output<String> expression;
 
     /**
@@ -97,7 +97,7 @@ public class Route extends com.pulumi.resources.CustomResource {
      * Smaller number indicates higher priority. Higher priority routes are handled first.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
@@ -111,7 +111,7 @@ public class Route extends com.pulumi.resources.CustomResource {
      * The region where domain will be created. Default value is `us`.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**

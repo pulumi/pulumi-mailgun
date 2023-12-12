@@ -72,7 +72,7 @@ public class DomainCredential extends com.pulumi.resources.CustomResource {
      * The domain to add credential of Mailgun.
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
@@ -86,7 +86,7 @@ public class DomainCredential extends com.pulumi.resources.CustomResource {
      * The local-part of the email address to create.
      * 
      */
-    @Export(name="login", type=String.class, parameters={})
+    @Export(name="login", refs={String.class}, tree="[0]")
     private Output<String> login;
 
     /**
@@ -100,7 +100,7 @@ public class DomainCredential extends com.pulumi.resources.CustomResource {
      * Password for user authentication.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -114,7 +114,7 @@ public class DomainCredential extends com.pulumi.resources.CustomResource {
      * The region where domain will be created. Default value is `us`.
      * 
      */
-    @Export(name="region", type=String.class, parameters={})
+    @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**
