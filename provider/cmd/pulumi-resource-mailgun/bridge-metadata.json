@@ -58,6 +58,7 @@
             }
         }
     },
+    "auto-settings": {},
     "renames": {
         "resources": {
             "mailgun:index/domain:Domain": "mailgun_domain",
