@@ -5,6 +5,7 @@ package com.pulumi.mailgun;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -198,9 +199,15 @@ public final class WebhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public WebhookArgs build() {
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
-            $.kind = Objects.requireNonNull($.kind, "expected parameter 'kind' to be non-null");
-            $.urls = Objects.requireNonNull($.urls, "expected parameter 'urls' to be non-null");
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("WebhookArgs", "domain");
+            }
+            if ($.kind == null) {
+                throw new MissingRequiredPropertyException("WebhookArgs", "kind");
+            }
+            if ($.urls == null) {
+                throw new MissingRequiredPropertyException("WebhookArgs", "urls");
+            }
             return $;
         }
     }

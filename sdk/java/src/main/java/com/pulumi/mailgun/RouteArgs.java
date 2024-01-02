@@ -5,6 +5,7 @@ package com.pulumi.mailgun;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -190,9 +191,15 @@ public final class RouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RouteArgs build() {
-            $.actions = Objects.requireNonNull($.actions, "expected parameter 'actions' to be non-null");
-            $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
-            $.priority = Objects.requireNonNull($.priority, "expected parameter 'priority' to be non-null");
+            if ($.actions == null) {
+                throw new MissingRequiredPropertyException("RouteArgs", "actions");
+            }
+            if ($.expression == null) {
+                throw new MissingRequiredPropertyException("RouteArgs", "expression");
+            }
+            if ($.priority == null) {
+                throw new MissingRequiredPropertyException("RouteArgs", "priority");
+            }
             return $;
         }
     }

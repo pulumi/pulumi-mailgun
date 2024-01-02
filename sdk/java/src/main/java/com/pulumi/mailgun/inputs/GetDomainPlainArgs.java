@@ -4,6 +4,7 @@
 package com.pulumi.mailgun.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -227,7 +228,9 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetDomainPlainArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetDomainPlainArgs", "name");
+            }
             return $;
         }
     }
