@@ -4,6 +4,7 @@
 package com.pulumi.mailgun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.mailgun.outputs.GetDomainReceivingRecord;
 import com.pulumi.mailgun.outputs.GetDomainReceivingRecordsSet;
 import com.pulumi.mailgun.outputs.GetDomainSendingRecord;
@@ -207,37 +208,50 @@ public final class GetDomainResult {
 
         @CustomType.Setter
         public Builder dkimKeySize(@Nullable Integer dkimKeySize) {
+
             this.dkimKeySize = dkimKeySize;
             return this;
         }
         @CustomType.Setter
         public Builder dkimSelector(@Nullable String dkimSelector) {
+
             this.dkimSelector = dkimSelector;
             return this;
         }
         @CustomType.Setter
         public Builder forceDkimAuthority(@Nullable Boolean forceDkimAuthority) {
+
             this.forceDkimAuthority = forceDkimAuthority;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder openTracking(@Nullable Boolean openTracking) {
+
             this.openTracking = openTracking;
             return this;
         }
         @CustomType.Setter
         public Builder receivingRecords(List<GetDomainReceivingRecord> receivingRecords) {
-            this.receivingRecords = Objects.requireNonNull(receivingRecords);
+            if (receivingRecords == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "receivingRecords");
+            }
+            this.receivingRecords = receivingRecords;
             return this;
         }
         public Builder receivingRecords(GetDomainReceivingRecord... receivingRecords) {
@@ -245,7 +259,10 @@ public final class GetDomainResult {
         }
         @CustomType.Setter
         public Builder receivingRecordsSets(List<GetDomainReceivingRecordsSet> receivingRecordsSets) {
-            this.receivingRecordsSets = Objects.requireNonNull(receivingRecordsSets);
+            if (receivingRecordsSets == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "receivingRecordsSets");
+            }
+            this.receivingRecordsSets = receivingRecordsSets;
             return this;
         }
         public Builder receivingRecordsSets(GetDomainReceivingRecordsSet... receivingRecordsSets) {
@@ -253,12 +270,16 @@ public final class GetDomainResult {
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder sendingRecords(List<GetDomainSendingRecord> sendingRecords) {
-            this.sendingRecords = Objects.requireNonNull(sendingRecords);
+            if (sendingRecords == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "sendingRecords");
+            }
+            this.sendingRecords = sendingRecords;
             return this;
         }
         public Builder sendingRecords(GetDomainSendingRecord... sendingRecords) {
@@ -266,7 +287,10 @@ public final class GetDomainResult {
         }
         @CustomType.Setter
         public Builder sendingRecordsSets(List<GetDomainSendingRecordsSet> sendingRecordsSets) {
-            this.sendingRecordsSets = Objects.requireNonNull(sendingRecordsSets);
+            if (sendingRecordsSets == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "sendingRecordsSets");
+            }
+            this.sendingRecordsSets = sendingRecordsSets;
             return this;
         }
         public Builder sendingRecordsSets(GetDomainSendingRecordsSet... sendingRecordsSets) {
@@ -274,21 +298,27 @@ public final class GetDomainResult {
         }
         @CustomType.Setter
         public Builder smtpLogin(String smtpLogin) {
-            this.smtpLogin = Objects.requireNonNull(smtpLogin);
+            if (smtpLogin == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "smtpLogin");
+            }
+            this.smtpLogin = smtpLogin;
             return this;
         }
         @CustomType.Setter
         public Builder smtpPassword(@Nullable String smtpPassword) {
+
             this.smtpPassword = smtpPassword;
             return this;
         }
         @CustomType.Setter
         public Builder spamAction(@Nullable String spamAction) {
+
             this.spamAction = spamAction;
             return this;
         }
         @CustomType.Setter
         public Builder wildcard(@Nullable Boolean wildcard) {
+
             this.wildcard = wildcard;
             return this;
         }

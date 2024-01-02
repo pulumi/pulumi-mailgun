@@ -5,6 +5,7 @@ package com.pulumi.mailgun;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -54,7 +55,9 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProviderArgs build() {
-            $.apiKey = Objects.requireNonNull($.apiKey, "expected parameter 'apiKey' to be non-null");
+            if ($.apiKey == null) {
+                throw new MissingRequiredPropertyException("ProviderArgs", "apiKey");
+            }
             return $;
         }
     }
