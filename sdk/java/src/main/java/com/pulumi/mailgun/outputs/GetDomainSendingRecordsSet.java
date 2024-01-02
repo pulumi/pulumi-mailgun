@@ -4,6 +4,7 @@
 package com.pulumi.mailgun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,27 +91,42 @@ public final class GetDomainSendingRecordsSet {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDomainSendingRecordsSet", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetDomainSendingRecordsSet", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder recordType(String recordType) {
-            this.recordType = Objects.requireNonNull(recordType);
+            if (recordType == null) {
+              throw new MissingRequiredPropertyException("GetDomainSendingRecordsSet", "recordType");
+            }
+            this.recordType = recordType;
             return this;
         }
         @CustomType.Setter
         public Builder valid(String valid) {
-            this.valid = Objects.requireNonNull(valid);
+            if (valid == null) {
+              throw new MissingRequiredPropertyException("GetDomainSendingRecordsSet", "valid");
+            }
+            this.valid = valid;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetDomainSendingRecordsSet", "value");
+            }
+            this.value = value;
             return this;
         }
         public GetDomainSendingRecordsSet build() {

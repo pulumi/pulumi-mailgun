@@ -5,6 +5,7 @@ package com.pulumi.mailgun;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class DomainCredentialArgs extends com.pulumi.resources.ResourceArg
         }
 
         public DomainCredentialArgs build() {
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
-            $.login = Objects.requireNonNull($.login, "expected parameter 'login' to be non-null");
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("DomainCredentialArgs", "domain");
+            }
+            if ($.login == null) {
+                throw new MissingRequiredPropertyException("DomainCredentialArgs", "login");
+            }
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("DomainCredentialArgs", "password");
+            }
             return $;
         }
     }

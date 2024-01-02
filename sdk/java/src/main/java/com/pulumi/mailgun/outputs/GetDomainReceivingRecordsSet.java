@@ -4,6 +4,7 @@
 package com.pulumi.mailgun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,27 +91,42 @@ public final class GetDomainReceivingRecordsSet {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDomainReceivingRecordsSet", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder priority(String priority) {
-            this.priority = Objects.requireNonNull(priority);
+            if (priority == null) {
+              throw new MissingRequiredPropertyException("GetDomainReceivingRecordsSet", "priority");
+            }
+            this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder recordType(String recordType) {
-            this.recordType = Objects.requireNonNull(recordType);
+            if (recordType == null) {
+              throw new MissingRequiredPropertyException("GetDomainReceivingRecordsSet", "recordType");
+            }
+            this.recordType = recordType;
             return this;
         }
         @CustomType.Setter
         public Builder valid(String valid) {
-            this.valid = Objects.requireNonNull(valid);
+            if (valid == null) {
+              throw new MissingRequiredPropertyException("GetDomainReceivingRecordsSet", "valid");
+            }
+            this.valid = valid;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetDomainReceivingRecordsSet", "value");
+            }
+            this.value = value;
             return this;
         }
         public GetDomainReceivingRecordsSet build() {

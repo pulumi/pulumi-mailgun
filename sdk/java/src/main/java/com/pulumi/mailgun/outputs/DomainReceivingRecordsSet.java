@@ -92,26 +92,31 @@ public final class DomainReceivingRecordsSet {
 
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder priority(@Nullable String priority) {
+
             this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder recordType(@Nullable String recordType) {
+
             this.recordType = recordType;
             return this;
         }
         @CustomType.Setter
         public Builder valid(@Nullable String valid) {
+
             this.valid = valid;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }
