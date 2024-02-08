@@ -171,10 +171,12 @@ class DomainCredential(pulumi.CustomResource):
 
         Domain credential can be imported using `region:email` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
 
-        Password is always exported to `null`. hcl
+         Password is always exported to `null`.
+
+         hcl
 
         ```sh
-         $ pulumi import mailgun:index/domainCredential:DomainCredential test us:test@domain.com
+        $ pulumi import mailgun:index/domainCredential:DomainCredential test us:test@domain.com
         ```
 
         :param str resource_name: The name of the resource.
@@ -199,10 +201,12 @@ class DomainCredential(pulumi.CustomResource):
 
         Domain credential can be imported using `region:email` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
 
-        Password is always exported to `null`. hcl
+         Password is always exported to `null`.
+
+         hcl
 
         ```sh
-         $ pulumi import mailgun:index/domainCredential:DomainCredential test us:test@domain.com
+        $ pulumi import mailgun:index/domainCredential:DomainCredential test us:test@domain.com
         ```
 
         :param str resource_name: The name of the resource.
