@@ -42,10 +42,10 @@ namespace Pulumi.Mailgun
     /// 
     /// Routes can be imported using `ROUTE_ID` and `region` via `import` command. Route ID can be found on Mailgun portal in section `Receiving/Routes`. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
     /// 
-    /// hcl
+    ///  hcl
     /// 
     /// ```sh
-    ///  $ pulumi import mailgun:index/route:Route test eu:123456789
+    /// $ pulumi import mailgun:index/route:Route test eu:123456789
     /// ```
     /// </summary>
     [MailgunResourceType("mailgun:index/route:Route")]
