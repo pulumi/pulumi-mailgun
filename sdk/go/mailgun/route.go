@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new Mailgun route
 //			_, err := mailgun.NewRoute(ctx, "default", &mailgun.RouteArgs{
 //				Actions: pulumi.StringArray{
 //					pulumi.String("forward('http://example.com/api/v1/foos/')"),

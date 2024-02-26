@@ -29,6 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new Mailgun webhook
 //			_, err := mailgun.NewWebhook(ctx, "default", &mailgun.WebhookArgs{
 //				Domain: pulumi.String("test.example.com"),
 //				Kind:   pulumi.String("delivered"),
