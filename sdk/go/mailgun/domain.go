@@ -30,6 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new Mailgun domain
 //			_, err := mailgun.NewDomain(ctx, "default", &mailgun.DomainArgs{
 //				DkimKeySize:  pulumi.Int(1024),
 //				Region:       pulumi.String("us"),
