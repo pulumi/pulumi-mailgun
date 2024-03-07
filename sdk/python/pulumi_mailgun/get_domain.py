@@ -213,6 +213,7 @@ def get_domain(dkim_key_size: Optional[int] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aws as aws
@@ -229,6 +230,7 @@ def get_domain(dkim_key_size: Optional[int] = None,
         type="MX",
         zone_id=var["zone_id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the domain.
@@ -284,6 +286,7 @@ def get_domain_output(dkim_key_size: Optional[pulumi.Input[Optional[int]]] = Non
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aws as aws
@@ -300,6 +303,7 @@ def get_domain_output(dkim_key_size: Optional[pulumi.Input[Optional[int]]] = Non
         type="MX",
         zone_id=var["zone_id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the domain.

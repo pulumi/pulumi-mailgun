@@ -28,6 +28,8 @@ import javax.annotation.Nullable;
  * After DNS records are set, domain verification should be triggered manually using [PUT /domains/\&lt;domain\&gt;/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -59,12 +61,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Domains can be imported using `region:domain_name` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import mailgun:index/domain:Domain test us:example.domain.com
