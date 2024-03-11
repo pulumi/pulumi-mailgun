@@ -14,6 +14,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mailgun from "@pulumi/mailgun";
@@ -26,12 +27,13 @@ import * as utilities from "./utilities";
  *     spamAction: "disabled",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * Domains can be imported using `region:domain_name` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
  *
- *  hcl
+ * hcl
  *
  * ```sh
  * $ pulumi import mailgun:index/domain:Domain test us:example.domain.com
