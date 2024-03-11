@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * Provides a Mailgun Route resource. This can be used to create and manage routes on Mailgun.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -53,12 +55,13 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Routes can be imported using `ROUTE_ID` and `region` via `import` command. Route ID can be found on Mailgun portal in section `Receiving/Routes`. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import mailgun:index/route:Route test eu:123456789

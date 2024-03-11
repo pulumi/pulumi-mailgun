@@ -22,6 +22,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -54,14 +55,15 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * Domain credential can be imported using `region:email` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
  * 
- *  Password is always exported to `null`.
+ * Password is always exported to `null`.
  * 
- *  hcl
+ * hcl
  * 
  * ```sh
  * $ pulumi import mailgun:index/domainCredential:DomainCredential test us:test@domain.com
