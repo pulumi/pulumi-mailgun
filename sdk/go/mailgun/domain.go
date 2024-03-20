@@ -72,7 +72,7 @@ type Domain struct {
 	OpenTracking pulumi.BoolPtrOutput `pulumi:"openTracking"`
 	// A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
 	//
-	// Deprecated: Use `receiving_records_set` instead.
+	// Deprecated: Use `receivingRecordsSet` instead.
 	ReceivingRecords DomainReceivingRecordArrayOutput `pulumi:"receivingRecords"`
 	// A set of DNS records for receiving validation.
 	ReceivingRecordsSets DomainReceivingRecordsSetArrayOutput `pulumi:"receivingRecordsSets"`
@@ -80,7 +80,7 @@ type Domain struct {
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
 	//
-	// Deprecated: Use `sending_records_set` instead.
+	// Deprecated: Use `sendingRecordsSet` instead.
 	SendingRecords DomainSendingRecordArrayOutput `pulumi:"sendingRecords"`
 	// A set of DNS records for sending validation.
 	SendingRecordsSets DomainSendingRecordsSetArrayOutput `pulumi:"sendingRecordsSets"`
@@ -146,7 +146,7 @@ type domainState struct {
 	OpenTracking *bool `pulumi:"openTracking"`
 	// A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
 	//
-	// Deprecated: Use `receiving_records_set` instead.
+	// Deprecated: Use `receivingRecordsSet` instead.
 	ReceivingRecords []DomainReceivingRecord `pulumi:"receivingRecords"`
 	// A set of DNS records for receiving validation.
 	ReceivingRecordsSets []DomainReceivingRecordsSet `pulumi:"receivingRecordsSets"`
@@ -154,7 +154,7 @@ type domainState struct {
 	Region *string `pulumi:"region"`
 	// A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
 	//
-	// Deprecated: Use `sending_records_set` instead.
+	// Deprecated: Use `sendingRecordsSet` instead.
 	SendingRecords []DomainSendingRecord `pulumi:"sendingRecords"`
 	// A set of DNS records for sending validation.
 	SendingRecordsSets []DomainSendingRecordsSet `pulumi:"sendingRecordsSets"`
@@ -184,7 +184,7 @@ type DomainState struct {
 	OpenTracking pulumi.BoolPtrInput
 	// A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
 	//
-	// Deprecated: Use `receiving_records_set` instead.
+	// Deprecated: Use `receivingRecordsSet` instead.
 	ReceivingRecords DomainReceivingRecordArrayInput
 	// A set of DNS records for receiving validation.
 	ReceivingRecordsSets DomainReceivingRecordsSetArrayInput
@@ -192,7 +192,7 @@ type DomainState struct {
 	Region pulumi.StringPtrInput
 	// A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
 	//
-	// Deprecated: Use `sending_records_set` instead.
+	// Deprecated: Use `sendingRecordsSet` instead.
 	SendingRecords DomainSendingRecordArrayInput
 	// A set of DNS records for sending validation.
 	SendingRecordsSets DomainSendingRecordsSetArrayInput
@@ -376,7 +376,7 @@ func (o DomainOutput) OpenTracking() pulumi.BoolPtrOutput {
 
 // A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
 //
-// Deprecated: Use `receiving_records_set` instead.
+// Deprecated: Use `receivingRecordsSet` instead.
 func (o DomainOutput) ReceivingRecords() DomainReceivingRecordArrayOutput {
 	return o.ApplyT(func(v *Domain) DomainReceivingRecordArrayOutput { return v.ReceivingRecords }).(DomainReceivingRecordArrayOutput)
 }
@@ -393,7 +393,7 @@ func (o DomainOutput) Region() pulumi.StringPtrOutput {
 
 // A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
 //
-// Deprecated: Use `sending_records_set` instead.
+// Deprecated: Use `sendingRecordsSet` instead.
 func (o DomainOutput) SendingRecords() DomainSendingRecordArrayOutput {
 	return o.ApplyT(func(v *Domain) DomainSendingRecordArrayOutput { return v.SendingRecords }).(DomainSendingRecordArrayOutput)
 }

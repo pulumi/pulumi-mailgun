@@ -50,7 +50,7 @@ namespace Pulumi.Mailgun
         ///             }),
         ///         },
         ///         Ttl = 3600,
-        ///         Type = "MX",
+        ///         Type = Aws.Route53.RecordType.MX,
         ///         ZoneId = @var.Zone_id,
         ///     });
         /// 
@@ -100,7 +100,7 @@ namespace Pulumi.Mailgun
         ///             }),
         ///         },
         ///         Ttl = 3600,
-        ///         Type = "MX",
+        ///         Type = Aws.Route53.RecordType.MX,
         ///         ZoneId = @var.Zone_id,
         ///     });
         /// 
