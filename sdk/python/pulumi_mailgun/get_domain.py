@@ -227,7 +227,7 @@ def get_domain(dkim_key_size: Optional[int] = None,
             f"{domain.receiving_records[1].priority} {domain.receiving_records[1].value}.",
         ],
         ttl=3600,
-        type="MX",
+        type=aws.route53.RecordType.MX,
         zone_id=var["zone_id"])
     ```
     <!--End PulumiCodeChooser -->
@@ -300,7 +300,7 @@ def get_domain_output(dkim_key_size: Optional[pulumi.Input[Optional[int]]] = Non
             f"{domain.receiving_records[1].priority} {domain.receiving_records[1].value}.",
         ],
         ttl=3600,
-        type="MX",
+        type=aws.route53.RecordType.MX,
         zone_id=var["zone_id"])
     ```
     <!--End PulumiCodeChooser -->
