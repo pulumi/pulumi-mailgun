@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *         Promise.all([domain, domain]).then(([domain, domain1]) => `${domain.receivingRecords?.[1]?.priority} ${domain1.receivingRecords?.[1]?.value}.`),
  *     ],
  *     ttl: 3600,
- *     type: "MX",
+ *     type: aws.route53.RecordType.MX,
  *     zoneId: _var.zone_id,
  * });
  * ```
@@ -98,7 +98,7 @@ export interface GetDomainResult {
     /**
      * A list of DNS records for receiving validation.
      *
-     * @deprecated Use `receiving_records_set` instead.
+     * @deprecated Use `receivingRecordsSet` instead.
      */
     readonly receivingRecords: outputs.GetDomainReceivingRecord[];
     readonly receivingRecordsSets: outputs.GetDomainReceivingRecordsSet[];
@@ -106,7 +106,7 @@ export interface GetDomainResult {
     /**
      * A list of DNS records for sending validation.
      *
-     * @deprecated Use `sending_records_set` instead.
+     * @deprecated Use `sendingRecordsSet` instead.
      */
     readonly sendingRecords: outputs.GetDomainSendingRecord[];
     readonly sendingRecordsSets: outputs.GetDomainSendingRecordsSet[];
@@ -148,7 +148,7 @@ export interface GetDomainResult {
  *         Promise.all([domain, domain]).then(([domain, domain1]) => `${domain.receivingRecords?.[1]?.priority} ${domain1.receivingRecords?.[1]?.value}.`),
  *     ],
  *     ttl: 3600,
- *     type: "MX",
+ *     type: aws.route53.RecordType.MX,
  *     zoneId: _var.zone_id,
  * });
  * ```
