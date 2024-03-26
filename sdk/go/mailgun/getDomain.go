@@ -96,13 +96,13 @@ type LookupDomainResult struct {
 	OpenTracking *bool  `pulumi:"openTracking"`
 	// A list of DNS records for receiving validation.
 	//
-	// Deprecated: Use `receivingRecordsSet` instead.
+	// Deprecated: Use `receiving_records_set` instead.
 	ReceivingRecords     []GetDomainReceivingRecord     `pulumi:"receivingRecords"`
 	ReceivingRecordsSets []GetDomainReceivingRecordsSet `pulumi:"receivingRecordsSets"`
 	Region               *string                        `pulumi:"region"`
 	// A list of DNS records for sending validation.
 	//
-	// Deprecated: Use `sendingRecordsSet` instead.
+	// Deprecated: Use `sending_records_set` instead.
 	SendingRecords     []GetDomainSendingRecord     `pulumi:"sendingRecords"`
 	SendingRecordsSets []GetDomainSendingRecordsSet `pulumi:"sendingRecordsSets"`
 	// The login email for the SMTP server.
@@ -193,7 +193,7 @@ func (o LookupDomainResultOutput) OpenTracking() pulumi.BoolPtrOutput {
 
 // A list of DNS records for receiving validation.
 //
-// Deprecated: Use `receivingRecordsSet` instead.
+// Deprecated: Use `receiving_records_set` instead.
 func (o LookupDomainResultOutput) ReceivingRecords() GetDomainReceivingRecordArrayOutput {
 	return o.ApplyT(func(v LookupDomainResult) []GetDomainReceivingRecord { return v.ReceivingRecords }).(GetDomainReceivingRecordArrayOutput)
 }
@@ -208,7 +208,7 @@ func (o LookupDomainResultOutput) Region() pulumi.StringPtrOutput {
 
 // A list of DNS records for sending validation.
 //
-// Deprecated: Use `sendingRecordsSet` instead.
+// Deprecated: Use `sending_records_set` instead.
 func (o LookupDomainResultOutput) SendingRecords() GetDomainSendingRecordArrayOutput {
 	return o.ApplyT(func(v LookupDomainResult) []GetDomainSendingRecord { return v.SendingRecords }).(GetDomainSendingRecordArrayOutput)
 }

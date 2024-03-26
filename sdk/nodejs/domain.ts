@@ -90,7 +90,7 @@ export class Domain extends pulumi.CustomResource {
     /**
      * A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
      *
-     * @deprecated Use `receivingRecordsSet` instead.
+     * @deprecated Use `receiving_records_set` instead.
      */
     public /*out*/ readonly receivingRecords!: pulumi.Output<outputs.DomainReceivingRecord[]>;
     /**
@@ -104,7 +104,7 @@ export class Domain extends pulumi.CustomResource {
     /**
      * A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
      *
-     * @deprecated Use `sendingRecordsSet` instead.
+     * @deprecated Use `sending_records_set` instead.
      */
     public /*out*/ readonly sendingRecords!: pulumi.Output<outputs.DomainSendingRecord[]>;
     /**
@@ -209,7 +209,7 @@ export interface DomainState {
     /**
      * A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
      *
-     * @deprecated Use `receivingRecordsSet` instead.
+     * @deprecated Use `receiving_records_set` instead.
      */
     receivingRecords?: pulumi.Input<pulumi.Input<inputs.DomainReceivingRecord>[]>;
     /**
@@ -223,7 +223,7 @@ export interface DomainState {
     /**
      * A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
      *
-     * @deprecated Use `sendingRecordsSet` instead.
+     * @deprecated Use `sending_records_set` instead.
      */
     sendingRecords?: pulumi.Input<pulumi.Input<inputs.DomainSendingRecord>[]>;
     /**

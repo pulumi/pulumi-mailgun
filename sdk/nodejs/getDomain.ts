@@ -98,7 +98,7 @@ export interface GetDomainResult {
     /**
      * A list of DNS records for receiving validation.
      *
-     * @deprecated Use `receivingRecordsSet` instead.
+     * @deprecated Use `receiving_records_set` instead.
      */
     readonly receivingRecords: outputs.GetDomainReceivingRecord[];
     readonly receivingRecordsSets: outputs.GetDomainReceivingRecordsSet[];
@@ -106,7 +106,7 @@ export interface GetDomainResult {
     /**
      * A list of DNS records for sending validation.
      *
-     * @deprecated Use `sendingRecordsSet` instead.
+     * @deprecated Use `sending_records_set` instead.
      */
     readonly sendingRecords: outputs.GetDomainSendingRecord[];
     readonly sendingRecordsSets: outputs.GetDomainSendingRecordsSet[];
