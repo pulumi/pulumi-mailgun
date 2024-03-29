@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new Mailgun route
  *         var default_ = new Route(&#34;default&#34;, RouteArgs.builder()        
  *             .actions(            
  *                 &#34;forward(&#39;http://example.com/api/v1/foos/&#39;)&#34;,
