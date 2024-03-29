@@ -44,6 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new Mailgun credential
  *         var foobar = new DomainCredential(&#34;foobar&#34;, DomainCredentialArgs.builder()        
  *             .domain(&#34;toto.com&#34;)
  *             .lifecycle(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))

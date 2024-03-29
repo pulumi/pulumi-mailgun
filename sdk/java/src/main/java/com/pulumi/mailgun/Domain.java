@@ -51,6 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Create a new Mailgun domain
  *         var default_ = new Domain(&#34;default&#34;, DomainArgs.builder()        
  *             .dkimKeySize(1024)
  *             .region(&#34;us&#34;)
