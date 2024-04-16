@@ -21,10 +21,11 @@ import * as utilities from "./utilities";
  *
  * // Create a new Mailgun domain
  * const _default = new mailgun.Domain("default", {
- *     dkimKeySize: 1024,
+ *     name: "test.example.com",
  *     region: "us",
- *     smtpPassword: "supersecretpassword1234",
  *     spamAction: "disabled",
+ *     smtpPassword: "supersecretpassword1234",
+ *     dkimKeySize: 1024,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

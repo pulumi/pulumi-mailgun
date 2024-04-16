@@ -14,6 +14,30 @@ namespace Pulumi.Mailgun
     /// 
     /// &gt; **Note:** Please note that starting of v0.6.1 due to using new Mailgun Client API (v4), there is no possibility to retrieve previously created secrets via API. In order get it worked, it's recommended to mark `password` as ignored under `lifecycle` block. See below.
     /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Mailgun = Pulumi.Mailgun;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new Mailgun credential
+    ///     var foobar = new Mailgun.DomainCredential("foobar", new()
+    ///     {
+    ///         Domain = "toto.com",
+    ///         Login = "test",
+    ///         Password = "supersecretpassword1234",
+    ///         Region = "us",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// Domain credential can be imported using `region:email` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).

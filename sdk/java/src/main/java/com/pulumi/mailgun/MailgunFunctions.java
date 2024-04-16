@@ -28,8 +28,8 @@ public final class MailgunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.mailgun.MailgunFunctions;
      * import com.pulumi.mailgun.inputs.GetDomainArgs;
-     * import com.pulumi.aws.route53.Record;
-     * import com.pulumi.aws.route53.RecordArgs;
+     * import com.pulumi.aws.route53Record;
+     * import com.pulumi.aws.Route53RecordArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -47,14 +47,14 @@ public final class MailgunFunctions {
      *             .name(&#34;test.example.com&#34;)
      *             .build());
      * 
-     *         var mailgun_mx = new Record(&#34;mailgun-mx&#34;, RecordArgs.builder()        
-     *             .name(data.mailgun().domain().name())
+     *         var mailgun_mx = new Route53Record(&#34;mailgun-mx&#34;, Route53RecordArgs.builder()        
+     *             .zoneId(zoneId)
+     *             .name(domainMailgun.name())
+     *             .type(&#34;MX&#34;)
+     *             .ttl(3600)
      *             .records(            
      *                 String.format(&#34;%s %s.&#34;, domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[0].priority()),domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[0].value())),
      *                 String.format(&#34;%s %s.&#34;, domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[1].priority()),domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[1].value())))
-     *             .ttl(3600)
-     *             .type(&#34;MX&#34;)
-     *             .zoneId(var_.zone_id())
      *             .build());
      * 
      *     }
@@ -80,8 +80,8 @@ public final class MailgunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.mailgun.MailgunFunctions;
      * import com.pulumi.mailgun.inputs.GetDomainArgs;
-     * import com.pulumi.aws.route53.Record;
-     * import com.pulumi.aws.route53.RecordArgs;
+     * import com.pulumi.aws.route53Record;
+     * import com.pulumi.aws.Route53RecordArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -99,14 +99,14 @@ public final class MailgunFunctions {
      *             .name(&#34;test.example.com&#34;)
      *             .build());
      * 
-     *         var mailgun_mx = new Record(&#34;mailgun-mx&#34;, RecordArgs.builder()        
-     *             .name(data.mailgun().domain().name())
+     *         var mailgun_mx = new Route53Record(&#34;mailgun-mx&#34;, Route53RecordArgs.builder()        
+     *             .zoneId(zoneId)
+     *             .name(domainMailgun.name())
+     *             .type(&#34;MX&#34;)
+     *             .ttl(3600)
      *             .records(            
      *                 String.format(&#34;%s %s.&#34;, domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[0].priority()),domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[0].value())),
      *                 String.format(&#34;%s %s.&#34;, domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[1].priority()),domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[1].value())))
-     *             .ttl(3600)
-     *             .type(&#34;MX&#34;)
-     *             .zoneId(var_.zone_id())
      *             .build());
      * 
      *     }
@@ -132,8 +132,8 @@ public final class MailgunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.mailgun.MailgunFunctions;
      * import com.pulumi.mailgun.inputs.GetDomainArgs;
-     * import com.pulumi.aws.route53.Record;
-     * import com.pulumi.aws.route53.RecordArgs;
+     * import com.pulumi.aws.route53Record;
+     * import com.pulumi.aws.Route53RecordArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -151,14 +151,14 @@ public final class MailgunFunctions {
      *             .name(&#34;test.example.com&#34;)
      *             .build());
      * 
-     *         var mailgun_mx = new Record(&#34;mailgun-mx&#34;, RecordArgs.builder()        
-     *             .name(data.mailgun().domain().name())
+     *         var mailgun_mx = new Route53Record(&#34;mailgun-mx&#34;, Route53RecordArgs.builder()        
+     *             .zoneId(zoneId)
+     *             .name(domainMailgun.name())
+     *             .type(&#34;MX&#34;)
+     *             .ttl(3600)
      *             .records(            
      *                 String.format(&#34;%s %s.&#34;, domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[0].priority()),domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[0].value())),
      *                 String.format(&#34;%s %s.&#34;, domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[1].priority()),domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[1].value())))
-     *             .ttl(3600)
-     *             .type(&#34;MX&#34;)
-     *             .zoneId(var_.zone_id())
      *             .build());
      * 
      *     }
@@ -184,8 +184,8 @@ public final class MailgunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.mailgun.MailgunFunctions;
      * import com.pulumi.mailgun.inputs.GetDomainArgs;
-     * import com.pulumi.aws.route53.Record;
-     * import com.pulumi.aws.route53.RecordArgs;
+     * import com.pulumi.aws.route53Record;
+     * import com.pulumi.aws.Route53RecordArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -203,14 +203,14 @@ public final class MailgunFunctions {
      *             .name(&#34;test.example.com&#34;)
      *             .build());
      * 
-     *         var mailgun_mx = new Record(&#34;mailgun-mx&#34;, RecordArgs.builder()        
-     *             .name(data.mailgun().domain().name())
+     *         var mailgun_mx = new Route53Record(&#34;mailgun-mx&#34;, Route53RecordArgs.builder()        
+     *             .zoneId(zoneId)
+     *             .name(domainMailgun.name())
+     *             .type(&#34;MX&#34;)
+     *             .ttl(3600)
      *             .records(            
      *                 String.format(&#34;%s %s.&#34;, domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[0].priority()),domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[0].value())),
      *                 String.format(&#34;%s %s.&#34;, domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[1].priority()),domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[1].value())))
-     *             .ttl(3600)
-     *             .type(&#34;MX&#34;)
-     *             .zoneId(var_.zone_id())
      *             .build());
      * 
      *     }

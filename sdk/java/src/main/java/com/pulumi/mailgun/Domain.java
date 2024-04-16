@@ -53,10 +53,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new Mailgun domain
  *         var default_ = new Domain(&#34;default&#34;, DomainArgs.builder()        
- *             .dkimKeySize(1024)
+ *             .name(&#34;test.example.com&#34;)
  *             .region(&#34;us&#34;)
- *             .smtpPassword(&#34;supersecretpassword1234&#34;)
  *             .spamAction(&#34;disabled&#34;)
+ *             .smtpPassword(&#34;supersecretpassword1234&#34;)
+ *             .dkimKeySize(1024)
  *             .build());
  * 
  *     }

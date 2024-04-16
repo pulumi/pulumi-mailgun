@@ -191,13 +191,13 @@ class Route(pulumi.CustomResource):
 
         # Create a new Mailgun route
         default = mailgun.Route("default",
+            priority=0,
+            description="inbound",
+            expression="match_recipient('.*@foo.example.com')",
             actions=[
                 "forward('http://example.com/api/v1/foos/')",
                 "stop()",
-            ],
-            description="inbound",
-            expression="match_recipient('.*@foo.example.com')",
-            priority=0)
+            ])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -235,13 +235,13 @@ class Route(pulumi.CustomResource):
 
         # Create a new Mailgun route
         default = mailgun.Route("default",
+            priority=0,
+            description="inbound",
+            expression="match_recipient('.*@foo.example.com')",
             actions=[
                 "forward('http://example.com/api/v1/foos/')",
                 "stop()",
-            ],
-            description="inbound",
-            expression="match_recipient('.*@foo.example.com')",
-            priority=0)
+            ])
         ```
         <!--End PulumiCodeChooser -->
 

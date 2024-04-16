@@ -176,8 +176,8 @@ class Webhook(pulumi.CustomResource):
         # Create a new Mailgun webhook
         default = mailgun.Webhook("default",
             domain="test.example.com",
-            kind="delivered",
             region="us",
+            kind="delivered",
             urls=["https://example.com"])
         ```
         <!--End PulumiCodeChooser -->
@@ -209,8 +209,8 @@ class Webhook(pulumi.CustomResource):
         # Create a new Mailgun webhook
         default = mailgun.Webhook("default",
             domain="test.example.com",
-            kind="delivered",
             region="us",
+            kind="delivered",
             urls=["https://example.com"])
         ```
         <!--End PulumiCodeChooser -->

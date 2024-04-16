@@ -33,10 +33,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new Mailgun domain
 //			_, err := mailgun.NewDomain(ctx, "default", &mailgun.DomainArgs{
-//				DkimKeySize:  pulumi.Int(1024),
+//				Name:         pulumi.String("test.example.com"),
 //				Region:       pulumi.String("us"),
-//				SmtpPassword: pulumi.String("supersecretpassword1234"),
 //				SpamAction:   pulumi.String("disabled"),
+//				SmtpPassword: pulumi.String("supersecretpassword1234"),
+//				DkimKeySize:  pulumi.Int(1024),
 //			})
 //			if err != nil {
 //				return err

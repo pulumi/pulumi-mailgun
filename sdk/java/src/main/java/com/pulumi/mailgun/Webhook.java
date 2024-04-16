@@ -46,8 +46,8 @@ import javax.annotation.Nullable;
  *         // Create a new Mailgun webhook
  *         var default_ = new Webhook(&#34;default&#34;, WebhookArgs.builder()        
  *             .domain(&#34;test.example.com&#34;)
- *             .kind(&#34;delivered&#34;)
  *             .region(&#34;us&#34;)
+ *             .kind(&#34;delivered&#34;)
  *             .urls(&#34;https://example.com&#34;)
  *             .build());
  * 

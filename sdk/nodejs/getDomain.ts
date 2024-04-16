@@ -20,15 +20,15 @@ import * as utilities from "./utilities";
  * const domain = mailgun.getDomain({
  *     name: "test.example.com",
  * });
- * const mailgun_mx = new aws.route53.Record("mailgun-mx", {
- *     name: data.mailgun.domain.name,
- *     records: [
- *         Promise.all([domain, domain]).then(([domain, domain1]) => `${domain.receivingRecords?.[0]?.priority} ${domain1.receivingRecords?.[0]?.value}.`),
- *         Promise.all([domain, domain]).then(([domain, domain1]) => `${domain.receivingRecords?.[1]?.priority} ${domain1.receivingRecords?.[1]?.value}.`),
- *     ],
+ * const mailgun_mx = new aws.index.Route53Record("mailgun-mx", {
+ *     zoneId: zoneId,
+ *     name: domainMailgun.name,
+ *     type: "MX",
  *     ttl: 3600,
- *     type: aws.route53.RecordType.MX,
- *     zoneId: _var.zone_id,
+ *     records: [
+ *         `${domain.receivingRecords?.[0]?.priority} ${domain.receivingRecords?.[0]?.value}.`,
+ *         `${domain.receivingRecords?.[1]?.priority} ${domain.receivingRecords?.[1]?.value}.`,
+ *     ],
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -141,15 +141,15 @@ export interface GetDomainResult {
  * const domain = mailgun.getDomain({
  *     name: "test.example.com",
  * });
- * const mailgun_mx = new aws.route53.Record("mailgun-mx", {
- *     name: data.mailgun.domain.name,
- *     records: [
- *         Promise.all([domain, domain]).then(([domain, domain1]) => `${domain.receivingRecords?.[0]?.priority} ${domain1.receivingRecords?.[0]?.value}.`),
- *         Promise.all([domain, domain]).then(([domain, domain1]) => `${domain.receivingRecords?.[1]?.priority} ${domain1.receivingRecords?.[1]?.value}.`),
- *     ],
+ * const mailgun_mx = new aws.index.Route53Record("mailgun-mx", {
+ *     zoneId: zoneId,
+ *     name: domainMailgun.name,
+ *     type: "MX",
  *     ttl: 3600,
- *     type: aws.route53.RecordType.MX,
- *     zoneId: _var.zone_id,
+ *     records: [
+ *         `${domain.receivingRecords?.[0]?.priority} ${domain.receivingRecords?.[0]?.value}.`,
+ *         `${domain.receivingRecords?.[1]?.priority} ${domain.receivingRecords?.[1]?.value}.`,
+ *     ],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

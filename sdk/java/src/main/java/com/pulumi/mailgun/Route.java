@@ -45,12 +45,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new Mailgun route
  *         var default_ = new Route(&#34;default&#34;, RouteArgs.builder()        
+ *             .priority(&#34;0&#34;)
+ *             .description(&#34;inbound&#34;)
+ *             .expression(&#34;match_recipient(&#39;.*@foo.example.com&#39;)&#34;)
  *             .actions(            
  *                 &#34;forward(&#39;http://example.com/api/v1/foos/&#39;)&#34;,
  *                 &#34;stop()&#34;)
- *             .description(&#34;inbound&#34;)
- *             .expression(&#34;match_recipient(&#39;.*@foo.example.com&#39;)&#34;)
- *             .priority(&#34;0&#34;)
  *             .build());
  * 
  *     }

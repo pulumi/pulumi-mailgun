@@ -26,14 +26,14 @@ namespace Pulumi.Mailgun
     ///     // Create a new Mailgun route
     ///     var @default = new Mailgun.Route("default", new()
     ///     {
+    ///         Priority = 0,
+    ///         Description = "inbound",
+    ///         Expression = "match_recipient('.*@foo.example.com')",
     ///         Actions = new[]
     ///         {
     ///             "forward('http://example.com/api/v1/foos/')",
     ///             "stop()",
     ///         },
-    ///         Description = "inbound",
-    ///         Expression = "match_recipient('.*@foo.example.com')",
-    ///         Priority = 0,
     ///     });
     /// 
     /// });
