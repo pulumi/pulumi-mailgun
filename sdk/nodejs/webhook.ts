@@ -18,8 +18,8 @@ import * as utilities from "./utilities";
  * // Create a new Mailgun webhook
  * const _default = new mailgun.Webhook("default", {
  *     domain: "test.example.com",
- *     kind: "delivered",
  *     region: "us",
+ *     kind: "delivered",
  *     urls: ["https://example.com"],
  * });
  * ```

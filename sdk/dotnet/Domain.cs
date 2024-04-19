@@ -29,10 +29,11 @@ namespace Pulumi.Mailgun
     ///     // Create a new Mailgun domain
     ///     var @default = new Mailgun.Domain("default", new()
     ///     {
-    ///         DkimKeySize = 1024,
+    ///         Name = "test.example.com",
     ///         Region = "us",
-    ///         SmtpPassword = "supersecretpassword1234",
     ///         SpamAction = "disabled",
+    ///         SmtpPassword = "supersecretpassword1234",
+    ///         DkimKeySize = 1024,
     ///     });
     /// 
     /// });

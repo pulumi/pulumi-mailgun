@@ -9,6 +9,23 @@ import * as utilities from "./utilities";
  *
  * > **Note:** Please note that starting of v0.6.1 due to using new Mailgun Client API (v4), there is no possibility to retrieve previously created secrets via API. In order get it worked, it's recommended to mark `password` as ignored under `lifecycle` block. See below.
  *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as mailgun from "@pulumi/mailgun";
+ *
+ * // Create a new Mailgun credential
+ * const foobar = new mailgun.DomainCredential("foobar", {
+ *     domain: "toto.com",
+ *     login: "test",
+ *     password: "supersecretpassword1234",
+ *     region: "us",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * Domain credential can be imported using `region:email` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).

@@ -23,7 +23,7 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws/route53"
+//	"github.com/pulumi/pulumi-aws/sdk/v4/go/aws"
 //	"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -37,15 +37,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = route53.NewRecord(ctx, "mailgun-mx", &route53.RecordArgs{
-//				Name: pulumi.Any(data.Mailgun.Domain.Name),
-//				Records: pulumi.StringArray{
-//					pulumi.String(fmt.Sprintf("%v %v.", domain.ReceivingRecords[0].Priority, domain.ReceivingRecords[0].Value)),
-//					pulumi.String(fmt.Sprintf("%v %v.", domain.ReceivingRecords[1].Priority, domain.ReceivingRecords[1].Value)),
+//			_, err = aws.NewRoute53Record(ctx, "mailgun-mx", &aws.Route53RecordArgs{
+//				ZoneId: zoneId,
+//				Name:   domainMailgun.Name,
+//				Type:   "MX",
+//				Ttl:    3600,
+//				Records: []string{
+//					fmt.Sprintf("%v %v.", domain.ReceivingRecords[0].Priority, domain.ReceivingRecords[0].Value),
+//					fmt.Sprintf("%v %v.", domain.ReceivingRecords[1].Priority, domain.ReceivingRecords[1].Value),
 //				},
-//				Ttl:    pulumi.Int(3600),
-//				Type:   pulumi.String(route53.RecordTypeMX),
-//				ZoneId: pulumi.Any(_var.Zone_id),
 //			})
 //			if err != nil {
 //				return err

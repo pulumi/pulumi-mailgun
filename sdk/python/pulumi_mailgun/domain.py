@@ -451,10 +451,11 @@ class Domain(pulumi.CustomResource):
 
         # Create a new Mailgun domain
         default = mailgun.Domain("default",
-            dkim_key_size=1024,
+            name="test.example.com",
             region="us",
+            spam_action="disabled",
             smtp_password="supersecretpassword1234",
-            spam_action="disabled")
+            dkim_key_size=1024)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -504,10 +505,11 @@ class Domain(pulumi.CustomResource):
 
         # Create a new Mailgun domain
         default = mailgun.Domain("default",
-            dkim_key_size=1024,
+            name="test.example.com",
             region="us",
+            spam_action="disabled",
             smtp_password="supersecretpassword1234",
-            spam_action="disabled")
+            dkim_key_size=1024)
         ```
         <!--End PulumiCodeChooser -->
 

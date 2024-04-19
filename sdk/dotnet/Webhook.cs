@@ -28,8 +28,8 @@ namespace Pulumi.Mailgun
     ///     var @default = new Mailgun.Webhook("default", new()
     ///     {
     ///         Domain = "test.example.com",
-    ///         Kind = "delivered",
     ///         Region = "us",
+    ///         Kind = "delivered",
     ///         Urls = new[]
     ///         {
     ///             "https://example.com",

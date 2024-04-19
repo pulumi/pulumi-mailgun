@@ -16,13 +16,13 @@ import * as utilities from "./utilities";
  *
  * // Create a new Mailgun route
  * const _default = new mailgun.Route("default", {
+ *     priority: 0,
+ *     description: "inbound",
+ *     expression: "match_recipient('.*@foo.example.com')",
  *     actions: [
  *         "forward('http://example.com/api/v1/foos/')",
  *         "stop()",
  *     ],
- *     description: "inbound",
- *     expression: "match_recipient('.*@foo.example.com')",
- *     priority: 0,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

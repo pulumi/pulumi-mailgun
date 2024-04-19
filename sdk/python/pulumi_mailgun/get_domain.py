@@ -220,15 +220,15 @@ def get_domain(dkim_key_size: Optional[int] = None,
     import pulumi_mailgun as mailgun
 
     domain = mailgun.get_domain(name="test.example.com")
-    mailgun_mx = aws.route53.Record("mailgun-mx",
-        name=data["mailgun"]["domain"]["name"],
-        records=[
-            f"{domain.receiving_records[0].priority} {domain.receiving_records[0].value}.",
-            f"{domain.receiving_records[1].priority} {domain.receiving_records[1].value}.",
-        ],
+    mailgun_mx = aws.index.Route53Record("mailgun-mx",
+        zone_id=zone_id,
+        name=domain_mailgun.name,
+        type=MX,
         ttl=3600,
-        type=aws.route53.RecordType.MX,
-        zone_id=var["zone_id"])
+        records=[
+            f{domain.receiving_records[0].priority} {domain.receiving_records[0].value}.,
+            f{domain.receiving_records[1].priority} {domain.receiving_records[1].value}.,
+        ])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -293,15 +293,15 @@ def get_domain_output(dkim_key_size: Optional[pulumi.Input[Optional[int]]] = Non
     import pulumi_mailgun as mailgun
 
     domain = mailgun.get_domain(name="test.example.com")
-    mailgun_mx = aws.route53.Record("mailgun-mx",
-        name=data["mailgun"]["domain"]["name"],
-        records=[
-            f"{domain.receiving_records[0].priority} {domain.receiving_records[0].value}.",
-            f"{domain.receiving_records[1].priority} {domain.receiving_records[1].value}.",
-        ],
+    mailgun_mx = aws.index.Route53Record("mailgun-mx",
+        zone_id=zone_id,
+        name=domain_mailgun.name,
+        type=MX,
         ttl=3600,
-        type=aws.route53.RecordType.MX,
-        zone_id=var["zone_id"])
+        records=[
+            f{domain.receiving_records[0].priority} {domain.receiving_records[0].value}.,
+            f{domain.receiving_records[1].priority} {domain.receiving_records[1].value}.,
+        ])
     ```
     <!--End PulumiCodeChooser -->
 

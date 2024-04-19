@@ -47,7 +47,6 @@ import javax.annotation.Nullable;
  *         // Create a new Mailgun credential
  *         var foobar = new DomainCredential(&#34;foobar&#34;, DomainCredentialArgs.builder()        
  *             .domain(&#34;toto.com&#34;)
- *             .lifecycle(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .login(&#34;test&#34;)
  *             .password(&#34;supersecretpassword1234&#34;)
  *             .region(&#34;us&#34;)

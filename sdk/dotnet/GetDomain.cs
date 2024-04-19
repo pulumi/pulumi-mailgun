@@ -31,27 +31,17 @@ namespace Pulumi.Mailgun
         ///         Name = "test.example.com",
         ///     });
         /// 
-        ///     var mailgun_mx = new Aws.Route53.Record("mailgun-mx", new()
+        ///     var mailgun_mx = new Aws.Index.Route53Record("mailgun-mx", new()
         ///     {
-        ///         Name = data.Mailgun.Domain.Name,
+        ///         ZoneId = zoneId,
+        ///         Name = domainMailgun.Name,
+        ///         Type = "MX",
+        ///         Ttl = 3600,
         ///         Records = new[]
         ///         {
-        ///             Output.Tuple(domain, domain).Apply(values =&gt;
-        ///             {
-        ///                 var domain = values.Item1;
-        ///                 var domain1 = values.Item2;
-        ///                 return $"{domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[0]?.Priority)} {domain1.ReceivingRecords[0]?.Value}.";
-        ///             }),
-        ///             Output.Tuple(domain, domain).Apply(values =&gt;
-        ///             {
-        ///                 var domain = values.Item1;
-        ///                 var domain1 = values.Item2;
-        ///                 return $"{domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[1]?.Priority)} {domain1.ReceivingRecords[1]?.Value}.";
-        ///             }),
+        ///             $"{domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[0]?.Priority)} {domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[0]?.Value)}.",
+        ///             $"{domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[1]?.Priority)} {domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[1]?.Value)}.",
         ///         },
-        ///         Ttl = 3600,
-        ///         Type = Aws.Route53.RecordType.MX,
-        ///         ZoneId = @var.Zone_id,
         ///     });
         /// 
         /// });
@@ -81,27 +71,17 @@ namespace Pulumi.Mailgun
         ///         Name = "test.example.com",
         ///     });
         /// 
-        ///     var mailgun_mx = new Aws.Route53.Record("mailgun-mx", new()
+        ///     var mailgun_mx = new Aws.Index.Route53Record("mailgun-mx", new()
         ///     {
-        ///         Name = data.Mailgun.Domain.Name,
+        ///         ZoneId = zoneId,
+        ///         Name = domainMailgun.Name,
+        ///         Type = "MX",
+        ///         Ttl = 3600,
         ///         Records = new[]
         ///         {
-        ///             Output.Tuple(domain, domain).Apply(values =&gt;
-        ///             {
-        ///                 var domain = values.Item1;
-        ///                 var domain1 = values.Item2;
-        ///                 return $"{domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[0]?.Priority)} {domain1.ReceivingRecords[0]?.Value}.";
-        ///             }),
-        ///             Output.Tuple(domain, domain).Apply(values =&gt;
-        ///             {
-        ///                 var domain = values.Item1;
-        ///                 var domain1 = values.Item2;
-        ///                 return $"{domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[1]?.Priority)} {domain1.ReceivingRecords[1]?.Value}.";
-        ///             }),
+        ///             $"{domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[0]?.Priority)} {domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[0]?.Value)}.",
+        ///             $"{domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[1]?.Priority)} {domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[1]?.Value)}.",
         ///         },
-        ///         Ttl = 3600,
-        ///         Type = Aws.Route53.RecordType.MX,
-        ///         ZoneId = @var.Zone_id,
         ///     });
         /// 
         /// });

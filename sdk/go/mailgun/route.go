@@ -31,13 +31,13 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new Mailgun route
 //			_, err := mailgun.NewRoute(ctx, "default", &mailgun.RouteArgs{
+//				Priority:    pulumi.Int(0),
+//				Description: pulumi.String("inbound"),
+//				Expression:  pulumi.String("match_recipient('.*@foo.example.com')"),
 //				Actions: pulumi.StringArray{
 //					pulumi.String("forward('http://example.com/api/v1/foos/')"),
 //					pulumi.String("stop()"),
 //				},
-//				Description: pulumi.String("inbound"),
-//				Expression:  pulumi.String("match_recipient('.*@foo.example.com')"),
-//				Priority:    pulumi.Int(0),
 //			})
 //			if err != nil {
 //				return err
