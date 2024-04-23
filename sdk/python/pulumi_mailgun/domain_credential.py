@@ -169,7 +169,6 @@ class DomainCredential(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_mailgun as mailgun
@@ -181,7 +180,6 @@ class DomainCredential(pulumi.CustomResource):
             password="supersecretpassword1234",
             region="us")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -215,7 +213,6 @@ class DomainCredential(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_mailgun as mailgun
@@ -227,7 +224,6 @@ class DomainCredential(pulumi.CustomResource):
             password="supersecretpassword1234",
             region="us")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
