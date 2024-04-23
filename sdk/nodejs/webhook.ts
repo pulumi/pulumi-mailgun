@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as mailgun from "@pulumi/mailgun";
@@ -23,7 +22,6 @@ import * as utilities from "./utilities";
  *     urls: ["https://example.com"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class Webhook extends pulumi.CustomResource {
     /**

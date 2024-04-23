@@ -15,7 +15,6 @@ namespace Pulumi.Mailgun
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.Mailgun
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [MailgunResourceType("mailgun:index/webhook:Webhook")]
     public partial class Webhook : global::Pulumi.CustomResource

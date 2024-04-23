@@ -444,7 +444,6 @@ class Domain(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_mailgun as mailgun
@@ -457,7 +456,6 @@ class Domain(pulumi.CustomResource):
             smtp_password="supersecretpassword1234",
             dkim_key_size=1024)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -498,7 +496,6 @@ class Domain(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_mailgun as mailgun
@@ -511,7 +508,6 @@ class Domain(pulumi.CustomResource):
             smtp_password="supersecretpassword1234",
             dkim_key_size=1024)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
