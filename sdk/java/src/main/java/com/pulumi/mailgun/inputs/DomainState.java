@@ -23,6 +23,21 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     public static final DomainState Empty = new DomainState();
 
     /**
+     * (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
+     * 
+     */
+    @Import(name="clickTracking")
+    private @Nullable Output<Boolean> clickTracking;
+
+    /**
+     * @return (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
+     * 
+     */
+    public Optional<Output<Boolean>> clickTracking() {
+        return Optional.ofNullable(this.clickTracking);
+    }
+
+    /**
      * The length of your domain’s generated DKIM key. Default value is `1024`.
      * 
      */
@@ -238,6 +253,21 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (`http` or `https`) The tracking web scheme. Default: `http`
+     * 
+     */
+    @Import(name="webScheme")
+    private @Nullable Output<String> webScheme;
+
+    /**
+     * @return (`http` or `https`) The tracking web scheme. Default: `http`
+     * 
+     */
+    public Optional<Output<String>> webScheme() {
+        return Optional.ofNullable(this.webScheme);
+    }
+
+    /**
      * Boolean that determines whether
      * the domain will accept email for sub-domains.
      * 
@@ -257,6 +287,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     private DomainState() {}
 
     private DomainState(DomainState $) {
+        this.clickTracking = $.clickTracking;
         this.dkimKeySize = $.dkimKeySize;
         this.dkimSelector = $.dkimSelector;
         this.forceDkimAuthority = $.forceDkimAuthority;
@@ -270,6 +301,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         this.smtpLogin = $.smtpLogin;
         this.smtpPassword = $.smtpPassword;
         this.spamAction = $.spamAction;
+        this.webScheme = $.webScheme;
         this.wildcard = $.wildcard;
     }
 
@@ -289,6 +321,27 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(DomainState defaults) {
             $ = new DomainState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param clickTracking (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickTracking(@Nullable Output<Boolean> clickTracking) {
+            $.clickTracking = clickTracking;
+            return this;
+        }
+
+        /**
+         * @param clickTracking (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickTracking(Boolean clickTracking) {
+            return clickTracking(Output.of(clickTracking));
         }
 
         /**
@@ -630,6 +683,27 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder spamAction(String spamAction) {
             return spamAction(Output.of(spamAction));
+        }
+
+        /**
+         * @param webScheme (`http` or `https`) The tracking web scheme. Default: `http`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webScheme(@Nullable Output<String> webScheme) {
+            $.webScheme = webScheme;
+            return this;
+        }
+
+        /**
+         * @param webScheme (`http` or `https`) The tracking web scheme. Default: `http`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webScheme(String webScheme) {
+            return webScheme(Output.of(webScheme));
         }
 
         /**

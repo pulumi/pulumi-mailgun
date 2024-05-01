@@ -22,7 +22,10 @@ class GetDomainResult:
     """
     A collection of values returned by getDomain.
     """
-    def __init__(__self__, dkim_key_size=None, dkim_selector=None, force_dkim_authority=None, id=None, name=None, open_tracking=None, receiving_records=None, receiving_records_sets=None, region=None, sending_records=None, sending_records_sets=None, smtp_login=None, smtp_password=None, spam_action=None, wildcard=None):
+    def __init__(__self__, click_tracking=None, dkim_key_size=None, dkim_selector=None, force_dkim_authority=None, id=None, name=None, open_tracking=None, receiving_records=None, receiving_records_sets=None, region=None, sending_records=None, sending_records_sets=None, smtp_login=None, smtp_password=None, spam_action=None, web_scheme=None, wildcard=None):
+        if click_tracking and not isinstance(click_tracking, bool):
+            raise TypeError("Expected argument 'click_tracking' to be a bool")
+        pulumi.set(__self__, "click_tracking", click_tracking)
         if dkim_key_size and not isinstance(dkim_key_size, int):
             raise TypeError("Expected argument 'dkim_key_size' to be a int")
         pulumi.set(__self__, "dkim_key_size", dkim_key_size)
@@ -65,9 +68,20 @@ class GetDomainResult:
         if spam_action and not isinstance(spam_action, str):
             raise TypeError("Expected argument 'spam_action' to be a str")
         pulumi.set(__self__, "spam_action", spam_action)
+        if web_scheme and not isinstance(web_scheme, str):
+            raise TypeError("Expected argument 'web_scheme' to be a str")
+        pulumi.set(__self__, "web_scheme", web_scheme)
         if wildcard and not isinstance(wildcard, bool):
             raise TypeError("Expected argument 'wildcard' to be a bool")
         pulumi.set(__self__, "wildcard", wildcard)
+
+    @property
+    @pulumi.getter(name="clickTracking")
+    def click_tracking(self) -> Optional[bool]:
+        """
+        The click tracking setting.
+        """
+        return pulumi.get(self, "click_tracking")
 
     @property
     @pulumi.getter(name="dkimKeySize")
@@ -103,6 +117,9 @@ class GetDomainResult:
     @property
     @pulumi.getter(name="openTracking")
     def open_tracking(self) -> Optional[bool]:
+        """
+        The open tracking setting.
+        """
         return pulumi.get(self, "open_tracking")
 
     @property
@@ -167,6 +184,14 @@ class GetDomainResult:
         return pulumi.get(self, "spam_action")
 
     @property
+    @pulumi.getter(name="webScheme")
+    def web_scheme(self) -> Optional[str]:
+        """
+        The tracking web scheme.
+        """
+        return pulumi.get(self, "web_scheme")
+
+    @property
     @pulumi.getter
     def wildcard(self) -> Optional[bool]:
         """
@@ -181,6 +206,7 @@ class AwaitableGetDomainResult(GetDomainResult):
         if False:
             yield self
         return GetDomainResult(
+            click_tracking=self.click_tracking,
             dkim_key_size=self.dkim_key_size,
             dkim_selector=self.dkim_selector,
             force_dkim_authority=self.force_dkim_authority,
@@ -195,10 +221,12 @@ class AwaitableGetDomainResult(GetDomainResult):
             smtp_login=self.smtp_login,
             smtp_password=self.smtp_password,
             spam_action=self.spam_action,
+            web_scheme=self.web_scheme,
             wildcard=self.wildcard)
 
 
-def get_domain(dkim_key_size: Optional[int] = None,
+def get_domain(click_tracking: Optional[bool] = None,
+               dkim_key_size: Optional[int] = None,
                dkim_selector: Optional[str] = None,
                force_dkim_authority: Optional[bool] = None,
                name: Optional[str] = None,
@@ -206,6 +234,7 @@ def get_domain(dkim_key_size: Optional[int] = None,
                region: Optional[str] = None,
                smtp_password: Optional[str] = None,
                spam_action: Optional[str] = None,
+               web_scheme: Optional[str] = None,
                wildcard: Optional[bool] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainResult:
     """
@@ -231,13 +260,17 @@ def get_domain(dkim_key_size: Optional[int] = None,
     ```
 
 
+    :param bool click_tracking: The click tracking setting.
     :param str name: The name of the domain.
+    :param bool open_tracking: The open tracking setting.
     :param str region: The region where domain will be created. Default value is `us`.
     :param str smtp_password: The password to the SMTP server.
     :param str spam_action: The spam filtering setting.
+    :param str web_scheme: The tracking web scheme.
     :param bool wildcard: Whether or not the domain will accept email for sub-domains.
     """
     __args__ = dict()
+    __args__['clickTracking'] = click_tracking
     __args__['dkimKeySize'] = dkim_key_size
     __args__['dkimSelector'] = dkim_selector
     __args__['forceDkimAuthority'] = force_dkim_authority
@@ -246,11 +279,13 @@ def get_domain(dkim_key_size: Optional[int] = None,
     __args__['region'] = region
     __args__['smtpPassword'] = smtp_password
     __args__['spamAction'] = spam_action
+    __args__['webScheme'] = web_scheme
     __args__['wildcard'] = wildcard
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('mailgun:index/getDomain:getDomain', __args__, opts=opts, typ=GetDomainResult).value
 
     return AwaitableGetDomainResult(
+        click_tracking=pulumi.get(__ret__, 'click_tracking'),
         dkim_key_size=pulumi.get(__ret__, 'dkim_key_size'),
         dkim_selector=pulumi.get(__ret__, 'dkim_selector'),
         force_dkim_authority=pulumi.get(__ret__, 'force_dkim_authority'),
@@ -265,11 +300,13 @@ def get_domain(dkim_key_size: Optional[int] = None,
         smtp_login=pulumi.get(__ret__, 'smtp_login'),
         smtp_password=pulumi.get(__ret__, 'smtp_password'),
         spam_action=pulumi.get(__ret__, 'spam_action'),
+        web_scheme=pulumi.get(__ret__, 'web_scheme'),
         wildcard=pulumi.get(__ret__, 'wildcard'))
 
 
 @_utilities.lift_output_func(get_domain)
-def get_domain_output(dkim_key_size: Optional[pulumi.Input[Optional[int]]] = None,
+def get_domain_output(click_tracking: Optional[pulumi.Input[Optional[bool]]] = None,
+                      dkim_key_size: Optional[pulumi.Input[Optional[int]]] = None,
                       dkim_selector: Optional[pulumi.Input[Optional[str]]] = None,
                       force_dkim_authority: Optional[pulumi.Input[Optional[bool]]] = None,
                       name: Optional[pulumi.Input[str]] = None,
@@ -277,6 +314,7 @@ def get_domain_output(dkim_key_size: Optional[pulumi.Input[Optional[int]]] = Non
                       region: Optional[pulumi.Input[Optional[str]]] = None,
                       smtp_password: Optional[pulumi.Input[Optional[str]]] = None,
                       spam_action: Optional[pulumi.Input[Optional[str]]] = None,
+                      web_scheme: Optional[pulumi.Input[Optional[str]]] = None,
                       wildcard: Optional[pulumi.Input[Optional[bool]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainResult]:
     """
@@ -302,10 +340,13 @@ def get_domain_output(dkim_key_size: Optional[pulumi.Input[Optional[int]]] = Non
     ```
 
 
+    :param bool click_tracking: The click tracking setting.
     :param str name: The name of the domain.
+    :param bool open_tracking: The open tracking setting.
     :param str region: The region where domain will be created. Default value is `us`.
     :param str smtp_password: The password to the SMTP server.
     :param str spam_action: The spam filtering setting.
+    :param str web_scheme: The tracking web scheme.
     :param bool wildcard: Whether or not the domain will accept email for sub-domains.
     """
     ...

@@ -66,32 +66,40 @@ func LookupDomain(ctx *pulumi.Context, args *LookupDomainArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getDomain.
 type LookupDomainArgs struct {
+	// The click tracking setting.
+	ClickTracking      *bool   `pulumi:"clickTracking"`
 	DkimKeySize        *int    `pulumi:"dkimKeySize"`
 	DkimSelector       *string `pulumi:"dkimSelector"`
 	ForceDkimAuthority *bool   `pulumi:"forceDkimAuthority"`
 	// The name of the domain.
-	Name         string `pulumi:"name"`
-	OpenTracking *bool  `pulumi:"openTracking"`
+	Name string `pulumi:"name"`
+	// The open tracking setting.
+	OpenTracking *bool `pulumi:"openTracking"`
 	// The region where domain will be created. Default value is `us`.
 	Region *string `pulumi:"region"`
 	// The password to the SMTP server.
 	SmtpPassword *string `pulumi:"smtpPassword"`
 	// The spam filtering setting.
 	SpamAction *string `pulumi:"spamAction"`
+	// The tracking web scheme.
+	WebScheme *string `pulumi:"webScheme"`
 	// Whether or not the domain will accept email for sub-domains.
 	Wildcard *bool `pulumi:"wildcard"`
 }
 
 // A collection of values returned by getDomain.
 type LookupDomainResult struct {
+	// The click tracking setting.
+	ClickTracking      *bool   `pulumi:"clickTracking"`
 	DkimKeySize        *int    `pulumi:"dkimKeySize"`
 	DkimSelector       *string `pulumi:"dkimSelector"`
 	ForceDkimAuthority *bool   `pulumi:"forceDkimAuthority"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The name of the record.
-	Name         string `pulumi:"name"`
-	OpenTracking *bool  `pulumi:"openTracking"`
+	Name string `pulumi:"name"`
+	// The open tracking setting.
+	OpenTracking *bool `pulumi:"openTracking"`
 	// A list of DNS records for receiving validation.
 	//
 	// Deprecated: Use `receivingRecordsSet` instead.
@@ -109,6 +117,8 @@ type LookupDomainResult struct {
 	SmtpPassword *string `pulumi:"smtpPassword"`
 	// The spam filtering setting.
 	SpamAction *string `pulumi:"spamAction"`
+	// The tracking web scheme.
+	WebScheme *string `pulumi:"webScheme"`
 	// Whether or not the domain will accept email for sub-domains.
 	Wildcard *bool `pulumi:"wildcard"`
 }
@@ -128,11 +138,14 @@ func LookupDomainOutput(ctx *pulumi.Context, args LookupDomainOutputArgs, opts .
 
 // A collection of arguments for invoking getDomain.
 type LookupDomainOutputArgs struct {
+	// The click tracking setting.
+	ClickTracking      pulumi.BoolPtrInput   `pulumi:"clickTracking"`
 	DkimKeySize        pulumi.IntPtrInput    `pulumi:"dkimKeySize"`
 	DkimSelector       pulumi.StringPtrInput `pulumi:"dkimSelector"`
 	ForceDkimAuthority pulumi.BoolPtrInput   `pulumi:"forceDkimAuthority"`
 	// The name of the domain.
-	Name         pulumi.StringInput  `pulumi:"name"`
+	Name pulumi.StringInput `pulumi:"name"`
+	// The open tracking setting.
 	OpenTracking pulumi.BoolPtrInput `pulumi:"openTracking"`
 	// The region where domain will be created. Default value is `us`.
 	Region pulumi.StringPtrInput `pulumi:"region"`
@@ -140,6 +153,8 @@ type LookupDomainOutputArgs struct {
 	SmtpPassword pulumi.StringPtrInput `pulumi:"smtpPassword"`
 	// The spam filtering setting.
 	SpamAction pulumi.StringPtrInput `pulumi:"spamAction"`
+	// The tracking web scheme.
+	WebScheme pulumi.StringPtrInput `pulumi:"webScheme"`
 	// Whether or not the domain will accept email for sub-domains.
 	Wildcard pulumi.BoolPtrInput `pulumi:"wildcard"`
 }
@@ -161,6 +176,11 @@ func (o LookupDomainResultOutput) ToLookupDomainResultOutput() LookupDomainResul
 
 func (o LookupDomainResultOutput) ToLookupDomainResultOutputWithContext(ctx context.Context) LookupDomainResultOutput {
 	return o
+}
+
+// The click tracking setting.
+func (o LookupDomainResultOutput) ClickTracking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupDomainResult) *bool { return v.ClickTracking }).(pulumi.BoolPtrOutput)
 }
 
 func (o LookupDomainResultOutput) DkimKeySize() pulumi.IntPtrOutput {
@@ -185,6 +205,7 @@ func (o LookupDomainResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDomainResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The open tracking setting.
 func (o LookupDomainResultOutput) OpenTracking() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupDomainResult) *bool { return v.OpenTracking }).(pulumi.BoolPtrOutput)
 }
@@ -228,6 +249,11 @@ func (o LookupDomainResultOutput) SmtpPassword() pulumi.StringPtrOutput {
 // The spam filtering setting.
 func (o LookupDomainResultOutput) SpamAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDomainResult) *string { return v.SpamAction }).(pulumi.StringPtrOutput)
+}
+
+// The tracking web scheme.
+func (o LookupDomainResultOutput) WebScheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupDomainResult) *string { return v.WebScheme }).(pulumi.StringPtrOutput)
 }
 
 // Whether or not the domain will accept email for sub-domains.

@@ -370,6 +370,10 @@
         "mailgun:index/domain:Domain": {
             "description": "Provides a Mailgun App resource. This can be used to\ncreate and manage applications on Mailgun.\n\nAfter DNS records are set, domain verification should be triggered manually using [PUT /domains/\\\u003cdomain\\\u003e/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as mailgun from \"@pulumi/mailgun\";\n\n// Create a new Mailgun domain\nconst _default = new mailgun.Domain(\"default\", {\n    name: \"test.example.com\",\n    region: \"us\",\n    spamAction: \"disabled\",\n    smtpPassword: \"supersecretpassword1234\",\n    dkimKeySize: 1024,\n});\n```\n```python\nimport pulumi\nimport pulumi_mailgun as mailgun\n\n# Create a new Mailgun domain\ndefault = mailgun.Domain(\"default\",\n    name=\"test.example.com\",\n    region=\"us\",\n    spam_action=\"disabled\",\n    smtp_password=\"supersecretpassword1234\",\n    dkim_key_size=1024)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Mailgun = Pulumi.Mailgun;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create a new Mailgun domain\n    var @default = new Mailgun.Domain(\"default\", new()\n    {\n        Name = \"test.example.com\",\n        Region = \"us\",\n        SpamAction = \"disabled\",\n        SmtpPassword = \"supersecretpassword1234\",\n        DkimKeySize = 1024,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create a new Mailgun domain\n\t\t_, err := mailgun.NewDomain(ctx, \"default\", \u0026mailgun.DomainArgs{\n\t\t\tName:         pulumi.String(\"test.example.com\"),\n\t\t\tRegion:       pulumi.String(\"us\"),\n\t\t\tSpamAction:   pulumi.String(\"disabled\"),\n\t\t\tSmtpPassword: pulumi.String(\"supersecretpassword1234\"),\n\t\t\tDkimKeySize:  pulumi.Int(1024),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.mailgun.Domain;\nimport com.pulumi.mailgun.DomainArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create a new Mailgun domain\n        var default_ = new Domain(\"default\", DomainArgs.builder()        \n            .name(\"test.example.com\")\n            .region(\"us\")\n            .spamAction(\"disabled\")\n            .smtpPassword(\"supersecretpassword1234\")\n            .dkimKeySize(1024)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create a new Mailgun domain\n  default:\n    type: mailgun:Domain\n    properties:\n      name: test.example.com\n      region: us\n      spamAction: disabled\n      smtpPassword: supersecretpassword1234\n      dkimKeySize: 1024\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDomains can be imported using `region:domain_name` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied). \n\nhcl\n\n```sh\n$ pulumi import mailgun:index/domain:Domain test us:example.domain.com\n```\n\n",
             "properties": {
+                "clickTracking": {
+                    "type": "boolean",
+                    "description": "(Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`\n"
+                },
                 "dkimKeySize": {
                     "type": "integer",
                     "description": "The length of your domain’s generated DKIM key. Default value is `1024`.\n"
@@ -437,6 +441,10 @@
                     "type": "string",
                     "description": "`disabled` or `tag` Disable, no spam\nfiltering will occur for inbound messages. Tag, messages\nwill be tagged with a spam header. Default value is `disabled`.\n"
                 },
+                "webScheme": {
+                    "type": "string",
+                    "description": "(`http` or `https`) The tracking web scheme. Default: `http`\n"
+                },
                 "wildcard": {
                     "type": "boolean",
                     "description": "Boolean that determines whether\nthe domain will accept email for sub-domains.\n"
@@ -451,6 +459,10 @@
                 "smtpLogin"
             ],
             "inputProperties": {
+                "clickTracking": {
+                    "type": "boolean",
+                    "description": "(Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`\n"
+                },
                 "dkimKeySize": {
                     "type": "integer",
                     "description": "The length of your domain’s generated DKIM key. Default value is `1024`.\n",
@@ -490,6 +502,10 @@
                     "description": "`disabled` or `tag` Disable, no spam\nfiltering will occur for inbound messages. Tag, messages\nwill be tagged with a spam header. Default value is `disabled`.\n",
                     "willReplaceOnChanges": true
                 },
+                "webScheme": {
+                    "type": "string",
+                    "description": "(`http` or `https`) The tracking web scheme. Default: `http`\n"
+                },
                 "wildcard": {
                     "type": "boolean",
                     "description": "Boolean that determines whether\nthe domain will accept email for sub-domains.\n",
@@ -499,6 +515,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Domain resources.\n",
                 "properties": {
+                    "clickTracking": {
+                        "type": "boolean",
+                        "description": "(Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`\n"
+                    },
                     "dkimKeySize": {
                         "type": "integer",
                         "description": "The length of your domain’s generated DKIM key. Default value is `1024`.\n",
@@ -571,6 +591,10 @@
                         "type": "string",
                         "description": "`disabled` or `tag` Disable, no spam\nfiltering will occur for inbound messages. Tag, messages\nwill be tagged with a spam header. Default value is `disabled`.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "webScheme": {
+                        "type": "string",
+                        "description": "(`http` or `https`) The tracking web scheme. Default: `http`\n"
                     },
                     "wildcard": {
                         "type": "boolean",
@@ -842,6 +866,10 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getDomain.\n",
                 "properties": {
+                    "clickTracking": {
+                        "type": "boolean",
+                        "description": "The click tracking setting.\n"
+                    },
                     "dkimKeySize": {
                         "type": "integer",
                         "willReplaceOnChanges": true
@@ -860,7 +888,8 @@
                         "willReplaceOnChanges": true
                     },
                     "openTracking": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "The open tracking setting.\n"
                     },
                     "region": {
                         "type": "string",
@@ -877,6 +906,10 @@
                         "description": "The spam filtering setting.\n",
                         "willReplaceOnChanges": true
                     },
+                    "webScheme": {
+                        "type": "string",
+                        "description": "The tracking web scheme.\n"
+                    },
                     "wildcard": {
                         "type": "boolean",
                         "description": "Whether or not the domain will accept email for sub-domains.\n",
@@ -891,6 +924,10 @@
             "outputs": {
                 "description": "A collection of values returned by getDomain.\n",
                 "properties": {
+                    "clickTracking": {
+                        "description": "The click tracking setting.\n",
+                        "type": "boolean"
+                    },
                     "dkimKeySize": {
                         "type": "integer"
                     },
@@ -909,6 +946,7 @@
                         "type": "string"
                     },
                     "openTracking": {
+                        "description": "The open tracking setting.\n",
                         "type": "boolean"
                     },
                     "receivingRecords": {
@@ -953,6 +991,10 @@
                     },
                     "spamAction": {
                         "description": "The spam filtering setting.\n",
+                        "type": "string"
+                    },
+                    "webScheme": {
+                        "description": "The tracking web scheme.\n",
                         "type": "string"
                     },
                     "wildcard": {

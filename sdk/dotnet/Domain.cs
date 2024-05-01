@@ -52,6 +52,12 @@ namespace Pulumi.Mailgun
     public partial class Domain : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
+        /// </summary>
+        [Output("clickTracking")]
+        public Output<bool?> ClickTracking { get; private set; } = null!;
+
+        /// <summary>
         /// The length of your domain’s generated DKIM key. Default value is `1024`.
         /// </summary>
         [Output("dkimKeySize")]
@@ -132,6 +138,12 @@ namespace Pulumi.Mailgun
         public Output<string?> SpamAction { get; private set; } = null!;
 
         /// <summary>
+        /// (`http` or `https`) The tracking web scheme. Default: `http`
+        /// </summary>
+        [Output("webScheme")]
+        public Output<string?> WebScheme { get; private set; } = null!;
+
+        /// <summary>
         /// Boolean that determines whether
         /// the domain will accept email for sub-domains.
         /// </summary>
@@ -188,6 +200,12 @@ namespace Pulumi.Mailgun
 
     public sealed class DomainArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
+        /// </summary>
+        [Input("clickTracking")]
+        public Input<bool>? ClickTracking { get; set; }
+
         /// <summary>
         /// The length of your domain’s generated DKIM key. Default value is `1024`.
         /// </summary>
@@ -249,6 +267,12 @@ namespace Pulumi.Mailgun
         public Input<string>? SpamAction { get; set; }
 
         /// <summary>
+        /// (`http` or `https`) The tracking web scheme. Default: `http`
+        /// </summary>
+        [Input("webScheme")]
+        public Input<string>? WebScheme { get; set; }
+
+        /// <summary>
         /// Boolean that determines whether
         /// the domain will accept email for sub-domains.
         /// </summary>
@@ -263,6 +287,12 @@ namespace Pulumi.Mailgun
 
     public sealed class DomainState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
+        /// </summary>
+        [Input("clickTracking")]
+        public Input<bool>? ClickTracking { get; set; }
+
         /// <summary>
         /// The length of your domain’s generated DKIM key. Default value is `1024`.
         /// </summary>
@@ -378,6 +408,12 @@ namespace Pulumi.Mailgun
         /// </summary>
         [Input("spamAction")]
         public Input<string>? SpamAction { get; set; }
+
+        /// <summary>
+        /// (`http` or `https`) The tracking web scheme. Default: `http`
+        /// </summary>
+        [Input("webScheme")]
+        public Input<string>? WebScheme { get; set; }
 
         /// <summary>
         /// Boolean that determines whether

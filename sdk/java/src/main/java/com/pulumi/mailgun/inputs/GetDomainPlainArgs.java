@@ -17,6 +17,21 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetDomainPlainArgs Empty = new GetDomainPlainArgs();
 
+    /**
+     * The click tracking setting.
+     * 
+     */
+    @Import(name="clickTracking")
+    private @Nullable Boolean clickTracking;
+
+    /**
+     * @return The click tracking setting.
+     * 
+     */
+    public Optional<Boolean> clickTracking() {
+        return Optional.ofNullable(this.clickTracking);
+    }
+
     @Import(name="dkimKeySize")
     private @Nullable Integer dkimKeySize;
 
@@ -53,9 +68,17 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
         return this.name;
     }
 
+    /**
+     * The open tracking setting.
+     * 
+     */
     @Import(name="openTracking")
     private @Nullable Boolean openTracking;
 
+    /**
+     * @return The open tracking setting.
+     * 
+     */
     public Optional<Boolean> openTracking() {
         return Optional.ofNullable(this.openTracking);
     }
@@ -106,6 +129,21 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * The tracking web scheme.
+     * 
+     */
+    @Import(name="webScheme")
+    private @Nullable String webScheme;
+
+    /**
+     * @return The tracking web scheme.
+     * 
+     */
+    public Optional<String> webScheme() {
+        return Optional.ofNullable(this.webScheme);
+    }
+
+    /**
      * Whether or not the domain will accept email for sub-domains.
      * 
      */
@@ -123,6 +161,7 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetDomainPlainArgs() {}
 
     private GetDomainPlainArgs(GetDomainPlainArgs $) {
+        this.clickTracking = $.clickTracking;
         this.dkimKeySize = $.dkimKeySize;
         this.dkimSelector = $.dkimSelector;
         this.forceDkimAuthority = $.forceDkimAuthority;
@@ -131,6 +170,7 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
         this.region = $.region;
         this.smtpPassword = $.smtpPassword;
         this.spamAction = $.spamAction;
+        this.webScheme = $.webScheme;
         this.wildcard = $.wildcard;
     }
 
@@ -150,6 +190,17 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetDomainPlainArgs defaults) {
             $ = new GetDomainPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param clickTracking The click tracking setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickTracking(@Nullable Boolean clickTracking) {
+            $.clickTracking = clickTracking;
+            return this;
         }
 
         public Builder dkimKeySize(@Nullable Integer dkimKeySize) {
@@ -178,6 +229,12 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
+        /**
+         * @param openTracking The open tracking setting.
+         * 
+         * @return builder
+         * 
+         */
         public Builder openTracking(@Nullable Boolean openTracking) {
             $.openTracking = openTracking;
             return this;
@@ -213,6 +270,17 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder spamAction(@Nullable String spamAction) {
             $.spamAction = spamAction;
+            return this;
+        }
+
+        /**
+         * @param webScheme The tracking web scheme.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webScheme(@Nullable String webScheme) {
+            $.webScheme = webScheme;
             return this;
         }
 
