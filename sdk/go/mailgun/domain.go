@@ -59,6 +59,8 @@ import (
 type Domain struct {
 	pulumi.CustomResourceState
 
+	// (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
+	ClickTracking pulumi.BoolPtrOutput `pulumi:"clickTracking"`
 	// The length of your domain’s generated DKIM key. Default value is `1024`.
 	DkimKeySize pulumi.IntPtrOutput `pulumi:"dkimKeySize"`
 	// The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
@@ -91,6 +93,8 @@ type Domain struct {
 	// filtering will occur for inbound messages. Tag, messages
 	// will be tagged with a spam header. Default value is `disabled`.
 	SpamAction pulumi.StringPtrOutput `pulumi:"spamAction"`
+	// (`http` or `https`) The tracking web scheme. Default: `http`
+	WebScheme pulumi.StringPtrOutput `pulumi:"webScheme"`
 	// Boolean that determines whether
 	// the domain will accept email for sub-domains.
 	Wildcard pulumi.BoolPtrOutput `pulumi:"wildcard"`
@@ -133,6 +137,8 @@ func GetDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Domain resources.
 type domainState struct {
+	// (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
+	ClickTracking *bool `pulumi:"clickTracking"`
 	// The length of your domain’s generated DKIM key. Default value is `1024`.
 	DkimKeySize *int `pulumi:"dkimKeySize"`
 	// The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
@@ -165,12 +171,16 @@ type domainState struct {
 	// filtering will occur for inbound messages. Tag, messages
 	// will be tagged with a spam header. Default value is `disabled`.
 	SpamAction *string `pulumi:"spamAction"`
+	// (`http` or `https`) The tracking web scheme. Default: `http`
+	WebScheme *string `pulumi:"webScheme"`
 	// Boolean that determines whether
 	// the domain will accept email for sub-domains.
 	Wildcard *bool `pulumi:"wildcard"`
 }
 
 type DomainState struct {
+	// (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
+	ClickTracking pulumi.BoolPtrInput
 	// The length of your domain’s generated DKIM key. Default value is `1024`.
 	DkimKeySize pulumi.IntPtrInput
 	// The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
@@ -203,6 +213,8 @@ type DomainState struct {
 	// filtering will occur for inbound messages. Tag, messages
 	// will be tagged with a spam header. Default value is `disabled`.
 	SpamAction pulumi.StringPtrInput
+	// (`http` or `https`) The tracking web scheme. Default: `http`
+	WebScheme pulumi.StringPtrInput
 	// Boolean that determines whether
 	// the domain will accept email for sub-domains.
 	Wildcard pulumi.BoolPtrInput
@@ -213,6 +225,8 @@ func (DomainState) ElementType() reflect.Type {
 }
 
 type domainArgs struct {
+	// (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
+	ClickTracking *bool `pulumi:"clickTracking"`
 	// The length of your domain’s generated DKIM key. Default value is `1024`.
 	DkimKeySize *int `pulumi:"dkimKeySize"`
 	// The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
@@ -231,6 +245,8 @@ type domainArgs struct {
 	// filtering will occur for inbound messages. Tag, messages
 	// will be tagged with a spam header. Default value is `disabled`.
 	SpamAction *string `pulumi:"spamAction"`
+	// (`http` or `https`) The tracking web scheme. Default: `http`
+	WebScheme *string `pulumi:"webScheme"`
 	// Boolean that determines whether
 	// the domain will accept email for sub-domains.
 	Wildcard *bool `pulumi:"wildcard"`
@@ -238,6 +254,8 @@ type domainArgs struct {
 
 // The set of arguments for constructing a Domain resource.
 type DomainArgs struct {
+	// (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
+	ClickTracking pulumi.BoolPtrInput
 	// The length of your domain’s generated DKIM key. Default value is `1024`.
 	DkimKeySize pulumi.IntPtrInput
 	// The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
@@ -256,6 +274,8 @@ type DomainArgs struct {
 	// filtering will occur for inbound messages. Tag, messages
 	// will be tagged with a spam header. Default value is `disabled`.
 	SpamAction pulumi.StringPtrInput
+	// (`http` or `https`) The tracking web scheme. Default: `http`
+	WebScheme pulumi.StringPtrInput
 	// Boolean that determines whether
 	// the domain will accept email for sub-domains.
 	Wildcard pulumi.BoolPtrInput
@@ -348,6 +368,11 @@ func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutpu
 	return o
 }
 
+// (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
+func (o DomainOutput) ClickTracking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.BoolPtrOutput { return v.ClickTracking }).(pulumi.BoolPtrOutput)
+}
+
 // The length of your domain’s generated DKIM key. Default value is `1024`.
 func (o DomainOutput) DkimKeySize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.IntPtrOutput { return v.DkimKeySize }).(pulumi.IntPtrOutput)
@@ -417,6 +442,11 @@ func (o DomainOutput) SmtpPassword() pulumi.StringPtrOutput {
 // will be tagged with a spam header. Default value is `disabled`.
 func (o DomainOutput) SpamAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.SpamAction }).(pulumi.StringPtrOutput)
+}
+
+// (`http` or `https`) The tracking web scheme. Default: `http`
+func (o DomainOutput) WebScheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.WebScheme }).(pulumi.StringPtrOutput)
 }
 
 // Boolean that determines whether

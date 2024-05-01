@@ -18,6 +18,21 @@ public final class GetDomainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetDomainArgs Empty = new GetDomainArgs();
 
+    /**
+     * The click tracking setting.
+     * 
+     */
+    @Import(name="clickTracking")
+    private @Nullable Output<Boolean> clickTracking;
+
+    /**
+     * @return The click tracking setting.
+     * 
+     */
+    public Optional<Output<Boolean>> clickTracking() {
+        return Optional.ofNullable(this.clickTracking);
+    }
+
     @Import(name="dkimKeySize")
     private @Nullable Output<Integer> dkimKeySize;
 
@@ -54,9 +69,17 @@ public final class GetDomainArgs extends com.pulumi.resources.InvokeArgs {
         return this.name;
     }
 
+    /**
+     * The open tracking setting.
+     * 
+     */
     @Import(name="openTracking")
     private @Nullable Output<Boolean> openTracking;
 
+    /**
+     * @return The open tracking setting.
+     * 
+     */
     public Optional<Output<Boolean>> openTracking() {
         return Optional.ofNullable(this.openTracking);
     }
@@ -107,6 +130,21 @@ public final class GetDomainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * The tracking web scheme.
+     * 
+     */
+    @Import(name="webScheme")
+    private @Nullable Output<String> webScheme;
+
+    /**
+     * @return The tracking web scheme.
+     * 
+     */
+    public Optional<Output<String>> webScheme() {
+        return Optional.ofNullable(this.webScheme);
+    }
+
+    /**
      * Whether or not the domain will accept email for sub-domains.
      * 
      */
@@ -124,6 +162,7 @@ public final class GetDomainArgs extends com.pulumi.resources.InvokeArgs {
     private GetDomainArgs() {}
 
     private GetDomainArgs(GetDomainArgs $) {
+        this.clickTracking = $.clickTracking;
         this.dkimKeySize = $.dkimKeySize;
         this.dkimSelector = $.dkimSelector;
         this.forceDkimAuthority = $.forceDkimAuthority;
@@ -132,6 +171,7 @@ public final class GetDomainArgs extends com.pulumi.resources.InvokeArgs {
         this.region = $.region;
         this.smtpPassword = $.smtpPassword;
         this.spamAction = $.spamAction;
+        this.webScheme = $.webScheme;
         this.wildcard = $.wildcard;
     }
 
@@ -151,6 +191,27 @@ public final class GetDomainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetDomainArgs defaults) {
             $ = new GetDomainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param clickTracking The click tracking setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickTracking(@Nullable Output<Boolean> clickTracking) {
+            $.clickTracking = clickTracking;
+            return this;
+        }
+
+        /**
+         * @param clickTracking The click tracking setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickTracking(Boolean clickTracking) {
+            return clickTracking(Output.of(clickTracking));
         }
 
         public Builder dkimKeySize(@Nullable Output<Integer> dkimKeySize) {
@@ -201,11 +262,23 @@ public final class GetDomainArgs extends com.pulumi.resources.InvokeArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param openTracking The open tracking setting.
+         * 
+         * @return builder
+         * 
+         */
         public Builder openTracking(@Nullable Output<Boolean> openTracking) {
             $.openTracking = openTracking;
             return this;
         }
 
+        /**
+         * @param openTracking The open tracking setting.
+         * 
+         * @return builder
+         * 
+         */
         public Builder openTracking(Boolean openTracking) {
             return openTracking(Output.of(openTracking));
         }
@@ -271,6 +344,27 @@ public final class GetDomainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder spamAction(String spamAction) {
             return spamAction(Output.of(spamAction));
+        }
+
+        /**
+         * @param webScheme The tracking web scheme.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webScheme(@Nullable Output<String> webScheme) {
+            $.webScheme = webScheme;
+            return this;
+        }
+
+        /**
+         * @param webScheme The tracking web scheme.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webScheme(String webScheme) {
+            return webScheme(Output.of(webScheme));
         }
 
         /**

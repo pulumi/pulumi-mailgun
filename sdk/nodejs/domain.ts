@@ -67,6 +67,10 @@ export class Domain extends pulumi.CustomResource {
     }
 
     /**
+     * (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
+     */
+    public readonly clickTracking!: pulumi.Output<boolean | undefined>;
+    /**
      * The length of your domain’s generated DKIM key. Default value is `1024`.
      */
     public readonly dkimKeySize!: pulumi.Output<number | undefined>;
@@ -125,6 +129,10 @@ export class Domain extends pulumi.CustomResource {
      */
     public readonly spamAction!: pulumi.Output<string | undefined>;
     /**
+     * (`http` or `https`) The tracking web scheme. Default: `http`
+     */
+    public readonly webScheme!: pulumi.Output<string | undefined>;
+    /**
      * Boolean that determines whether
      * the domain will accept email for sub-domains.
      */
@@ -143,6 +151,7 @@ export class Domain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
+            resourceInputs["clickTracking"] = state ? state.clickTracking : undefined;
             resourceInputs["dkimKeySize"] = state ? state.dkimKeySize : undefined;
             resourceInputs["dkimSelector"] = state ? state.dkimSelector : undefined;
             resourceInputs["forceDkimAuthority"] = state ? state.forceDkimAuthority : undefined;
@@ -156,9 +165,11 @@ export class Domain extends pulumi.CustomResource {
             resourceInputs["smtpLogin"] = state ? state.smtpLogin : undefined;
             resourceInputs["smtpPassword"] = state ? state.smtpPassword : undefined;
             resourceInputs["spamAction"] = state ? state.spamAction : undefined;
+            resourceInputs["webScheme"] = state ? state.webScheme : undefined;
             resourceInputs["wildcard"] = state ? state.wildcard : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
+            resourceInputs["clickTracking"] = args ? args.clickTracking : undefined;
             resourceInputs["dkimKeySize"] = args ? args.dkimKeySize : undefined;
             resourceInputs["dkimSelector"] = args ? args.dkimSelector : undefined;
             resourceInputs["forceDkimAuthority"] = args ? args.forceDkimAuthority : undefined;
@@ -167,6 +178,7 @@ export class Domain extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["smtpPassword"] = args?.smtpPassword ? pulumi.secret(args.smtpPassword) : undefined;
             resourceInputs["spamAction"] = args ? args.spamAction : undefined;
+            resourceInputs["webScheme"] = args ? args.webScheme : undefined;
             resourceInputs["wildcard"] = args ? args.wildcard : undefined;
             resourceInputs["receivingRecords"] = undefined /*out*/;
             resourceInputs["receivingRecordsSets"] = undefined /*out*/;
@@ -185,6 +197,10 @@ export class Domain extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Domain resources.
  */
 export interface DomainState {
+    /**
+     * (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
+     */
+    clickTracking?: pulumi.Input<boolean>;
     /**
      * The length of your domain’s generated DKIM key. Default value is `1024`.
      */
@@ -244,6 +260,10 @@ export interface DomainState {
      */
     spamAction?: pulumi.Input<string>;
     /**
+     * (`http` or `https`) The tracking web scheme. Default: `http`
+     */
+    webScheme?: pulumi.Input<string>;
+    /**
      * Boolean that determines whether
      * the domain will accept email for sub-domains.
      */
@@ -254,6 +274,10 @@ export interface DomainState {
  * The set of arguments for constructing a Domain resource.
  */
 export interface DomainArgs {
+    /**
+     * (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
+     */
+    clickTracking?: pulumi.Input<boolean>;
     /**
      * The length of your domain’s generated DKIM key. Default value is `1024`.
      */
@@ -288,6 +312,10 @@ export interface DomainArgs {
      * will be tagged with a spam header. Default value is `disabled`.
      */
     spamAction?: pulumi.Input<string>;
+    /**
+     * (`http` or `https`) The tracking web scheme. Default: `http`
+     */
+    webScheme?: pulumi.Input<string>;
     /**
      * Boolean that determines whether
      * the domain will accept email for sub-domains.

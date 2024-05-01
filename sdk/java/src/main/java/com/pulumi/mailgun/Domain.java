@@ -79,6 +79,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="mailgun:index/domain:Domain")
 public class Domain extends com.pulumi.resources.CustomResource {
     /**
+     * (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
+     * 
+     */
+    @Export(name="clickTracking", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> clickTracking;
+
+    /**
+     * @return (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
+     * 
+     */
+    public Output<Optional<Boolean>> clickTracking() {
+        return Codegen.optional(this.clickTracking);
+    }
+    /**
      * The length of your domain’s generated DKIM key. Default value is `1024`.
      * 
      */
@@ -271,6 +285,20 @@ public class Domain extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> spamAction() {
         return Codegen.optional(this.spamAction);
+    }
+    /**
+     * (`http` or `https`) The tracking web scheme. Default: `http`
+     * 
+     */
+    @Export(name="webScheme", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> webScheme;
+
+    /**
+     * @return (`http` or `https`) The tracking web scheme. Default: `http`
+     * 
+     */
+    public Output<Optional<String>> webScheme() {
+        return Codegen.optional(this.webScheme);
     }
     /**
      * Boolean that determines whether

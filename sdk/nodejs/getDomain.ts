@@ -35,6 +35,7 @@ export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Pro
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("mailgun:index/getDomain:getDomain", {
+        "clickTracking": args.clickTracking,
         "dkimKeySize": args.dkimKeySize,
         "dkimSelector": args.dkimSelector,
         "forceDkimAuthority": args.forceDkimAuthority,
@@ -43,6 +44,7 @@ export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Pro
         "region": args.region,
         "smtpPassword": args.smtpPassword,
         "spamAction": args.spamAction,
+        "webScheme": args.webScheme,
         "wildcard": args.wildcard,
     }, opts);
 }
@@ -51,6 +53,10 @@ export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getDomain.
  */
 export interface GetDomainArgs {
+    /**
+     * The click tracking setting.
+     */
+    clickTracking?: boolean;
     dkimKeySize?: number;
     dkimSelector?: string;
     forceDkimAuthority?: boolean;
@@ -58,6 +64,9 @@ export interface GetDomainArgs {
      * The name of the domain.
      */
     name: string;
+    /**
+     * The open tracking setting.
+     */
     openTracking?: boolean;
     /**
      * The region where domain will be created. Default value is `us`.
@@ -72,6 +81,10 @@ export interface GetDomainArgs {
      */
     spamAction?: string;
     /**
+     * The tracking web scheme.
+     */
+    webScheme?: string;
+    /**
      * Whether or not the domain will accept email for sub-domains.
      */
     wildcard?: boolean;
@@ -81,6 +94,10 @@ export interface GetDomainArgs {
  * A collection of values returned by getDomain.
  */
 export interface GetDomainResult {
+    /**
+     * The click tracking setting.
+     */
+    readonly clickTracking?: boolean;
     readonly dkimKeySize?: number;
     readonly dkimSelector?: string;
     readonly forceDkimAuthority?: boolean;
@@ -92,6 +109,9 @@ export interface GetDomainResult {
      * The name of the record.
      */
     readonly name: string;
+    /**
+     * The open tracking setting.
+     */
     readonly openTracking?: boolean;
     /**
      * A list of DNS records for receiving validation.
@@ -120,6 +140,10 @@ export interface GetDomainResult {
      * The spam filtering setting.
      */
     readonly spamAction?: string;
+    /**
+     * The tracking web scheme.
+     */
+    readonly webScheme?: string;
     /**
      * Whether or not the domain will accept email for sub-domains.
      */
@@ -158,6 +182,10 @@ export function getDomainOutput(args: GetDomainOutputArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getDomain.
  */
 export interface GetDomainOutputArgs {
+    /**
+     * The click tracking setting.
+     */
+    clickTracking?: pulumi.Input<boolean>;
     dkimKeySize?: pulumi.Input<number>;
     dkimSelector?: pulumi.Input<string>;
     forceDkimAuthority?: pulumi.Input<boolean>;
@@ -165,6 +193,9 @@ export interface GetDomainOutputArgs {
      * The name of the domain.
      */
     name: pulumi.Input<string>;
+    /**
+     * The open tracking setting.
+     */
     openTracking?: pulumi.Input<boolean>;
     /**
      * The region where domain will be created. Default value is `us`.
@@ -178,6 +209,10 @@ export interface GetDomainOutputArgs {
      * The spam filtering setting.
      */
     spamAction?: pulumi.Input<string>;
+    /**
+     * The tracking web scheme.
+     */
+    webScheme?: pulumi.Input<string>;
     /**
      * Whether or not the domain will accept email for sub-domains.
      */

@@ -91,6 +91,12 @@ namespace Pulumi.Mailgun
 
     public sealed class GetDomainArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The click tracking setting.
+        /// </summary>
+        [Input("clickTracking")]
+        public bool? ClickTracking { get; set; }
+
         [Input("dkimKeySize")]
         public int? DkimKeySize { get; set; }
 
@@ -106,6 +112,9 @@ namespace Pulumi.Mailgun
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        /// <summary>
+        /// The open tracking setting.
+        /// </summary>
         [Input("openTracking")]
         public bool? OpenTracking { get; set; }
 
@@ -134,6 +143,12 @@ namespace Pulumi.Mailgun
         public string? SpamAction { get; set; }
 
         /// <summary>
+        /// The tracking web scheme.
+        /// </summary>
+        [Input("webScheme")]
+        public string? WebScheme { get; set; }
+
+        /// <summary>
         /// Whether or not the domain will accept email for sub-domains.
         /// </summary>
         [Input("wildcard")]
@@ -147,6 +162,12 @@ namespace Pulumi.Mailgun
 
     public sealed class GetDomainInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The click tracking setting.
+        /// </summary>
+        [Input("clickTracking")]
+        public Input<bool>? ClickTracking { get; set; }
+
         [Input("dkimKeySize")]
         public Input<int>? DkimKeySize { get; set; }
 
@@ -162,6 +183,9 @@ namespace Pulumi.Mailgun
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The open tracking setting.
+        /// </summary>
         [Input("openTracking")]
         public Input<bool>? OpenTracking { get; set; }
 
@@ -194,6 +218,12 @@ namespace Pulumi.Mailgun
         public Input<string>? SpamAction { get; set; }
 
         /// <summary>
+        /// The tracking web scheme.
+        /// </summary>
+        [Input("webScheme")]
+        public Input<string>? WebScheme { get; set; }
+
+        /// <summary>
         /// Whether or not the domain will accept email for sub-domains.
         /// </summary>
         [Input("wildcard")]
@@ -209,6 +239,10 @@ namespace Pulumi.Mailgun
     [OutputType]
     public sealed class GetDomainResult
     {
+        /// <summary>
+        /// The click tracking setting.
+        /// </summary>
+        public readonly bool? ClickTracking;
         public readonly int? DkimKeySize;
         public readonly string? DkimSelector;
         public readonly bool? ForceDkimAuthority;
@@ -220,6 +254,9 @@ namespace Pulumi.Mailgun
         /// The name of the record.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The open tracking setting.
+        /// </summary>
         public readonly bool? OpenTracking;
         /// <summary>
         /// A list of DNS records for receiving validation.
@@ -245,12 +282,18 @@ namespace Pulumi.Mailgun
         /// </summary>
         public readonly string? SpamAction;
         /// <summary>
+        /// The tracking web scheme.
+        /// </summary>
+        public readonly string? WebScheme;
+        /// <summary>
         /// Whether or not the domain will accept email for sub-domains.
         /// </summary>
         public readonly bool? Wildcard;
 
         [OutputConstructor]
         private GetDomainResult(
+            bool? clickTracking,
+
             int? dkimKeySize,
 
             string? dkimSelector,
@@ -279,8 +322,11 @@ namespace Pulumi.Mailgun
 
             string? spamAction,
 
+            string? webScheme,
+
             bool? wildcard)
         {
+            ClickTracking = clickTracking;
             DkimKeySize = dkimKeySize;
             DkimSelector = dkimSelector;
             ForceDkimAuthority = forceDkimAuthority;
@@ -295,6 +341,7 @@ namespace Pulumi.Mailgun
             SmtpLogin = smtpLogin;
             SmtpPassword = smtpPassword;
             SpamAction = spamAction;
+            WebScheme = webScheme;
             Wildcard = wildcard;
         }
     }

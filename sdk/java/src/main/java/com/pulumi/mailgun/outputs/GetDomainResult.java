@@ -19,6 +19,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDomainResult {
+    /**
+     * @return The click tracking setting.
+     * 
+     */
+    private @Nullable Boolean clickTracking;
     private @Nullable Integer dkimKeySize;
     private @Nullable String dkimSelector;
     private @Nullable Boolean forceDkimAuthority;
@@ -32,6 +37,10 @@ public final class GetDomainResult {
      * 
      */
     private String name;
+    /**
+     * @return The open tracking setting.
+     * 
+     */
     private @Nullable Boolean openTracking;
     /**
      * @return A list of DNS records for receiving validation.
@@ -70,12 +79,24 @@ public final class GetDomainResult {
      */
     private @Nullable String spamAction;
     /**
+     * @return The tracking web scheme.
+     * 
+     */
+    private @Nullable String webScheme;
+    /**
      * @return Whether or not the domain will accept email for sub-domains.
      * 
      */
     private @Nullable Boolean wildcard;
 
     private GetDomainResult() {}
+    /**
+     * @return The click tracking setting.
+     * 
+     */
+    public Optional<Boolean> clickTracking() {
+        return Optional.ofNullable(this.clickTracking);
+    }
     public Optional<Integer> dkimKeySize() {
         return Optional.ofNullable(this.dkimKeySize);
     }
@@ -99,6 +120,10 @@ public final class GetDomainResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The open tracking setting.
+     * 
+     */
     public Optional<Boolean> openTracking() {
         return Optional.ofNullable(this.openTracking);
     }
@@ -155,6 +180,13 @@ public final class GetDomainResult {
         return Optional.ofNullable(this.spamAction);
     }
     /**
+     * @return The tracking web scheme.
+     * 
+     */
+    public Optional<String> webScheme() {
+        return Optional.ofNullable(this.webScheme);
+    }
+    /**
      * @return Whether or not the domain will accept email for sub-domains.
      * 
      */
@@ -171,6 +203,7 @@ public final class GetDomainResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean clickTracking;
         private @Nullable Integer dkimKeySize;
         private @Nullable String dkimSelector;
         private @Nullable Boolean forceDkimAuthority;
@@ -185,10 +218,12 @@ public final class GetDomainResult {
         private String smtpLogin;
         private @Nullable String smtpPassword;
         private @Nullable String spamAction;
+        private @Nullable String webScheme;
         private @Nullable Boolean wildcard;
         public Builder() {}
         public Builder(GetDomainResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.clickTracking = defaults.clickTracking;
     	      this.dkimKeySize = defaults.dkimKeySize;
     	      this.dkimSelector = defaults.dkimSelector;
     	      this.forceDkimAuthority = defaults.forceDkimAuthority;
@@ -203,9 +238,16 @@ public final class GetDomainResult {
     	      this.smtpLogin = defaults.smtpLogin;
     	      this.smtpPassword = defaults.smtpPassword;
     	      this.spamAction = defaults.spamAction;
+    	      this.webScheme = defaults.webScheme;
     	      this.wildcard = defaults.wildcard;
         }
 
+        @CustomType.Setter
+        public Builder clickTracking(@Nullable Boolean clickTracking) {
+
+            this.clickTracking = clickTracking;
+            return this;
+        }
         @CustomType.Setter
         public Builder dkimKeySize(@Nullable Integer dkimKeySize) {
 
@@ -317,6 +359,12 @@ public final class GetDomainResult {
             return this;
         }
         @CustomType.Setter
+        public Builder webScheme(@Nullable String webScheme) {
+
+            this.webScheme = webScheme;
+            return this;
+        }
+        @CustomType.Setter
         public Builder wildcard(@Nullable Boolean wildcard) {
 
             this.wildcard = wildcard;
@@ -324,6 +372,7 @@ public final class GetDomainResult {
         }
         public GetDomainResult build() {
             final var _resultValue = new GetDomainResult();
+            _resultValue.clickTracking = clickTracking;
             _resultValue.dkimKeySize = dkimKeySize;
             _resultValue.dkimSelector = dkimSelector;
             _resultValue.forceDkimAuthority = forceDkimAuthority;
@@ -338,6 +387,7 @@ public final class GetDomainResult {
             _resultValue.smtpLogin = smtpLogin;
             _resultValue.smtpPassword = smtpPassword;
             _resultValue.spamAction = spamAction;
+            _resultValue.webScheme = webScheme;
             _resultValue.wildcard = wildcard;
             return _resultValue;
         }
