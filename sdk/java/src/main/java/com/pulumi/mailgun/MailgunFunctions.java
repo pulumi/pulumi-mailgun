@@ -20,7 +20,8 @@ public final class MailgunFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -44,22 +45,23 @@ public final class MailgunFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var domain = MailgunFunctions.getDomain(GetDomainArgs.builder()
-     *             .name(&#34;test.example.com&#34;)
+     *             .name("test.example.com")
      *             .build());
      * 
-     *         var mailgun_mx = new Route53Record(&#34;mailgun-mx&#34;, Route53RecordArgs.builder()        
+     *         var mailgun_mx = new Route53Record("mailgun-mx", Route53RecordArgs.builder()        
      *             .zoneId(zoneId)
      *             .name(domainMailgun.name())
-     *             .type(&#34;MX&#34;)
+     *             .type("MX")
      *             .ttl(3600)
      *             .records(            
-     *                 String.format(&#34;%s %s.&#34;, domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[0].priority()),domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[0].value())),
-     *                 String.format(&#34;%s %s.&#34;, domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[1].priority()),domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[1].value())))
+     *                 String.format("%s %s.", domain.applyValue(getDomainResult -> getDomainResult.receivingRecords()[0].priority()),domain.applyValue(getDomainResult -> getDomainResult.receivingRecords()[0].value())),
+     *                 String.format("%s %s.", domain.applyValue(getDomainResult -> getDomainResult.receivingRecords()[1].priority()),domain.applyValue(getDomainResult -> getDomainResult.receivingRecords()[1].value())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -72,7 +74,8 @@ public final class MailgunFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -96,22 +99,23 @@ public final class MailgunFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var domain = MailgunFunctions.getDomain(GetDomainArgs.builder()
-     *             .name(&#34;test.example.com&#34;)
+     *             .name("test.example.com")
      *             .build());
      * 
-     *         var mailgun_mx = new Route53Record(&#34;mailgun-mx&#34;, Route53RecordArgs.builder()        
+     *         var mailgun_mx = new Route53Record("mailgun-mx", Route53RecordArgs.builder()        
      *             .zoneId(zoneId)
      *             .name(domainMailgun.name())
-     *             .type(&#34;MX&#34;)
+     *             .type("MX")
      *             .ttl(3600)
      *             .records(            
-     *                 String.format(&#34;%s %s.&#34;, domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[0].priority()),domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[0].value())),
-     *                 String.format(&#34;%s %s.&#34;, domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[1].priority()),domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[1].value())))
+     *                 String.format("%s %s.", domain.applyValue(getDomainResult -> getDomainResult.receivingRecords()[0].priority()),domain.applyValue(getDomainResult -> getDomainResult.receivingRecords()[0].value())),
+     *                 String.format("%s %s.", domain.applyValue(getDomainResult -> getDomainResult.receivingRecords()[1].priority()),domain.applyValue(getDomainResult -> getDomainResult.receivingRecords()[1].value())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -124,7 +128,8 @@ public final class MailgunFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -148,22 +153,23 @@ public final class MailgunFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var domain = MailgunFunctions.getDomain(GetDomainArgs.builder()
-     *             .name(&#34;test.example.com&#34;)
+     *             .name("test.example.com")
      *             .build());
      * 
-     *         var mailgun_mx = new Route53Record(&#34;mailgun-mx&#34;, Route53RecordArgs.builder()        
+     *         var mailgun_mx = new Route53Record("mailgun-mx", Route53RecordArgs.builder()        
      *             .zoneId(zoneId)
      *             .name(domainMailgun.name())
-     *             .type(&#34;MX&#34;)
+     *             .type("MX")
      *             .ttl(3600)
      *             .records(            
-     *                 String.format(&#34;%s %s.&#34;, domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[0].priority()),domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[0].value())),
-     *                 String.format(&#34;%s %s.&#34;, domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[1].priority()),domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[1].value())))
+     *                 String.format("%s %s.", domain.applyValue(getDomainResult -> getDomainResult.receivingRecords()[0].priority()),domain.applyValue(getDomainResult -> getDomainResult.receivingRecords()[0].value())),
+     *                 String.format("%s %s.", domain.applyValue(getDomainResult -> getDomainResult.receivingRecords()[1].priority()),domain.applyValue(getDomainResult -> getDomainResult.receivingRecords()[1].value())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -176,7 +182,8 @@ public final class MailgunFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -200,22 +207,23 @@ public final class MailgunFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var domain = MailgunFunctions.getDomain(GetDomainArgs.builder()
-     *             .name(&#34;test.example.com&#34;)
+     *             .name("test.example.com")
      *             .build());
      * 
-     *         var mailgun_mx = new Route53Record(&#34;mailgun-mx&#34;, Route53RecordArgs.builder()        
+     *         var mailgun_mx = new Route53Record("mailgun-mx", Route53RecordArgs.builder()        
      *             .zoneId(zoneId)
      *             .name(domainMailgun.name())
-     *             .type(&#34;MX&#34;)
+     *             .type("MX")
      *             .ttl(3600)
      *             .records(            
-     *                 String.format(&#34;%s %s.&#34;, domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[0].priority()),domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[0].value())),
-     *                 String.format(&#34;%s %s.&#34;, domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[1].priority()),domain.applyValue(getDomainResult -&gt; getDomainResult.receivingRecords()[1].value())))
+     *                 String.format("%s %s.", domain.applyValue(getDomainResult -> getDomainResult.receivingRecords()[0].priority()),domain.applyValue(getDomainResult -> getDomainResult.receivingRecords()[0].value())),
+     *                 String.format("%s %s.", domain.applyValue(getDomainResult -> getDomainResult.receivingRecords()[1].priority()),domain.applyValue(getDomainResult -> getDomainResult.receivingRecords()[1].value())))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

@@ -30,7 +30,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,17 +53,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new Mailgun domain
- *         var default_ = new Domain(&#34;default&#34;, DomainArgs.builder()        
- *             .name(&#34;test.example.com&#34;)
- *             .region(&#34;us&#34;)
- *             .spamAction(&#34;disabled&#34;)
- *             .smtpPassword(&#34;supersecretpassword1234&#34;)
+ *         var default_ = new Domain("default", DomainArgs.builder()        
+ *             .name("test.example.com")
+ *             .region("us")
+ *             .spamAction("disabled")
+ *             .smtpPassword("supersecretpassword1234")
  *             .dkimKeySize(1024)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
