@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,18 +45,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new Mailgun route
- *         var default_ = new Route(&#34;default&#34;, RouteArgs.builder()        
- *             .priority(&#34;0&#34;)
- *             .description(&#34;inbound&#34;)
- *             .expression(&#34;match_recipient(&#39;.*@foo.example.com&#39;)&#34;)
+ *         var default_ = new Route("default", RouteArgs.builder()        
+ *             .priority("0")
+ *             .description("inbound")
+ *             .expression("match_recipient('.*{@literal @}foo.example.com')")
  *             .actions(            
- *                 &#34;forward(&#39;http://example.com/api/v1/foos/&#39;)&#34;,
- *                 &#34;stop()&#34;)
+ *                 "forward('http://example.com/api/v1/foos/')",
+ *                 "stop()")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -84,14 +86,14 @@ public class Route extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * A filter expression like `match_recipient(&#39;.*@gmail.com&#39;)`
+     * A filter expression like `match_recipient(&#39;.*{@literal @}gmail.com&#39;)`
      * 
      */
     @Export(name="expression", refs={String.class}, tree="[0]")
     private Output<String> expression;
 
     /**
-     * @return A filter expression like `match_recipient(&#39;.*@gmail.com&#39;)`
+     * @return A filter expression like `match_recipient(&#39;.*{@literal @}gmail.com&#39;)`
      * 
      */
     public Output<String> expression() {

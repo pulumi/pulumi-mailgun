@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,16 +46,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new Mailgun credential
- *         var foobar = new DomainCredential(&#34;foobar&#34;, DomainCredentialArgs.builder()        
- *             .domain(&#34;toto.com&#34;)
- *             .login(&#34;test&#34;)
- *             .password(&#34;supersecretpassword1234&#34;)
- *             .region(&#34;us&#34;)
+ *         var foobar = new DomainCredential("foobar", DomainCredentialArgs.builder()        
+ *             .domain("toto.com")
+ *             .login("test")
+ *             .password("supersecretpassword1234")
+ *             .region("us")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -66,7 +68,7 @@ import javax.annotation.Nullable;
  * hcl
  * 
  * ```sh
- * $ pulumi import mailgun:index/domainCredential:DomainCredential test us:test@domain.com
+ * $ pulumi import mailgun:index/domainCredential:DomainCredential test us:test{@literal @}domain.com
  * ```
  * 
  */

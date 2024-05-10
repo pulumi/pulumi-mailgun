@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,16 +45,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new Mailgun webhook
- *         var default_ = new Webhook(&#34;default&#34;, WebhookArgs.builder()        
- *             .domain(&#34;test.example.com&#34;)
- *             .region(&#34;us&#34;)
- *             .kind(&#34;delivered&#34;)
- *             .urls(&#34;https://example.com&#34;)
+ *         var default_ = new Webhook("default", WebhookArgs.builder()        
+ *             .domain("test.example.com")
+ *             .region("us")
+ *             .kind("delivered")
+ *             .urls("https://example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

@@ -33,14 +33,14 @@ public final class RouteArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A filter expression like `match_recipient(&#39;.*@gmail.com&#39;)`
+     * A filter expression like `match_recipient(&#39;.*{@literal @}gmail.com&#39;)`
      * 
      */
     @Import(name="expression", required=true)
     private Output<String> expression;
 
     /**
-     * @return A filter expression like `match_recipient(&#39;.*@gmail.com&#39;)`
+     * @return A filter expression like `match_recipient(&#39;.*{@literal @}gmail.com&#39;)`
      * 
      */
     public Output<String> expression() {
@@ -128,7 +128,7 @@ public final class RouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expression A filter expression like `match_recipient(&#39;.*@gmail.com&#39;)`
+         * @param expression A filter expression like `match_recipient(&#39;.*{@literal @}gmail.com&#39;)`
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class RouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expression A filter expression like `match_recipient(&#39;.*@gmail.com&#39;)`
+         * @param expression A filter expression like `match_recipient(&#39;.*{@literal @}gmail.com&#39;)`
          * 
          * @return builder
          * 
