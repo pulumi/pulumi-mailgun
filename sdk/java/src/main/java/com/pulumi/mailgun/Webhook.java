@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new Mailgun webhook
- *         var default_ = new Webhook("default", WebhookArgs.builder()        
+ *         var default_ = new Webhook("default", WebhookArgs.builder()
  *             .domain("test.example.com")
  *             .region("us")
  *             .kind("delivered")
