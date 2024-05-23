@@ -48,7 +48,7 @@ public final class MailgunFunctions {
      *             .name("test.example.com")
      *             .build());
      * 
-     *         var mailgun_mx = new Route53Record("mailgun-mx", Route53RecordArgs.builder()        
+     *         var mailgun_mx = new Route53Record("mailgun-mx", Route53RecordArgs.builder()
      *             .zoneId(zoneId)
      *             .name(domainMailgun.name())
      *             .type("MX")
@@ -102,7 +102,7 @@ public final class MailgunFunctions {
      *             .name("test.example.com")
      *             .build());
      * 
-     *         var mailgun_mx = new Route53Record("mailgun-mx", Route53RecordArgs.builder()        
+     *         var mailgun_mx = new Route53Record("mailgun-mx", Route53RecordArgs.builder()
      *             .zoneId(zoneId)
      *             .name(domainMailgun.name())
      *             .type("MX")
@@ -156,7 +156,7 @@ public final class MailgunFunctions {
      *             .name("test.example.com")
      *             .build());
      * 
-     *         var mailgun_mx = new Route53Record("mailgun-mx", Route53RecordArgs.builder()        
+     *         var mailgun_mx = new Route53Record("mailgun-mx", Route53RecordArgs.builder()
      *             .zoneId(zoneId)
      *             .name(domainMailgun.name())
      *             .type("MX")
@@ -210,7 +210,7 @@ public final class MailgunFunctions {
      *             .name("test.example.com")
      *             .build());
      * 
-     *         var mailgun_mx = new Route53Record("mailgun-mx", Route53RecordArgs.builder()        
+     *         var mailgun_mx = new Route53Record("mailgun-mx", Route53RecordArgs.builder()
      *             .zoneId(zoneId)
      *             .name(domainMailgun.name())
      *             .type("MX")
