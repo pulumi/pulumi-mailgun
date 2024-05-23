@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new Mailgun domain
- *         var default_ = new Domain("default", DomainArgs.builder()        
+ *         var default_ = new Domain("default", DomainArgs.builder()
  *             .name("test.example.com")
  *             .region("us")
  *             .spamAction("disabled")
