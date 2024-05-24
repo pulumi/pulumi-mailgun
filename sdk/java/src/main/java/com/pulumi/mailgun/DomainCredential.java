@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a new Mailgun credential
- *         var foobar = new DomainCredential("foobar", DomainCredentialArgs.builder()        
+ *         var foobar = new DomainCredential("foobar", DomainCredentialArgs.builder()
  *             .domain("toto.com")
  *             .login("test")
  *             .password("supersecretpassword1234")
