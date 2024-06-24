@@ -357,13 +357,11 @@ class _DomainState:
 
     @property
     @pulumi.getter(name="receivingRecords")
+    @_utilities.deprecated("""Use `receiving_records_set` instead.""")
     def receiving_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainReceivingRecordArgs']]]]:
         """
         A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
         """
-        warnings.warn("""Use `receiving_records_set` instead.""", DeprecationWarning)
-        pulumi.log.warn("""receiving_records is deprecated: Use `receiving_records_set` instead.""")
-
         return pulumi.get(self, "receiving_records")
 
     @receiving_records.setter
@@ -396,13 +394,11 @@ class _DomainState:
 
     @property
     @pulumi.getter(name="sendingRecords")
+    @_utilities.deprecated("""Use `sending_records_set` instead.""")
     def sending_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainSendingRecordArgs']]]]:
         """
         A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
         """
-        warnings.warn("""Use `sending_records_set` instead.""", DeprecationWarning)
-        pulumi.log.warn("""sending_records is deprecated: Use `sending_records_set` instead.""")
-
         return pulumi.get(self, "sending_records")
 
     @sending_records.setter
@@ -765,13 +761,11 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="receivingRecords")
+    @_utilities.deprecated("""Use `receiving_records_set` instead.""")
     def receiving_records(self) -> pulumi.Output[Sequence['outputs.DomainReceivingRecord']]:
         """
         A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
         """
-        warnings.warn("""Use `receiving_records_set` instead.""", DeprecationWarning)
-        pulumi.log.warn("""receiving_records is deprecated: Use `receiving_records_set` instead.""")
-
         return pulumi.get(self, "receiving_records")
 
     @property
@@ -792,13 +786,11 @@ class Domain(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="sendingRecords")
+    @_utilities.deprecated("""Use `sending_records_set` instead.""")
     def sending_records(self) -> pulumi.Output[Sequence['outputs.DomainSendingRecord']]:
         """
         A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
         """
-        warnings.warn("""Use `sending_records_set` instead.""", DeprecationWarning)
-        pulumi.log.warn("""sending_records is deprecated: Use `sending_records_set` instead.""")
-
         return pulumi.get(self, "sending_records")
 
     @property
