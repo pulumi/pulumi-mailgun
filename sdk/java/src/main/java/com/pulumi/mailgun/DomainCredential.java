@@ -135,7 +135,7 @@ public class DomainCredential extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DomainCredential(String name) {
+    public DomainCredential(java.lang.String name) {
         this(name, DomainCredentialArgs.Empty);
     }
     /**
@@ -143,7 +143,7 @@ public class DomainCredential extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DomainCredential(String name, DomainCredentialArgs args) {
+    public DomainCredential(java.lang.String name, DomainCredentialArgs args) {
         this(name, args, null);
     }
     /**
@@ -152,15 +152,22 @@ public class DomainCredential extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DomainCredential(String name, DomainCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("mailgun:index/domainCredential:DomainCredential", name, args == null ? DomainCredentialArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DomainCredential(java.lang.String name, DomainCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("mailgun:index/domainCredential:DomainCredential", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DomainCredential(String name, Output<String> id, @Nullable DomainCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("mailgun:index/domainCredential:DomainCredential", name, state, makeResourceOptions(options, id));
+    private DomainCredential(java.lang.String name, Output<java.lang.String> id, @Nullable DomainCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("mailgun:index/domainCredential:DomainCredential", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DomainCredentialArgs makeArgs(DomainCredentialArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DomainCredentialArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -179,7 +186,7 @@ public class DomainCredential extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DomainCredential get(String name, Output<String> id, @Nullable DomainCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DomainCredential get(java.lang.String name, Output<java.lang.String> id, @Nullable DomainCredentialState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DomainCredential(name, id, state, options);
     }
 }
