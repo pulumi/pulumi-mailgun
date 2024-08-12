@@ -652,11 +652,11 @@ class Domain(pulumi.CustomResource):
             force_dkim_authority: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             open_tracking: Optional[pulumi.Input[bool]] = None,
-            receiving_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainReceivingRecordArgs']]]]] = None,
-            receiving_records_sets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainReceivingRecordsSetArgs']]]]] = None,
+            receiving_records: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainReceivingRecordArgs', 'DomainReceivingRecordArgsDict']]]]] = None,
+            receiving_records_sets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainReceivingRecordsSetArgs', 'DomainReceivingRecordsSetArgsDict']]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
-            sending_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSendingRecordArgs']]]]] = None,
-            sending_records_sets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSendingRecordsSetArgs']]]]] = None,
+            sending_records: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainSendingRecordArgs', 'DomainSendingRecordArgsDict']]]]] = None,
+            sending_records_sets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainSendingRecordsSetArgs', 'DomainSendingRecordsSetArgsDict']]]]] = None,
             smtp_login: Optional[pulumi.Input[str]] = None,
             smtp_password: Optional[pulumi.Input[str]] = None,
             spam_action: Optional[pulumi.Input[str]] = None,
@@ -675,11 +675,11 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[bool] force_dkim_authority: If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
         :param pulumi.Input[str] name: The domain to add to Mailgun
         :param pulumi.Input[bool] open_tracking: (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainReceivingRecordArgs']]]] receiving_records: A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainReceivingRecordsSetArgs']]]] receiving_records_sets: A set of DNS records for receiving validation.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainReceivingRecordArgs', 'DomainReceivingRecordArgsDict']]]] receiving_records: A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainReceivingRecordsSetArgs', 'DomainReceivingRecordsSetArgsDict']]]] receiving_records_sets: A set of DNS records for receiving validation.
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSendingRecordArgs']]]] sending_records: A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainSendingRecordsSetArgs']]]] sending_records_sets: A set of DNS records for sending validation.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSendingRecordArgs', 'DomainSendingRecordArgsDict']]]] sending_records: A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSendingRecordsSetArgs', 'DomainSendingRecordsSetArgsDict']]]] sending_records_sets: A set of DNS records for sending validation.
         :param pulumi.Input[str] smtp_login: The login email for the SMTP server.
         :param pulumi.Input[str] smtp_password: Password for SMTP authentication
         :param pulumi.Input[str] spam_action: `disabled` or `tag` Disable, no spam
