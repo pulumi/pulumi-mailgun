@@ -32,7 +32,6 @@ import * as utilities from "./utilities";
  * ```
  */
 export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("mailgun:index/getDomain:getDomain", {
         "clickTracking": args.clickTracking,
@@ -175,7 +174,20 @@ export interface GetDomainResult {
  * ```
  */
 export function getDomainOutput(args: GetDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainResult> {
-    return pulumi.output(args).apply((a: any) => getDomain(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("mailgun:index/getDomain:getDomain", {
+        "clickTracking": args.clickTracking,
+        "dkimKeySize": args.dkimKeySize,
+        "dkimSelector": args.dkimSelector,
+        "forceDkimAuthority": args.forceDkimAuthority,
+        "name": args.name,
+        "openTracking": args.openTracking,
+        "region": args.region,
+        "smtpPassword": args.smtpPassword,
+        "spamAction": args.spamAction,
+        "webScheme": args.webScheme,
+        "wildcard": args.wildcard,
+    }, opts);
 }
 
 /**
