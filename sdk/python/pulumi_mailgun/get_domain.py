@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -298,9 +303,6 @@ def get_domain(click_tracking: Optional[bool] = None,
         spam_action=pulumi.get(__ret__, 'spam_action'),
         web_scheme=pulumi.get(__ret__, 'web_scheme'),
         wildcard=pulumi.get(__ret__, 'wildcard'))
-
-
-@_utilities.lift_output_func(get_domain)
 def get_domain_output(click_tracking: Optional[pulumi.Input[Optional[bool]]] = None,
                       dkim_key_size: Optional[pulumi.Input[Optional[int]]] = None,
                       dkim_selector: Optional[pulumi.Input[Optional[str]]] = None,
@@ -345,4 +347,35 @@ def get_domain_output(click_tracking: Optional[pulumi.Input[Optional[bool]]] = N
     :param str web_scheme: The tracking web scheme.
     :param bool wildcard: Whether or not the domain will accept email for sub-domains.
     """
-    ...
+    __args__ = dict()
+    __args__['clickTracking'] = click_tracking
+    __args__['dkimKeySize'] = dkim_key_size
+    __args__['dkimSelector'] = dkim_selector
+    __args__['forceDkimAuthority'] = force_dkim_authority
+    __args__['name'] = name
+    __args__['openTracking'] = open_tracking
+    __args__['region'] = region
+    __args__['smtpPassword'] = smtp_password
+    __args__['spamAction'] = spam_action
+    __args__['webScheme'] = web_scheme
+    __args__['wildcard'] = wildcard
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('mailgun:index/getDomain:getDomain', __args__, opts=opts, typ=GetDomainResult)
+    return __ret__.apply(lambda __response__: GetDomainResult(
+        click_tracking=pulumi.get(__response__, 'click_tracking'),
+        dkim_key_size=pulumi.get(__response__, 'dkim_key_size'),
+        dkim_selector=pulumi.get(__response__, 'dkim_selector'),
+        force_dkim_authority=pulumi.get(__response__, 'force_dkim_authority'),
+        id=pulumi.get(__response__, 'id'),
+        name=pulumi.get(__response__, 'name'),
+        open_tracking=pulumi.get(__response__, 'open_tracking'),
+        receiving_records=pulumi.get(__response__, 'receiving_records'),
+        receiving_records_sets=pulumi.get(__response__, 'receiving_records_sets'),
+        region=pulumi.get(__response__, 'region'),
+        sending_records=pulumi.get(__response__, 'sending_records'),
+        sending_records_sets=pulumi.get(__response__, 'sending_records_sets'),
+        smtp_login=pulumi.get(__response__, 'smtp_login'),
+        smtp_password=pulumi.get(__response__, 'smtp_password'),
+        spam_action=pulumi.get(__response__, 'spam_action'),
+        web_scheme=pulumi.get(__response__, 'web_scheme'),
+        wildcard=pulumi.get(__response__, 'wildcard')))
