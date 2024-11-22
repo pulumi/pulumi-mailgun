@@ -6,7 +6,7 @@ layout: package
 ---
 ## Installation
 
-The mailgun provider is available as a package in all Pulumi languages:
+The Mailgun provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/mailgun`](https://www.npmjs.com/package/@pulumi/mailgun)
 * Python: [`pulumi-mailgun`](https://pypi.org/project/pulumi-mailgun/)
