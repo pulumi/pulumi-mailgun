@@ -48,7 +48,7 @@ namespace Pulumi.Mailgun
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
+        /// The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumi.Mailgun
         public Input<string> Domain { get; set; } = null!;
 
         /// <summary>
-        /// The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
+        /// The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
@@ -156,7 +156,7 @@ namespace Pulumi.Mailgun
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
+        /// The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }

@@ -26,7 +26,7 @@ class WebhookArgs:
         """
         The set of arguments for constructing a Webhook resource.
         :param pulumi.Input[str] domain: The domain to add to Mailgun
-        :param pulumi.Input[str] kind: The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
+        :param pulumi.Input[str] kind: The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
         :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: The urls of webhook
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
         """
@@ -52,7 +52,7 @@ class WebhookArgs:
     @pulumi.getter
     def kind(self) -> pulumi.Input[str]:
         """
-        The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
+        The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
         """
         return pulumi.get(self, "kind")
 
@@ -95,7 +95,7 @@ class _WebhookState:
         """
         Input properties used for looking up and filtering Webhook resources.
         :param pulumi.Input[str] domain: The domain to add to Mailgun
-        :param pulumi.Input[str] kind: The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
+        :param pulumi.Input[str] kind: The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: The urls of webhook
         """
@@ -124,7 +124,7 @@ class _WebhookState:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
-        The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
+        The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
         """
         return pulumi.get(self, "kind")
 
@@ -188,7 +188,7 @@ class Webhook(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The domain to add to Mailgun
-        :param pulumi.Input[str] kind: The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
+        :param pulumi.Input[str] kind: The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: The urls of webhook
         """
@@ -276,7 +276,7 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The domain to add to Mailgun
-        :param pulumi.Input[str] kind: The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
+        :param pulumi.Input[str] kind: The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
         :param pulumi.Input[str] region: The region where domain will be created. Default value is `us`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: The urls of webhook
         """
@@ -302,7 +302,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
+        The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
         """
         return pulumi.get(self, "kind")
 
