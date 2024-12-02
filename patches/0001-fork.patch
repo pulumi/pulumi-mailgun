@@ -1,17 +1,23 @@
-diff --git b/go.mod a/go.mod
-index c2e7110..1c2892d 100644
---- b/go.mod
-+++ a/go.mod
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Venelin <venelin@pulumi.com>
+Date: Mon, 2 Dec 2024 17:10:58 +0000
+Subject: [PATCH] fork
+
+
+diff --git a/go.mod b/go.mod
+index 353be0f..76f54e9 100644
+--- a/go.mod
++++ b/go.mod
 @@ -1,4 +1,4 @@
 -module github.com/terraform-providers/terraform-provider-mailgun
-+module github.com/wgebis/terraform-provider-mailgun
++module github.com/wgebis/terraform-provider-mailgun/mailgun
  
  go 1.19
  
-diff --git b/main.go a/main.go
+diff --git a/main.go b/main.go
 index e69df44..caab6a0 100644
---- b/main.go
-+++ a/main.go
+--- a/main.go
++++ b/main.go
 @@ -2,7 +2,7 @@ package main
  
  import (
