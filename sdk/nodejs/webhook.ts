@@ -56,7 +56,7 @@ export class Webhook extends pulumi.CustomResource {
      */
     public readonly domain!: pulumi.Output<string>;
     /**
-     * The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
+     * The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
      */
     public readonly kind!: pulumi.Output<string>;
     /**
@@ -115,7 +115,7 @@ export interface WebhookState {
      */
     domain?: pulumi.Input<string>;
     /**
-     * The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
+     * The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
      */
     kind?: pulumi.Input<string>;
     /**
@@ -137,7 +137,7 @@ export interface WebhookArgs {
      */
     domain: pulumi.Input<string>;
     /**
-     * The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
+     * The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
      */
     kind: pulumi.Input<string>;
     /**

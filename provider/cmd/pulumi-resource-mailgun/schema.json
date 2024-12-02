@@ -780,7 +780,7 @@
                 },
                 "kind": {
                     "type": "string",
-                    "description": "The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)\n"
+                    "description": "The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)\n"
                 },
                 "region": {
                     "type": "string",
@@ -807,7 +807,7 @@
                 },
                 "kind": {
                     "type": "string",
-                    "description": "The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)\n",
+                    "description": "The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)\n",
                     "willReplaceOnChanges": true
                 },
                 "region": {
@@ -838,7 +838,7 @@
                     },
                     "kind": {
                         "type": "string",
-                        "description": "The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)\n",
+                        "description": "The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)\n",
                         "willReplaceOnChanges": true
                     },
                     "region": {

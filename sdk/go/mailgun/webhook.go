@@ -51,7 +51,7 @@ type Webhook struct {
 
 	// The domain to add to Mailgun
 	Domain pulumi.StringOutput `pulumi:"domain"`
-	// The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
+	// The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The region where domain will be created. Default value is `us`.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
@@ -100,7 +100,7 @@ func GetWebhook(ctx *pulumi.Context,
 type webhookState struct {
 	// The domain to add to Mailgun
 	Domain *string `pulumi:"domain"`
-	// The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
+	// The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
 	Kind *string `pulumi:"kind"`
 	// The region where domain will be created. Default value is `us`.
 	Region *string `pulumi:"region"`
@@ -111,7 +111,7 @@ type webhookState struct {
 type WebhookState struct {
 	// The domain to add to Mailgun
 	Domain pulumi.StringPtrInput
-	// The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
+	// The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
 	Kind pulumi.StringPtrInput
 	// The region where domain will be created. Default value is `us`.
 	Region pulumi.StringPtrInput
@@ -126,7 +126,7 @@ func (WebhookState) ElementType() reflect.Type {
 type webhookArgs struct {
 	// The domain to add to Mailgun
 	Domain string `pulumi:"domain"`
-	// The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
+	// The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
 	Kind string `pulumi:"kind"`
 	// The region where domain will be created. Default value is `us`.
 	Region *string `pulumi:"region"`
@@ -138,7 +138,7 @@ type webhookArgs struct {
 type WebhookArgs struct {
 	// The domain to add to Mailgun
 	Domain pulumi.StringInput
-	// The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
+	// The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
 	Kind pulumi.StringInput
 	// The region where domain will be created. Default value is `us`.
 	Region pulumi.StringPtrInput
@@ -238,7 +238,7 @@ func (o WebhookOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
 
-// The kind of webhook. Supported values (`clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
+// The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
 func (o WebhookOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
