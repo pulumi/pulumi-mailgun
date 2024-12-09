@@ -314,7 +314,7 @@ def get_domain_output(click_tracking: Optional[pulumi.Input[Optional[bool]]] = N
                       spam_action: Optional[pulumi.Input[Optional[str]]] = None,
                       web_scheme: Optional[pulumi.Input[Optional[str]]] = None,
                       wildcard: Optional[pulumi.Input[Optional[bool]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainResult]:
     """
     `Domain` provides details about a Mailgun domain.
 
@@ -359,7 +359,7 @@ def get_domain_output(click_tracking: Optional[pulumi.Input[Optional[bool]]] = N
     __args__['spamAction'] = spam_action
     __args__['webScheme'] = web_scheme
     __args__['wildcard'] = wildcard
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('mailgun:index/getDomain:getDomain', __args__, opts=opts, typ=GetDomainResult)
     return __ret__.apply(lambda __response__: GetDomainResult(
         click_tracking=pulumi.get(__response__, 'click_tracking'),
