@@ -86,6 +86,44 @@ namespace Pulumi.Mailgun
         /// </summary>
         public static Output<GetDomainResult> Invoke(GetDomainInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainResult>("mailgun:index/getDomain:getDomain", args ?? new GetDomainInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// `mailgun.Domain` provides details about a Mailgun domain.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aws = Pulumi.Aws;
+        /// using Mailgun = Pulumi.Mailgun;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var domain = Mailgun.GetDomain.Invoke(new()
+        ///     {
+        ///         Name = "test.example.com",
+        ///     });
+        /// 
+        ///     var mailgun_mx = new Aws.Index.Route53Record("mailgun-mx", new()
+        ///     {
+        ///         ZoneId = zoneId,
+        ///         Name = domainMailgun.Name,
+        ///         Type = "MX",
+        ///         Ttl = 3600,
+        ///         Records = new[]
+        ///         {
+        ///             $"{domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[0]?.Priority)} {domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[0]?.Value)}.",
+        ///             $"{domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[1]?.Priority)} {domain.Apply(getDomainResult =&gt; getDomainResult.ReceivingRecords[1]?.Value)}.",
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDomainResult> Invoke(GetDomainInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDomainResult>("mailgun:index/getDomain:getDomain", args ?? new GetDomainInvokeArgs(), options.WithDefaults());
     }
 
 
