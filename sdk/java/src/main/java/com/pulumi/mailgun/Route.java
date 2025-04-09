@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) }{{@code
  *         // Create a new Mailgun route
  *         var default_ = new Route("default", RouteArgs.builder()
- *             .priority("0")
+ *             .priority(0)
  *             .description("inbound")
  *             .expression("match_recipient('.*}{@literal @}{@code foo.example.com')")
  *             .actions(            
