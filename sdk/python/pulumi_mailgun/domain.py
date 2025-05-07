@@ -487,10 +487,8 @@ class _DomainState:
         pulumi.set(self, "wildcard", value)
 
 
+@pulumi.type_token("mailgun:index/domain:Domain")
 class Domain(pulumi.CustomResource):
-
-    pulumi_type = "mailgun:index/domain:Domain"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
