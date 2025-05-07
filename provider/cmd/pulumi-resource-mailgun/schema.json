@@ -352,17 +352,14 @@
                 "type": "string"
             }
         },
-        "required": [
-            "apiKey"
-        ],
         "inputProperties": {
             "apiKey": {
                 "type": "string"
             }
         },
-        "requiredInputs": [
-            "apiKey"
-        ]
+        "methods": {
+            "terraformConfig": "pulumi:providers:mailgun/terraformConfig"
+        }
     },
     "resources": {
         "mailgun:index/domain:Domain": {
@@ -1008,6 +1005,35 @@
                     "sendingRecordsSets",
                     "smtpLogin",
                     "id"
+                ],
+                "type": "object"
+            }
+        },
+        "pulumi:providers:mailgun/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:mailgun"
+                    }
+                },
+                "type": "pulumi:providers:mailgun/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
                 ],
                 "type": "object"
             }
