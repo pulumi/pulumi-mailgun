@@ -174,10 +174,8 @@ class _RouteState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("mailgun:index/route:Route")
 class Route(pulumi.CustomResource):
-
-    pulumi_type = "mailgun:index/route:Route"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
