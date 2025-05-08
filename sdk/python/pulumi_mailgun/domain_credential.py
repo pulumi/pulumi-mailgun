@@ -158,10 +158,8 @@ class _DomainCredentialState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("mailgun:index/domainCredential:DomainCredential")
 class DomainCredential(pulumi.CustomResource):
-
-    pulumi_type = "mailgun:index/domainCredential:DomainCredential"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
