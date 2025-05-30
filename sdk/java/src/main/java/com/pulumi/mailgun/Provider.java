@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.mailgun.ProviderArgs;
 import com.pulumi.mailgun.Utilities;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -22,10 +23,10 @@ import javax.annotation.Nullable;
 @ResourceType(type="pulumi:providers:mailgun")
 public class Provider extends com.pulumi.resources.ProviderResource {
     @Export(name="apiKey", refs={String.class}, tree="[0]")
-    private Output<String> apiKey;
+    private Output</* @Nullable */ String> apiKey;
 
-    public Output<String> apiKey() {
-        return this.apiKey;
+    public Output<Optional<String>> apiKey() {
+        return Codegen.optional(this.apiKey);
     }
 
     /**
@@ -40,7 +41,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Provider(java.lang.String name, ProviderArgs args) {
+    public Provider(java.lang.String name, @Nullable ProviderArgs args) {
         this(name, args, null);
     }
     /**
@@ -49,11 +50,11 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Provider(java.lang.String name, ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Provider(java.lang.String name, @Nullable ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("mailgun", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private static ProviderArgs makeArgs(ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static ProviderArgs makeArgs(@Nullable ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }
