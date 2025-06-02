@@ -352,17 +352,11 @@
                 "type": "string"
             }
         },
-        "required": [
-            "apiKey"
-        ],
         "inputProperties": {
             "apiKey": {
                 "type": "string"
             }
         },
-        "requiredInputs": [
-            "apiKey"
-        ],
         "methods": {
             "terraformConfig": "pulumi:providers:mailgun/terraformConfig"
         }
