@@ -1015,7 +1015,7 @@
                 "properties": {
                     "__self__": {
                         "type": "ref",
-                        "$ref": "#/resources/pulumi:providers:mailgun"
+                        "$ref": "#/provider"
                     }
                 },
                 "type": "pulumi:providers:mailgun/terraformConfig",
