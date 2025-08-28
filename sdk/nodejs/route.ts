@@ -63,20 +63,20 @@ export class Route extends pulumi.CustomResource {
         return obj['__pulumiType'] === Route.__pulumiType;
     }
 
-    public readonly actions!: pulumi.Output<string[]>;
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly actions: pulumi.Output<string[]>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A filter expression like `match_recipient('.*@gmail.com')`
      */
-    public readonly expression!: pulumi.Output<string>;
+    declare public readonly expression: pulumi.Output<string>;
     /**
      * Smaller number indicates higher priority. Higher priority routes are handled first.
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * The region where domain will be created. Default value is `us`.
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
 
     /**
      * Create a Route resource with the given unique name, arguments, and options.
@@ -91,27 +91,27 @@ export class Route extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RouteState | undefined;
-            resourceInputs["actions"] = state ? state.actions : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["expression"] = state ? state.expression : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["actions"] = state?.actions;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["expression"] = state?.expression;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as RouteArgs | undefined;
-            if ((!args || args.actions === undefined) && !opts.urn) {
+            if (args?.actions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'actions'");
             }
-            if ((!args || args.expression === undefined) && !opts.urn) {
+            if (args?.expression === undefined && !opts.urn) {
                 throw new Error("Missing required property 'expression'");
             }
-            if ((!args || args.priority === undefined) && !opts.urn) {
+            if (args?.priority === undefined && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
-            resourceInputs["actions"] = args ? args.actions : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["expression"] = args ? args.expression : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["actions"] = args?.actions;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["expression"] = args?.expression;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Route.__pulumiType, name, resourceInputs, opts);
