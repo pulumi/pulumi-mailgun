@@ -54,19 +54,19 @@ export class Webhook extends pulumi.CustomResource {
     /**
      * The domain to add to Mailgun
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
      */
-    public readonly kind!: pulumi.Output<string>;
+    declare public readonly kind: pulumi.Output<string>;
     /**
      * The region where domain will be created. Default value is `us`.
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * The urls of webhook
      */
-    public readonly urls!: pulumi.Output<string[]>;
+    declare public readonly urls: pulumi.Output<string[]>;
 
     /**
      * Create a Webhook resource with the given unique name, arguments, and options.
@@ -81,25 +81,25 @@ export class Webhook extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WebhookState | undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["kind"] = state ? state.kind : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["urls"] = state ? state.urls : undefined;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["kind"] = state?.kind;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["urls"] = state?.urls;
         } else {
             const args = argsOrState as WebhookArgs | undefined;
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            if ((!args || args.kind === undefined) && !opts.urn) {
+            if (args?.kind === undefined && !opts.urn) {
                 throw new Error("Missing required property 'kind'");
             }
-            if ((!args || args.urls === undefined) && !opts.urn) {
+            if (args?.urls === undefined && !opts.urn) {
                 throw new Error("Missing required property 'urls'");
             }
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["kind"] = args ? args.kind : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["urls"] = args ? args.urls : undefined;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["kind"] = args?.kind;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["urls"] = args?.urls;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Webhook.__pulumiType, name, resourceInputs, opts);
