@@ -4,6 +4,7 @@ title: Mailgun Provider
 meta_desc: Provides an overview on how to configure the Pulumi Mailgun provider.
 layout: package
 ---
+
 ## Installation
 
 The Mailgun provider is available as a package in all Pulumi languages:
@@ -13,6 +14,7 @@ The Mailgun provider is available as a package in all Pulumi languages:
 * Go: [`github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun`](https://github.com/pulumi/pulumi-mailgun)
 * .NET: [`Pulumi.Mailgun`](https://www.nuget.org/packages/Pulumi.Mailgun)
 * Java: [`com.pulumi/mailgun`](https://central.sonatype.com/artifact/com.pulumi/mailgun)
+
 ## Overview
 
 The Mailgun provider is used to interact with the

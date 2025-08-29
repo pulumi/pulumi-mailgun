@@ -67,19 +67,19 @@ export class DomainCredential extends pulumi.CustomResource {
     /**
      * The domain to add credential of Mailgun.
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * The local-part of the email address to create.
      */
-    public readonly login!: pulumi.Output<string>;
+    declare public readonly login: pulumi.Output<string>;
     /**
      * Password for user authentication.
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * The region where domain will be created. Default value is `us`.
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
 
     /**
      * Create a DomainCredential resource with the given unique name, arguments, and options.
@@ -94,25 +94,25 @@ export class DomainCredential extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainCredentialState | undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["login"] = state ? state.login : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["login"] = state?.login;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as DomainCredentialArgs | undefined;
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            if ((!args || args.login === undefined) && !opts.urn) {
+            if (args?.login === undefined && !opts.urn) {
                 throw new Error("Missing required property 'login'");
             }
-            if ((!args || args.password === undefined) && !opts.urn) {
+            if (args?.password === undefined && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["login"] = args ? args.login : undefined;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["login"] = args?.login;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["password"] };

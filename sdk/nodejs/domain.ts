@@ -69,74 +69,74 @@ export class Domain extends pulumi.CustomResource {
     /**
      * (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
      */
-    public readonly clickTracking!: pulumi.Output<boolean | undefined>;
+    declare public readonly clickTracking: pulumi.Output<boolean | undefined>;
     /**
      * The length of your domain’s generated DKIM key. Default value is `1024`.
      */
-    public readonly dkimKeySize!: pulumi.Output<number | undefined>;
+    declare public readonly dkimKeySize: pulumi.Output<number | undefined>;
     /**
      * The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
      */
-    public readonly dkimSelector!: pulumi.Output<string | undefined>;
+    declare public readonly dkimSelector: pulumi.Output<string | undefined>;
     /**
      * If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
      */
-    public readonly forceDkimAuthority!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDkimAuthority: pulumi.Output<boolean | undefined>;
     /**
      * The domain to add to Mailgun
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
      */
-    public readonly openTracking!: pulumi.Output<boolean | undefined>;
+    declare public readonly openTracking: pulumi.Output<boolean | undefined>;
     /**
      * A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
      *
      * @deprecated Use `receivingRecordsSet` instead.
      */
-    public /*out*/ readonly receivingRecords!: pulumi.Output<outputs.DomainReceivingRecord[]>;
+    declare public /*out*/ readonly receivingRecords: pulumi.Output<outputs.DomainReceivingRecord[]>;
     /**
      * A set of DNS records for receiving validation.
      */
-    public /*out*/ readonly receivingRecordsSets!: pulumi.Output<outputs.DomainReceivingRecordsSet[]>;
+    declare public /*out*/ readonly receivingRecordsSets: pulumi.Output<outputs.DomainReceivingRecordsSet[]>;
     /**
      * The region where domain will be created. Default value is `us`.
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
      *
      * @deprecated Use `sendingRecordsSet` instead.
      */
-    public /*out*/ readonly sendingRecords!: pulumi.Output<outputs.DomainSendingRecord[]>;
+    declare public /*out*/ readonly sendingRecords: pulumi.Output<outputs.DomainSendingRecord[]>;
     /**
      * A set of DNS records for sending validation.
      */
-    public /*out*/ readonly sendingRecordsSets!: pulumi.Output<outputs.DomainSendingRecordsSet[]>;
+    declare public /*out*/ readonly sendingRecordsSets: pulumi.Output<outputs.DomainSendingRecordsSet[]>;
     /**
      * The login email for the SMTP server.
      */
-    public /*out*/ readonly smtpLogin!: pulumi.Output<string>;
+    declare public /*out*/ readonly smtpLogin: pulumi.Output<string>;
     /**
      * Password for SMTP authentication
      */
-    public readonly smtpPassword!: pulumi.Output<string | undefined>;
+    declare public readonly smtpPassword: pulumi.Output<string | undefined>;
     /**
      * `disabled` or `tag` Disable, no spam
      * filtering will occur for inbound messages. Tag, messages
      * will be tagged with a spam header. Default value is `disabled`.
      */
-    public readonly spamAction!: pulumi.Output<string | undefined>;
+    declare public readonly spamAction: pulumi.Output<string | undefined>;
     /**
      * (`http` or `https`) The tracking web scheme. Default: `http`
      */
-    public readonly webScheme!: pulumi.Output<string | undefined>;
+    declare public readonly webScheme: pulumi.Output<string | undefined>;
     /**
      * Boolean that determines whether
      * the domain will accept email for sub-domains.
      */
-    public readonly wildcard!: pulumi.Output<boolean | undefined>;
+    declare public readonly wildcard: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -151,35 +151,35 @@ export class Domain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
-            resourceInputs["clickTracking"] = state ? state.clickTracking : undefined;
-            resourceInputs["dkimKeySize"] = state ? state.dkimKeySize : undefined;
-            resourceInputs["dkimSelector"] = state ? state.dkimSelector : undefined;
-            resourceInputs["forceDkimAuthority"] = state ? state.forceDkimAuthority : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["openTracking"] = state ? state.openTracking : undefined;
-            resourceInputs["receivingRecords"] = state ? state.receivingRecords : undefined;
-            resourceInputs["receivingRecordsSets"] = state ? state.receivingRecordsSets : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["sendingRecords"] = state ? state.sendingRecords : undefined;
-            resourceInputs["sendingRecordsSets"] = state ? state.sendingRecordsSets : undefined;
-            resourceInputs["smtpLogin"] = state ? state.smtpLogin : undefined;
-            resourceInputs["smtpPassword"] = state ? state.smtpPassword : undefined;
-            resourceInputs["spamAction"] = state ? state.spamAction : undefined;
-            resourceInputs["webScheme"] = state ? state.webScheme : undefined;
-            resourceInputs["wildcard"] = state ? state.wildcard : undefined;
+            resourceInputs["clickTracking"] = state?.clickTracking;
+            resourceInputs["dkimKeySize"] = state?.dkimKeySize;
+            resourceInputs["dkimSelector"] = state?.dkimSelector;
+            resourceInputs["forceDkimAuthority"] = state?.forceDkimAuthority;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["openTracking"] = state?.openTracking;
+            resourceInputs["receivingRecords"] = state?.receivingRecords;
+            resourceInputs["receivingRecordsSets"] = state?.receivingRecordsSets;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["sendingRecords"] = state?.sendingRecords;
+            resourceInputs["sendingRecordsSets"] = state?.sendingRecordsSets;
+            resourceInputs["smtpLogin"] = state?.smtpLogin;
+            resourceInputs["smtpPassword"] = state?.smtpPassword;
+            resourceInputs["spamAction"] = state?.spamAction;
+            resourceInputs["webScheme"] = state?.webScheme;
+            resourceInputs["wildcard"] = state?.wildcard;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            resourceInputs["clickTracking"] = args ? args.clickTracking : undefined;
-            resourceInputs["dkimKeySize"] = args ? args.dkimKeySize : undefined;
-            resourceInputs["dkimSelector"] = args ? args.dkimSelector : undefined;
-            resourceInputs["forceDkimAuthority"] = args ? args.forceDkimAuthority : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["openTracking"] = args ? args.openTracking : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["clickTracking"] = args?.clickTracking;
+            resourceInputs["dkimKeySize"] = args?.dkimKeySize;
+            resourceInputs["dkimSelector"] = args?.dkimSelector;
+            resourceInputs["forceDkimAuthority"] = args?.forceDkimAuthority;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["openTracking"] = args?.openTracking;
+            resourceInputs["region"] = args?.region;
             resourceInputs["smtpPassword"] = args?.smtpPassword ? pulumi.secret(args.smtpPassword) : undefined;
-            resourceInputs["spamAction"] = args ? args.spamAction : undefined;
-            resourceInputs["webScheme"] = args ? args.webScheme : undefined;
-            resourceInputs["wildcard"] = args ? args.wildcard : undefined;
+            resourceInputs["spamAction"] = args?.spamAction;
+            resourceInputs["webScheme"] = args?.webScheme;
+            resourceInputs["wildcard"] = args?.wildcard;
             resourceInputs["receivingRecords"] = undefined /*out*/;
             resourceInputs["receivingRecordsSets"] = undefined /*out*/;
             resourceInputs["sendingRecords"] = undefined /*out*/;
