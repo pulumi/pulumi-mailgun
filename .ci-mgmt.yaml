@@ -1,5 +1,7 @@
 provider: mailgun
 major-version: 3
+esc:
+  enabled: true
 env:
   MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
 makeTemplate: bridged
