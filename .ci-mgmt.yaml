@@ -1,17 +1,16 @@
 provider: mailgun
 major-version: 3
 esc:
-  enabled: true
+    enabled: true
 env:
-  MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
+    MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
 makeTemplate: bridged
 plugins:
-  - name: terraform
-    version: "1.0.16"
-    kind: converter
-
-  - name: aws 
-    version: "4.0.0"
+    - name: terraform
+      version: "1.0.16"
+      kind: converter
+    - name: aws
+      version: "4.0.0"
 team: ecosystem
 pulumiConvert: 1
 registryDocs: true
