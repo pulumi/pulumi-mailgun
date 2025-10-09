@@ -113,24 +113,24 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
+     * A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
      * 
      * @deprecated
-     * Use `receiving_records_set` instead.
+     * Use `receivingRecordsSet` instead.
      * 
      */
-    @Deprecated /* Use `receiving_records_set` instead. */
+    @Deprecated /* Use `receivingRecordsSet` instead. */
     @Import(name="receivingRecords")
     private @Nullable Output<List<DomainReceivingRecordArgs>> receivingRecords;
 
     /**
-     * @return A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
+     * @return A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
      * 
      * @deprecated
-     * Use `receiving_records_set` instead.
+     * Use `receivingRecordsSet` instead.
      * 
      */
-    @Deprecated /* Use `receiving_records_set` instead. */
+    @Deprecated /* Use `receivingRecordsSet` instead. */
     public Optional<Output<List<DomainReceivingRecordArgs>>> receivingRecords() {
         return Optional.ofNullable(this.receivingRecords);
     }
@@ -166,24 +166,24 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
+     * A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
      * 
      * @deprecated
-     * Use `sending_records_set` instead.
+     * Use `sendingRecordsSet` instead.
      * 
      */
-    @Deprecated /* Use `sending_records_set` instead. */
+    @Deprecated /* Use `sendingRecordsSet` instead. */
     @Import(name="sendingRecords")
     private @Nullable Output<List<DomainSendingRecordArgs>> sendingRecords;
 
     /**
-     * @return A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
+     * @return A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
      * 
      * @deprecated
-     * Use `sending_records_set` instead.
+     * Use `sendingRecordsSet` instead.
      * 
      */
-    @Deprecated /* Use `sending_records_set` instead. */
+    @Deprecated /* Use `sendingRecordsSet` instead. */
     public Optional<Output<List<DomainSendingRecordArgs>>> sendingRecords() {
         return Optional.ofNullable(this.sendingRecords);
     }
@@ -450,44 +450,44 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param receivingRecords A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
+         * @param receivingRecords A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Use `receiving_records_set` instead.
+         * Use `receivingRecordsSet` instead.
          * 
          */
-        @Deprecated /* Use `receiving_records_set` instead. */
+        @Deprecated /* Use `receivingRecordsSet` instead. */
         public Builder receivingRecords(@Nullable Output<List<DomainReceivingRecordArgs>> receivingRecords) {
             $.receivingRecords = receivingRecords;
             return this;
         }
 
         /**
-         * @param receivingRecords A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
+         * @param receivingRecords A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Use `receiving_records_set` instead.
+         * Use `receivingRecordsSet` instead.
          * 
          */
-        @Deprecated /* Use `receiving_records_set` instead. */
+        @Deprecated /* Use `receivingRecordsSet` instead. */
         public Builder receivingRecords(List<DomainReceivingRecordArgs> receivingRecords) {
             return receivingRecords(Output.of(receivingRecords));
         }
 
         /**
-         * @param receivingRecords A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
+         * @param receivingRecords A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Use `receiving_records_set` instead.
+         * Use `receivingRecordsSet` instead.
          * 
          */
-        @Deprecated /* Use `receiving_records_set` instead. */
+        @Deprecated /* Use `receivingRecordsSet` instead. */
         public Builder receivingRecords(DomainReceivingRecordArgs... receivingRecords) {
             return receivingRecords(List.of(receivingRecords));
         }
@@ -545,44 +545,44 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sendingRecords A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
+         * @param sendingRecords A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Use `sending_records_set` instead.
+         * Use `sendingRecordsSet` instead.
          * 
          */
-        @Deprecated /* Use `sending_records_set` instead. */
+        @Deprecated /* Use `sendingRecordsSet` instead. */
         public Builder sendingRecords(@Nullable Output<List<DomainSendingRecordArgs>> sendingRecords) {
             $.sendingRecords = sendingRecords;
             return this;
         }
 
         /**
-         * @param sendingRecords A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
+         * @param sendingRecords A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Use `sending_records_set` instead.
+         * Use `sendingRecordsSet` instead.
          * 
          */
-        @Deprecated /* Use `sending_records_set` instead. */
+        @Deprecated /* Use `sendingRecordsSet` instead. */
         public Builder sendingRecords(List<DomainSendingRecordArgs> sendingRecords) {
             return sendingRecords(Output.of(sendingRecords));
         }
 
         /**
-         * @param sendingRecords A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
+         * @param sendingRecords A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Use `sending_records_set` instead.
+         * Use `sendingRecordsSet` instead.
          * 
          */
-        @Deprecated /* Use `sending_records_set` instead. */
+        @Deprecated /* Use `sendingRecordsSet` instead. */
         public Builder sendingRecords(DomainSendingRecordArgs... sendingRecords) {
             return sendingRecords(List.of(sendingRecords));
         }
