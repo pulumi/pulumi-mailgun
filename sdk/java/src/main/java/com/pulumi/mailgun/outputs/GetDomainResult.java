@@ -46,10 +46,10 @@ public final class GetDomainResult {
      * @return A list of DNS records for receiving validation.
      * 
      * @deprecated
-     * Use `receiving_records_set` instead.
+     * Use `receivingRecordsSet` instead.
      * 
      */
-    @Deprecated /* Use `receiving_records_set` instead. */
+    @Deprecated /* Use `receivingRecordsSet` instead. */
     private List<GetDomainReceivingRecord> receivingRecords;
     private List<GetDomainReceivingRecordsSet> receivingRecordsSets;
     private @Nullable String region;
@@ -57,10 +57,10 @@ public final class GetDomainResult {
      * @return A list of DNS records for sending validation.
      * 
      * @deprecated
-     * Use `sending_records_set` instead.
+     * Use `sendingRecordsSet` instead.
      * 
      */
-    @Deprecated /* Use `sending_records_set` instead. */
+    @Deprecated /* Use `sendingRecordsSet` instead. */
     private List<GetDomainSendingRecord> sendingRecords;
     private List<GetDomainSendingRecordsSet> sendingRecordsSets;
     /**
@@ -131,10 +131,10 @@ public final class GetDomainResult {
      * @return A list of DNS records for receiving validation.
      * 
      * @deprecated
-     * Use `receiving_records_set` instead.
+     * Use `receivingRecordsSet` instead.
      * 
      */
-    @Deprecated /* Use `receiving_records_set` instead. */
+    @Deprecated /* Use `receivingRecordsSet` instead. */
     public List<GetDomainReceivingRecord> receivingRecords() {
         return this.receivingRecords;
     }
@@ -148,10 +148,10 @@ public final class GetDomainResult {
      * @return A list of DNS records for sending validation.
      * 
      * @deprecated
-     * Use `sending_records_set` instead.
+     * Use `sendingRecordsSet` instead.
      * 
      */
-    @Deprecated /* Use `sending_records_set` instead. */
+    @Deprecated /* Use `sendingRecordsSet` instead. */
     public List<GetDomainSendingRecord> sendingRecords() {
         return this.sendingRecords;
     }

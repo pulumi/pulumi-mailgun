@@ -367,11 +367,11 @@
             "properties": {
                 "clickTracking": {
                     "type": "boolean",
-                    "description": "(Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`\n"
+                    "description": "(Enum: \u003cspan pulumi-lang-nodejs=\"`yes`\" pulumi-lang-dotnet=\"`Yes`\" pulumi-lang-go=\"`yes`\" pulumi-lang-python=\"`yes`\" pulumi-lang-yaml=\"`yes`\" pulumi-lang-java=\"`yes`\"\u003e`yes`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`no`\" pulumi-lang-dotnet=\"`No`\" pulumi-lang-go=\"`no`\" pulumi-lang-python=\"`no`\" pulumi-lang-yaml=\"`no`\" pulumi-lang-java=\"`no`\"\u003e`no`\u003c/span\u003e) The click tracking settings for the domain. Default: \u003cspan pulumi-lang-nodejs=\"`no`\" pulumi-lang-dotnet=\"`No`\" pulumi-lang-go=\"`no`\" pulumi-lang-python=\"`no`\" pulumi-lang-yaml=\"`no`\" pulumi-lang-java=\"`no`\"\u003e`no`\u003c/span\u003e\n"
                 },
                 "dkimKeySize": {
                     "type": "integer",
-                    "description": "The length of your domain’s generated DKIM key. Default value is `1024`.\n"
+                    "description": "The length of your domain’s generated DKIM key. Default value is \u003cspan pulumi-lang-nodejs=\"`1024`\" pulumi-lang-dotnet=\"`1024`\" pulumi-lang-go=\"`1024`\" pulumi-lang-python=\"`1024`\" pulumi-lang-yaml=\"`1024`\" pulumi-lang-java=\"`1024`\"\u003e`1024`\u003c/span\u003e.\n"
                 },
                 "dkimSelector": {
                     "type": "string",
@@ -379,7 +379,7 @@
                 },
                 "forceDkimAuthority": {
                     "type": "boolean",
-                    "description": "If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.\n"
+                    "description": "If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
                 },
                 "name": {
                     "type": "string",
@@ -387,15 +387,15 @@
                 },
                 "openTracking": {
                     "type": "boolean",
-                    "description": "(Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`\n"
+                    "description": "(Enum: \u003cspan pulumi-lang-nodejs=\"`yes`\" pulumi-lang-dotnet=\"`Yes`\" pulumi-lang-go=\"`yes`\" pulumi-lang-python=\"`yes`\" pulumi-lang-yaml=\"`yes`\" pulumi-lang-java=\"`yes`\"\u003e`yes`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`no`\" pulumi-lang-dotnet=\"`No`\" pulumi-lang-go=\"`no`\" pulumi-lang-python=\"`no`\" pulumi-lang-yaml=\"`no`\" pulumi-lang-java=\"`no`\"\u003e`no`\u003c/span\u003e) The open tracking settings for the domain. Default: \u003cspan pulumi-lang-nodejs=\"`no`\" pulumi-lang-dotnet=\"`No`\" pulumi-lang-go=\"`no`\" pulumi-lang-python=\"`no`\" pulumi-lang-yaml=\"`no`\" pulumi-lang-java=\"`no`\"\u003e`no`\u003c/span\u003e\n"
                 },
                 "receivingRecords": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/mailgun:index/DomainReceivingRecord:DomainReceivingRecord"
                     },
-                    "description": "A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.\n",
-                    "deprecationMessage": "Use `receiving_records_set` instead."
+                    "description": "A list of DNS records for receiving validation.  **Deprecated** Use \u003cspan pulumi-lang-nodejs=\"`receivingRecordsSet`\" pulumi-lang-dotnet=\"`ReceivingRecordsSet`\" pulumi-lang-go=\"`receivingRecordsSet`\" pulumi-lang-python=\"`receiving_records_set`\" pulumi-lang-yaml=\"`receivingRecordsSet`\" pulumi-lang-java=\"`receivingRecordsSet`\"\u003e`receiving_records_set`\u003c/span\u003e instead.\n",
+                    "deprecationMessage": "Use \u003cspan pulumi-lang-nodejs=\"`receivingRecordsSet`\" pulumi-lang-dotnet=\"`ReceivingRecordsSet`\" pulumi-lang-go=\"`receivingRecordsSet`\" pulumi-lang-python=\"`receiving_records_set`\" pulumi-lang-yaml=\"`receivingRecordsSet`\" pulumi-lang-java=\"`receivingRecordsSet`\"\u003e`receiving_records_set`\u003c/span\u003e instead."
                 },
                 "receivingRecordsSets": {
                     "type": "array",
@@ -406,15 +406,15 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where domain will be created. Default value is `us`.\n"
+                    "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n"
                 },
                 "sendingRecords": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/mailgun:index/DomainSendingRecord:DomainSendingRecord"
                     },
-                    "description": "A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.\n",
-                    "deprecationMessage": "Use `sending_records_set` instead."
+                    "description": "A list of DNS records for sending validation. **Deprecated** Use \u003cspan pulumi-lang-nodejs=\"`sendingRecordsSet`\" pulumi-lang-dotnet=\"`SendingRecordsSet`\" pulumi-lang-go=\"`sendingRecordsSet`\" pulumi-lang-python=\"`sending_records_set`\" pulumi-lang-yaml=\"`sendingRecordsSet`\" pulumi-lang-java=\"`sendingRecordsSet`\"\u003e`sending_records_set`\u003c/span\u003e instead.\n",
+                    "deprecationMessage": "Use \u003cspan pulumi-lang-nodejs=\"`sendingRecordsSet`\" pulumi-lang-dotnet=\"`SendingRecordsSet`\" pulumi-lang-go=\"`sendingRecordsSet`\" pulumi-lang-python=\"`sending_records_set`\" pulumi-lang-yaml=\"`sendingRecordsSet`\" pulumi-lang-java=\"`sendingRecordsSet`\"\u003e`sending_records_set`\u003c/span\u003e instead."
                 },
                 "sendingRecordsSets": {
                     "type": "array",
@@ -434,11 +434,11 @@
                 },
                 "spamAction": {
                     "type": "string",
-                    "description": "`disabled` or `tag` Disable, no spam\nfiltering will occur for inbound messages. Tag, messages\nwill be tagged with a spam header. Default value is `disabled`.\n"
+                    "description": "\u003cspan pulumi-lang-nodejs=\"`disabled`\" pulumi-lang-dotnet=\"`Disabled`\" pulumi-lang-go=\"`disabled`\" pulumi-lang-python=\"`disabled`\" pulumi-lang-yaml=\"`disabled`\" pulumi-lang-java=\"`disabled`\"\u003e`disabled`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`tag`\" pulumi-lang-dotnet=\"`Tag`\" pulumi-lang-go=\"`tag`\" pulumi-lang-python=\"`tag`\" pulumi-lang-yaml=\"`tag`\" pulumi-lang-java=\"`tag`\"\u003e`tag`\u003c/span\u003e Disable, no spam\nfiltering will occur for inbound messages. Tag, messages\nwill be tagged with a spam header. Default value is \u003cspan pulumi-lang-nodejs=\"`disabled`\" pulumi-lang-dotnet=\"`Disabled`\" pulumi-lang-go=\"`disabled`\" pulumi-lang-python=\"`disabled`\" pulumi-lang-yaml=\"`disabled`\" pulumi-lang-java=\"`disabled`\"\u003e`disabled`\u003c/span\u003e.\n"
                 },
                 "webScheme": {
                     "type": "string",
-                    "description": "(`http` or `https`) The tracking web scheme. Default: `http`\n"
+                    "description": "(\u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`https`\" pulumi-lang-dotnet=\"`Https`\" pulumi-lang-go=\"`https`\" pulumi-lang-python=\"`https`\" pulumi-lang-yaml=\"`https`\" pulumi-lang-java=\"`https`\"\u003e`https`\u003c/span\u003e) The tracking web scheme. Default: \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e\n"
                 },
                 "wildcard": {
                     "type": "boolean",
@@ -456,11 +456,11 @@
             "inputProperties": {
                 "clickTracking": {
                     "type": "boolean",
-                    "description": "(Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`\n"
+                    "description": "(Enum: \u003cspan pulumi-lang-nodejs=\"`yes`\" pulumi-lang-dotnet=\"`Yes`\" pulumi-lang-go=\"`yes`\" pulumi-lang-python=\"`yes`\" pulumi-lang-yaml=\"`yes`\" pulumi-lang-java=\"`yes`\"\u003e`yes`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`no`\" pulumi-lang-dotnet=\"`No`\" pulumi-lang-go=\"`no`\" pulumi-lang-python=\"`no`\" pulumi-lang-yaml=\"`no`\" pulumi-lang-java=\"`no`\"\u003e`no`\u003c/span\u003e) The click tracking settings for the domain. Default: \u003cspan pulumi-lang-nodejs=\"`no`\" pulumi-lang-dotnet=\"`No`\" pulumi-lang-go=\"`no`\" pulumi-lang-python=\"`no`\" pulumi-lang-yaml=\"`no`\" pulumi-lang-java=\"`no`\"\u003e`no`\u003c/span\u003e\n"
                 },
                 "dkimKeySize": {
                     "type": "integer",
-                    "description": "The length of your domain’s generated DKIM key. Default value is `1024`.\n",
+                    "description": "The length of your domain’s generated DKIM key. Default value is \u003cspan pulumi-lang-nodejs=\"`1024`\" pulumi-lang-dotnet=\"`1024`\" pulumi-lang-go=\"`1024`\" pulumi-lang-python=\"`1024`\" pulumi-lang-yaml=\"`1024`\" pulumi-lang-java=\"`1024`\"\u003e`1024`\u003c/span\u003e.\n",
                     "willReplaceOnChanges": true
                 },
                 "dkimSelector": {
@@ -470,7 +470,7 @@
                 },
                 "forceDkimAuthority": {
                     "type": "boolean",
-                    "description": "If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.\n",
+                    "description": "If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n",
                     "willReplaceOnChanges": true
                 },
                 "name": {
@@ -480,11 +480,11 @@
                 },
                 "openTracking": {
                     "type": "boolean",
-                    "description": "(Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`\n"
+                    "description": "(Enum: \u003cspan pulumi-lang-nodejs=\"`yes`\" pulumi-lang-dotnet=\"`Yes`\" pulumi-lang-go=\"`yes`\" pulumi-lang-python=\"`yes`\" pulumi-lang-yaml=\"`yes`\" pulumi-lang-java=\"`yes`\"\u003e`yes`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`no`\" pulumi-lang-dotnet=\"`No`\" pulumi-lang-go=\"`no`\" pulumi-lang-python=\"`no`\" pulumi-lang-yaml=\"`no`\" pulumi-lang-java=\"`no`\"\u003e`no`\u003c/span\u003e) The open tracking settings for the domain. Default: \u003cspan pulumi-lang-nodejs=\"`no`\" pulumi-lang-dotnet=\"`No`\" pulumi-lang-go=\"`no`\" pulumi-lang-python=\"`no`\" pulumi-lang-yaml=\"`no`\" pulumi-lang-java=\"`no`\"\u003e`no`\u003c/span\u003e\n"
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where domain will be created. Default value is `us`.\n",
+                    "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
                     "willReplaceOnChanges": true
                 },
                 "smtpPassword": {
@@ -494,12 +494,12 @@
                 },
                 "spamAction": {
                     "type": "string",
-                    "description": "`disabled` or `tag` Disable, no spam\nfiltering will occur for inbound messages. Tag, messages\nwill be tagged with a spam header. Default value is `disabled`.\n",
+                    "description": "\u003cspan pulumi-lang-nodejs=\"`disabled`\" pulumi-lang-dotnet=\"`Disabled`\" pulumi-lang-go=\"`disabled`\" pulumi-lang-python=\"`disabled`\" pulumi-lang-yaml=\"`disabled`\" pulumi-lang-java=\"`disabled`\"\u003e`disabled`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`tag`\" pulumi-lang-dotnet=\"`Tag`\" pulumi-lang-go=\"`tag`\" pulumi-lang-python=\"`tag`\" pulumi-lang-yaml=\"`tag`\" pulumi-lang-java=\"`tag`\"\u003e`tag`\u003c/span\u003e Disable, no spam\nfiltering will occur for inbound messages. Tag, messages\nwill be tagged with a spam header. Default value is \u003cspan pulumi-lang-nodejs=\"`disabled`\" pulumi-lang-dotnet=\"`Disabled`\" pulumi-lang-go=\"`disabled`\" pulumi-lang-python=\"`disabled`\" pulumi-lang-yaml=\"`disabled`\" pulumi-lang-java=\"`disabled`\"\u003e`disabled`\u003c/span\u003e.\n",
                     "willReplaceOnChanges": true
                 },
                 "webScheme": {
                     "type": "string",
-                    "description": "(`http` or `https`) The tracking web scheme. Default: `http`\n"
+                    "description": "(\u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`https`\" pulumi-lang-dotnet=\"`Https`\" pulumi-lang-go=\"`https`\" pulumi-lang-python=\"`https`\" pulumi-lang-yaml=\"`https`\" pulumi-lang-java=\"`https`\"\u003e`https`\u003c/span\u003e) The tracking web scheme. Default: \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e\n"
                 },
                 "wildcard": {
                     "type": "boolean",
@@ -512,11 +512,11 @@
                 "properties": {
                     "clickTracking": {
                         "type": "boolean",
-                        "description": "(Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`\n"
+                        "description": "(Enum: \u003cspan pulumi-lang-nodejs=\"`yes`\" pulumi-lang-dotnet=\"`Yes`\" pulumi-lang-go=\"`yes`\" pulumi-lang-python=\"`yes`\" pulumi-lang-yaml=\"`yes`\" pulumi-lang-java=\"`yes`\"\u003e`yes`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`no`\" pulumi-lang-dotnet=\"`No`\" pulumi-lang-go=\"`no`\" pulumi-lang-python=\"`no`\" pulumi-lang-yaml=\"`no`\" pulumi-lang-java=\"`no`\"\u003e`no`\u003c/span\u003e) The click tracking settings for the domain. Default: \u003cspan pulumi-lang-nodejs=\"`no`\" pulumi-lang-dotnet=\"`No`\" pulumi-lang-go=\"`no`\" pulumi-lang-python=\"`no`\" pulumi-lang-yaml=\"`no`\" pulumi-lang-java=\"`no`\"\u003e`no`\u003c/span\u003e\n"
                     },
                     "dkimKeySize": {
                         "type": "integer",
-                        "description": "The length of your domain’s generated DKIM key. Default value is `1024`.\n",
+                        "description": "The length of your domain’s generated DKIM key. Default value is \u003cspan pulumi-lang-nodejs=\"`1024`\" pulumi-lang-dotnet=\"`1024`\" pulumi-lang-go=\"`1024`\" pulumi-lang-python=\"`1024`\" pulumi-lang-yaml=\"`1024`\" pulumi-lang-java=\"`1024`\"\u003e`1024`\u003c/span\u003e.\n",
                         "willReplaceOnChanges": true
                     },
                     "dkimSelector": {
@@ -526,7 +526,7 @@
                     },
                     "forceDkimAuthority": {
                         "type": "boolean",
-                        "description": "If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.\n",
+                        "description": "If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n",
                         "willReplaceOnChanges": true
                     },
                     "name": {
@@ -536,15 +536,15 @@
                     },
                     "openTracking": {
                         "type": "boolean",
-                        "description": "(Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`\n"
+                        "description": "(Enum: \u003cspan pulumi-lang-nodejs=\"`yes`\" pulumi-lang-dotnet=\"`Yes`\" pulumi-lang-go=\"`yes`\" pulumi-lang-python=\"`yes`\" pulumi-lang-yaml=\"`yes`\" pulumi-lang-java=\"`yes`\"\u003e`yes`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`no`\" pulumi-lang-dotnet=\"`No`\" pulumi-lang-go=\"`no`\" pulumi-lang-python=\"`no`\" pulumi-lang-yaml=\"`no`\" pulumi-lang-java=\"`no`\"\u003e`no`\u003c/span\u003e) The open tracking settings for the domain. Default: \u003cspan pulumi-lang-nodejs=\"`no`\" pulumi-lang-dotnet=\"`No`\" pulumi-lang-go=\"`no`\" pulumi-lang-python=\"`no`\" pulumi-lang-yaml=\"`no`\" pulumi-lang-java=\"`no`\"\u003e`no`\u003c/span\u003e\n"
                     },
                     "receivingRecords": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/mailgun:index/DomainReceivingRecord:DomainReceivingRecord"
                         },
-                        "description": "A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.\n",
-                        "deprecationMessage": "Use `receiving_records_set` instead."
+                        "description": "A list of DNS records for receiving validation.  **Deprecated** Use \u003cspan pulumi-lang-nodejs=\"`receivingRecordsSet`\" pulumi-lang-dotnet=\"`ReceivingRecordsSet`\" pulumi-lang-go=\"`receivingRecordsSet`\" pulumi-lang-python=\"`receiving_records_set`\" pulumi-lang-yaml=\"`receivingRecordsSet`\" pulumi-lang-java=\"`receivingRecordsSet`\"\u003e`receiving_records_set`\u003c/span\u003e instead.\n",
+                        "deprecationMessage": "Use \u003cspan pulumi-lang-nodejs=\"`receivingRecordsSet`\" pulumi-lang-dotnet=\"`ReceivingRecordsSet`\" pulumi-lang-go=\"`receivingRecordsSet`\" pulumi-lang-python=\"`receiving_records_set`\" pulumi-lang-yaml=\"`receivingRecordsSet`\" pulumi-lang-java=\"`receivingRecordsSet`\"\u003e`receiving_records_set`\u003c/span\u003e instead."
                     },
                     "receivingRecordsSets": {
                         "type": "array",
@@ -555,7 +555,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region where domain will be created. Default value is `us`.\n",
+                        "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
                         "willReplaceOnChanges": true
                     },
                     "sendingRecords": {
@@ -563,8 +563,8 @@
                         "items": {
                             "$ref": "#/types/mailgun:index/DomainSendingRecord:DomainSendingRecord"
                         },
-                        "description": "A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.\n",
-                        "deprecationMessage": "Use `sending_records_set` instead."
+                        "description": "A list of DNS records for sending validation. **Deprecated** Use \u003cspan pulumi-lang-nodejs=\"`sendingRecordsSet`\" pulumi-lang-dotnet=\"`SendingRecordsSet`\" pulumi-lang-go=\"`sendingRecordsSet`\" pulumi-lang-python=\"`sending_records_set`\" pulumi-lang-yaml=\"`sendingRecordsSet`\" pulumi-lang-java=\"`sendingRecordsSet`\"\u003e`sending_records_set`\u003c/span\u003e instead.\n",
+                        "deprecationMessage": "Use \u003cspan pulumi-lang-nodejs=\"`sendingRecordsSet`\" pulumi-lang-dotnet=\"`SendingRecordsSet`\" pulumi-lang-go=\"`sendingRecordsSet`\" pulumi-lang-python=\"`sending_records_set`\" pulumi-lang-yaml=\"`sendingRecordsSet`\" pulumi-lang-java=\"`sendingRecordsSet`\"\u003e`sending_records_set`\u003c/span\u003e instead."
                     },
                     "sendingRecordsSets": {
                         "type": "array",
@@ -584,12 +584,12 @@
                     },
                     "spamAction": {
                         "type": "string",
-                        "description": "`disabled` or `tag` Disable, no spam\nfiltering will occur for inbound messages. Tag, messages\nwill be tagged with a spam header. Default value is `disabled`.\n",
+                        "description": "\u003cspan pulumi-lang-nodejs=\"`disabled`\" pulumi-lang-dotnet=\"`Disabled`\" pulumi-lang-go=\"`disabled`\" pulumi-lang-python=\"`disabled`\" pulumi-lang-yaml=\"`disabled`\" pulumi-lang-java=\"`disabled`\"\u003e`disabled`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`tag`\" pulumi-lang-dotnet=\"`Tag`\" pulumi-lang-go=\"`tag`\" pulumi-lang-python=\"`tag`\" pulumi-lang-yaml=\"`tag`\" pulumi-lang-java=\"`tag`\"\u003e`tag`\u003c/span\u003e Disable, no spam\nfiltering will occur for inbound messages. Tag, messages\nwill be tagged with a spam header. Default value is \u003cspan pulumi-lang-nodejs=\"`disabled`\" pulumi-lang-dotnet=\"`Disabled`\" pulumi-lang-go=\"`disabled`\" pulumi-lang-python=\"`disabled`\" pulumi-lang-yaml=\"`disabled`\" pulumi-lang-java=\"`disabled`\"\u003e`disabled`\u003c/span\u003e.\n",
                         "willReplaceOnChanges": true
                     },
                     "webScheme": {
                         "type": "string",
-                        "description": "(`http` or `https`) The tracking web scheme. Default: `http`\n"
+                        "description": "(\u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`https`\" pulumi-lang-dotnet=\"`Https`\" pulumi-lang-go=\"`https`\" pulumi-lang-python=\"`https`\" pulumi-lang-yaml=\"`https`\" pulumi-lang-java=\"`https`\"\u003e`https`\u003c/span\u003e) The tracking web scheme. Default: \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e\n"
                     },
                     "wildcard": {
                         "type": "boolean",
@@ -601,7 +601,7 @@
             }
         },
         "mailgun:index/domainCredential:DomainCredential": {
-            "description": "Provides a Mailgun domain credential resource. This can be used to create and manage credential in domain of Mailgun.\n\n\u003e **Note:** Please note that starting of v0.6.1 due to using new Mailgun Client API (v4), there is no possibility to retrieve previously created secrets via API. In order get it worked, it's recommended to mark `password` as ignored under `lifecycle` block. See below.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as mailgun from \"@pulumi/mailgun\";\n\n// Create a new Mailgun credential\nconst foobar = new mailgun.DomainCredential(\"foobar\", {\n    domain: \"toto.com\",\n    login: \"test\",\n    password: \"supersecretpassword1234\",\n    region: \"us\",\n});\n```\n```python\nimport pulumi\nimport pulumi_mailgun as mailgun\n\n# Create a new Mailgun credential\nfoobar = mailgun.DomainCredential(\"foobar\",\n    domain=\"toto.com\",\n    login=\"test\",\n    password=\"supersecretpassword1234\",\n    region=\"us\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Mailgun = Pulumi.Mailgun;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create a new Mailgun credential\n    var foobar = new Mailgun.DomainCredential(\"foobar\", new()\n    {\n        Domain = \"toto.com\",\n        Login = \"test\",\n        Password = \"supersecretpassword1234\",\n        Region = \"us\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create a new Mailgun credential\n\t\t_, err := mailgun.NewDomainCredential(ctx, \"foobar\", \u0026mailgun.DomainCredentialArgs{\n\t\t\tDomain:   pulumi.String(\"toto.com\"),\n\t\t\tLogin:    pulumi.String(\"test\"),\n\t\t\tPassword: pulumi.String(\"supersecretpassword1234\"),\n\t\t\tRegion:   pulumi.String(\"us\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.mailgun.DomainCredential;\nimport com.pulumi.mailgun.DomainCredentialArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create a new Mailgun credential\n        var foobar = new DomainCredential(\"foobar\", DomainCredentialArgs.builder()\n            .domain(\"toto.com\")\n            .login(\"test\")\n            .password(\"supersecretpassword1234\")\n            .region(\"us\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create a new Mailgun credential\n  foobar:\n    type: mailgun:DomainCredential\n    properties:\n      domain: toto.com\n      login: test\n      password: supersecretpassword1234\n      region: us\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDomain credential can be imported using `region:email` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied). \n\nPassword is always exported to `null`.\n\nhcl\n\n```sh\n$ pulumi import mailgun:index/domainCredential:DomainCredential test us:test@domain.com\n```\n\n",
+            "description": "Provides a Mailgun domain credential resource. This can be used to create and manage credential in domain of Mailgun.\n\n\u003e **Note:** Please note that starting of v0.6.1 due to using new Mailgun Client API (v4), there is no possibility to retrieve previously created secrets via API. In order get it worked, it's recommended to mark \u003cspan pulumi-lang-nodejs=\"`password`\" pulumi-lang-dotnet=\"`Password`\" pulumi-lang-go=\"`password`\" pulumi-lang-python=\"`password`\" pulumi-lang-yaml=\"`password`\" pulumi-lang-java=\"`password`\"\u003e`password`\u003c/span\u003e as ignored under \u003cspan pulumi-lang-nodejs=\"`lifecycle`\" pulumi-lang-dotnet=\"`Lifecycle`\" pulumi-lang-go=\"`lifecycle`\" pulumi-lang-python=\"`lifecycle`\" pulumi-lang-yaml=\"`lifecycle`\" pulumi-lang-java=\"`lifecycle`\"\u003e`lifecycle`\u003c/span\u003e block. See below.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as mailgun from \"@pulumi/mailgun\";\n\n// Create a new Mailgun credential\nconst foobar = new mailgun.DomainCredential(\"foobar\", {\n    domain: \"toto.com\",\n    login: \"test\",\n    password: \"supersecretpassword1234\",\n    region: \"us\",\n});\n```\n```python\nimport pulumi\nimport pulumi_mailgun as mailgun\n\n# Create a new Mailgun credential\nfoobar = mailgun.DomainCredential(\"foobar\",\n    domain=\"toto.com\",\n    login=\"test\",\n    password=\"supersecretpassword1234\",\n    region=\"us\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Mailgun = Pulumi.Mailgun;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create a new Mailgun credential\n    var foobar = new Mailgun.DomainCredential(\"foobar\", new()\n    {\n        Domain = \"toto.com\",\n        Login = \"test\",\n        Password = \"supersecretpassword1234\",\n        Region = \"us\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create a new Mailgun credential\n\t\t_, err := mailgun.NewDomainCredential(ctx, \"foobar\", \u0026mailgun.DomainCredentialArgs{\n\t\t\tDomain:   pulumi.String(\"toto.com\"),\n\t\t\tLogin:    pulumi.String(\"test\"),\n\t\t\tPassword: pulumi.String(\"supersecretpassword1234\"),\n\t\t\tRegion:   pulumi.String(\"us\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.mailgun.DomainCredential;\nimport com.pulumi.mailgun.DomainCredentialArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create a new Mailgun credential\n        var foobar = new DomainCredential(\"foobar\", DomainCredentialArgs.builder()\n            .domain(\"toto.com\")\n            .login(\"test\")\n            .password(\"supersecretpassword1234\")\n            .region(\"us\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create a new Mailgun credential\n  foobar:\n    type: mailgun:DomainCredential\n    properties:\n      domain: toto.com\n      login: test\n      password: supersecretpassword1234\n      region: us\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDomain credential can be imported using `region:email` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied). \n\nPassword is always exported to `null`.\n\nhcl\n\n```sh\n$ pulumi import mailgun:index/domainCredential:DomainCredential test us:test@domain.com\n```\n\n",
             "properties": {
                 "domain": {
                     "type": "string",
@@ -618,7 +618,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where domain will be created. Default value is `us`.\n"
+                    "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n"
                 }
             },
             "required": [
@@ -644,7 +644,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where domain will be created. Default value is `us`.\n",
+                    "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -673,7 +673,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region where domain will be created. Default value is `us`.\n",
+                        "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -702,7 +702,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where domain will be created. Default value is `us`.\n"
+                    "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n"
                 }
             },
             "required": [
@@ -730,7 +730,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where domain will be created. Default value is `us`.\n",
+                    "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -761,7 +761,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region where domain will be created. Default value is `us`.\n",
+                        "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -777,11 +777,11 @@
                 },
                 "kind": {
                     "type": "string",
-                    "description": "The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)\n"
+                    "description": "The kind of webhook. Supported values (\u003cspan pulumi-lang-nodejs=\"`accepted`\" pulumi-lang-dotnet=\"`Accepted`\" pulumi-lang-go=\"`accepted`\" pulumi-lang-python=\"`accepted`\" pulumi-lang-yaml=\"`accepted`\" pulumi-lang-java=\"`accepted`\"\u003e`accepted`\u003c/span\u003e \u003cspan pulumi-lang-nodejs=\"`clicked`\" pulumi-lang-dotnet=\"`Clicked`\" pulumi-lang-go=\"`clicked`\" pulumi-lang-python=\"`clicked`\" pulumi-lang-yaml=\"`clicked`\" pulumi-lang-java=\"`clicked`\"\u003e`clicked`\u003c/span\u003e \u003cspan pulumi-lang-nodejs=\"`complained`\" pulumi-lang-dotnet=\"`Complained`\" pulumi-lang-go=\"`complained`\" pulumi-lang-python=\"`complained`\" pulumi-lang-yaml=\"`complained`\" pulumi-lang-java=\"`complained`\"\u003e`complained`\u003c/span\u003e \u003cspan pulumi-lang-nodejs=\"`delivered`\" pulumi-lang-dotnet=\"`Delivered`\" pulumi-lang-go=\"`delivered`\" pulumi-lang-python=\"`delivered`\" pulumi-lang-yaml=\"`delivered`\" pulumi-lang-java=\"`delivered`\"\u003e`delivered`\u003c/span\u003e \u003cspan pulumi-lang-nodejs=\"`opened`\" pulumi-lang-dotnet=\"`Opened`\" pulumi-lang-go=\"`opened`\" pulumi-lang-python=\"`opened`\" pulumi-lang-yaml=\"`opened`\" pulumi-lang-java=\"`opened`\"\u003e`opened`\u003c/span\u003e \u003cspan pulumi-lang-nodejs=\"`permanentFail`\" pulumi-lang-dotnet=\"`PermanentFail`\" pulumi-lang-go=\"`permanentFail`\" pulumi-lang-python=\"`permanent_fail`\" pulumi-lang-yaml=\"`permanentFail`\" pulumi-lang-java=\"`permanentFail`\"\u003e`permanent_fail`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`temporaryFail`\" pulumi-lang-dotnet=\"`TemporaryFail`\" pulumi-lang-go=\"`temporaryFail`\" pulumi-lang-python=\"`temporary_fail`\" pulumi-lang-yaml=\"`temporaryFail`\" pulumi-lang-java=\"`temporaryFail`\"\u003e`temporary_fail`\u003c/span\u003e \u003cspan pulumi-lang-nodejs=\"`unsubscribed`\" pulumi-lang-dotnet=\"`Unsubscribed`\" pulumi-lang-go=\"`unsubscribed`\" pulumi-lang-python=\"`unsubscribed`\" pulumi-lang-yaml=\"`unsubscribed`\" pulumi-lang-java=\"`unsubscribed`\"\u003e`unsubscribed`\u003c/span\u003e)\n"
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where domain will be created. Default value is `us`.\n"
+                    "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n"
                 },
                 "urls": {
                     "type": "array",
@@ -804,12 +804,12 @@
                 },
                 "kind": {
                     "type": "string",
-                    "description": "The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)\n",
+                    "description": "The kind of webhook. Supported values (\u003cspan pulumi-lang-nodejs=\"`accepted`\" pulumi-lang-dotnet=\"`Accepted`\" pulumi-lang-go=\"`accepted`\" pulumi-lang-python=\"`accepted`\" pulumi-lang-yaml=\"`accepted`\" pulumi-lang-java=\"`accepted`\"\u003e`accepted`\u003c/span\u003e \u003cspan pulumi-lang-nodejs=\"`clicked`\" pulumi-lang-dotnet=\"`Clicked`\" pulumi-lang-go=\"`clicked`\" pulumi-lang-python=\"`clicked`\" pulumi-lang-yaml=\"`clicked`\" pulumi-lang-java=\"`clicked`\"\u003e`clicked`\u003c/span\u003e \u003cspan pulumi-lang-nodejs=\"`complained`\" pulumi-lang-dotnet=\"`Complained`\" pulumi-lang-go=\"`complained`\" pulumi-lang-python=\"`complained`\" pulumi-lang-yaml=\"`complained`\" pulumi-lang-java=\"`complained`\"\u003e`complained`\u003c/span\u003e \u003cspan pulumi-lang-nodejs=\"`delivered`\" pulumi-lang-dotnet=\"`Delivered`\" pulumi-lang-go=\"`delivered`\" pulumi-lang-python=\"`delivered`\" pulumi-lang-yaml=\"`delivered`\" pulumi-lang-java=\"`delivered`\"\u003e`delivered`\u003c/span\u003e \u003cspan pulumi-lang-nodejs=\"`opened`\" pulumi-lang-dotnet=\"`Opened`\" pulumi-lang-go=\"`opened`\" pulumi-lang-python=\"`opened`\" pulumi-lang-yaml=\"`opened`\" pulumi-lang-java=\"`opened`\"\u003e`opened`\u003c/span\u003e \u003cspan pulumi-lang-nodejs=\"`permanentFail`\" pulumi-lang-dotnet=\"`PermanentFail`\" pulumi-lang-go=\"`permanentFail`\" pulumi-lang-python=\"`permanent_fail`\" pulumi-lang-yaml=\"`permanentFail`\" pulumi-lang-java=\"`permanentFail`\"\u003e`permanent_fail`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`temporaryFail`\" pulumi-lang-dotnet=\"`TemporaryFail`\" pulumi-lang-go=\"`temporaryFail`\" pulumi-lang-python=\"`temporary_fail`\" pulumi-lang-yaml=\"`temporaryFail`\" pulumi-lang-java=\"`temporaryFail`\"\u003e`temporary_fail`\u003c/span\u003e \u003cspan pulumi-lang-nodejs=\"`unsubscribed`\" pulumi-lang-dotnet=\"`Unsubscribed`\" pulumi-lang-go=\"`unsubscribed`\" pulumi-lang-python=\"`unsubscribed`\" pulumi-lang-yaml=\"`unsubscribed`\" pulumi-lang-java=\"`unsubscribed`\"\u003e`unsubscribed`\u003c/span\u003e)\n",
                     "willReplaceOnChanges": true
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where domain will be created. Default value is `us`.\n",
+                    "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
                     "willReplaceOnChanges": true
                 },
                 "urls": {
@@ -835,12 +835,12 @@
                     },
                     "kind": {
                         "type": "string",
-                        "description": "The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)\n",
+                        "description": "The kind of webhook. Supported values (\u003cspan pulumi-lang-nodejs=\"`accepted`\" pulumi-lang-dotnet=\"`Accepted`\" pulumi-lang-go=\"`accepted`\" pulumi-lang-python=\"`accepted`\" pulumi-lang-yaml=\"`accepted`\" pulumi-lang-java=\"`accepted`\"\u003e`accepted`\u003c/span\u003e \u003cspan pulumi-lang-nodejs=\"`clicked`\" pulumi-lang-dotnet=\"`Clicked`\" pulumi-lang-go=\"`clicked`\" pulumi-lang-python=\"`clicked`\" pulumi-lang-yaml=\"`clicked`\" pulumi-lang-java=\"`clicked`\"\u003e`clicked`\u003c/span\u003e \u003cspan pulumi-lang-nodejs=\"`complained`\" pulumi-lang-dotnet=\"`Complained`\" pulumi-lang-go=\"`complained`\" pulumi-lang-python=\"`complained`\" pulumi-lang-yaml=\"`complained`\" pulumi-lang-java=\"`complained`\"\u003e`complained`\u003c/span\u003e \u003cspan pulumi-lang-nodejs=\"`delivered`\" pulumi-lang-dotnet=\"`Delivered`\" pulumi-lang-go=\"`delivered`\" pulumi-lang-python=\"`delivered`\" pulumi-lang-yaml=\"`delivered`\" pulumi-lang-java=\"`delivered`\"\u003e`delivered`\u003c/span\u003e \u003cspan pulumi-lang-nodejs=\"`opened`\" pulumi-lang-dotnet=\"`Opened`\" pulumi-lang-go=\"`opened`\" pulumi-lang-python=\"`opened`\" pulumi-lang-yaml=\"`opened`\" pulumi-lang-java=\"`opened`\"\u003e`opened`\u003c/span\u003e \u003cspan pulumi-lang-nodejs=\"`permanentFail`\" pulumi-lang-dotnet=\"`PermanentFail`\" pulumi-lang-go=\"`permanentFail`\" pulumi-lang-python=\"`permanent_fail`\" pulumi-lang-yaml=\"`permanentFail`\" pulumi-lang-java=\"`permanentFail`\"\u003e`permanent_fail`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`temporaryFail`\" pulumi-lang-dotnet=\"`TemporaryFail`\" pulumi-lang-go=\"`temporaryFail`\" pulumi-lang-python=\"`temporary_fail`\" pulumi-lang-yaml=\"`temporaryFail`\" pulumi-lang-java=\"`temporaryFail`\"\u003e`temporary_fail`\u003c/span\u003e \u003cspan pulumi-lang-nodejs=\"`unsubscribed`\" pulumi-lang-dotnet=\"`Unsubscribed`\" pulumi-lang-go=\"`unsubscribed`\" pulumi-lang-python=\"`unsubscribed`\" pulumi-lang-yaml=\"`unsubscribed`\" pulumi-lang-java=\"`unsubscribed`\"\u003e`unsubscribed`\u003c/span\u003e)\n",
                         "willReplaceOnChanges": true
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region where domain will be created. Default value is `us`.\n",
+                        "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
                         "willReplaceOnChanges": true
                     },
                     "urls": {
@@ -857,7 +857,7 @@
     },
     "functions": {
         "mailgun:index/getDomain:getDomain": {
-            "description": "`mailgun.Domain` provides details about a Mailgun domain.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aws from \"@pulumi/aws\";\nimport * as mailgun from \"@pulumi/mailgun\";\n\nconst domain = mailgun.getDomain({\n    name: \"test.example.com\",\n});\nconst mailgun_mx = new aws.index.Route53Record(\"mailgun-mx\", {\n    zoneId: zoneId,\n    name: domainMailgun.name,\n    type: \"MX\",\n    ttl: 3600,\n    records: [\n        `${domain.receivingRecords?.[0]?.priority} ${domain.receivingRecords?.[0]?.value}.`,\n        `${domain.receivingRecords?.[1]?.priority} ${domain.receivingRecords?.[1]?.value}.`,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_aws as aws\nimport pulumi_mailgun as mailgun\n\ndomain = mailgun.get_domain(name=\"test.example.com\")\nmailgun_mx = aws.index.Route53Record(\"mailgun-mx\",\n    zone_id=zone_id,\n    name=domain_mailgun.name,\n    type=MX,\n    ttl=3600,\n    records=[\n        f{domain.receiving_records[0].priority} {domain.receiving_records[0].value}.,\n        f{domain.receiving_records[1].priority} {domain.receiving_records[1].value}.,\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aws = Pulumi.Aws;\nusing Mailgun = Pulumi.Mailgun;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var domain = Mailgun.GetDomain.Invoke(new()\n    {\n        Name = \"test.example.com\",\n    });\n\n    var mailgun_mx = new Aws.Index.Route53Record(\"mailgun-mx\", new()\n    {\n        ZoneId = zoneId,\n        Name = domainMailgun.Name,\n        Type = \"MX\",\n        Ttl = 3600,\n        Records = new[]\n        {\n            $\"{domain.Apply(getDomainResult =\u003e getDomainResult.ReceivingRecords[0]?.Priority)} {domain.Apply(getDomainResult =\u003e getDomainResult.ReceivingRecords[0]?.Value)}.\",\n            $\"{domain.Apply(getDomainResult =\u003e getDomainResult.ReceivingRecords[1]?.Priority)} {domain.Apply(getDomainResult =\u003e getDomainResult.ReceivingRecords[1]?.Value)}.\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-aws/sdk/v4/go/aws\"\n\t\"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdomain, err := mailgun.LookupDomain(ctx, \u0026mailgun.LookupDomainArgs{\n\t\t\tName: \"test.example.com\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aws.NewRoute53Record(ctx, \"mailgun-mx\", \u0026aws.Route53RecordArgs{\n\t\t\tZoneId: zoneId,\n\t\t\tName:   domainMailgun.Name,\n\t\t\tType:   \"MX\",\n\t\t\tTtl:    3600,\n\t\t\tRecords: []string{\n\t\t\t\tfmt.Sprintf(\"%v %v.\", domain.ReceivingRecords[0].Priority, domain.ReceivingRecords[0].Value),\n\t\t\t\tfmt.Sprintf(\"%v %v.\", domain.ReceivingRecords[1].Priority, domain.ReceivingRecords[1].Value),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.mailgun.MailgunFunctions;\nimport com.pulumi.mailgun.inputs.GetDomainArgs;\nimport com.pulumi.aws.route53Record;\nimport com.pulumi.aws.route53RecordArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var domain = MailgunFunctions.getDomain(GetDomainArgs.builder()\n            .name(\"test.example.com\")\n            .build());\n\n        var mailgun_mx = new Route53Record(\"mailgun-mx\", Route53RecordArgs.builder()\n            .zoneId(zoneId)\n            .name(domainMailgun.name())\n            .type(\"MX\")\n            .ttl(3600)\n            .records(List.of(            \n                String.format(\"%s %s.\", domain.receivingRecords()[0].priority(),domain.receivingRecords()[0].value()),\n                String.format(\"%s %s.\", domain.receivingRecords()[1].priority(),domain.receivingRecords()[1].value())))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mailgun-mx:\n    type: aws:route53Record\n    properties:\n      zoneId: ${zoneId}\n      name: ${domainMailgun.name}\n      type: MX\n      ttl: 3600\n      records:\n        - ${domain.receivingRecords[0].priority} ${domain.receivingRecords[0].value}.\n        - ${domain.receivingRecords[1].priority} ${domain.receivingRecords[1].value}.\nvariables:\n  domain:\n    fn::invoke:\n      function: mailgun:getDomain\n      arguments:\n        name: test.example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "\u003cspan pulumi-lang-nodejs=\"`mailgun.Domain`\" pulumi-lang-dotnet=\"`mailgun.Domain`\" pulumi-lang-go=\"`Domain`\" pulumi-lang-python=\"`Domain`\" pulumi-lang-yaml=\"`mailgun.Domain`\" pulumi-lang-java=\"`mailgun.Domain`\"\u003e`mailgun.Domain`\u003c/span\u003e provides details about a Mailgun domain.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aws from \"@pulumi/aws\";\nimport * as mailgun from \"@pulumi/mailgun\";\n\nconst domain = mailgun.getDomain({\n    name: \"test.example.com\",\n});\nconst mailgun_mx = new aws.index.Route53Record(\"mailgun-mx\", {\n    zoneId: zoneId,\n    name: domainMailgun.name,\n    type: \"MX\",\n    ttl: 3600,\n    records: [\n        `${domain.receivingRecords?.[0]?.priority} ${domain.receivingRecords?.[0]?.value}.`,\n        `${domain.receivingRecords?.[1]?.priority} ${domain.receivingRecords?.[1]?.value}.`,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_aws as aws\nimport pulumi_mailgun as mailgun\n\ndomain = mailgun.get_domain(name=\"test.example.com\")\nmailgun_mx = aws.index.Route53Record(\"mailgun-mx\",\n    zone_id=zone_id,\n    name=domain_mailgun.name,\n    type=MX,\n    ttl=3600,\n    records=[\n        f{domain.receiving_records[0].priority} {domain.receiving_records[0].value}.,\n        f{domain.receiving_records[1].priority} {domain.receiving_records[1].value}.,\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aws = Pulumi.Aws;\nusing Mailgun = Pulumi.Mailgun;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var domain = Mailgun.GetDomain.Invoke(new()\n    {\n        Name = \"test.example.com\",\n    });\n\n    var mailgun_mx = new Aws.Index.Route53Record(\"mailgun-mx\", new()\n    {\n        ZoneId = zoneId,\n        Name = domainMailgun.Name,\n        Type = \"MX\",\n        Ttl = 3600,\n        Records = new[]\n        {\n            $\"{domain.Apply(getDomainResult =\u003e getDomainResult.ReceivingRecords[0]?.Priority)} {domain.Apply(getDomainResult =\u003e getDomainResult.ReceivingRecords[0]?.Value)}.\",\n            $\"{domain.Apply(getDomainResult =\u003e getDomainResult.ReceivingRecords[1]?.Priority)} {domain.Apply(getDomainResult =\u003e getDomainResult.ReceivingRecords[1]?.Value)}.\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-aws/sdk/v4/go/aws\"\n\t\"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdomain, err := mailgun.LookupDomain(ctx, \u0026mailgun.LookupDomainArgs{\n\t\t\tName: \"test.example.com\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aws.NewRoute53Record(ctx, \"mailgun-mx\", \u0026aws.Route53RecordArgs{\n\t\t\tZoneId: zoneId,\n\t\t\tName:   domainMailgun.Name,\n\t\t\tType:   \"MX\",\n\t\t\tTtl:    3600,\n\t\t\tRecords: []string{\n\t\t\t\tfmt.Sprintf(\"%v %v.\", domain.ReceivingRecords[0].Priority, domain.ReceivingRecords[0].Value),\n\t\t\t\tfmt.Sprintf(\"%v %v.\", domain.ReceivingRecords[1].Priority, domain.ReceivingRecords[1].Value),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.mailgun.MailgunFunctions;\nimport com.pulumi.mailgun.inputs.GetDomainArgs;\nimport com.pulumi.aws.route53Record;\nimport com.pulumi.aws.route53RecordArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var domain = MailgunFunctions.getDomain(GetDomainArgs.builder()\n            .name(\"test.example.com\")\n            .build());\n\n        var mailgun_mx = new Route53Record(\"mailgun-mx\", Route53RecordArgs.builder()\n            .zoneId(zoneId)\n            .name(domainMailgun.name())\n            .type(\"MX\")\n            .ttl(3600)\n            .records(List.of(            \n                String.format(\"%s %s.\", domain.receivingRecords()[0].priority(),domain.receivingRecords()[0].value()),\n                String.format(\"%s %s.\", domain.receivingRecords()[1].priority(),domain.receivingRecords()[1].value())))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mailgun-mx:\n    type: aws:route53Record\n    properties:\n      zoneId: ${zoneId}\n      name: ${domainMailgun.name}\n      type: MX\n      ttl: 3600\n      records:\n        - ${domain.receivingRecords[0].priority} ${domain.receivingRecords[0].value}.\n        - ${domain.receivingRecords[1].priority} ${domain.receivingRecords[1].value}.\nvariables:\n  domain:\n    fn::invoke:\n      function: mailgun:getDomain\n      arguments:\n        name: test.example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDomain.\n",
                 "properties": {
@@ -888,7 +888,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region where domain will be created. Default value is `us`.\n",
+                        "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
                         "willReplaceOnChanges": true
                     },
                     "smtpPassword": {
@@ -945,7 +945,7 @@
                         "type": "boolean"
                     },
                     "receivingRecords": {
-                        "deprecationMessage": "Use `receiving_records_set` instead.",
+                        "deprecationMessage": "Use \u003cspan pulumi-lang-nodejs=\"`receivingRecordsSet`\" pulumi-lang-dotnet=\"`ReceivingRecordsSet`\" pulumi-lang-go=\"`receivingRecordsSet`\" pulumi-lang-python=\"`receiving_records_set`\" pulumi-lang-yaml=\"`receivingRecordsSet`\" pulumi-lang-java=\"`receivingRecordsSet`\"\u003e`receiving_records_set`\u003c/span\u003e instead.",
                         "description": "A list of DNS records for receiving validation.\n",
                         "items": {
                             "$ref": "#/types/mailgun:index/getDomainReceivingRecord:getDomainReceivingRecord"
@@ -962,7 +962,7 @@
                         "type": "string"
                     },
                     "sendingRecords": {
-                        "deprecationMessage": "Use `sending_records_set` instead.",
+                        "deprecationMessage": "Use \u003cspan pulumi-lang-nodejs=\"`sendingRecordsSet`\" pulumi-lang-dotnet=\"`SendingRecordsSet`\" pulumi-lang-go=\"`sendingRecordsSet`\" pulumi-lang-python=\"`sending_records_set`\" pulumi-lang-yaml=\"`sendingRecordsSet`\" pulumi-lang-java=\"`sendingRecordsSet`\"\u003e`sending_records_set`\u003c/span\u003e instead.",
                         "description": "A list of DNS records for sending validation.\n",
                         "items": {
                             "$ref": "#/types/mailgun:index/getDomainSendingRecord:getDomainSendingRecord"

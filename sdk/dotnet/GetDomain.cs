@@ -157,7 +157,7 @@ namespace Pulumi.Mailgun
         public bool? OpenTracking { get; set; }
 
         /// <summary>
-        /// The region where domain will be created. Default value is `us`.
+        /// The region where domain will be created. Default value is `Us`.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -228,7 +228,7 @@ namespace Pulumi.Mailgun
         public Input<bool>? OpenTracking { get; set; }
 
         /// <summary>
-        /// The region where domain will be created. Default value is `us`.
+        /// The region where domain will be created. Default value is `Us`.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

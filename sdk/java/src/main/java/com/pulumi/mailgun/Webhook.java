@@ -74,14 +74,14 @@ public class Webhook extends com.pulumi.resources.CustomResource {
         return this.domain;
     }
     /**
-     * The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
+     * The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
      * 
      */
     @Export(name="kind", refs={String.class}, tree="[0]")
     private Output<String> kind;
 
     /**
-     * @return The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
+     * @return The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
      * 
      */
     public Output<String> kind() {
