@@ -12,7 +12,7 @@ namespace Pulumi.Mailgun
     /// <summary>
     /// Provides a Mailgun domain credential resource. This can be used to create and manage credential in domain of Mailgun.
     /// 
-    /// &gt; **Note:** Please note that starting of v0.6.1 due to using new Mailgun Client API (v4), there is no possibility to retrieve previously created secrets via API. In order get it worked, it's recommended to mark `password` as ignored under `lifecycle` block. See below.
+    /// &gt; **Note:** Please note that starting of v0.6.1 due to using new Mailgun Client API (v4), there is no possibility to retrieve previously created secrets via API. In order get it worked, it's recommended to mark `Password` as ignored under `Lifecycle` block. See below.
     /// 
     /// ## Example Usage
     /// 
@@ -70,7 +70,7 @@ namespace Pulumi.Mailgun
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The region where domain will be created. Default value is `us`.
+        /// The region where domain will be created. Default value is `Us`.
         /// </summary>
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.Mailgun
         }
 
         /// <summary>
-        /// The region where domain will be created. Default value is `us`.
+        /// The region where domain will be created. Default value is `Us`.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -196,7 +196,7 @@ namespace Pulumi.Mailgun
         }
 
         /// <summary>
-        /// The region where domain will be created. Default value is `us`.
+        /// The region where domain will be created. Default value is `Us`.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

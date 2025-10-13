@@ -163,18 +163,18 @@ public class Domain extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.openTracking);
     }
     /**
-     * A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
+     * A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
      * 
      * @deprecated
-     * Use `receiving_records_set` instead.
+     * Use `receivingRecordsSet` instead.
      * 
      */
-    @Deprecated /* Use `receiving_records_set` instead. */
+    @Deprecated /* Use `receivingRecordsSet` instead. */
     @Export(name="receivingRecords", refs={List.class,DomainReceivingRecord.class}, tree="[0,1]")
     private Output<List<DomainReceivingRecord>> receivingRecords;
 
     /**
-     * @return A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
+     * @return A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
      * 
      */
     public Output<List<DomainReceivingRecord>> receivingRecords() {
@@ -209,18 +209,18 @@ public class Domain extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.region);
     }
     /**
-     * A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
+     * A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
      * 
      * @deprecated
-     * Use `sending_records_set` instead.
+     * Use `sendingRecordsSet` instead.
      * 
      */
-    @Deprecated /* Use `sending_records_set` instead. */
+    @Deprecated /* Use `sendingRecordsSet` instead. */
     @Export(name="sendingRecords", refs={List.class,DomainSendingRecord.class}, tree="[0,1]")
     private Output<List<DomainSendingRecord>> sendingRecords;
 
     /**
-     * @return A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
+     * @return A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
      * 
      */
     public Output<List<DomainSendingRecord>> sendingRecords() {
