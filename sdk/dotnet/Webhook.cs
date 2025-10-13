@@ -48,13 +48,13 @@ namespace Pulumi.Mailgun
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
+        /// The kind of webhook. Supported values (`Accepted` `Clicked` `Complained` `Delivered` `Opened` `PermanentFail`, `TemporaryFail` `Unsubscribed`)
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// The region where domain will be created. Default value is `us`.
+        /// The region where domain will be created. Default value is `Us`.
         /// </summary>
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
@@ -118,13 +118,13 @@ namespace Pulumi.Mailgun
         public Input<string> Domain { get; set; } = null!;
 
         /// <summary>
-        /// The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
+        /// The kind of webhook. Supported values (`Accepted` `Clicked` `Complained` `Delivered` `Opened` `PermanentFail`, `TemporaryFail` `Unsubscribed`)
         /// </summary>
         [Input("kind", required: true)]
         public Input<string> Kind { get; set; } = null!;
 
         /// <summary>
-        /// The region where domain will be created. Default value is `us`.
+        /// The region where domain will be created. Default value is `Us`.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -156,13 +156,13 @@ namespace Pulumi.Mailgun
         public Input<string>? Domain { get; set; }
 
         /// <summary>
-        /// The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
+        /// The kind of webhook. Supported values (`Accepted` `Clicked` `Complained` `Delivered` `Opened` `PermanentFail`, `TemporaryFail` `Unsubscribed`)
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// The region where domain will be created. Default value is `us`.
+        /// The region where domain will be created. Default value is `Us`.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

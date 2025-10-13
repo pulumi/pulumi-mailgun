@@ -52,7 +52,7 @@ namespace Pulumi.Mailgun
     public partial class Domain : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
+        /// (Enum: `Yes` or `No`) The click tracking settings for the domain. Default: `No`
         /// </summary>
         [Output("clickTracking")]
         public Output<bool?> ClickTracking { get; private set; } = null!;
@@ -70,7 +70,7 @@ namespace Pulumi.Mailgun
         public Output<string?> DkimSelector { get; private set; } = null!;
 
         /// <summary>
-        /// If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+        /// If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `False`.
         /// </summary>
         [Output("forceDkimAuthority")]
         public Output<bool?> ForceDkimAuthority { get; private set; } = null!;
@@ -82,13 +82,13 @@ namespace Pulumi.Mailgun
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
+        /// (Enum: `Yes` or `No`) The open tracking settings for the domain. Default: `No`
         /// </summary>
         [Output("openTracking")]
         public Output<bool?> OpenTracking { get; private set; } = null!;
 
         /// <summary>
-        /// A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
+        /// A list of DNS records for receiving validation.  **Deprecated** Use `ReceivingRecordsSet` instead.
         /// </summary>
         [Output("receivingRecords")]
         public Output<ImmutableArray<Outputs.DomainReceivingRecord>> ReceivingRecords { get; private set; } = null!;
@@ -100,13 +100,13 @@ namespace Pulumi.Mailgun
         public Output<ImmutableArray<Outputs.DomainReceivingRecordsSet>> ReceivingRecordsSets { get; private set; } = null!;
 
         /// <summary>
-        /// The region where domain will be created. Default value is `us`.
+        /// The region where domain will be created. Default value is `Us`.
         /// </summary>
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
 
         /// <summary>
-        /// A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
+        /// A list of DNS records for sending validation. **Deprecated** Use `SendingRecordsSet` instead.
         /// </summary>
         [Output("sendingRecords")]
         public Output<ImmutableArray<Outputs.DomainSendingRecord>> SendingRecords { get; private set; } = null!;
@@ -130,15 +130,15 @@ namespace Pulumi.Mailgun
         public Output<string?> SmtpPassword { get; private set; } = null!;
 
         /// <summary>
-        /// `disabled` or `tag` Disable, no spam
+        /// `Disabled` or `Tag` Disable, no spam
         /// filtering will occur for inbound messages. Tag, messages
-        /// will be tagged with a spam header. Default value is `disabled`.
+        /// will be tagged with a spam header. Default value is `Disabled`.
         /// </summary>
         [Output("spamAction")]
         public Output<string?> SpamAction { get; private set; } = null!;
 
         /// <summary>
-        /// (`http` or `https`) The tracking web scheme. Default: `http`
+        /// (`Http` or `Https`) The tracking web scheme. Default: `Http`
         /// </summary>
         [Output("webScheme")]
         public Output<string?> WebScheme { get; private set; } = null!;
@@ -201,7 +201,7 @@ namespace Pulumi.Mailgun
     public sealed class DomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
+        /// (Enum: `Yes` or `No`) The click tracking settings for the domain. Default: `No`
         /// </summary>
         [Input("clickTracking")]
         public Input<bool>? ClickTracking { get; set; }
@@ -219,7 +219,7 @@ namespace Pulumi.Mailgun
         public Input<string>? DkimSelector { get; set; }
 
         /// <summary>
-        /// If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+        /// If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `False`.
         /// </summary>
         [Input("forceDkimAuthority")]
         public Input<bool>? ForceDkimAuthority { get; set; }
@@ -231,13 +231,13 @@ namespace Pulumi.Mailgun
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
+        /// (Enum: `Yes` or `No`) The open tracking settings for the domain. Default: `No`
         /// </summary>
         [Input("openTracking")]
         public Input<bool>? OpenTracking { get; set; }
 
         /// <summary>
-        /// The region where domain will be created. Default value is `us`.
+        /// The region where domain will be created. Default value is `Us`.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -259,15 +259,15 @@ namespace Pulumi.Mailgun
         }
 
         /// <summary>
-        /// `disabled` or `tag` Disable, no spam
+        /// `Disabled` or `Tag` Disable, no spam
         /// filtering will occur for inbound messages. Tag, messages
-        /// will be tagged with a spam header. Default value is `disabled`.
+        /// will be tagged with a spam header. Default value is `Disabled`.
         /// </summary>
         [Input("spamAction")]
         public Input<string>? SpamAction { get; set; }
 
         /// <summary>
-        /// (`http` or `https`) The tracking web scheme. Default: `http`
+        /// (`Http` or `Https`) The tracking web scheme. Default: `Http`
         /// </summary>
         [Input("webScheme")]
         public Input<string>? WebScheme { get; set; }
@@ -288,7 +288,7 @@ namespace Pulumi.Mailgun
     public sealed class DomainState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
+        /// (Enum: `Yes` or `No`) The click tracking settings for the domain. Default: `No`
         /// </summary>
         [Input("clickTracking")]
         public Input<bool>? ClickTracking { get; set; }
@@ -306,7 +306,7 @@ namespace Pulumi.Mailgun
         public Input<string>? DkimSelector { get; set; }
 
         /// <summary>
-        /// If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
+        /// If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `False`.
         /// </summary>
         [Input("forceDkimAuthority")]
         public Input<bool>? ForceDkimAuthority { get; set; }
@@ -318,7 +318,7 @@ namespace Pulumi.Mailgun
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
+        /// (Enum: `Yes` or `No`) The open tracking settings for the domain. Default: `No`
         /// </summary>
         [Input("openTracking")]
         public Input<bool>? OpenTracking { get; set; }
@@ -327,9 +327,9 @@ namespace Pulumi.Mailgun
         private InputList<Inputs.DomainReceivingRecordGetArgs>? _receivingRecords;
 
         /// <summary>
-        /// A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
+        /// A list of DNS records for receiving validation.  **Deprecated** Use `ReceivingRecordsSet` instead.
         /// </summary>
-        [Obsolete(@"Use `receiving_records_set` instead.")]
+        [Obsolete(@"Use `ReceivingRecordsSet` instead.")]
         public InputList<Inputs.DomainReceivingRecordGetArgs> ReceivingRecords
         {
             get => _receivingRecords ?? (_receivingRecords = new InputList<Inputs.DomainReceivingRecordGetArgs>());
@@ -349,7 +349,7 @@ namespace Pulumi.Mailgun
         }
 
         /// <summary>
-        /// The region where domain will be created. Default value is `us`.
+        /// The region where domain will be created. Default value is `Us`.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -358,9 +358,9 @@ namespace Pulumi.Mailgun
         private InputList<Inputs.DomainSendingRecordGetArgs>? _sendingRecords;
 
         /// <summary>
-        /// A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
+        /// A list of DNS records for sending validation. **Deprecated** Use `SendingRecordsSet` instead.
         /// </summary>
-        [Obsolete(@"Use `sending_records_set` instead.")]
+        [Obsolete(@"Use `SendingRecordsSet` instead.")]
         public InputList<Inputs.DomainSendingRecordGetArgs> SendingRecords
         {
             get => _sendingRecords ?? (_sendingRecords = new InputList<Inputs.DomainSendingRecordGetArgs>());
@@ -402,15 +402,15 @@ namespace Pulumi.Mailgun
         }
 
         /// <summary>
-        /// `disabled` or `tag` Disable, no spam
+        /// `Disabled` or `Tag` Disable, no spam
         /// filtering will occur for inbound messages. Tag, messages
-        /// will be tagged with a spam header. Default value is `disabled`.
+        /// will be tagged with a spam header. Default value is `Disabled`.
         /// </summary>
         [Input("spamAction")]
         public Input<string>? SpamAction { get; set; }
 
         /// <summary>
-        /// (`http` or `https`) The tracking web scheme. Default: `http`
+        /// (`Http` or `Https`) The tracking web scheme. Default: `Http`
         /// </summary>
         [Input("webScheme")]
         public Input<string>? WebScheme { get; set; }
