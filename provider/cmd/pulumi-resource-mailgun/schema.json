@@ -362,8 +362,177 @@
         }
     },
     "resources": {
+        "mailgun:index/apiKey:ApiKey": {
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as mailgun from \"@pulumi/mailgun\";\n\n// Create a new Mailgun API key\nconst someKey = new mailgun.ApiKey(\"some_key\", {\n    role: \"basic\",\n    kind: \"user\",\n    description: \"Some key\",\n});\n```\n```python\nimport pulumi\nimport pulumi_mailgun as mailgun\n\n# Create a new Mailgun API key\nsome_key = mailgun.ApiKey(\"some_key\",\n    role=\"basic\",\n    kind=\"user\",\n    description=\"Some key\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Mailgun = Pulumi.Mailgun;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create a new Mailgun API key\n    var someKey = new Mailgun.ApiKey(\"some_key\", new()\n    {\n        Role = \"basic\",\n        Kind = \"user\",\n        Description = \"Some key\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create a new Mailgun API key\n\t\t_, err := mailgun.NewApiKey(ctx, \"some_key\", \u0026mailgun.ApiKeyArgs{\n\t\t\tRole:        pulumi.String(\"basic\"),\n\t\t\tKind:        pulumi.String(\"user\"),\n\t\t\tDescription: pulumi.String(\"Some key\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.mailgun.ApiKey;\nimport com.pulumi.mailgun.ApiKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create a new Mailgun API key\n        var someKey = new ApiKey(\"someKey\", ApiKeyArgs.builder()\n            .role(\"basic\")\n            .kind(\"user\")\n            .description(\"Some key\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create a new Mailgun API key\n  someKey:\n    type: mailgun:ApiKey\n    name: some_key\n    properties:\n      role: basic\n      kind: user\n      description: Some key\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Key description.\n"
+                },
+                "disabledReason": {
+                    "type": "string",
+                    "description": "The reason for the key's disablement.\n"
+                },
+                "domainName": {
+                    "type": "string",
+                    "description": "Web domain to associate with the key, for keys of \u003cspan pulumi-lang-nodejs=\"`domain`\" pulumi-lang-dotnet=\"`Domain`\" pulumi-lang-go=\"`domain`\" pulumi-lang-python=\"`domain`\" pulumi-lang-yaml=\"`domain`\" pulumi-lang-java=\"`domain`\"\u003e`domain`\u003c/span\u003e kind.\n"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "API key user's email address; should be provided for all keys of \u003cspan pulumi-lang-nodejs=\"`web`\" pulumi-lang-dotnet=\"`Web`\" pulumi-lang-go=\"`web`\" pulumi-lang-python=\"`web`\" pulumi-lang-yaml=\"`web`\" pulumi-lang-java=\"`web`\"\u003e`web`\u003c/span\u003e kind.\n"
+                },
+                "expiresAt": {
+                    "type": "integer",
+                    "description": "When the key will expire.\n"
+                },
+                "isDisabled": {
+                    "type": "boolean",
+                    "description": "Whether or not the key is disabled from use.\n"
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "(Enum:\u003cspan pulumi-lang-nodejs=\"`domain`\" pulumi-lang-dotnet=\"`Domain`\" pulumi-lang-go=\"`domain`\" pulumi-lang-python=\"`domain`\" pulumi-lang-yaml=\"`domain`\" pulumi-lang-java=\"`domain`\"\u003e`domain`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`user`\" pulumi-lang-dotnet=\"`User`\" pulumi-lang-go=\"`user`\" pulumi-lang-python=\"`user`\" pulumi-lang-yaml=\"`user`\" pulumi-lang-java=\"`user`\"\u003e`user`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`web`\" pulumi-lang-dotnet=\"`Web`\" pulumi-lang-go=\"`web`\" pulumi-lang-python=\"`web`\" pulumi-lang-yaml=\"`web`\" pulumi-lang-java=\"`web`\"\u003e`web`\u003c/span\u003e). API key type. Default: \u003cspan pulumi-lang-nodejs=\"`user`\" pulumi-lang-dotnet=\"`User`\" pulumi-lang-go=\"`user`\" pulumi-lang-python=\"`user`\" pulumi-lang-yaml=\"`user`\" pulumi-lang-java=\"`user`\"\u003e`user`\u003c/span\u003e.\n"
+                },
+                "requestor": {
+                    "type": "string",
+                    "description": "An email address associated with the key.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "(Enum: \u003cspan pulumi-lang-nodejs=\"`admin`\" pulumi-lang-dotnet=\"`Admin`\" pulumi-lang-go=\"`admin`\" pulumi-lang-python=\"`admin`\" pulumi-lang-yaml=\"`admin`\" pulumi-lang-java=\"`admin`\"\u003e`admin`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`basic`\" pulumi-lang-dotnet=\"`Basic`\" pulumi-lang-go=\"`basic`\" pulumi-lang-python=\"`basic`\" pulumi-lang-yaml=\"`basic`\" pulumi-lang-java=\"`basic`\"\u003e`basic`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sending`\" pulumi-lang-dotnet=\"`Sending`\" pulumi-lang-go=\"`sending`\" pulumi-lang-python=\"`sending`\" pulumi-lang-yaml=\"`sending`\" pulumi-lang-java=\"`sending`\"\u003e`sending`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`support`\" pulumi-lang-dotnet=\"`Support`\" pulumi-lang-go=\"`support`\" pulumi-lang-python=\"`support`\" pulumi-lang-yaml=\"`support`\" pulumi-lang-java=\"`support`\"\u003e`support`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`developer`\" pulumi-lang-dotnet=\"`Developer`\" pulumi-lang-go=\"`developer`\" pulumi-lang-python=\"`developer`\" pulumi-lang-yaml=\"`developer`\" pulumi-lang-java=\"`developer`\"\u003e`developer`\u003c/span\u003e) Key role.\n"
+                },
+                "secret": {
+                    "type": "string",
+                    "description": "The full API key secret in plain text.\n",
+                    "secret": true
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "API key user's string user ID; should be provided for all keys of \u003cspan pulumi-lang-nodejs=\"`web`\" pulumi-lang-dotnet=\"`Web`\" pulumi-lang-go=\"`web`\" pulumi-lang-python=\"`web`\" pulumi-lang-yaml=\"`web`\" pulumi-lang-java=\"`web`\"\u003e`web`\u003c/span\u003e kind.\n"
+                },
+                "userName": {
+                    "type": "string",
+                    "description": "API key user's name.\n"
+                }
+            },
+            "required": [
+                "disabledReason",
+                "isDisabled",
+                "requestor",
+                "role",
+                "secret"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Key description.\n",
+                    "willReplaceOnChanges": true
+                },
+                "domainName": {
+                    "type": "string",
+                    "description": "Web domain to associate with the key, for keys of \u003cspan pulumi-lang-nodejs=\"`domain`\" pulumi-lang-dotnet=\"`Domain`\" pulumi-lang-go=\"`domain`\" pulumi-lang-python=\"`domain`\" pulumi-lang-yaml=\"`domain`\" pulumi-lang-java=\"`domain`\"\u003e`domain`\u003c/span\u003e kind.\n",
+                    "willReplaceOnChanges": true
+                },
+                "email": {
+                    "type": "string",
+                    "description": "API key user's email address; should be provided for all keys of \u003cspan pulumi-lang-nodejs=\"`web`\" pulumi-lang-dotnet=\"`Web`\" pulumi-lang-go=\"`web`\" pulumi-lang-python=\"`web`\" pulumi-lang-yaml=\"`web`\" pulumi-lang-java=\"`web`\"\u003e`web`\u003c/span\u003e kind.\n",
+                    "willReplaceOnChanges": true
+                },
+                "expiresAt": {
+                    "type": "integer",
+                    "description": "When the key will expire.\n",
+                    "willReplaceOnChanges": true
+                },
+                "kind": {
+                    "type": "string",
+                    "description": "(Enum:\u003cspan pulumi-lang-nodejs=\"`domain`\" pulumi-lang-dotnet=\"`Domain`\" pulumi-lang-go=\"`domain`\" pulumi-lang-python=\"`domain`\" pulumi-lang-yaml=\"`domain`\" pulumi-lang-java=\"`domain`\"\u003e`domain`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`user`\" pulumi-lang-dotnet=\"`User`\" pulumi-lang-go=\"`user`\" pulumi-lang-python=\"`user`\" pulumi-lang-yaml=\"`user`\" pulumi-lang-java=\"`user`\"\u003e`user`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`web`\" pulumi-lang-dotnet=\"`Web`\" pulumi-lang-go=\"`web`\" pulumi-lang-python=\"`web`\" pulumi-lang-yaml=\"`web`\" pulumi-lang-java=\"`web`\"\u003e`web`\u003c/span\u003e). API key type. Default: \u003cspan pulumi-lang-nodejs=\"`user`\" pulumi-lang-dotnet=\"`User`\" pulumi-lang-go=\"`user`\" pulumi-lang-python=\"`user`\" pulumi-lang-yaml=\"`user`\" pulumi-lang-java=\"`user`\"\u003e`user`\u003c/span\u003e.\n",
+                    "willReplaceOnChanges": true
+                },
+                "role": {
+                    "type": "string",
+                    "description": "(Enum: \u003cspan pulumi-lang-nodejs=\"`admin`\" pulumi-lang-dotnet=\"`Admin`\" pulumi-lang-go=\"`admin`\" pulumi-lang-python=\"`admin`\" pulumi-lang-yaml=\"`admin`\" pulumi-lang-java=\"`admin`\"\u003e`admin`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`basic`\" pulumi-lang-dotnet=\"`Basic`\" pulumi-lang-go=\"`basic`\" pulumi-lang-python=\"`basic`\" pulumi-lang-yaml=\"`basic`\" pulumi-lang-java=\"`basic`\"\u003e`basic`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sending`\" pulumi-lang-dotnet=\"`Sending`\" pulumi-lang-go=\"`sending`\" pulumi-lang-python=\"`sending`\" pulumi-lang-yaml=\"`sending`\" pulumi-lang-java=\"`sending`\"\u003e`sending`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`support`\" pulumi-lang-dotnet=\"`Support`\" pulumi-lang-go=\"`support`\" pulumi-lang-python=\"`support`\" pulumi-lang-yaml=\"`support`\" pulumi-lang-java=\"`support`\"\u003e`support`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`developer`\" pulumi-lang-dotnet=\"`Developer`\" pulumi-lang-go=\"`developer`\" pulumi-lang-python=\"`developer`\" pulumi-lang-yaml=\"`developer`\" pulumi-lang-java=\"`developer`\"\u003e`developer`\u003c/span\u003e) Key role.\n",
+                    "willReplaceOnChanges": true
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "API key user's string user ID; should be provided for all keys of \u003cspan pulumi-lang-nodejs=\"`web`\" pulumi-lang-dotnet=\"`Web`\" pulumi-lang-go=\"`web`\" pulumi-lang-python=\"`web`\" pulumi-lang-yaml=\"`web`\" pulumi-lang-java=\"`web`\"\u003e`web`\u003c/span\u003e kind.\n",
+                    "willReplaceOnChanges": true
+                },
+                "userName": {
+                    "type": "string",
+                    "description": "API key user's name.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "role"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ApiKey resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Key description.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "disabledReason": {
+                        "type": "string",
+                        "description": "The reason for the key's disablement.\n"
+                    },
+                    "domainName": {
+                        "type": "string",
+                        "description": "Web domain to associate with the key, for keys of \u003cspan pulumi-lang-nodejs=\"`domain`\" pulumi-lang-dotnet=\"`Domain`\" pulumi-lang-go=\"`domain`\" pulumi-lang-python=\"`domain`\" pulumi-lang-yaml=\"`domain`\" pulumi-lang-java=\"`domain`\"\u003e`domain`\u003c/span\u003e kind.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "API key user's email address; should be provided for all keys of \u003cspan pulumi-lang-nodejs=\"`web`\" pulumi-lang-dotnet=\"`Web`\" pulumi-lang-go=\"`web`\" pulumi-lang-python=\"`web`\" pulumi-lang-yaml=\"`web`\" pulumi-lang-java=\"`web`\"\u003e`web`\u003c/span\u003e kind.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "expiresAt": {
+                        "type": "integer",
+                        "description": "When the key will expire.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "isDisabled": {
+                        "type": "boolean",
+                        "description": "Whether or not the key is disabled from use.\n"
+                    },
+                    "kind": {
+                        "type": "string",
+                        "description": "(Enum:\u003cspan pulumi-lang-nodejs=\"`domain`\" pulumi-lang-dotnet=\"`Domain`\" pulumi-lang-go=\"`domain`\" pulumi-lang-python=\"`domain`\" pulumi-lang-yaml=\"`domain`\" pulumi-lang-java=\"`domain`\"\u003e`domain`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`user`\" pulumi-lang-dotnet=\"`User`\" pulumi-lang-go=\"`user`\" pulumi-lang-python=\"`user`\" pulumi-lang-yaml=\"`user`\" pulumi-lang-java=\"`user`\"\u003e`user`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`web`\" pulumi-lang-dotnet=\"`Web`\" pulumi-lang-go=\"`web`\" pulumi-lang-python=\"`web`\" pulumi-lang-yaml=\"`web`\" pulumi-lang-java=\"`web`\"\u003e`web`\u003c/span\u003e). API key type. Default: \u003cspan pulumi-lang-nodejs=\"`user`\" pulumi-lang-dotnet=\"`User`\" pulumi-lang-go=\"`user`\" pulumi-lang-python=\"`user`\" pulumi-lang-yaml=\"`user`\" pulumi-lang-java=\"`user`\"\u003e`user`\u003c/span\u003e.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "requestor": {
+                        "type": "string",
+                        "description": "An email address associated with the key.\n"
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "(Enum: \u003cspan pulumi-lang-nodejs=\"`admin`\" pulumi-lang-dotnet=\"`Admin`\" pulumi-lang-go=\"`admin`\" pulumi-lang-python=\"`admin`\" pulumi-lang-yaml=\"`admin`\" pulumi-lang-java=\"`admin`\"\u003e`admin`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`basic`\" pulumi-lang-dotnet=\"`Basic`\" pulumi-lang-go=\"`basic`\" pulumi-lang-python=\"`basic`\" pulumi-lang-yaml=\"`basic`\" pulumi-lang-java=\"`basic`\"\u003e`basic`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sending`\" pulumi-lang-dotnet=\"`Sending`\" pulumi-lang-go=\"`sending`\" pulumi-lang-python=\"`sending`\" pulumi-lang-yaml=\"`sending`\" pulumi-lang-java=\"`sending`\"\u003e`sending`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`support`\" pulumi-lang-dotnet=\"`Support`\" pulumi-lang-go=\"`support`\" pulumi-lang-python=\"`support`\" pulumi-lang-yaml=\"`support`\" pulumi-lang-java=\"`support`\"\u003e`support`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`developer`\" pulumi-lang-dotnet=\"`Developer`\" pulumi-lang-go=\"`developer`\" pulumi-lang-python=\"`developer`\" pulumi-lang-yaml=\"`developer`\" pulumi-lang-java=\"`developer`\"\u003e`developer`\u003c/span\u003e) Key role.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "secret": {
+                        "type": "string",
+                        "description": "The full API key secret in plain text.\n",
+                        "secret": true
+                    },
+                    "userId": {
+                        "type": "string",
+                        "description": "API key user's string user ID; should be provided for all keys of \u003cspan pulumi-lang-nodejs=\"`web`\" pulumi-lang-dotnet=\"`Web`\" pulumi-lang-go=\"`web`\" pulumi-lang-python=\"`web`\" pulumi-lang-yaml=\"`web`\" pulumi-lang-java=\"`web`\"\u003e`web`\u003c/span\u003e kind.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "userName": {
+                        "type": "string",
+                        "description": "API key user's name.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "mailgun:index/domain:Domain": {
-            "description": "Provides a Mailgun App resource. This can be used to\ncreate and manage applications on Mailgun.\n\nAfter DNS records are set, domain verification should be triggered manually using [PUT /domains/\\\u003cdomain\\\u003e/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as mailgun from \"@pulumi/mailgun\";\n\n// Create a new Mailgun domain\nconst _default = new mailgun.Domain(\"default\", {\n    name: \"test.example.com\",\n    region: \"us\",\n    spamAction: \"disabled\",\n    smtpPassword: \"supersecretpassword1234\",\n    dkimKeySize: 1024,\n});\n```\n```python\nimport pulumi\nimport pulumi_mailgun as mailgun\n\n# Create a new Mailgun domain\ndefault = mailgun.Domain(\"default\",\n    name=\"test.example.com\",\n    region=\"us\",\n    spam_action=\"disabled\",\n    smtp_password=\"supersecretpassword1234\",\n    dkim_key_size=1024)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Mailgun = Pulumi.Mailgun;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create a new Mailgun domain\n    var @default = new Mailgun.Domain(\"default\", new()\n    {\n        Name = \"test.example.com\",\n        Region = \"us\",\n        SpamAction = \"disabled\",\n        SmtpPassword = \"supersecretpassword1234\",\n        DkimKeySize = 1024,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create a new Mailgun domain\n\t\t_, err := mailgun.NewDomain(ctx, \"default\", \u0026mailgun.DomainArgs{\n\t\t\tName:         pulumi.String(\"test.example.com\"),\n\t\t\tRegion:       pulumi.String(\"us\"),\n\t\t\tSpamAction:   pulumi.String(\"disabled\"),\n\t\t\tSmtpPassword: pulumi.String(\"supersecretpassword1234\"),\n\t\t\tDkimKeySize:  pulumi.Int(1024),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.mailgun.Domain;\nimport com.pulumi.mailgun.DomainArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create a new Mailgun domain\n        var default_ = new Domain(\"default\", DomainArgs.builder()\n            .name(\"test.example.com\")\n            .region(\"us\")\n            .spamAction(\"disabled\")\n            .smtpPassword(\"supersecretpassword1234\")\n            .dkimKeySize(1024)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create a new Mailgun domain\n  default:\n    type: mailgun:Domain\n    properties:\n      name: test.example.com\n      region: us\n      spamAction: disabled\n      smtpPassword: supersecretpassword1234\n      dkimKeySize: 1024\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDomains can be imported using `region:domain_name` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied). \n\nhcl\n\n```sh\n$ pulumi import mailgun:index/domain:Domain test us:example.domain.com\n```\n\n",
+            "description": "\n\n## Import\n\nDomains can be imported using `region:domain_name` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).\n\nhcl\n\n```sh\n$ pulumi import mailgun:index/domain:Domain test us:example.domain.com\n```\n\n",
             "properties": {
                 "clickTracking": {
                     "type": "boolean",
@@ -857,7 +1026,7 @@
     },
     "functions": {
         "mailgun:index/getDomain:getDomain": {
-            "description": "\u003cspan pulumi-lang-nodejs=\"`mailgun.Domain`\" pulumi-lang-dotnet=\"`mailgun.Domain`\" pulumi-lang-go=\"`Domain`\" pulumi-lang-python=\"`Domain`\" pulumi-lang-yaml=\"`mailgun.Domain`\" pulumi-lang-java=\"`mailgun.Domain`\"\u003e`mailgun.Domain`\u003c/span\u003e provides details about a Mailgun domain.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aws from \"@pulumi/aws\";\nimport * as mailgun from \"@pulumi/mailgun\";\n\nconst domain = mailgun.getDomain({\n    name: \"test.example.com\",\n});\nconst mailgun_mx = new aws.index.Route53Record(\"mailgun-mx\", {\n    zoneId: zoneId,\n    name: domainMailgun.name,\n    type: \"MX\",\n    ttl: 3600,\n    records: [\n        `${domain.receivingRecords?.[0]?.priority} ${domain.receivingRecords?.[0]?.value}.`,\n        `${domain.receivingRecords?.[1]?.priority} ${domain.receivingRecords?.[1]?.value}.`,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_aws as aws\nimport pulumi_mailgun as mailgun\n\ndomain = mailgun.get_domain(name=\"test.example.com\")\nmailgun_mx = aws.index.Route53Record(\"mailgun-mx\",\n    zone_id=zone_id,\n    name=domain_mailgun.name,\n    type=MX,\n    ttl=3600,\n    records=[\n        f{domain.receiving_records[0].priority} {domain.receiving_records[0].value}.,\n        f{domain.receiving_records[1].priority} {domain.receiving_records[1].value}.,\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aws = Pulumi.Aws;\nusing Mailgun = Pulumi.Mailgun;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var domain = Mailgun.GetDomain.Invoke(new()\n    {\n        Name = \"test.example.com\",\n    });\n\n    var mailgun_mx = new Aws.Index.Route53Record(\"mailgun-mx\", new()\n    {\n        ZoneId = zoneId,\n        Name = domainMailgun.Name,\n        Type = \"MX\",\n        Ttl = 3600,\n        Records = new[]\n        {\n            $\"{domain.Apply(getDomainResult =\u003e getDomainResult.ReceivingRecords[0]?.Priority)} {domain.Apply(getDomainResult =\u003e getDomainResult.ReceivingRecords[0]?.Value)}.\",\n            $\"{domain.Apply(getDomainResult =\u003e getDomainResult.ReceivingRecords[1]?.Priority)} {domain.Apply(getDomainResult =\u003e getDomainResult.ReceivingRecords[1]?.Value)}.\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-aws/sdk/v4/go/aws\"\n\t\"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdomain, err := mailgun.LookupDomain(ctx, \u0026mailgun.LookupDomainArgs{\n\t\t\tName: \"test.example.com\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aws.NewRoute53Record(ctx, \"mailgun-mx\", \u0026aws.Route53RecordArgs{\n\t\t\tZoneId: zoneId,\n\t\t\tName:   domainMailgun.Name,\n\t\t\tType:   \"MX\",\n\t\t\tTtl:    3600,\n\t\t\tRecords: []string{\n\t\t\t\tfmt.Sprintf(\"%v %v.\", domain.ReceivingRecords[0].Priority, domain.ReceivingRecords[0].Value),\n\t\t\t\tfmt.Sprintf(\"%v %v.\", domain.ReceivingRecords[1].Priority, domain.ReceivingRecords[1].Value),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.mailgun.MailgunFunctions;\nimport com.pulumi.mailgun.inputs.GetDomainArgs;\nimport com.pulumi.aws.route53Record;\nimport com.pulumi.aws.route53RecordArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var domain = MailgunFunctions.getDomain(GetDomainArgs.builder()\n            .name(\"test.example.com\")\n            .build());\n\n        var mailgun_mx = new Route53Record(\"mailgun-mx\", Route53RecordArgs.builder()\n            .zoneId(zoneId)\n            .name(domainMailgun.name())\n            .type(\"MX\")\n            .ttl(3600)\n            .records(List.of(            \n                String.format(\"%s %s.\", domain.receivingRecords()[0].priority(),domain.receivingRecords()[0].value()),\n                String.format(\"%s %s.\", domain.receivingRecords()[1].priority(),domain.receivingRecords()[1].value())))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mailgun-mx:\n    type: aws:route53Record\n    properties:\n      zoneId: ${zoneId}\n      name: ${domainMailgun.name}\n      type: MX\n      ttl: 3600\n      records:\n        - ${domain.receivingRecords[0].priority} ${domain.receivingRecords[0].value}.\n        - ${domain.receivingRecords[1].priority} ${domain.receivingRecords[1].value}.\nvariables:\n  domain:\n    fn::invoke:\n      function: mailgun:getDomain\n      arguments:\n        name: test.example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "\u003cspan pulumi-lang-nodejs=\"`mailgun.Domain`\" pulumi-lang-dotnet=\"`mailgun.Domain`\" pulumi-lang-go=\"`Domain`\" pulumi-lang-python=\"`Domain`\" pulumi-lang-yaml=\"`mailgun.Domain`\" pulumi-lang-java=\"`mailgun.Domain`\"\u003e`mailgun.Domain`\u003c/span\u003e provides details about a Mailgun domain.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aws from \"@pulumi/aws\";\nimport * as mailgun from \"@pulumi/mailgun\";\n\nconst domain = mailgun.getDomain({\n    name: \"test.example.com\",\n});\nconst mailgun_mx = new aws.index.Route53Record(\"mailgun-mx\", {\n    zoneId: zoneId,\n    name: domainMailgun.name,\n    type: \"MX\",\n    ttl: 3600,\n    records: [\n        `${domain.receivingRecords?.[0]?.priority} ${domain.receivingRecords?.[0]?.value}.`,\n        `${domain.receivingRecords?.[1]?.priority} ${domain.receivingRecords?.[1]?.value}.`,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_aws as aws\nimport pulumi_mailgun as mailgun\n\ndomain = mailgun.get_domain(name=\"test.example.com\")\nmailgun_mx = aws.index.Route53Record(\"mailgun-mx\",\n    zone_id=zone_id,\n    name=domain_mailgun.name,\n    type=MX,\n    ttl=3600,\n    records=[\n        f{domain.receiving_records[0].priority} {domain.receiving_records[0].value}.,\n        f{domain.receiving_records[1].priority} {domain.receiving_records[1].value}.,\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aws = Pulumi.Aws;\nusing Mailgun = Pulumi.Mailgun;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var domain = Mailgun.GetDomain.Invoke(new()\n    {\n        Name = \"test.example.com\",\n    });\n\n    var mailgun_mx = new Aws.Index.Route53Record(\"mailgun-mx\", new()\n    {\n        ZoneId = zoneId,\n        Name = domainMailgun.Name,\n        Type = \"MX\",\n        Ttl = 3600,\n        Records = new[]\n        {\n            $\"{domain.Apply(getDomainResult =\u003e getDomainResult.ReceivingRecords[0]?.Priority)} {domain.Apply(getDomainResult =\u003e getDomainResult.ReceivingRecords[0]?.Value)}.\",\n            $\"{domain.Apply(getDomainResult =\u003e getDomainResult.ReceivingRecords[1]?.Priority)} {domain.Apply(getDomainResult =\u003e getDomainResult.ReceivingRecords[1]?.Value)}.\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-aws/sdk/v7/go/aws\"\n\t\"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tdomain, err := mailgun.LookupDomain(ctx, \u0026mailgun.LookupDomainArgs{\n\t\t\tName: \"test.example.com\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aws.NewRoute53Record(ctx, \"mailgun-mx\", \u0026aws.Route53RecordArgs{\n\t\t\tZoneId: zoneId,\n\t\t\tName:   domainMailgun.Name,\n\t\t\tType:   \"MX\",\n\t\t\tTtl:    3600,\n\t\t\tRecords: []string{\n\t\t\t\tfmt.Sprintf(\"%v %v.\", domain.ReceivingRecords[0].Priority, domain.ReceivingRecords[0].Value),\n\t\t\t\tfmt.Sprintf(\"%v %v.\", domain.ReceivingRecords[1].Priority, domain.ReceivingRecords[1].Value),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.mailgun.MailgunFunctions;\nimport com.pulumi.mailgun.inputs.GetDomainArgs;\nimport com.pulumi.aws.Route53Record;\nimport com.pulumi.aws.Route53RecordArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var domain = MailgunFunctions.getDomain(GetDomainArgs.builder()\n            .name(\"test.example.com\")\n            .build());\n\n        var mailgun_mx = new Route53Record(\"mailgun-mx\", Route53RecordArgs.builder()\n            .zoneId(zoneId)\n            .name(domainMailgun.name())\n            .type(\"MX\")\n            .ttl(3600)\n            .records(List.of(            \n                String.format(\"%s %s.\", domain.receivingRecords()[0].priority(),domain.receivingRecords()[0].value()),\n                String.format(\"%s %s.\", domain.receivingRecords()[1].priority(),domain.receivingRecords()[1].value())))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mailgun-mx:\n    type: aws:Route53Record\n    properties:\n      zoneId: ${zoneId}\n      name: ${domainMailgun.name}\n      type: MX\n      ttl: 3600\n      records:\n        - ${domain.receivingRecords[0].priority} ${domain.receivingRecords[0].value}.\n        - ${domain.receivingRecords[1].priority} ${domain.receivingRecords[1].value}.\nvariables:\n  domain:\n    fn::invoke:\n      function: mailgun:getDomain\n      arguments:\n        name: test.example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDomain.\n",
                 "properties": {
