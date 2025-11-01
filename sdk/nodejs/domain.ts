@@ -7,27 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides a Mailgun App resource. This can be used to
- * create and manage applications on Mailgun.
- *
- * After DNS records are set, domain verification should be triggered manually using [PUT /domains/\<domain\>/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as mailgun from "@pulumi/mailgun";
- *
- * // Create a new Mailgun domain
- * const _default = new mailgun.Domain("default", {
- *     name: "test.example.com",
- *     region: "us",
- *     spamAction: "disabled",
- *     smtpPassword: "supersecretpassword1234",
- *     dkimKeySize: 1024,
- * });
- * ```
- *
  * ## Import
  *
  * Domains can be imported using `region:domain_name` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).

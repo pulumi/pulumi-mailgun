@@ -1,6 +1,9 @@
 {
     "auto-aliasing": {
         "resources": {
+            "mailgun_api_key": {
+                "current": "mailgun:index/apiKey:ApiKey"
+            },
             "mailgun_domain": {
                 "current": "mailgun:index/domain:Domain",
                 "fields": {

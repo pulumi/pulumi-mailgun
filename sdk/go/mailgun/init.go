@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "mailgun:index/apiKey:ApiKey":
+		r = &ApiKey{}
 	case "mailgun:index/domain:Domain":
 		r = &Domain{}
 	case "mailgun:index/domainCredential:DomainCredential":
@@ -60,6 +62,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"mailgun",
+		"index/apiKey",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"mailgun",
 		"index/domain",

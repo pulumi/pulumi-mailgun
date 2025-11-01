@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { ApiKeyArgs, ApiKeyState } from "./apiKey";
+export type ApiKey = import("./apiKey").ApiKey;
+export const ApiKey: typeof import("./apiKey").ApiKey = null as any;
+utilities.lazyLoad(exports, ["ApiKey"], () => require("./apiKey"));
+
 export { DomainArgs, DomainState } from "./domain";
 export type Domain = import("./domain").Domain;
 export const Domain: typeof import("./domain").Domain = null as any;
@@ -47,6 +52,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "mailgun:index/apiKey:ApiKey":
+                return new ApiKey(name, <any>undefined, { urn })
             case "mailgun:index/domain:Domain":
                 return new Domain(name, <any>undefined, { urn })
             case "mailgun:index/domainCredential:DomainCredential":
@@ -60,6 +67,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("mailgun", "index/apiKey", _module)
 pulumi.runtime.registerResourceModule("mailgun", "index/domain", _module)
 pulumi.runtime.registerResourceModule("mailgun", "index/domainCredential", _module)
 pulumi.runtime.registerResourceModule("mailgun", "index/route", _module)

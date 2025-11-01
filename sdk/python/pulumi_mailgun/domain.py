@@ -505,26 +505,6 @@ class Domain(pulumi.CustomResource):
                  wildcard: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        Provides a Mailgun App resource. This can be used to
-        create and manage applications on Mailgun.
-
-        After DNS records are set, domain verification should be triggered manually using [PUT /domains/\\<domain\\>/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_mailgun as mailgun
-
-        # Create a new Mailgun domain
-        default = mailgun.Domain("default",
-            name="test.example.com",
-            region="us",
-            spam_action="disabled",
-            smtp_password="supersecretpassword1234",
-            dkim_key_size=1024)
-        ```
-
         ## Import
 
         Domains can be imported using `region:domain_name` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
@@ -559,26 +539,6 @@ class Domain(pulumi.CustomResource):
                  args: Optional[DomainArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Mailgun App resource. This can be used to
-        create and manage applications on Mailgun.
-
-        After DNS records are set, domain verification should be triggered manually using [PUT /domains/\\<domain\\>/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_mailgun as mailgun
-
-        # Create a new Mailgun domain
-        default = mailgun.Domain("default",
-            name="test.example.com",
-            region="us",
-            spam_action="disabled",
-            smtp_password="supersecretpassword1234",
-            dkim_key_size=1024)
-        ```
-
         ## Import
 
         Domains can be imported using `region:domain_name` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
