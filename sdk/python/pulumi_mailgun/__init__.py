@@ -6,6 +6,7 @@ import builtins as _builtins
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .api_key import *
 from .domain import *
 from .domain_credential import *
 from .get_domain import *
@@ -25,6 +26,14 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "mailgun",
+  "mod": "index/apiKey",
+  "fqn": "pulumi_mailgun",
+  "classes": {
+   "mailgun:index/apiKey:ApiKey": "ApiKey"
+  }
+ },
  {
   "pkg": "mailgun",
   "mod": "index/domain",

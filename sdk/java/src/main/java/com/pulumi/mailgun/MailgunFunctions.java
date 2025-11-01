@@ -29,8 +29,8 @@ public final class MailgunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.mailgun.MailgunFunctions;
      * import com.pulumi.mailgun.inputs.GetDomainArgs;
-     * import com.pulumi.aws.route53Record;
-     * import com.pulumi.aws.route53RecordArgs;
+     * import com.pulumi.aws.Route53Record;
+     * import com.pulumi.aws.Route53RecordArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -81,8 +81,8 @@ public final class MailgunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.mailgun.MailgunFunctions;
      * import com.pulumi.mailgun.inputs.GetDomainArgs;
-     * import com.pulumi.aws.route53Record;
-     * import com.pulumi.aws.route53RecordArgs;
+     * import com.pulumi.aws.Route53Record;
+     * import com.pulumi.aws.Route53RecordArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -133,8 +133,8 @@ public final class MailgunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.mailgun.MailgunFunctions;
      * import com.pulumi.mailgun.inputs.GetDomainArgs;
-     * import com.pulumi.aws.route53Record;
-     * import com.pulumi.aws.route53RecordArgs;
+     * import com.pulumi.aws.Route53Record;
+     * import com.pulumi.aws.Route53RecordArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -185,8 +185,8 @@ public final class MailgunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.mailgun.MailgunFunctions;
      * import com.pulumi.mailgun.inputs.GetDomainArgs;
-     * import com.pulumi.aws.route53Record;
-     * import com.pulumi.aws.route53RecordArgs;
+     * import com.pulumi.aws.Route53Record;
+     * import com.pulumi.aws.Route53RecordArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -237,8 +237,8 @@ public final class MailgunFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.mailgun.MailgunFunctions;
      * import com.pulumi.mailgun.inputs.GetDomainArgs;
-     * import com.pulumi.aws.route53Record;
-     * import com.pulumi.aws.route53RecordArgs;
+     * import com.pulumi.aws.Route53Record;
+     * import com.pulumi.aws.Route53RecordArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
