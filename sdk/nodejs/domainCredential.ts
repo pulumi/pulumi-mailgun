@@ -77,7 +77,7 @@ export class DomainCredential extends pulumi.CustomResource {
      */
     declare public readonly password: pulumi.Output<string>;
     /**
-     * The region where domain will be created. Default value is `us`.
+     * The region where domain credential will be created. Default value is `us`.
      */
     declare public readonly region: pulumi.Output<string | undefined>;
 
@@ -138,7 +138,7 @@ export interface DomainCredentialState {
      */
     password?: pulumi.Input<string>;
     /**
-     * The region where domain will be created. Default value is `us`.
+     * The region where domain credential will be created. Default value is `us`.
      */
     region?: pulumi.Input<string>;
 }
@@ -160,7 +160,7 @@ export interface DomainCredentialArgs {
      */
     password: pulumi.Input<string>;
     /**
-     * The region where domain will be created. Default value is `us`.
+     * The region where domain credential will be created. Default value is `us`.
      */
     region?: pulumi.Input<string>;
 }

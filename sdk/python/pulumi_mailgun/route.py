@@ -28,7 +28,7 @@ class RouteArgs:
         The set of arguments for constructing a Route resource.
         :param pulumi.Input[_builtins.str] expression: A filter expression like `match_recipient('.*@gmail.com')`
         :param pulumi.Input[_builtins.int] priority: Smaller number indicates higher priority. Higher priority routes are handled first.
-        :param pulumi.Input[_builtins.str] region: The region where domain will be created. Default value is `us`.
+        :param pulumi.Input[_builtins.str] region: The region where route will be created. Default value is `us`.
         """
         pulumi.set(__self__, "actions", actions)
         pulumi.set(__self__, "expression", expression)
@@ -84,7 +84,7 @@ class RouteArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The region where domain will be created. Default value is `us`.
+        The region where route will be created. Default value is `us`.
         """
         return pulumi.get(self, "region")
 
@@ -105,7 +105,7 @@ class _RouteState:
         Input properties used for looking up and filtering Route resources.
         :param pulumi.Input[_builtins.str] expression: A filter expression like `match_recipient('.*@gmail.com')`
         :param pulumi.Input[_builtins.int] priority: Smaller number indicates higher priority. Higher priority routes are handled first.
-        :param pulumi.Input[_builtins.str] region: The region where domain will be created. Default value is `us`.
+        :param pulumi.Input[_builtins.str] region: The region where route will be created. Default value is `us`.
         """
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
@@ -164,7 +164,7 @@ class _RouteState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The region where domain will be created. Default value is `us`.
+        The region where route will be created. Default value is `us`.
         """
         return pulumi.get(self, "region")
 
@@ -219,7 +219,7 @@ class Route(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] expression: A filter expression like `match_recipient('.*@gmail.com')`
         :param pulumi.Input[_builtins.int] priority: Smaller number indicates higher priority. Higher priority routes are handled first.
-        :param pulumi.Input[_builtins.str] region: The region where domain will be created. Default value is `us`.
+        :param pulumi.Input[_builtins.str] region: The region where route will be created. Default value is `us`.
         """
         ...
     @overload
@@ -321,7 +321,7 @@ class Route(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] expression: A filter expression like `match_recipient('.*@gmail.com')`
         :param pulumi.Input[_builtins.int] priority: Smaller number indicates higher priority. Higher priority routes are handled first.
-        :param pulumi.Input[_builtins.str] region: The region where domain will be created. Default value is `us`.
+        :param pulumi.Input[_builtins.str] region: The region where route will be created. Default value is `us`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -364,7 +364,7 @@ class Route(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The region where domain will be created. Default value is `us`.
+        The region where route will be created. Default value is `us`.
         """
         return pulumi.get(self, "region")
 

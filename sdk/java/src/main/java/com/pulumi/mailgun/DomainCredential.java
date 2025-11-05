@@ -115,14 +115,14 @@ public class DomainCredential extends com.pulumi.resources.CustomResource {
         return this.password;
     }
     /**
-     * The region where domain will be created. Default value is `us`.
+     * The region where domain credential will be created. Default value is `us`.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> region;
 
     /**
-     * @return The region where domain will be created. Default value is `us`.
+     * @return The region where domain credential will be created. Default value is `us`.
      * 
      */
     public Output<Optional<String>> region() {

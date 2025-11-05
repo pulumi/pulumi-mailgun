@@ -70,7 +70,7 @@ namespace Pulumi.Mailgun
         public Output<int> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// The region where domain will be created. Default value is `Us`.
+        /// The region where route will be created. Default value is `Us`.
         /// </summary>
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
@@ -145,7 +145,7 @@ namespace Pulumi.Mailgun
         public Input<int> Priority { get; set; } = null!;
 
         /// <summary>
-        /// The region where domain will be created. Default value is `Us`.
+        /// The region where route will be created. Default value is `Us`.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -182,7 +182,7 @@ namespace Pulumi.Mailgun
         public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// The region where domain will be created. Default value is `Us`.
+        /// The region where route will be created. Default value is `Us`.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

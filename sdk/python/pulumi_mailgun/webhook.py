@@ -28,7 +28,7 @@ class WebhookArgs:
         :param pulumi.Input[_builtins.str] domain: The domain to add to Mailgun
         :param pulumi.Input[_builtins.str] kind: The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] urls: The urls of webhook
-        :param pulumi.Input[_builtins.str] region: The region where domain will be created. Default value is `us`.
+        :param pulumi.Input[_builtins.str] region: The region where webhook will be created. Default value is `us`.
         """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "kind", kind)
@@ -76,7 +76,7 @@ class WebhookArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The region where domain will be created. Default value is `us`.
+        The region where webhook will be created. Default value is `us`.
         """
         return pulumi.get(self, "region")
 
@@ -96,7 +96,7 @@ class _WebhookState:
         Input properties used for looking up and filtering Webhook resources.
         :param pulumi.Input[_builtins.str] domain: The domain to add to Mailgun
         :param pulumi.Input[_builtins.str] kind: The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
-        :param pulumi.Input[_builtins.str] region: The region where domain will be created. Default value is `us`.
+        :param pulumi.Input[_builtins.str] region: The region where webhook will be created. Default value is `us`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] urls: The urls of webhook
         """
         if domain is not None:
@@ -136,7 +136,7 @@ class _WebhookState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The region where domain will be created. Default value is `us`.
+        The region where webhook will be created. Default value is `us`.
         """
         return pulumi.get(self, "region")
 
@@ -190,7 +190,7 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain: The domain to add to Mailgun
         :param pulumi.Input[_builtins.str] kind: The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
-        :param pulumi.Input[_builtins.str] region: The region where domain will be created. Default value is `us`.
+        :param pulumi.Input[_builtins.str] region: The region where webhook will be created. Default value is `us`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] urls: The urls of webhook
         """
         ...
@@ -278,7 +278,7 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain: The domain to add to Mailgun
         :param pulumi.Input[_builtins.str] kind: The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanent_fail`, `temporary_fail` `unsubscribed`)
-        :param pulumi.Input[_builtins.str] region: The region where domain will be created. Default value is `us`.
+        :param pulumi.Input[_builtins.str] region: The region where webhook will be created. Default value is `us`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] urls: The urls of webhook
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -311,7 +311,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The region where domain will be created. Default value is `us`.
+        The region where webhook will be created. Default value is `us`.
         """
         return pulumi.get(self, "region")
 

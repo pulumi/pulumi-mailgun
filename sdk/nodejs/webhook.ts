@@ -60,7 +60,7 @@ export class Webhook extends pulumi.CustomResource {
      */
     declare public readonly kind: pulumi.Output<string>;
     /**
-     * The region where domain will be created. Default value is `us`.
+     * The region where webhook will be created. Default value is `us`.
      */
     declare public readonly region: pulumi.Output<string | undefined>;
     /**
@@ -119,7 +119,7 @@ export interface WebhookState {
      */
     kind?: pulumi.Input<string>;
     /**
-     * The region where domain will be created. Default value is `us`.
+     * The region where webhook will be created. Default value is `us`.
      */
     region?: pulumi.Input<string>;
     /**
@@ -141,7 +141,7 @@ export interface WebhookArgs {
      */
     kind: pulumi.Input<string>;
     /**
-     * The region where domain will be created. Default value is `us`.
+     * The region where webhook will be created. Default value is `us`.
      */
     region?: pulumi.Input<string>;
     /**

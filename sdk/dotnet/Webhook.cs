@@ -54,7 +54,7 @@ namespace Pulumi.Mailgun
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// The region where domain will be created. Default value is `Us`.
+        /// The region where webhook will be created. Default value is `Us`.
         /// </summary>
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.Mailgun
         public Input<string> Kind { get; set; } = null!;
 
         /// <summary>
-        /// The region where domain will be created. Default value is `Us`.
+        /// The region where webhook will be created. Default value is `Us`.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -162,7 +162,7 @@ namespace Pulumi.Mailgun
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// The region where domain will be created. Default value is `Us`.
+        /// The region where webhook will be created. Default value is `Us`.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
