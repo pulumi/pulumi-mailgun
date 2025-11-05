@@ -787,7 +787,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n"
+                    "description": "The region where domain credential will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n"
                 }
             },
             "required": [
@@ -813,7 +813,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
+                    "description": "The region where domain credential will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -842,7 +842,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
+                        "description": "The region where domain credential will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -871,7 +871,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n"
+                    "description": "The region where route will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n"
                 }
             },
             "required": [
@@ -899,7 +899,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
+                    "description": "The region where route will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -930,7 +930,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
+                        "description": "The region where route will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -950,7 +950,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n"
+                    "description": "The region where webhook will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n"
                 },
                 "urls": {
                     "type": "array",
@@ -978,7 +978,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
+                    "description": "The region where webhook will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
                     "willReplaceOnChanges": true
                 },
                 "urls": {
@@ -1009,7 +1009,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
+                        "description": "The region where webhook will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
                         "willReplaceOnChanges": true
                     },
                     "urls": {
