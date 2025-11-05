@@ -66,7 +66,7 @@ type DomainCredential struct {
 	Login pulumi.StringOutput `pulumi:"login"`
 	// Password for user authentication.
 	Password pulumi.StringOutput `pulumi:"password"`
-	// The region where domain will be created. Default value is `us`.
+	// The region where domain credential will be created. Default value is `us`.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 }
 
@@ -122,7 +122,7 @@ type domainCredentialState struct {
 	Login *string `pulumi:"login"`
 	// Password for user authentication.
 	Password *string `pulumi:"password"`
-	// The region where domain will be created. Default value is `us`.
+	// The region where domain credential will be created. Default value is `us`.
 	Region *string `pulumi:"region"`
 }
 
@@ -133,7 +133,7 @@ type DomainCredentialState struct {
 	Login pulumi.StringPtrInput
 	// Password for user authentication.
 	Password pulumi.StringPtrInput
-	// The region where domain will be created. Default value is `us`.
+	// The region where domain credential will be created. Default value is `us`.
 	Region pulumi.StringPtrInput
 }
 
@@ -148,7 +148,7 @@ type domainCredentialArgs struct {
 	Login string `pulumi:"login"`
 	// Password for user authentication.
 	Password string `pulumi:"password"`
-	// The region where domain will be created. Default value is `us`.
+	// The region where domain credential will be created. Default value is `us`.
 	Region *string `pulumi:"region"`
 }
 
@@ -160,7 +160,7 @@ type DomainCredentialArgs struct {
 	Login pulumi.StringInput
 	// Password for user authentication.
 	Password pulumi.StringInput
-	// The region where domain will be created. Default value is `us`.
+	// The region where domain credential will be created. Default value is `us`.
 	Region pulumi.StringPtrInput
 }
 
@@ -266,7 +266,7 @@ func (o DomainCredentialOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainCredential) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// The region where domain will be created. Default value is `us`.
+// The region where domain credential will be created. Default value is `us`.
 func (o DomainCredentialOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainCredential) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
 }

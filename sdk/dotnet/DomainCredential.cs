@@ -70,7 +70,7 @@ namespace Pulumi.Mailgun
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The region where domain will be created. Default value is `Us`.
+        /// The region where domain credential will be created. Default value is `Us`.
         /// </summary>
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.Mailgun
         }
 
         /// <summary>
-        /// The region where domain will be created. Default value is `Us`.
+        /// The region where domain credential will be created. Default value is `Us`.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -196,7 +196,7 @@ namespace Pulumi.Mailgun
         }
 
         /// <summary>
-        /// The region where domain will be created. Default value is `Us`.
+        /// The region where domain credential will be created. Default value is `Us`.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

@@ -61,14 +61,14 @@ public final class DomainCredentialState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The region where domain will be created. Default value is `us`.
+     * The region where domain credential will be created. Default value is `us`.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The region where domain will be created. Default value is `us`.
+     * @return The region where domain credential will be created. Default value is `us`.
      * 
      */
     public Optional<Output<String>> region() {
@@ -166,7 +166,7 @@ public final class DomainCredentialState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param region The region where domain will be created. Default value is `us`.
+         * @param region The region where domain credential will be created. Default value is `us`.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class DomainCredentialState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param region The region where domain will be created. Default value is `us`.
+         * @param region The region where domain credential will be created. Default value is `us`.
          * 
          * @return builder
          * 

@@ -74,7 +74,7 @@ export class Route extends pulumi.CustomResource {
      */
     declare public readonly priority: pulumi.Output<number>;
     /**
-     * The region where domain will be created. Default value is `us`.
+     * The region where route will be created. Default value is `us`.
      */
     declare public readonly region: pulumi.Output<string | undefined>;
 
@@ -133,7 +133,7 @@ export interface RouteState {
      */
     priority?: pulumi.Input<number>;
     /**
-     * The region where domain will be created. Default value is `us`.
+     * The region where route will be created. Default value is `us`.
      */
     region?: pulumi.Input<string>;
 }
@@ -153,7 +153,7 @@ export interface RouteArgs {
      */
     priority: pulumi.Input<number>;
     /**
-     * The region where domain will be created. Default value is `us`.
+     * The region where route will be created. Default value is `us`.
      */
     region?: pulumi.Input<string>;
 }

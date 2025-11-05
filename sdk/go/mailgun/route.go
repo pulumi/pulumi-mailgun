@@ -65,7 +65,7 @@ type Route struct {
 	Expression pulumi.StringOutput `pulumi:"expression"`
 	// Smaller number indicates higher priority. Higher priority routes are handled first.
 	Priority pulumi.IntOutput `pulumi:"priority"`
-	// The region where domain will be created. Default value is `us`.
+	// The region where route will be created. Default value is `us`.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 }
 
@@ -114,7 +114,7 @@ type routeState struct {
 	Expression *string `pulumi:"expression"`
 	// Smaller number indicates higher priority. Higher priority routes are handled first.
 	Priority *int `pulumi:"priority"`
-	// The region where domain will be created. Default value is `us`.
+	// The region where route will be created. Default value is `us`.
 	Region *string `pulumi:"region"`
 }
 
@@ -125,7 +125,7 @@ type RouteState struct {
 	Expression pulumi.StringPtrInput
 	// Smaller number indicates higher priority. Higher priority routes are handled first.
 	Priority pulumi.IntPtrInput
-	// The region where domain will be created. Default value is `us`.
+	// The region where route will be created. Default value is `us`.
 	Region pulumi.StringPtrInput
 }
 
@@ -140,7 +140,7 @@ type routeArgs struct {
 	Expression string `pulumi:"expression"`
 	// Smaller number indicates higher priority. Higher priority routes are handled first.
 	Priority int `pulumi:"priority"`
-	// The region where domain will be created. Default value is `us`.
+	// The region where route will be created. Default value is `us`.
 	Region *string `pulumi:"region"`
 }
 
@@ -152,7 +152,7 @@ type RouteArgs struct {
 	Expression pulumi.StringInput
 	// Smaller number indicates higher priority. Higher priority routes are handled first.
 	Priority pulumi.IntInput
-	// The region where domain will be created. Default value is `us`.
+	// The region where route will be created. Default value is `us`.
 	Region pulumi.StringPtrInput
 }
 
@@ -261,7 +261,7 @@ func (o RouteOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v *Route) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
 
-// The region where domain will be created. Default value is `us`.
+// The region where route will be created. Default value is `us`.
 func (o RouteOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
 }

@@ -47,14 +47,14 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The region where domain will be created. Default value is `us`.
+     * The region where webhook will be created. Default value is `us`.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The region where domain will be created. Default value is `us`.
+     * @return The region where webhook will be created. Default value is `us`.
      * 
      */
     public Optional<Output<String>> region() {
@@ -146,7 +146,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region where domain will be created. Default value is `us`.
+         * @param region The region where webhook will be created. Default value is `us`.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class WebhookState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param region The region where domain will be created. Default value is `us`.
+         * @param region The region where webhook will be created. Default value is `us`.
          * 
          * @return builder
          * 

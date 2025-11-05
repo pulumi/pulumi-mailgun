@@ -53,7 +53,7 @@ type Webhook struct {
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// The region where domain will be created. Default value is `us`.
+	// The region where webhook will be created. Default value is `us`.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The urls of webhook
 	Urls pulumi.StringArrayOutput `pulumi:"urls"`
@@ -102,7 +102,7 @@ type webhookState struct {
 	Domain *string `pulumi:"domain"`
 	// The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
 	Kind *string `pulumi:"kind"`
-	// The region where domain will be created. Default value is `us`.
+	// The region where webhook will be created. Default value is `us`.
 	Region *string `pulumi:"region"`
 	// The urls of webhook
 	Urls []string `pulumi:"urls"`
@@ -113,7 +113,7 @@ type WebhookState struct {
 	Domain pulumi.StringPtrInput
 	// The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
 	Kind pulumi.StringPtrInput
-	// The region where domain will be created. Default value is `us`.
+	// The region where webhook will be created. Default value is `us`.
 	Region pulumi.StringPtrInput
 	// The urls of webhook
 	Urls pulumi.StringArrayInput
@@ -128,7 +128,7 @@ type webhookArgs struct {
 	Domain string `pulumi:"domain"`
 	// The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
 	Kind string `pulumi:"kind"`
-	// The region where domain will be created. Default value is `us`.
+	// The region where webhook will be created. Default value is `us`.
 	Region *string `pulumi:"region"`
 	// The urls of webhook
 	Urls []string `pulumi:"urls"`
@@ -140,7 +140,7 @@ type WebhookArgs struct {
 	Domain pulumi.StringInput
 	// The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
 	Kind pulumi.StringInput
-	// The region where domain will be created. Default value is `us`.
+	// The region where webhook will be created. Default value is `us`.
 	Region pulumi.StringPtrInput
 	// The urls of webhook
 	Urls pulumi.StringArrayInput
@@ -243,7 +243,7 @@ func (o WebhookOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// The region where domain will be created. Default value is `us`.
+// The region where webhook will be created. Default value is `us`.
 func (o WebhookOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Webhook) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
 }
