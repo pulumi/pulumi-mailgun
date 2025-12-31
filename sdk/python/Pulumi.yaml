@@ -1,0 +1,3 @@
+name: mailgun
+description: A Pulumi resource provider for mailgun.
+language: python
