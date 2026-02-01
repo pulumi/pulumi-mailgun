@@ -25,6 +25,7 @@ class ApiKeyArgs:
                  email: Optional[pulumi.Input[_builtins.str]] = None,
                  expires_at: Optional[pulumi.Input[_builtins.int]] = None,
                  kind: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  user_id: Optional[pulumi.Input[_builtins.str]] = None,
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -35,6 +36,7 @@ class ApiKeyArgs:
         :param pulumi.Input[_builtins.str] email: API key user's email address; should be provided for all keys of `web` kind.
         :param pulumi.Input[_builtins.int] expires_at: When the key will expire.
         :param pulumi.Input[_builtins.str] kind: (Enum:`domain`, `user`, or `web`). API key type. Default: `user`.
+        :param pulumi.Input[_builtins.str] region: The region where domain will be created. Default value is `us`.
         :param pulumi.Input[_builtins.str] user_id: API key user's string user ID; should be provided for all keys of `web` kind.
         :param pulumi.Input[_builtins.str] user_name: API key user's name.
         """
@@ -49,6 +51,8 @@ class ApiKeyArgs:
             pulumi.set(__self__, "expires_at", expires_at)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if user_id is not None:
             pulumi.set(__self__, "user_id", user_id)
         if user_name is not None:
@@ -127,6 +131,18 @@ class ApiKeyArgs:
         pulumi.set(self, "kind", value)
 
     @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The region where domain will be created. Default value is `us`.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -161,6 +177,7 @@ class _ApiKeyState:
                  expires_at: Optional[pulumi.Input[_builtins.int]] = None,
                  is_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  kind: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  requestor: Optional[pulumi.Input[_builtins.str]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  secret: Optional[pulumi.Input[_builtins.str]] = None,
@@ -175,6 +192,7 @@ class _ApiKeyState:
         :param pulumi.Input[_builtins.int] expires_at: When the key will expire.
         :param pulumi.Input[_builtins.bool] is_disabled: Whether or not the key is disabled from use.
         :param pulumi.Input[_builtins.str] kind: (Enum:`domain`, `user`, or `web`). API key type. Default: `user`.
+        :param pulumi.Input[_builtins.str] region: The region where domain will be created. Default value is `us`.
         :param pulumi.Input[_builtins.str] requestor: An email address associated with the key.
         :param pulumi.Input[_builtins.str] role: (Enum: `admin`, `basic`, `sending`, `support`, or `developer`) Key role.
         :param pulumi.Input[_builtins.str] secret: The full API key secret in plain text.
@@ -195,6 +213,8 @@ class _ApiKeyState:
             pulumi.set(__self__, "is_disabled", is_disabled)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if requestor is not None:
             pulumi.set(__self__, "requestor", requestor)
         if role is not None:
@@ -292,6 +312,18 @@ class _ApiKeyState:
 
     @_builtins.property
     @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The region where domain will be created. Default value is `us`.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
+    @pulumi.getter
     def requestor(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         An email address associated with the key.
@@ -362,6 +394,7 @@ class ApiKey(pulumi.CustomResource):
                  email: Optional[pulumi.Input[_builtins.str]] = None,
                  expires_at: Optional[pulumi.Input[_builtins.int]] = None,
                  kind: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  user_id: Optional[pulumi.Input[_builtins.str]] = None,
                  user_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -387,6 +420,7 @@ class ApiKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] email: API key user's email address; should be provided for all keys of `web` kind.
         :param pulumi.Input[_builtins.int] expires_at: When the key will expire.
         :param pulumi.Input[_builtins.str] kind: (Enum:`domain`, `user`, or `web`). API key type. Default: `user`.
+        :param pulumi.Input[_builtins.str] region: The region where domain will be created. Default value is `us`.
         :param pulumi.Input[_builtins.str] role: (Enum: `admin`, `basic`, `sending`, `support`, or `developer`) Key role.
         :param pulumi.Input[_builtins.str] user_id: API key user's string user ID; should be provided for all keys of `web` kind.
         :param pulumi.Input[_builtins.str] user_name: API key user's name.
@@ -431,6 +465,7 @@ class ApiKey(pulumi.CustomResource):
                  email: Optional[pulumi.Input[_builtins.str]] = None,
                  expires_at: Optional[pulumi.Input[_builtins.int]] = None,
                  kind: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  user_id: Optional[pulumi.Input[_builtins.str]] = None,
                  user_name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -448,6 +483,7 @@ class ApiKey(pulumi.CustomResource):
             __props__.__dict__["email"] = email
             __props__.__dict__["expires_at"] = expires_at
             __props__.__dict__["kind"] = kind
+            __props__.__dict__["region"] = region
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__.__dict__["role"] = role
@@ -476,6 +512,7 @@ class ApiKey(pulumi.CustomResource):
             expires_at: Optional[pulumi.Input[_builtins.int]] = None,
             is_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
             kind: Optional[pulumi.Input[_builtins.str]] = None,
+            region: Optional[pulumi.Input[_builtins.str]] = None,
             requestor: Optional[pulumi.Input[_builtins.str]] = None,
             role: Optional[pulumi.Input[_builtins.str]] = None,
             secret: Optional[pulumi.Input[_builtins.str]] = None,
@@ -495,6 +532,7 @@ class ApiKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] expires_at: When the key will expire.
         :param pulumi.Input[_builtins.bool] is_disabled: Whether or not the key is disabled from use.
         :param pulumi.Input[_builtins.str] kind: (Enum:`domain`, `user`, or `web`). API key type. Default: `user`.
+        :param pulumi.Input[_builtins.str] region: The region where domain will be created. Default value is `us`.
         :param pulumi.Input[_builtins.str] requestor: An email address associated with the key.
         :param pulumi.Input[_builtins.str] role: (Enum: `admin`, `basic`, `sending`, `support`, or `developer`) Key role.
         :param pulumi.Input[_builtins.str] secret: The full API key secret in plain text.
@@ -512,6 +550,7 @@ class ApiKey(pulumi.CustomResource):
         __props__.__dict__["expires_at"] = expires_at
         __props__.__dict__["is_disabled"] = is_disabled
         __props__.__dict__["kind"] = kind
+        __props__.__dict__["region"] = region
         __props__.__dict__["requestor"] = requestor
         __props__.__dict__["role"] = role
         __props__.__dict__["secret"] = secret
@@ -574,6 +613,14 @@ class ApiKey(pulumi.CustomResource):
         (Enum:`domain`, `user`, or `web`). API key type. Default: `user`.
         """
         return pulumi.get(self, "kind")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The region where domain will be created. Default value is `us`.
+        """
+        return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter

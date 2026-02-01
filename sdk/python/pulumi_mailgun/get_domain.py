@@ -27,7 +27,7 @@ class GetDomainResult:
     """
     A collection of values returned by getDomain.
     """
-    def __init__(__self__, click_tracking=None, dkim_key_size=None, dkim_selector=None, force_dkim_authority=None, id=None, name=None, open_tracking=None, receiving_records=None, receiving_records_sets=None, region=None, sending_records=None, sending_records_sets=None, smtp_login=None, smtp_password=None, spam_action=None, web_scheme=None, wildcard=None):
+    def __init__(__self__, click_tracking=None, dkim_key_size=None, dkim_selector=None, force_dkim_authority=None, id=None, name=None, open_tracking=None, receiving_records=None, receiving_records_sets=None, region=None, sending_records=None, sending_records_sets=None, smtp_login=None, smtp_password=None, spam_action=None, use_automatic_sender_security=None, web_scheme=None, wildcard=None):
         if click_tracking and not isinstance(click_tracking, bool):
             raise TypeError("Expected argument 'click_tracking' to be a bool")
         pulumi.set(__self__, "click_tracking", click_tracking)
@@ -73,6 +73,9 @@ class GetDomainResult:
         if spam_action and not isinstance(spam_action, str):
             raise TypeError("Expected argument 'spam_action' to be a str")
         pulumi.set(__self__, "spam_action", spam_action)
+        if use_automatic_sender_security and not isinstance(use_automatic_sender_security, bool):
+            raise TypeError("Expected argument 'use_automatic_sender_security' to be a bool")
+        pulumi.set(__self__, "use_automatic_sender_security", use_automatic_sender_security)
         if web_scheme and not isinstance(web_scheme, str):
             raise TypeError("Expected argument 'web_scheme' to be a str")
         pulumi.set(__self__, "web_scheme", web_scheme)
@@ -185,6 +188,11 @@ class GetDomainResult:
         return pulumi.get(self, "spam_action")
 
     @_builtins.property
+    @pulumi.getter(name="useAutomaticSenderSecurity")
+    def use_automatic_sender_security(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "use_automatic_sender_security")
+
+    @_builtins.property
     @pulumi.getter(name="webScheme")
     def web_scheme(self) -> Optional[_builtins.str]:
         """
@@ -222,6 +230,7 @@ class AwaitableGetDomainResult(GetDomainResult):
             smtp_login=self.smtp_login,
             smtp_password=self.smtp_password,
             spam_action=self.spam_action,
+            use_automatic_sender_security=self.use_automatic_sender_security,
             web_scheme=self.web_scheme,
             wildcard=self.wildcard)
 
@@ -235,6 +244,7 @@ def get_domain(click_tracking: Optional[_builtins.bool] = None,
                region: Optional[_builtins.str] = None,
                smtp_password: Optional[_builtins.str] = None,
                spam_action: Optional[_builtins.str] = None,
+               use_automatic_sender_security: Optional[_builtins.bool] = None,
                web_scheme: Optional[_builtins.str] = None,
                wildcard: Optional[_builtins.bool] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainResult:
@@ -280,6 +290,7 @@ def get_domain(click_tracking: Optional[_builtins.bool] = None,
     __args__['region'] = region
     __args__['smtpPassword'] = smtp_password
     __args__['spamAction'] = spam_action
+    __args__['useAutomaticSenderSecurity'] = use_automatic_sender_security
     __args__['webScheme'] = web_scheme
     __args__['wildcard'] = wildcard
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -301,6 +312,7 @@ def get_domain(click_tracking: Optional[_builtins.bool] = None,
         smtp_login=pulumi.get(__ret__, 'smtp_login'),
         smtp_password=pulumi.get(__ret__, 'smtp_password'),
         spam_action=pulumi.get(__ret__, 'spam_action'),
+        use_automatic_sender_security=pulumi.get(__ret__, 'use_automatic_sender_security'),
         web_scheme=pulumi.get(__ret__, 'web_scheme'),
         wildcard=pulumi.get(__ret__, 'wildcard'))
 def get_domain_output(click_tracking: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
@@ -312,6 +324,7 @@ def get_domain_output(click_tracking: Optional[pulumi.Input[Optional[_builtins.b
                       region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                       smtp_password: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                       spam_action: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+                      use_automatic_sender_security: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                       web_scheme: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                       wildcard: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainResult]:
@@ -357,6 +370,7 @@ def get_domain_output(click_tracking: Optional[pulumi.Input[Optional[_builtins.b
     __args__['region'] = region
     __args__['smtpPassword'] = smtp_password
     __args__['spamAction'] = spam_action
+    __args__['useAutomaticSenderSecurity'] = use_automatic_sender_security
     __args__['webScheme'] = web_scheme
     __args__['wildcard'] = wildcard
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -377,5 +391,6 @@ def get_domain_output(click_tracking: Optional[pulumi.Input[Optional[_builtins.b
         smtp_login=pulumi.get(__response__, 'smtp_login'),
         smtp_password=pulumi.get(__response__, 'smtp_password'),
         spam_action=pulumi.get(__response__, 'spam_action'),
+        use_automatic_sender_security=pulumi.get(__response__, 'use_automatic_sender_security'),
         web_scheme=pulumi.get(__response__, 'web_scheme'),
         wildcard=pulumi.get(__response__, 'wildcard')))

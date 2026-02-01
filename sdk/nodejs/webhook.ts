@@ -22,6 +22,20 @@ import * as utilities from "./utilities";
  *     urls: ["https://example.com"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Webhooks can be imported using the `region:domain:kind` or `domain:kind` format:
+ *
+ * ```sh
+ * $ pulumi import mailgun:index/webhook:Webhook default us:test.example.com:delivered
+ * ```
+ *
+ * or using the default region (us):
+ *
+ * ```sh
+ * $ pulumi import mailgun:index/webhook:Webhook default test.example.com:delivered
+ * ```
  */
 export class Webhook extends pulumi.CustomResource {
     /**

@@ -186,6 +186,20 @@ class Webhook(pulumi.CustomResource):
             urls=["https://example.com"])
         ```
 
+        ## Import
+
+        Webhooks can be imported using the `region:domain:kind` or `domain:kind` format:
+
+        ```sh
+        $ pulumi import mailgun:index/webhook:Webhook default us:test.example.com:delivered
+        ```
+
+        or using the default region (us):
+
+        ```sh
+        $ pulumi import mailgun:index/webhook:Webhook default test.example.com:delivered
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain: The domain to add to Mailgun
@@ -215,6 +229,20 @@ class Webhook(pulumi.CustomResource):
             region="us",
             kind="delivered",
             urls=["https://example.com"])
+        ```
+
+        ## Import
+
+        Webhooks can be imported using the `region:domain:kind` or `domain:kind` format:
+
+        ```sh
+        $ pulumi import mailgun:index/webhook:Webhook default us:test.example.com:delivered
+        ```
+
+        or using the default region (us):
+
+        ```sh
+        $ pulumi import mailgun:index/webhook:Webhook default test.example.com:delivered
         ```
 
         :param str resource_name: The name of the resource.

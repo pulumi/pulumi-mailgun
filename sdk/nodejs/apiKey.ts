@@ -76,6 +76,10 @@ export class ApiKey extends pulumi.CustomResource {
      */
     declare public readonly kind: pulumi.Output<string | undefined>;
     /**
+     * The region where domain will be created. Default value is `us`.
+     */
+    declare public readonly region: pulumi.Output<string | undefined>;
+    /**
      * An email address associated with the key.
      */
     declare public /*out*/ readonly requestor: pulumi.Output<string>;
@@ -116,6 +120,7 @@ export class ApiKey extends pulumi.CustomResource {
             resourceInputs["expiresAt"] = state?.expiresAt;
             resourceInputs["isDisabled"] = state?.isDisabled;
             resourceInputs["kind"] = state?.kind;
+            resourceInputs["region"] = state?.region;
             resourceInputs["requestor"] = state?.requestor;
             resourceInputs["role"] = state?.role;
             resourceInputs["secret"] = state?.secret;
@@ -131,6 +136,7 @@ export class ApiKey extends pulumi.CustomResource {
             resourceInputs["email"] = args?.email;
             resourceInputs["expiresAt"] = args?.expiresAt;
             resourceInputs["kind"] = args?.kind;
+            resourceInputs["region"] = args?.region;
             resourceInputs["role"] = args?.role;
             resourceInputs["userId"] = args?.userId;
             resourceInputs["userName"] = args?.userName;
@@ -179,6 +185,10 @@ export interface ApiKeyState {
      */
     kind?: pulumi.Input<string>;
     /**
+     * The region where domain will be created. Default value is `us`.
+     */
+    region?: pulumi.Input<string>;
+    /**
      * An email address associated with the key.
      */
     requestor?: pulumi.Input<string>;
@@ -224,6 +234,10 @@ export interface ApiKeyArgs {
      * (Enum:`domain`, `user`, or `web`). API key type. Default: `user`.
      */
     kind?: pulumi.Input<string>;
+    /**
+     * The region where domain will be created. Default value is `us`.
+     */
+    region?: pulumi.Input<string>;
     /**
      * (Enum: `admin`, `basic`, `sending`, `support`, or `developer`) Key role.
      */

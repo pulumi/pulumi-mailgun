@@ -80,7 +80,8 @@ type LookupDomainArgs struct {
 	// The password to the SMTP server.
 	SmtpPassword *string `pulumi:"smtpPassword"`
 	// The spam filtering setting.
-	SpamAction *string `pulumi:"spamAction"`
+	SpamAction                 *string `pulumi:"spamAction"`
+	UseAutomaticSenderSecurity *bool   `pulumi:"useAutomaticSenderSecurity"`
 	// The tracking web scheme.
 	WebScheme *string `pulumi:"webScheme"`
 	// Whether or not the domain will accept email for sub-domains.
@@ -116,7 +117,8 @@ type LookupDomainResult struct {
 	// The password to the SMTP server.
 	SmtpPassword *string `pulumi:"smtpPassword"`
 	// The spam filtering setting.
-	SpamAction *string `pulumi:"spamAction"`
+	SpamAction                 *string `pulumi:"spamAction"`
+	UseAutomaticSenderSecurity *bool   `pulumi:"useAutomaticSenderSecurity"`
 	// The tracking web scheme.
 	WebScheme *string `pulumi:"webScheme"`
 	// Whether or not the domain will accept email for sub-domains.
@@ -148,7 +150,8 @@ type LookupDomainOutputArgs struct {
 	// The password to the SMTP server.
 	SmtpPassword pulumi.StringPtrInput `pulumi:"smtpPassword"`
 	// The spam filtering setting.
-	SpamAction pulumi.StringPtrInput `pulumi:"spamAction"`
+	SpamAction                 pulumi.StringPtrInput `pulumi:"spamAction"`
+	UseAutomaticSenderSecurity pulumi.BoolPtrInput   `pulumi:"useAutomaticSenderSecurity"`
 	// The tracking web scheme.
 	WebScheme pulumi.StringPtrInput `pulumi:"webScheme"`
 	// Whether or not the domain will accept email for sub-domains.
@@ -245,6 +248,10 @@ func (o LookupDomainResultOutput) SmtpPassword() pulumi.StringPtrOutput {
 // The spam filtering setting.
 func (o LookupDomainResultOutput) SpamAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDomainResult) *string { return v.SpamAction }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupDomainResultOutput) UseAutomaticSenderSecurity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupDomainResult) *bool { return v.UseAutomaticSenderSecurity }).(pulumi.BoolPtrOutput)
 }
 
 // The tracking web scheme.

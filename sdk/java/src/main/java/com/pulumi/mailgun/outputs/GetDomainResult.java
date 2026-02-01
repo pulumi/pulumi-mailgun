@@ -78,6 +78,7 @@ public final class GetDomainResult {
      * 
      */
     private @Nullable String spamAction;
+    private @Nullable Boolean useAutomaticSenderSecurity;
     /**
      * @return The tracking web scheme.
      * 
@@ -179,6 +180,9 @@ public final class GetDomainResult {
     public Optional<String> spamAction() {
         return Optional.ofNullable(this.spamAction);
     }
+    public Optional<Boolean> useAutomaticSenderSecurity() {
+        return Optional.ofNullable(this.useAutomaticSenderSecurity);
+    }
     /**
      * @return The tracking web scheme.
      * 
@@ -218,6 +222,7 @@ public final class GetDomainResult {
         private String smtpLogin;
         private @Nullable String smtpPassword;
         private @Nullable String spamAction;
+        private @Nullable Boolean useAutomaticSenderSecurity;
         private @Nullable String webScheme;
         private @Nullable Boolean wildcard;
         public Builder() {}
@@ -238,6 +243,7 @@ public final class GetDomainResult {
     	      this.smtpLogin = defaults.smtpLogin;
     	      this.smtpPassword = defaults.smtpPassword;
     	      this.spamAction = defaults.spamAction;
+    	      this.useAutomaticSenderSecurity = defaults.useAutomaticSenderSecurity;
     	      this.webScheme = defaults.webScheme;
     	      this.wildcard = defaults.wildcard;
         }
@@ -359,6 +365,12 @@ public final class GetDomainResult {
             return this;
         }
         @CustomType.Setter
+        public Builder useAutomaticSenderSecurity(@Nullable Boolean useAutomaticSenderSecurity) {
+
+            this.useAutomaticSenderSecurity = useAutomaticSenderSecurity;
+            return this;
+        }
+        @CustomType.Setter
         public Builder webScheme(@Nullable String webScheme) {
 
             this.webScheme = webScheme;
@@ -387,6 +399,7 @@ public final class GetDomainResult {
             _resultValue.smtpLogin = smtpLogin;
             _resultValue.smtpPassword = smtpPassword;
             _resultValue.spamAction = spamAction;
+            _resultValue.useAutomaticSenderSecurity = useAutomaticSenderSecurity;
             _resultValue.webScheme = webScheme;
             _resultValue.wildcard = wildcard;
             return _resultValue;

@@ -244,6 +244,20 @@ public class Domain extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.spamAction);
     }
     /**
+     * If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
+     * 
+     */
+    @Export(name="useAutomaticSenderSecurity", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> useAutomaticSenderSecurity;
+
+    /**
+     * @return If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
+     * 
+     */
+    public Output<Optional<Boolean>> useAutomaticSenderSecurity() {
+        return Codegen.optional(this.useAutomaticSenderSecurity);
+    }
+    /**
      * (`http` or `https`) The tracking web scheme. Default: `http`
      * 
      */

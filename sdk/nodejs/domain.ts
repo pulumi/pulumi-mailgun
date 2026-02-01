@@ -108,6 +108,10 @@ export class Domain extends pulumi.CustomResource {
      */
     declare public readonly spamAction: pulumi.Output<string | undefined>;
     /**
+     * If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
+     */
+    declare public readonly useAutomaticSenderSecurity: pulumi.Output<boolean | undefined>;
+    /**
      * (`http` or `https`) The tracking web scheme. Default: `http`
      */
     declare public readonly webScheme: pulumi.Output<string | undefined>;
@@ -144,6 +148,7 @@ export class Domain extends pulumi.CustomResource {
             resourceInputs["smtpLogin"] = state?.smtpLogin;
             resourceInputs["smtpPassword"] = state?.smtpPassword;
             resourceInputs["spamAction"] = state?.spamAction;
+            resourceInputs["useAutomaticSenderSecurity"] = state?.useAutomaticSenderSecurity;
             resourceInputs["webScheme"] = state?.webScheme;
             resourceInputs["wildcard"] = state?.wildcard;
         } else {
@@ -157,6 +162,7 @@ export class Domain extends pulumi.CustomResource {
             resourceInputs["region"] = args?.region;
             resourceInputs["smtpPassword"] = args?.smtpPassword ? pulumi.secret(args.smtpPassword) : undefined;
             resourceInputs["spamAction"] = args?.spamAction;
+            resourceInputs["useAutomaticSenderSecurity"] = args?.useAutomaticSenderSecurity;
             resourceInputs["webScheme"] = args?.webScheme;
             resourceInputs["wildcard"] = args?.wildcard;
             resourceInputs["receivingRecords"] = undefined /*out*/;
@@ -239,6 +245,10 @@ export interface DomainState {
      */
     spamAction?: pulumi.Input<string>;
     /**
+     * If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
+     */
+    useAutomaticSenderSecurity?: pulumi.Input<boolean>;
+    /**
      * (`http` or `https`) The tracking web scheme. Default: `http`
      */
     webScheme?: pulumi.Input<string>;
@@ -291,6 +301,10 @@ export interface DomainArgs {
      * will be tagged with a spam header. Default value is `disabled`.
      */
     spamAction?: pulumi.Input<string>;
+    /**
+     * If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
+     */
+    useAutomaticSenderSecurity?: pulumi.Input<boolean>;
     /**
      * (`http` or `https`) The tracking web scheme. Default: `http`
      */

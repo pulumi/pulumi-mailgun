@@ -93,6 +93,21 @@ public final class ApiKeyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The region where domain will be created. Default value is `us`.
+     * 
+     */
+    @Import(name="region")
+    private @Nullable Output<String> region;
+
+    /**
+     * @return The region where domain will be created. Default value is `us`.
+     * 
+     */
+    public Optional<Output<String>> region() {
+        return Optional.ofNullable(this.region);
+    }
+
+    /**
      * (Enum: `admin`, `basic`, `sending`, `support`, or `developer`) Key role.
      * 
      */
@@ -145,6 +160,7 @@ public final class ApiKeyArgs extends com.pulumi.resources.ResourceArgs {
         this.email = $.email;
         this.expiresAt = $.expiresAt;
         this.kind = $.kind;
+        this.region = $.region;
         this.role = $.role;
         this.userId = $.userId;
         this.userName = $.userName;
@@ -271,6 +287,27 @@ public final class ApiKeyArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder kind(String kind) {
             return kind(Output.of(kind));
+        }
+
+        /**
+         * @param region The region where domain will be created. Default value is `us`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(@Nullable Output<String> region) {
+            $.region = region;
+            return this;
+        }
+
+        /**
+         * @param region The region where domain will be created. Default value is `us`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder region(String region) {
+            return region(Output.of(region));
         }
 
         /**

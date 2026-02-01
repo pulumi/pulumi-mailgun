@@ -43,6 +43,7 @@ export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Pro
         "region": args.region,
         "smtpPassword": args.smtpPassword,
         "spamAction": args.spamAction,
+        "useAutomaticSenderSecurity": args.useAutomaticSenderSecurity,
         "webScheme": args.webScheme,
         "wildcard": args.wildcard,
     }, opts);
@@ -79,6 +80,7 @@ export interface GetDomainArgs {
      * The spam filtering setting.
      */
     spamAction?: string;
+    useAutomaticSenderSecurity?: boolean;
     /**
      * The tracking web scheme.
      */
@@ -139,6 +141,7 @@ export interface GetDomainResult {
      * The spam filtering setting.
      */
     readonly spamAction?: string;
+    readonly useAutomaticSenderSecurity?: boolean;
     /**
      * The tracking web scheme.
      */
@@ -185,6 +188,7 @@ export function getDomainOutput(args: GetDomainOutputArgs, opts?: pulumi.InvokeO
         "region": args.region,
         "smtpPassword": args.smtpPassword,
         "spamAction": args.spamAction,
+        "useAutomaticSenderSecurity": args.useAutomaticSenderSecurity,
         "webScheme": args.webScheme,
         "wildcard": args.wildcard,
     }, opts);
@@ -221,6 +225,7 @@ export interface GetDomainOutputArgs {
      * The spam filtering setting.
      */
     spamAction?: pulumi.Input<string>;
+    useAutomaticSenderSecurity?: pulumi.Input<boolean>;
     /**
      * The tracking web scheme.
      */

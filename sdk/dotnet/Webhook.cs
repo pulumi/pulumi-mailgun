@@ -37,6 +37,20 @@ namespace Pulumi.Mailgun
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Webhooks can be imported using the `region:domain:kind` or `domain:kind` format:
+    /// 
+    /// ```sh
+    /// $ pulumi import mailgun:index/webhook:Webhook default us:test.example.com:delivered
+    /// ```
+    /// 
+    /// or using the default region (us):
+    /// 
+    /// ```sh
+    /// $ pulumi import mailgun:index/webhook:Webhook default test.example.com:delivered
+    /// ```
     /// </summary>
     [MailgunResourceType("mailgun:index/webhook:Webhook")]
     public partial class Webhook : global::Pulumi.CustomResource
