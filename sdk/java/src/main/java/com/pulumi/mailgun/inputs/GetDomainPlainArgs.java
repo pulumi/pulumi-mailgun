@@ -128,6 +128,13 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.spamAction);
     }
 
+    @Import(name="useAutomaticSenderSecurity")
+    private @Nullable Boolean useAutomaticSenderSecurity;
+
+    public Optional<Boolean> useAutomaticSenderSecurity() {
+        return Optional.ofNullable(this.useAutomaticSenderSecurity);
+    }
+
     /**
      * The tracking web scheme.
      * 
@@ -170,6 +177,7 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
         this.region = $.region;
         this.smtpPassword = $.smtpPassword;
         this.spamAction = $.spamAction;
+        this.useAutomaticSenderSecurity = $.useAutomaticSenderSecurity;
         this.webScheme = $.webScheme;
         this.wildcard = $.wildcard;
     }
@@ -270,6 +278,11 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder spamAction(@Nullable String spamAction) {
             $.spamAction = spamAction;
+            return this;
+        }
+
+        public Builder useAutomaticSenderSecurity(@Nullable Boolean useAutomaticSenderSecurity) {
+            $.useAutomaticSenderSecurity = useAutomaticSenderSecurity;
             return this;
         }
 

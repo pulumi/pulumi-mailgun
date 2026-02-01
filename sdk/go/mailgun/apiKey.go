@@ -57,6 +57,8 @@ type ApiKey struct {
 	IsDisabled pulumi.BoolOutput `pulumi:"isDisabled"`
 	// (Enum:`domain`, `user`, or `web`). API key type. Default: `user`.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
+	// The region where domain will be created. Default value is `us`.
+	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// An email address associated with the key.
 	Requestor pulumi.StringOutput `pulumi:"requestor"`
 	// (Enum: `admin`, `basic`, `sending`, `support`, or `developer`) Key role.
@@ -120,6 +122,8 @@ type apiKeyState struct {
 	IsDisabled *bool `pulumi:"isDisabled"`
 	// (Enum:`domain`, `user`, or `web`). API key type. Default: `user`.
 	Kind *string `pulumi:"kind"`
+	// The region where domain will be created. Default value is `us`.
+	Region *string `pulumi:"region"`
 	// An email address associated with the key.
 	Requestor *string `pulumi:"requestor"`
 	// (Enum: `admin`, `basic`, `sending`, `support`, or `developer`) Key role.
@@ -147,6 +151,8 @@ type ApiKeyState struct {
 	IsDisabled pulumi.BoolPtrInput
 	// (Enum:`domain`, `user`, or `web`). API key type. Default: `user`.
 	Kind pulumi.StringPtrInput
+	// The region where domain will be created. Default value is `us`.
+	Region pulumi.StringPtrInput
 	// An email address associated with the key.
 	Requestor pulumi.StringPtrInput
 	// (Enum: `admin`, `basic`, `sending`, `support`, or `developer`) Key role.
@@ -174,6 +180,8 @@ type apiKeyArgs struct {
 	ExpiresAt *int `pulumi:"expiresAt"`
 	// (Enum:`domain`, `user`, or `web`). API key type. Default: `user`.
 	Kind *string `pulumi:"kind"`
+	// The region where domain will be created. Default value is `us`.
+	Region *string `pulumi:"region"`
 	// (Enum: `admin`, `basic`, `sending`, `support`, or `developer`) Key role.
 	Role string `pulumi:"role"`
 	// API key user's string user ID; should be provided for all keys of `web` kind.
@@ -194,6 +202,8 @@ type ApiKeyArgs struct {
 	ExpiresAt pulumi.IntPtrInput
 	// (Enum:`domain`, `user`, or `web`). API key type. Default: `user`.
 	Kind pulumi.StringPtrInput
+	// The region where domain will be created. Default value is `us`.
+	Region pulumi.StringPtrInput
 	// (Enum: `admin`, `basic`, `sending`, `support`, or `developer`) Key role.
 	Role pulumi.StringInput
 	// API key user's string user ID; should be provided for all keys of `web` kind.
@@ -322,6 +332,11 @@ func (o ApiKeyOutput) IsDisabled() pulumi.BoolOutput {
 // (Enum:`domain`, `user`, or `web`). API key type. Default: `user`.
 func (o ApiKeyOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiKey) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+// The region where domain will be created. Default value is `us`.
+func (o ApiKeyOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiKey) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 // An email address associated with the key.

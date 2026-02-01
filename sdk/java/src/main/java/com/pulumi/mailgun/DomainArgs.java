@@ -157,6 +157,21 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
+     * 
+     */
+    @Import(name="useAutomaticSenderSecurity")
+    private @Nullable Output<Boolean> useAutomaticSenderSecurity;
+
+    /**
+     * @return If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
+     * 
+     */
+    public Optional<Output<Boolean>> useAutomaticSenderSecurity() {
+        return Optional.ofNullable(this.useAutomaticSenderSecurity);
+    }
+
+    /**
      * (`http` or `https`) The tracking web scheme. Default: `http`
      * 
      */
@@ -200,6 +215,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         this.region = $.region;
         this.smtpPassword = $.smtpPassword;
         this.spamAction = $.spamAction;
+        this.useAutomaticSenderSecurity = $.useAutomaticSenderSecurity;
         this.webScheme = $.webScheme;
         this.wildcard = $.wildcard;
     }
@@ -413,6 +429,27 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder spamAction(String spamAction) {
             return spamAction(Output.of(spamAction));
+        }
+
+        /**
+         * @param useAutomaticSenderSecurity If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useAutomaticSenderSecurity(@Nullable Output<Boolean> useAutomaticSenderSecurity) {
+            $.useAutomaticSenderSecurity = useAutomaticSenderSecurity;
+            return this;
+        }
+
+        /**
+         * @param useAutomaticSenderSecurity If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder useAutomaticSenderSecurity(Boolean useAutomaticSenderSecurity) {
+            return useAutomaticSenderSecurity(Output.of(useAutomaticSenderSecurity));
         }
 
         /**

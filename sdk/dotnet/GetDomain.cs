@@ -180,6 +180,9 @@ namespace Pulumi.Mailgun
         [Input("spamAction")]
         public string? SpamAction { get; set; }
 
+        [Input("useAutomaticSenderSecurity")]
+        public bool? UseAutomaticSenderSecurity { get; set; }
+
         /// <summary>
         /// The tracking web scheme.
         /// </summary>
@@ -255,6 +258,9 @@ namespace Pulumi.Mailgun
         [Input("spamAction")]
         public Input<string>? SpamAction { get; set; }
 
+        [Input("useAutomaticSenderSecurity")]
+        public Input<bool>? UseAutomaticSenderSecurity { get; set; }
+
         /// <summary>
         /// The tracking web scheme.
         /// </summary>
@@ -319,6 +325,7 @@ namespace Pulumi.Mailgun
         /// The spam filtering setting.
         /// </summary>
         public readonly string? SpamAction;
+        public readonly bool? UseAutomaticSenderSecurity;
         /// <summary>
         /// The tracking web scheme.
         /// </summary>
@@ -360,6 +367,8 @@ namespace Pulumi.Mailgun
 
             string? spamAction,
 
+            bool? useAutomaticSenderSecurity,
+
             string? webScheme,
 
             bool? wildcard)
@@ -379,6 +388,7 @@ namespace Pulumi.Mailgun
             SmtpLogin = smtpLogin;
             SmtpPassword = smtpPassword;
             SpamAction = spamAction;
+            UseAutomaticSenderSecurity = useAutomaticSenderSecurity;
             WebScheme = webScheme;
             Wildcard = wildcard;
         }

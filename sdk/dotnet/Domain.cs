@@ -110,6 +110,12 @@ namespace Pulumi.Mailgun
         public Output<string?> SpamAction { get; private set; } = null!;
 
         /// <summary>
+        /// If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `False`
+        /// </summary>
+        [Output("useAutomaticSenderSecurity")]
+        public Output<bool?> UseAutomaticSenderSecurity { get; private set; } = null!;
+
+        /// <summary>
         /// (`Http` or `Https`) The tracking web scheme. Default: `Http`
         /// </summary>
         [Output("webScheme")]
@@ -237,6 +243,12 @@ namespace Pulumi.Mailgun
         /// </summary>
         [Input("spamAction")]
         public Input<string>? SpamAction { get; set; }
+
+        /// <summary>
+        /// If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `False`
+        /// </summary>
+        [Input("useAutomaticSenderSecurity")]
+        public Input<bool>? UseAutomaticSenderSecurity { get; set; }
 
         /// <summary>
         /// (`Http` or `Https`) The tracking web scheme. Default: `Http`
@@ -380,6 +392,12 @@ namespace Pulumi.Mailgun
         /// </summary>
         [Input("spamAction")]
         public Input<string>? SpamAction { get; set; }
+
+        /// <summary>
+        /// If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `False`
+        /// </summary>
+        [Input("useAutomaticSenderSecurity")]
+        public Input<bool>? UseAutomaticSenderSecurity { get; set; }
 
         /// <summary>
         /// (`Http` or `Https`) The tracking web scheme. Default: `Http`

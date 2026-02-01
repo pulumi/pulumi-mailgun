@@ -77,6 +77,12 @@ namespace Pulumi.Mailgun
         public Output<string?> Kind { get; private set; } = null!;
 
         /// <summary>
+        /// The region where domain will be created. Default value is `Us`.
+        /// </summary>
+        [Output("region")]
+        public Output<string?> Region { get; private set; } = null!;
+
+        /// <summary>
         /// An email address associated with the key.
         /// </summary>
         [Output("requestor")]
@@ -187,6 +193,12 @@ namespace Pulumi.Mailgun
         public Input<string>? Kind { get; set; }
 
         /// <summary>
+        /// The region where domain will be created. Default value is `Us`.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
         /// (Enum: `Admin`, `Basic`, `Sending`, `Support`, or `Developer`) Key role.
         /// </summary>
         [Input("role", required: true)]
@@ -253,6 +265,12 @@ namespace Pulumi.Mailgun
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
+
+        /// <summary>
+        /// The region where domain will be created. Default value is `Us`.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// An email address associated with the key.

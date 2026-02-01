@@ -30,6 +30,7 @@ class DomainArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  smtp_password: Optional[pulumi.Input[_builtins.str]] = None,
                  spam_action: Optional[pulumi.Input[_builtins.str]] = None,
+                 use_automatic_sender_security: Optional[pulumi.Input[_builtins.bool]] = None,
                  web_scheme: Optional[pulumi.Input[_builtins.str]] = None,
                  wildcard: Optional[pulumi.Input[_builtins.bool]] = None):
         """
@@ -45,6 +46,7 @@ class DomainArgs:
         :param pulumi.Input[_builtins.str] spam_action: `disabled` or `tag` Disable, no spam
                filtering will occur for inbound messages. Tag, messages
                will be tagged with a spam header. Default value is `disabled`.
+        :param pulumi.Input[_builtins.bool] use_automatic_sender_security: If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
         :param pulumi.Input[_builtins.str] web_scheme: (`http` or `https`) The tracking web scheme. Default: `http`
         :param pulumi.Input[_builtins.bool] wildcard: Boolean that determines whether
                the domain will accept email for sub-domains.
@@ -67,6 +69,8 @@ class DomainArgs:
             pulumi.set(__self__, "smtp_password", smtp_password)
         if spam_action is not None:
             pulumi.set(__self__, "spam_action", spam_action)
+        if use_automatic_sender_security is not None:
+            pulumi.set(__self__, "use_automatic_sender_security", use_automatic_sender_security)
         if web_scheme is not None:
             pulumi.set(__self__, "web_scheme", web_scheme)
         if wildcard is not None:
@@ -183,6 +187,18 @@ class DomainArgs:
         pulumi.set(self, "spam_action", value)
 
     @_builtins.property
+    @pulumi.getter(name="useAutomaticSenderSecurity")
+    def use_automatic_sender_security(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
+        """
+        return pulumi.get(self, "use_automatic_sender_security")
+
+    @use_automatic_sender_security.setter
+    def use_automatic_sender_security(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "use_automatic_sender_security", value)
+
+    @_builtins.property
     @pulumi.getter(name="webScheme")
     def web_scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -225,6 +241,7 @@ class _DomainState:
                  smtp_login: Optional[pulumi.Input[_builtins.str]] = None,
                  smtp_password: Optional[pulumi.Input[_builtins.str]] = None,
                  spam_action: Optional[pulumi.Input[_builtins.str]] = None,
+                 use_automatic_sender_security: Optional[pulumi.Input[_builtins.bool]] = None,
                  web_scheme: Optional[pulumi.Input[_builtins.str]] = None,
                  wildcard: Optional[pulumi.Input[_builtins.bool]] = None):
         """
@@ -245,6 +262,7 @@ class _DomainState:
         :param pulumi.Input[_builtins.str] spam_action: `disabled` or `tag` Disable, no spam
                filtering will occur for inbound messages. Tag, messages
                will be tagged with a spam header. Default value is `disabled`.
+        :param pulumi.Input[_builtins.bool] use_automatic_sender_security: If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
         :param pulumi.Input[_builtins.str] web_scheme: (`http` or `https`) The tracking web scheme. Default: `http`
         :param pulumi.Input[_builtins.bool] wildcard: Boolean that determines whether
                the domain will accept email for sub-domains.
@@ -283,6 +301,8 @@ class _DomainState:
             pulumi.set(__self__, "smtp_password", smtp_password)
         if spam_action is not None:
             pulumi.set(__self__, "spam_action", spam_action)
+        if use_automatic_sender_security is not None:
+            pulumi.set(__self__, "use_automatic_sender_security", use_automatic_sender_security)
         if web_scheme is not None:
             pulumi.set(__self__, "web_scheme", web_scheme)
         if wildcard is not None:
@@ -461,6 +481,18 @@ class _DomainState:
         pulumi.set(self, "spam_action", value)
 
     @_builtins.property
+    @pulumi.getter(name="useAutomaticSenderSecurity")
+    def use_automatic_sender_security(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
+        """
+        return pulumi.get(self, "use_automatic_sender_security")
+
+    @use_automatic_sender_security.setter
+    def use_automatic_sender_security(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "use_automatic_sender_security", value)
+
+    @_builtins.property
     @pulumi.getter(name="webScheme")
     def web_scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -501,6 +533,7 @@ class Domain(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  smtp_password: Optional[pulumi.Input[_builtins.str]] = None,
                  spam_action: Optional[pulumi.Input[_builtins.str]] = None,
+                 use_automatic_sender_security: Optional[pulumi.Input[_builtins.bool]] = None,
                  web_scheme: Optional[pulumi.Input[_builtins.str]] = None,
                  wildcard: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
@@ -528,6 +561,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] spam_action: `disabled` or `tag` Disable, no spam
                filtering will occur for inbound messages. Tag, messages
                will be tagged with a spam header. Default value is `disabled`.
+        :param pulumi.Input[_builtins.bool] use_automatic_sender_security: If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
         :param pulumi.Input[_builtins.str] web_scheme: (`http` or `https`) The tracking web scheme. Default: `http`
         :param pulumi.Input[_builtins.bool] wildcard: Boolean that determines whether
                the domain will accept email for sub-domains.
@@ -573,6 +607,7 @@ class Domain(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  smtp_password: Optional[pulumi.Input[_builtins.str]] = None,
                  spam_action: Optional[pulumi.Input[_builtins.str]] = None,
+                 use_automatic_sender_security: Optional[pulumi.Input[_builtins.bool]] = None,
                  web_scheme: Optional[pulumi.Input[_builtins.str]] = None,
                  wildcard: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
@@ -593,6 +628,7 @@ class Domain(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["smtp_password"] = None if smtp_password is None else pulumi.Output.secret(smtp_password)
             __props__.__dict__["spam_action"] = spam_action
+            __props__.__dict__["use_automatic_sender_security"] = use_automatic_sender_security
             __props__.__dict__["web_scheme"] = web_scheme
             __props__.__dict__["wildcard"] = wildcard
             __props__.__dict__["receiving_records"] = None
@@ -626,6 +662,7 @@ class Domain(pulumi.CustomResource):
             smtp_login: Optional[pulumi.Input[_builtins.str]] = None,
             smtp_password: Optional[pulumi.Input[_builtins.str]] = None,
             spam_action: Optional[pulumi.Input[_builtins.str]] = None,
+            use_automatic_sender_security: Optional[pulumi.Input[_builtins.bool]] = None,
             web_scheme: Optional[pulumi.Input[_builtins.str]] = None,
             wildcard: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Domain':
         """
@@ -651,6 +688,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] spam_action: `disabled` or `tag` Disable, no spam
                filtering will occur for inbound messages. Tag, messages
                will be tagged with a spam header. Default value is `disabled`.
+        :param pulumi.Input[_builtins.bool] use_automatic_sender_security: If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
         :param pulumi.Input[_builtins.str] web_scheme: (`http` or `https`) The tracking web scheme. Default: `http`
         :param pulumi.Input[_builtins.bool] wildcard: Boolean that determines whether
                the domain will accept email for sub-domains.
@@ -673,6 +711,7 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["smtp_login"] = smtp_login
         __props__.__dict__["smtp_password"] = smtp_password
         __props__.__dict__["spam_action"] = spam_action
+        __props__.__dict__["use_automatic_sender_security"] = use_automatic_sender_security
         __props__.__dict__["web_scheme"] = web_scheme
         __props__.__dict__["wildcard"] = wildcard
         return Domain(resource_name, opts=opts, __props__=__props__)
@@ -792,6 +831,14 @@ class Domain(pulumi.CustomResource):
         will be tagged with a spam header. Default value is `disabled`.
         """
         return pulumi.get(self, "spam_action")
+
+    @_builtins.property
+    @pulumi.getter(name="useAutomaticSenderSecurity")
+    def use_automatic_sender_security(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
+        """
+        return pulumi.get(self, "use_automatic_sender_security")
 
     @_builtins.property
     @pulumi.getter(name="webScheme")

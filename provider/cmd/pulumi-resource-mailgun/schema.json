@@ -393,6 +393,10 @@
                     "type": "string",
                     "description": "(Enum:\u003cspan pulumi-lang-nodejs=\"`domain`\" pulumi-lang-dotnet=\"`Domain`\" pulumi-lang-go=\"`domain`\" pulumi-lang-python=\"`domain`\" pulumi-lang-yaml=\"`domain`\" pulumi-lang-java=\"`domain`\"\u003e`domain`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`user`\" pulumi-lang-dotnet=\"`User`\" pulumi-lang-go=\"`user`\" pulumi-lang-python=\"`user`\" pulumi-lang-yaml=\"`user`\" pulumi-lang-java=\"`user`\"\u003e`user`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`web`\" pulumi-lang-dotnet=\"`Web`\" pulumi-lang-go=\"`web`\" pulumi-lang-python=\"`web`\" pulumi-lang-yaml=\"`web`\" pulumi-lang-java=\"`web`\"\u003e`web`\u003c/span\u003e). API key type. Default: \u003cspan pulumi-lang-nodejs=\"`user`\" pulumi-lang-dotnet=\"`User`\" pulumi-lang-go=\"`user`\" pulumi-lang-python=\"`user`\" pulumi-lang-yaml=\"`user`\" pulumi-lang-java=\"`user`\"\u003e`user`\u003c/span\u003e.\n"
                 },
+                "region": {
+                    "type": "string",
+                    "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n"
+                },
                 "requestor": {
                     "type": "string",
                     "description": "An email address associated with the key.\n"
@@ -448,6 +452,11 @@
                     "description": "(Enum:\u003cspan pulumi-lang-nodejs=\"`domain`\" pulumi-lang-dotnet=\"`Domain`\" pulumi-lang-go=\"`domain`\" pulumi-lang-python=\"`domain`\" pulumi-lang-yaml=\"`domain`\" pulumi-lang-java=\"`domain`\"\u003e`domain`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`user`\" pulumi-lang-dotnet=\"`User`\" pulumi-lang-go=\"`user`\" pulumi-lang-python=\"`user`\" pulumi-lang-yaml=\"`user`\" pulumi-lang-java=\"`user`\"\u003e`user`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`web`\" pulumi-lang-dotnet=\"`Web`\" pulumi-lang-go=\"`web`\" pulumi-lang-python=\"`web`\" pulumi-lang-yaml=\"`web`\" pulumi-lang-java=\"`web`\"\u003e`web`\u003c/span\u003e). API key type. Default: \u003cspan pulumi-lang-nodejs=\"`user`\" pulumi-lang-dotnet=\"`User`\" pulumi-lang-go=\"`user`\" pulumi-lang-python=\"`user`\" pulumi-lang-yaml=\"`user`\" pulumi-lang-java=\"`user`\"\u003e`user`\u003c/span\u003e.\n",
                     "willReplaceOnChanges": true
                 },
+                "region": {
+                    "type": "string",
+                    "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
+                    "willReplaceOnChanges": true
+                },
                 "role": {
                     "type": "string",
                     "description": "(Enum: \u003cspan pulumi-lang-nodejs=\"`admin`\" pulumi-lang-dotnet=\"`Admin`\" pulumi-lang-go=\"`admin`\" pulumi-lang-python=\"`admin`\" pulumi-lang-yaml=\"`admin`\" pulumi-lang-java=\"`admin`\"\u003e`admin`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`basic`\" pulumi-lang-dotnet=\"`Basic`\" pulumi-lang-go=\"`basic`\" pulumi-lang-python=\"`basic`\" pulumi-lang-yaml=\"`basic`\" pulumi-lang-java=\"`basic`\"\u003e`basic`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sending`\" pulumi-lang-dotnet=\"`Sending`\" pulumi-lang-go=\"`sending`\" pulumi-lang-python=\"`sending`\" pulumi-lang-yaml=\"`sending`\" pulumi-lang-java=\"`sending`\"\u003e`sending`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`support`\" pulumi-lang-dotnet=\"`Support`\" pulumi-lang-go=\"`support`\" pulumi-lang-python=\"`support`\" pulumi-lang-yaml=\"`support`\" pulumi-lang-java=\"`support`\"\u003e`support`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`developer`\" pulumi-lang-dotnet=\"`Developer`\" pulumi-lang-go=\"`developer`\" pulumi-lang-python=\"`developer`\" pulumi-lang-yaml=\"`developer`\" pulumi-lang-java=\"`developer`\"\u003e`developer`\u003c/span\u003e) Key role.\n",
@@ -501,6 +510,11 @@
                     "kind": {
                         "type": "string",
                         "description": "(Enum:\u003cspan pulumi-lang-nodejs=\"`domain`\" pulumi-lang-dotnet=\"`Domain`\" pulumi-lang-go=\"`domain`\" pulumi-lang-python=\"`domain`\" pulumi-lang-yaml=\"`domain`\" pulumi-lang-java=\"`domain`\"\u003e`domain`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`user`\" pulumi-lang-dotnet=\"`User`\" pulumi-lang-go=\"`user`\" pulumi-lang-python=\"`user`\" pulumi-lang-yaml=\"`user`\" pulumi-lang-java=\"`user`\"\u003e`user`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`web`\" pulumi-lang-dotnet=\"`Web`\" pulumi-lang-go=\"`web`\" pulumi-lang-python=\"`web`\" pulumi-lang-yaml=\"`web`\" pulumi-lang-java=\"`web`\"\u003e`web`\u003c/span\u003e). API key type. Default: \u003cspan pulumi-lang-nodejs=\"`user`\" pulumi-lang-dotnet=\"`User`\" pulumi-lang-go=\"`user`\" pulumi-lang-python=\"`user`\" pulumi-lang-yaml=\"`user`\" pulumi-lang-java=\"`user`\"\u003e`user`\u003c/span\u003e.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region where domain will be created. Default value is \u003cspan pulumi-lang-nodejs=\"`us`\" pulumi-lang-dotnet=\"`Us`\" pulumi-lang-go=\"`us`\" pulumi-lang-python=\"`us`\" pulumi-lang-yaml=\"`us`\" pulumi-lang-java=\"`us`\"\u003e`us`\u003c/span\u003e.\n",
                         "willReplaceOnChanges": true
                     },
                     "requestor": {
@@ -605,6 +619,10 @@
                     "type": "string",
                     "description": "\u003cspan pulumi-lang-nodejs=\"`disabled`\" pulumi-lang-dotnet=\"`Disabled`\" pulumi-lang-go=\"`disabled`\" pulumi-lang-python=\"`disabled`\" pulumi-lang-yaml=\"`disabled`\" pulumi-lang-java=\"`disabled`\"\u003e`disabled`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`tag`\" pulumi-lang-dotnet=\"`Tag`\" pulumi-lang-go=\"`tag`\" pulumi-lang-python=\"`tag`\" pulumi-lang-yaml=\"`tag`\" pulumi-lang-java=\"`tag`\"\u003e`tag`\u003c/span\u003e Disable, no spam\nfiltering will occur for inbound messages. Tag, messages\nwill be tagged with a spam header. Default value is \u003cspan pulumi-lang-nodejs=\"`disabled`\" pulumi-lang-dotnet=\"`Disabled`\" pulumi-lang-go=\"`disabled`\" pulumi-lang-python=\"`disabled`\" pulumi-lang-yaml=\"`disabled`\" pulumi-lang-java=\"`disabled`\"\u003e`disabled`\u003c/span\u003e.\n"
                 },
+                "useAutomaticSenderSecurity": {
+                    "type": "boolean",
+                    "description": "If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e\n"
+                },
                 "webScheme": {
                     "type": "string",
                     "description": "(\u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`https`\" pulumi-lang-dotnet=\"`Https`\" pulumi-lang-go=\"`https`\" pulumi-lang-python=\"`https`\" pulumi-lang-yaml=\"`https`\" pulumi-lang-java=\"`https`\"\u003e`https`\u003c/span\u003e) The tracking web scheme. Default: \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e\n"
@@ -664,6 +682,11 @@
                 "spamAction": {
                     "type": "string",
                     "description": "\u003cspan pulumi-lang-nodejs=\"`disabled`\" pulumi-lang-dotnet=\"`Disabled`\" pulumi-lang-go=\"`disabled`\" pulumi-lang-python=\"`disabled`\" pulumi-lang-yaml=\"`disabled`\" pulumi-lang-java=\"`disabled`\"\u003e`disabled`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`tag`\" pulumi-lang-dotnet=\"`Tag`\" pulumi-lang-go=\"`tag`\" pulumi-lang-python=\"`tag`\" pulumi-lang-yaml=\"`tag`\" pulumi-lang-java=\"`tag`\"\u003e`tag`\u003c/span\u003e Disable, no spam\nfiltering will occur for inbound messages. Tag, messages\nwill be tagged with a spam header. Default value is \u003cspan pulumi-lang-nodejs=\"`disabled`\" pulumi-lang-dotnet=\"`Disabled`\" pulumi-lang-go=\"`disabled`\" pulumi-lang-python=\"`disabled`\" pulumi-lang-yaml=\"`disabled`\" pulumi-lang-java=\"`disabled`\"\u003e`disabled`\u003c/span\u003e.\n",
+                    "willReplaceOnChanges": true
+                },
+                "useAutomaticSenderSecurity": {
+                    "type": "boolean",
+                    "description": "If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e\n",
                     "willReplaceOnChanges": true
                 },
                 "webScheme": {
@@ -754,6 +777,11 @@
                     "spamAction": {
                         "type": "string",
                         "description": "\u003cspan pulumi-lang-nodejs=\"`disabled`\" pulumi-lang-dotnet=\"`Disabled`\" pulumi-lang-go=\"`disabled`\" pulumi-lang-python=\"`disabled`\" pulumi-lang-yaml=\"`disabled`\" pulumi-lang-java=\"`disabled`\"\u003e`disabled`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`tag`\" pulumi-lang-dotnet=\"`Tag`\" pulumi-lang-go=\"`tag`\" pulumi-lang-python=\"`tag`\" pulumi-lang-yaml=\"`tag`\" pulumi-lang-java=\"`tag`\"\u003e`tag`\u003c/span\u003e Disable, no spam\nfiltering will occur for inbound messages. Tag, messages\nwill be tagged with a spam header. Default value is \u003cspan pulumi-lang-nodejs=\"`disabled`\" pulumi-lang-dotnet=\"`Disabled`\" pulumi-lang-go=\"`disabled`\" pulumi-lang-python=\"`disabled`\" pulumi-lang-yaml=\"`disabled`\" pulumi-lang-java=\"`disabled`\"\u003e`disabled`\u003c/span\u003e.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "useAutomaticSenderSecurity": {
+                        "type": "boolean",
+                        "description": "If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e\n",
                         "willReplaceOnChanges": true
                     },
                     "webScheme": {
@@ -938,7 +966,7 @@
             }
         },
         "mailgun:index/webhook:Webhook": {
-            "description": "Provides a Mailgun App resource. This can be used to\ncreate and manage applications on Mailgun.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as mailgun from \"@pulumi/mailgun\";\n\n// Create a new Mailgun webhook\nconst _default = new mailgun.Webhook(\"default\", {\n    domain: \"test.example.com\",\n    region: \"us\",\n    kind: \"delivered\",\n    urls: [\"https://example.com\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_mailgun as mailgun\n\n# Create a new Mailgun webhook\ndefault = mailgun.Webhook(\"default\",\n    domain=\"test.example.com\",\n    region=\"us\",\n    kind=\"delivered\",\n    urls=[\"https://example.com\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Mailgun = Pulumi.Mailgun;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create a new Mailgun webhook\n    var @default = new Mailgun.Webhook(\"default\", new()\n    {\n        Domain = \"test.example.com\",\n        Region = \"us\",\n        Kind = \"delivered\",\n        Urls = new[]\n        {\n            \"https://example.com\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create a new Mailgun webhook\n\t\t_, err := mailgun.NewWebhook(ctx, \"default\", \u0026mailgun.WebhookArgs{\n\t\t\tDomain: pulumi.String(\"test.example.com\"),\n\t\t\tRegion: pulumi.String(\"us\"),\n\t\t\tKind:   pulumi.String(\"delivered\"),\n\t\t\tUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.mailgun.Webhook;\nimport com.pulumi.mailgun.WebhookArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create a new Mailgun webhook\n        var default_ = new Webhook(\"default\", WebhookArgs.builder()\n            .domain(\"test.example.com\")\n            .region(\"us\")\n            .kind(\"delivered\")\n            .urls(\"https://example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create a new Mailgun webhook\n  default:\n    type: mailgun:Webhook\n    properties:\n      domain: test.example.com\n      region: us\n      kind: delivered\n      urls:\n        - https://example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Provides a Mailgun App resource. This can be used to\ncreate and manage applications on Mailgun.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as mailgun from \"@pulumi/mailgun\";\n\n// Create a new Mailgun webhook\nconst _default = new mailgun.Webhook(\"default\", {\n    domain: \"test.example.com\",\n    region: \"us\",\n    kind: \"delivered\",\n    urls: [\"https://example.com\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_mailgun as mailgun\n\n# Create a new Mailgun webhook\ndefault = mailgun.Webhook(\"default\",\n    domain=\"test.example.com\",\n    region=\"us\",\n    kind=\"delivered\",\n    urls=[\"https://example.com\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Mailgun = Pulumi.Mailgun;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create a new Mailgun webhook\n    var @default = new Mailgun.Webhook(\"default\", new()\n    {\n        Domain = \"test.example.com\",\n        Region = \"us\",\n        Kind = \"delivered\",\n        Urls = new[]\n        {\n            \"https://example.com\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create a new Mailgun webhook\n\t\t_, err := mailgun.NewWebhook(ctx, \"default\", \u0026mailgun.WebhookArgs{\n\t\t\tDomain: pulumi.String(\"test.example.com\"),\n\t\t\tRegion: pulumi.String(\"us\"),\n\t\t\tKind:   pulumi.String(\"delivered\"),\n\t\t\tUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.mailgun.Webhook;\nimport com.pulumi.mailgun.WebhookArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create a new Mailgun webhook\n        var default_ = new Webhook(\"default\", WebhookArgs.builder()\n            .domain(\"test.example.com\")\n            .region(\"us\")\n            .kind(\"delivered\")\n            .urls(\"https://example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create a new Mailgun webhook\n  default:\n    type: mailgun:Webhook\n    properties:\n      domain: test.example.com\n      region: us\n      kind: delivered\n      urls:\n        - https://example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nWebhooks can be imported using the `region:domain:kind` or `domain:kind` format:\n\n```sh\n$ pulumi import mailgun:index/webhook:Webhook default us:test.example.com:delivered\n```\n\nor using the default region (us):\n\n```sh\n$ pulumi import mailgun:index/webhook:Webhook default test.example.com:delivered\n```\n\n",
             "properties": {
                 "domain": {
                     "type": "string",
@@ -1070,6 +1098,10 @@
                         "description": "The spam filtering setting.\n",
                         "willReplaceOnChanges": true
                     },
+                    "useAutomaticSenderSecurity": {
+                        "type": "boolean",
+                        "willReplaceOnChanges": true
+                    },
                     "webScheme": {
                         "type": "string",
                         "description": "The tracking web scheme.\n"
@@ -1156,6 +1188,9 @@
                     "spamAction": {
                         "description": "The spam filtering setting.\n",
                         "type": "string"
+                    },
+                    "useAutomaticSenderSecurity": {
+                        "type": "boolean"
                     },
                     "webScheme": {
                         "description": "The tracking web scheme.\n",

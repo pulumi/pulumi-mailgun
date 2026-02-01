@@ -156,6 +156,20 @@ public class ApiKey extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kind);
     }
     /**
+     * The region where domain will be created. Default value is `us`.
+     * 
+     */
+    @Export(name="region", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> region;
+
+    /**
+     * @return The region where domain will be created. Default value is `us`.
+     * 
+     */
+    public Output<Optional<String>> region() {
+        return Codegen.optional(this.region);
+    }
+    /**
      * An email address associated with the key.
      * 
      */

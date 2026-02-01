@@ -57,6 +57,8 @@ type Domain struct {
 	// filtering will occur for inbound messages. Tag, messages
 	// will be tagged with a spam header. Default value is `disabled`.
 	SpamAction pulumi.StringPtrOutput `pulumi:"spamAction"`
+	// If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
+	UseAutomaticSenderSecurity pulumi.BoolPtrOutput `pulumi:"useAutomaticSenderSecurity"`
 	// (`http` or `https`) The tracking web scheme. Default: `http`
 	WebScheme pulumi.StringPtrOutput `pulumi:"webScheme"`
 	// Boolean that determines whether
@@ -135,6 +137,8 @@ type domainState struct {
 	// filtering will occur for inbound messages. Tag, messages
 	// will be tagged with a spam header. Default value is `disabled`.
 	SpamAction *string `pulumi:"spamAction"`
+	// If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
+	UseAutomaticSenderSecurity *bool `pulumi:"useAutomaticSenderSecurity"`
 	// (`http` or `https`) The tracking web scheme. Default: `http`
 	WebScheme *string `pulumi:"webScheme"`
 	// Boolean that determines whether
@@ -177,6 +181,8 @@ type DomainState struct {
 	// filtering will occur for inbound messages. Tag, messages
 	// will be tagged with a spam header. Default value is `disabled`.
 	SpamAction pulumi.StringPtrInput
+	// If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
+	UseAutomaticSenderSecurity pulumi.BoolPtrInput
 	// (`http` or `https`) The tracking web scheme. Default: `http`
 	WebScheme pulumi.StringPtrInput
 	// Boolean that determines whether
@@ -209,6 +215,8 @@ type domainArgs struct {
 	// filtering will occur for inbound messages. Tag, messages
 	// will be tagged with a spam header. Default value is `disabled`.
 	SpamAction *string `pulumi:"spamAction"`
+	// If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
+	UseAutomaticSenderSecurity *bool `pulumi:"useAutomaticSenderSecurity"`
 	// (`http` or `https`) The tracking web scheme. Default: `http`
 	WebScheme *string `pulumi:"webScheme"`
 	// Boolean that determines whether
@@ -238,6 +246,8 @@ type DomainArgs struct {
 	// filtering will occur for inbound messages. Tag, messages
 	// will be tagged with a spam header. Default value is `disabled`.
 	SpamAction pulumi.StringPtrInput
+	// If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
+	UseAutomaticSenderSecurity pulumi.BoolPtrInput
 	// (`http` or `https`) The tracking web scheme. Default: `http`
 	WebScheme pulumi.StringPtrInput
 	// Boolean that determines whether
@@ -406,6 +416,11 @@ func (o DomainOutput) SmtpPassword() pulumi.StringPtrOutput {
 // will be tagged with a spam header. Default value is `disabled`.
 func (o DomainOutput) SpamAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringPtrOutput { return v.SpamAction }).(pulumi.StringPtrOutput)
+}
+
+// If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
+func (o DomainOutput) UseAutomaticSenderSecurity() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Domain) pulumi.BoolPtrOutput { return v.UseAutomaticSenderSecurity }).(pulumi.BoolPtrOutput)
 }
 
 // (`http` or `https`) The tracking web scheme. Default: `http`
