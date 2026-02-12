@@ -7,14 +7,86 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * ## Import
+ * Provides a Mailgun App resource. This can be used to
+ * create and manage applications on Mailgun.
  *
- * Domains can be imported using `region:domain_name` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
+ * After DNS records are set, domain verification should be triggered manually using [PUT /domains/\<domain\>/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
  *
- * hcl
+ * ## Example Usage
  *
- * ```sh
- * $ pulumi import mailgun:index/domain:Domain test us:example.domain.com
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as mailgun from "@pulumi/mailgun";
+ *
+ * // Create a new Mailgun domain
+ * const _default = new mailgun.Domain("default", {
+ *     name: "test.example.com",
+ *     region: "us",
+ *     spamAction: "disabled",
+ *     smtpPassword: "supersecretpassword1234",
+ *     dkimKeySize: 1024,
+ * });
+ * ```
+ *
+ * Here's an example using the Cloudflare provider. Bear in mind that the solution below requires the Cloudflare provider to be included in your project. Also, the Mailgun provider isn't associated with Cloudflare, and other Terraform providers that can control DNS may require a slightly different implementation.
+ *
+ * For detailed setup instructions, see Mailgun's [Domain Verification Setup Guide](https://help.mailgun.com/hc/en-us/articles/32884702360603-Domain-Verification-Setup-Guide) or the [Cloudflare DNS Setup Guide](https://help.mailgun.com/hc/en-us/articles/15585722150299-Cloudflare-DNS-Setup-Guide).
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ * import * as std from "@pulumi/std";
+ *
+ * // Use receiving/sending set attributes to create DNS entries
+ * // TTL is set to 300 seconds (5 minutes) for faster updates as recommended by Mailgun
+ * // You can adjust the TTL to your desired value
+ * const defaultReceiving: cloudflare.index.DnsRecord[] = [];
+ * for (const range of Object.entries(.reduce((__obj, record) => ({ ...__obj, [record.id]: {
+ *     type: record.recordType,
+ *     value: record.value,
+ *     priority: record.priority,
+ * } }))).map(([k, v]) => ({key: k, value: v}))) {
+ *     defaultReceiving.push(new cloudflare.index.DnsRecord(`default_receiving-${range.key}`, {
+ *         zoneId: zoneId,
+ *         name: domain,
+ *         type: range.value.type,
+ *         content: range.value.value,
+ *         priority: range.value.priority,
+ *         ttl: 300,
+ *     }));
+ * }
+ * const defaultSending: cloudflare.index.DnsRecord[] = [];
+ * for (const range of Object.entries(.reduce((__obj, record) => ({ ...__obj, [record.id]: {
+ *     name: record.name,
+ *     type: record.recordType,
+ *     value: record.value,
+ * } }))).map(([k, v]) => ({key: k, value: v}))) {
+ *     defaultSending.push(new cloudflare.index.DnsRecord(`default_sending-${range.key}`, {
+ *         zoneId: zoneId,
+ *         name: range.value.name,
+ *         type: range.value.type,
+ *         content: range.value.value,
+ *         ttl: 300,
+ *     }));
+ * }
+ * // Create MX records pointing to Mailgun
+ * // Use "@" for name if using the root domain, or the subdomain name if using a subdomain
+ * const mxRecords: cloudflare.index.DnsRecord[] = [];
+ * for (const range = {value: 0}; range.value < std.index.toset({
+ *     input: [
+ *         "mxa.mailgun.org",
+ *         "mxb.mailgun.org",
+ *     ],
+ * }).result; range.value++) {
+ *     mxRecords.push(new cloudflare.index.DnsRecord(`mx_records-${range.value}`, {
+ *         zoneId: zoneId,
+ *         name: "@",
+ *         type: "MX",
+ *         content: range.value,
+ *         priority: 10,
+ *         ttl: 300,
+ *     }));
+ * }
  * ```
  */
 export class Domain extends pulumi.CustomResource {

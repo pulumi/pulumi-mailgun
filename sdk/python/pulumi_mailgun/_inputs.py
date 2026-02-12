@@ -25,29 +25,24 @@ __all__ = [
     'DomainSendingRecordsSetArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class DomainReceivingRecordArgsDict(TypedDict):
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        priority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The priority of the record.
-        """
-        record_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The record type.
-        """
-        valid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        `"valid"` if the record is valid.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the record.
-        """
-elif False:
-    DomainReceivingRecordArgsDict: TypeAlias = Mapping[str, Any]
+class DomainReceivingRecordArgsDict(TypedDict):
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    priority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The priority of the record.
+    """
+    record_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The record type.
+    """
+    valid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    `"valid"` if the record is valid.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the record.
+    """
 
 @pulumi.input_type
 class DomainReceivingRecordArgs:
@@ -132,27 +127,24 @@ class DomainReceivingRecordArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class DomainReceivingRecordsSetArgsDict(TypedDict):
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        priority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The priority of the record.
-        """
-        record_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The record type.
-        """
-        valid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        `"valid"` if the record is valid.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the record.
-        """
-elif False:
-    DomainReceivingRecordsSetArgsDict: TypeAlias = Mapping[str, Any]
+class DomainReceivingRecordsSetArgsDict(TypedDict):
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    priority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The priority of the record.
+    """
+    record_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The record type.
+    """
+    valid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    `"valid"` if the record is valid.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the record.
+    """
 
 @pulumi.input_type
 class DomainReceivingRecordsSetArgs:
@@ -237,27 +229,24 @@ class DomainReceivingRecordsSetArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class DomainSendingRecordArgsDict(TypedDict):
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The domain to add to Mailgun
-        """
-        record_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The record type.
-        """
-        valid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        `"valid"` if the record is valid.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the record.
-        """
-elif False:
-    DomainSendingRecordArgsDict: TypeAlias = Mapping[str, Any]
+class DomainSendingRecordArgsDict(TypedDict):
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The domain to add to Mailgun
+    """
+    record_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The record type.
+    """
+    valid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    `"valid"` if the record is valid.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the record.
+    """
 
 @pulumi.input_type
 class DomainSendingRecordArgs:
@@ -342,27 +331,24 @@ class DomainSendingRecordArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class DomainSendingRecordsSetArgsDict(TypedDict):
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The domain to add to Mailgun
-        """
-        record_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The record type.
-        """
-        valid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        `"valid"` if the record is valid.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the record.
-        """
-elif False:
-    DomainSendingRecordsSetArgsDict: TypeAlias = Mapping[str, Any]
+class DomainSendingRecordsSetArgsDict(TypedDict):
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The domain to add to Mailgun
+    """
+    record_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The record type.
+    """
+    valid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    `"valid"` if the record is valid.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the record.
+    """
 
 @pulumi.input_type
 class DomainSendingRecordsSetArgs:

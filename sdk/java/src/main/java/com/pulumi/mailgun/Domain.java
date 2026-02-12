@@ -22,15 +22,52 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## Import
+ * Provides a Mailgun App resource. This can be used to
+ * create and manage applications on Mailgun.
  * 
- * Domains can be imported using `region:domain_name` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
+ * After DNS records are set, domain verification should be triggered manually using [PUT /domains/\&lt;domain\&gt;/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
  * 
- * hcl
+ * ## Example Usage
  * 
- * ```sh
- * $ pulumi import mailgun:index/domain:Domain test us:example.domain.com
- * ```
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.mailgun.Domain;
+ * import com.pulumi.mailgun.DomainArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Create a new Mailgun domain
+ *         var default_ = new Domain("default", DomainArgs.builder()
+ *             .name("test.example.com")
+ *             .region("us")
+ *             .spamAction("disabled")
+ *             .smtpPassword("supersecretpassword1234")
+ *             .dkimKeySize(1024)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Here&#39;s an example using the Cloudflare provider. Bear in mind that the solution below requires the Cloudflare provider to be included in your project. Also, the Mailgun provider isn&#39;t associated with Cloudflare, and other Terraform providers that can control DNS may require a slightly different implementation.
+ * 
+ * For detailed setup instructions, see Mailgun&#39;s [Domain Verification Setup Guide](https://help.mailgun.com/hc/en-us/articles/32884702360603-Domain-Verification-Setup-Guide) or the [Cloudflare DNS Setup Guide](https://help.mailgun.com/hc/en-us/articles/15585722150299-Cloudflare-DNS-Setup-Guide).
  * 
  */
 @ResourceType(type="mailgun:index/domain:Domain")

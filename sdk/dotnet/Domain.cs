@@ -10,14 +10,121 @@ using Pulumi.Serialization;
 namespace Pulumi.Mailgun
 {
     /// <summary>
-    /// ## Import
+    /// Provides a Mailgun App resource. This can be used to
+    /// create and manage applications on Mailgun.
     /// 
-    /// Domains can be imported using `region:domain_name` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
+    /// After DNS records are set, domain verification should be triggered manually using [PUT /domains/\&lt;domain\&gt;/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
     /// 
-    /// hcl
+    /// ## Example Usage
     /// 
-    /// ```sh
-    /// $ pulumi import mailgun:index/domain:Domain test us:example.domain.com
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Mailgun = Pulumi.Mailgun;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a new Mailgun domain
+    ///     var @default = new Mailgun.Domain("default", new()
+    ///     {
+    ///         Name = "test.example.com",
+    ///         Region = "us",
+    ///         SpamAction = "disabled",
+    ///         SmtpPassword = "supersecretpassword1234",
+    ///         DkimKeySize = 1024,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Here's an example using the Cloudflare provider. Bear in mind that the solution below requires the Cloudflare provider to be included in your project. Also, the Mailgun provider isn't associated with Cloudflare, and other Terraform providers that can control DNS may require a slightly different implementation.
+    /// 
+    /// For detailed setup instructions, see Mailgun's [Domain Verification Setup Guide](https://help.mailgun.com/hc/en-us/articles/32884702360603-Domain-Verification-Setup-Guide) or the [Cloudflare DNS Setup Guide](https://help.mailgun.com/hc/en-us/articles/15585722150299-Cloudflare-DNS-Setup-Guide).
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Use receiving/sending set attributes to create DNS entries
+    ///     // TTL is set to 300 seconds (5 minutes) for faster updates as recommended by Mailgun
+    ///     // You can adjust the TTL to your desired value
+    ///     var defaultReceiving = new List&lt;Cloudflare.Index.DnsRecord&gt;();
+    ///     foreach (var range in .ToDictionary(item =&gt; {
+    ///         var record = item.Value;
+    ///         return record.Id;
+    ///     }, item =&gt; {
+    ///         var record = item.Value;
+    ///         return 
+    ///         {
+    ///             { "type", record.RecordType },
+    ///             { "value", record.Value },
+    ///             { "priority", record.Priority },
+    ///         };
+    ///     }).Select(pair =&gt; new { pair.Key, pair.Value }))
+    ///     {
+    ///         defaultReceiving.Add(new Cloudflare.Index.DnsRecord($"default_receiving-{range.Key}", new()
+    ///         {
+    ///             ZoneId = zoneId,
+    ///             Name = domain,
+    ///             Type = range.Value.Type,
+    ///             Content = range.Value.Value,
+    ///             Priority = range.Value.Priority,
+    ///             Ttl = 300,
+    ///         }));
+    ///     }
+    ///     var defaultSending = new List&lt;Cloudflare.Index.DnsRecord&gt;();
+    ///     foreach (var range in .ToDictionary(item =&gt; {
+    ///         var record = item.Value;
+    ///         return record.Id;
+    ///     }, item =&gt; {
+    ///         var record = item.Value;
+    ///         return 
+    ///         {
+    ///             { "name", record.Name },
+    ///             { "type", record.RecordType },
+    ///             { "value", record.Value },
+    ///         };
+    ///     }).Select(pair =&gt; new { pair.Key, pair.Value }))
+    ///     {
+    ///         defaultSending.Add(new Cloudflare.Index.DnsRecord($"default_sending-{range.Key}", new()
+    ///         {
+    ///             ZoneId = zoneId,
+    ///             Name = range.Value.Name,
+    ///             Type = range.Value.Type,
+    ///             Content = range.Value.Value,
+    ///             Ttl = 300,
+    ///         }));
+    ///     }
+    ///     // Create MX records pointing to Mailgun
+    ///     // Use "@" for name if using the root domain, or the subdomain name if using a subdomain
+    ///     var mxRecords = new List&lt;Cloudflare.Index.DnsRecord&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; Std.Index.Toset.Invoke(new()
+    ///     {
+    ///         Input = new[]
+    ///         {
+    ///             "mxa.mailgun.org",
+    ///             "mxb.mailgun.org",
+    ///         },
+    ///     }).Result; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         mxRecords.Add(new Cloudflare.Index.DnsRecord($"mx_records-{range.Value}", new()
+    ///         {
+    ///             ZoneId = zoneId,
+    ///             Name = "@",
+    ///             Type = "MX",
+    ///             Content = range.Value,
+    ///             Priority = 10,
+    ///             Ttl = 300,
+    ///         }));
+    ///     }
+    /// });
     /// ```
     /// </summary>
     [MailgunResourceType("mailgun:index/domain:Domain")]

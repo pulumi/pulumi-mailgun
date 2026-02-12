@@ -57,18 +57,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * Domain credential can be imported using `region:email` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
- * 
- * Password is always exported to `null`.
- * 
- * hcl
- * 
- * ```sh
- * $ pulumi import mailgun:index/domainCredential:DomainCredential test us:test{@literal @}domain.com
- * ```
- * 
  */
 @ResourceType(type="mailgun:index/domainCredential:DomainCredential")
 public class DomainCredential extends com.pulumi.resources.CustomResource {

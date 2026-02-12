@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Provides a Mailgun API key resource. This can be used to  create and manage API keys on Mailgun.
+ *
+ * > **Note:** Please note that due to the limitations of the Terraform SDK v2 this provider uses, the removal of API keys
+ * which have their expiration set cannot be handled properly after expiration. In order to remove such expired keys, it is
+ * recommended to use `terraform state rm`.
+ *
  * ## Example Usage
  *
  * ```typescript
