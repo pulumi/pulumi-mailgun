@@ -205,16 +205,6 @@ class Route(pulumi.CustomResource):
             ])
         ```
 
-        ## Import
-
-        Routes can be imported using `ROUTE_ID` and `region` via `import` command. Route ID can be found on Mailgun portal in section `Receiving/Routes`. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
-
-        hcl
-
-        ```sh
-        $ pulumi import mailgun:index/route:Route test eu:123456789
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] expression: A filter expression like `match_recipient('.*@gmail.com')`
@@ -245,16 +235,6 @@ class Route(pulumi.CustomResource):
                 "forward('http://example.com/api/v1/foos/')",
                 "stop()",
             ])
-        ```
-
-        ## Import
-
-        Routes can be imported using `ROUTE_ID` and `region` via `import` command. Route ID can be found on Mailgun portal in section `Receiving/Routes`. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
-
-        hcl
-
-        ```sh
-        $ pulumi import mailgun:index/route:Route test eu:123456789
         ```
 
         :param str resource_name: The name of the resource.

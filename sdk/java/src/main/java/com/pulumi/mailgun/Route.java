@@ -58,16 +58,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ## Import
- * 
- * Routes can be imported using `ROUTE_ID` and `region` via `import` command. Route ID can be found on Mailgun portal in section `Receiving/Routes`. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
- * 
- * hcl
- * 
- * ```sh
- * $ pulumi import mailgun:index/route:Route test eu:123456789
- * ```
- * 
  */
 @ResourceType(type="mailgun:index/route:Route")
 public class Route extends com.pulumi.resources.CustomResource {

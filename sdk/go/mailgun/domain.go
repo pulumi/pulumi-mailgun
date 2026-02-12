@@ -11,15 +11,45 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Import
+// Provides a Mailgun App resource. This can be used to
+// create and manage applications on Mailgun.
 //
-// Domains can be imported using `region:domain_name` via `import` command. Region has to be chosen from `eu` or `us` (when no selection `us` is applied).
+// After DNS records are set, domain verification should be triggered manually using [PUT /domains/\<domain\>/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
 //
-// hcl
+// ## Example Usage
 //
-// ```sh
-// $ pulumi import mailgun:index/domain:Domain test us:example.domain.com
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-mailgun/sdk/v3/go/mailgun"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a new Mailgun domain
+//			_, err := mailgun.NewDomain(ctx, "default", &mailgun.DomainArgs{
+//				Name:         pulumi.String("test.example.com"),
+//				Region:       pulumi.String("us"),
+//				SpamAction:   pulumi.String("disabled"),
+//				SmtpPassword: pulumi.String("supersecretpassword1234"),
+//				DkimKeySize:  pulumi.Int(1024),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
+//
+// Here's an example using the Cloudflare provider. Bear in mind that the solution below requires the Cloudflare provider to be included in your project. Also, the Mailgun provider isn't associated with Cloudflare, and other Terraform providers that can control DNS may require a slightly different implementation.
+//
+// For detailed setup instructions, see Mailgun's [Domain Verification Setup Guide](https://help.mailgun.com/hc/en-us/articles/32884702360603-Domain-Verification-Setup-Guide) or the [Cloudflare DNS Setup Guide](https://help.mailgun.com/hc/en-us/articles/15585722150299-Cloudflare-DNS-Setup-Guide).
 type Domain struct {
 	pulumi.CustomResourceState
 

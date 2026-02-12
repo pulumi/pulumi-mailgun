@@ -18,6 +18,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Mailgun API key resource. This can be used to  create and manage API keys on Mailgun.
+ * 
+ * &gt; **Note:** Please note that due to the limitations of the Terraform SDK v2 this provider uses, the removal of API keys
+ * which have their expiration set cannot be handled properly after expiration. In order to remove such expired keys, it is
+ * recommended to use `terraform state rm`.
+ * 
  * ## Example Usage
  * 
  * <pre>
