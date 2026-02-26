@@ -25,6 +25,7 @@ class DomainCredentialArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DomainCredential resource.
+
         :param pulumi.Input[_builtins.str] domain: The domain to add credential of Mailgun.
         :param pulumi.Input[_builtins.str] login: The local-part of the email address to create.
         :param pulumi.Input[_builtins.str] password: Password for user authentication.
@@ -94,6 +95,7 @@ class _DomainCredentialState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DomainCredential resources.
+
         :param pulumi.Input[_builtins.str] domain: The domain to add credential of Mailgun.
         :param pulumi.Input[_builtins.str] login: The local-part of the email address to create.
         :param pulumi.Input[_builtins.str] password: Password for user authentication.
@@ -187,6 +189,7 @@ class DomainCredential(pulumi.CustomResource):
             region="us")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain: The domain to add credential of Mailgun.
@@ -218,6 +221,7 @@ class DomainCredential(pulumi.CustomResource):
             password="supersecretpassword1234",
             region="us")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DomainCredentialArgs args: The arguments to use to populate this resource's properties.

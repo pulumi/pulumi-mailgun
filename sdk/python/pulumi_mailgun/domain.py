@@ -35,6 +35,7 @@ class DomainArgs:
                  wildcard: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Domain resource.
+
         :param pulumi.Input[_builtins.bool] click_tracking: (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
         :param pulumi.Input[_builtins.int] dkim_key_size: The length of your domain’s generated DKIM key. Default value is `1024`.
         :param pulumi.Input[_builtins.str] dkim_selector: The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
@@ -246,6 +247,7 @@ class _DomainState:
                  wildcard: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
+
         :param pulumi.Input[_builtins.bool] click_tracking: (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
         :param pulumi.Input[_builtins.int] dkim_key_size: The length of your domain’s generated DKIM key. Default value is `1024`.
         :param pulumi.Input[_builtins.str] dkim_selector: The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
@@ -611,6 +613,7 @@ class Domain(pulumi.CustomResource):
                 ttl=300))
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] click_tracking: (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
@@ -708,6 +711,7 @@ class Domain(pulumi.CustomResource):
                 priority=10,
                 ttl=300))
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DomainArgs args: The arguments to use to populate this resource's properties.
