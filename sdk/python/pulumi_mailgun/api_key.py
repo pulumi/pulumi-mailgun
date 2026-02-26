@@ -30,6 +30,7 @@ class ApiKeyArgs:
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiKey resource.
+
         :param pulumi.Input[_builtins.str] role: (Enum: `admin`, `basic`, `sending`, `support`, or `developer`) Key role.
         :param pulumi.Input[_builtins.str] description: Key description.
         :param pulumi.Input[_builtins.str] domain_name: Web domain to associate with the key, for keys of `domain` kind.
@@ -185,6 +186,7 @@ class _ApiKeyState:
                  user_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiKey resources.
+
         :param pulumi.Input[_builtins.str] description: Key description.
         :param pulumi.Input[_builtins.str] disabled_reason: The reason for the key's disablement.
         :param pulumi.Input[_builtins.str] domain_name: Web domain to associate with the key, for keys of `domain` kind.
@@ -419,6 +421,7 @@ class ApiKey(pulumi.CustomResource):
             description="Some key")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Key description.
@@ -456,6 +459,7 @@ class ApiKey(pulumi.CustomResource):
             kind="user",
             description="Some key")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ApiKeyArgs args: The arguments to use to populate this resource's properties.

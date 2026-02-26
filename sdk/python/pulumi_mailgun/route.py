@@ -26,6 +26,7 @@ class RouteArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Route resource.
+
         :param pulumi.Input[_builtins.str] expression: A filter expression like `match_recipient('.*@gmail.com')`
         :param pulumi.Input[_builtins.int] priority: Smaller number indicates higher priority. Higher priority routes are handled first.
         :param pulumi.Input[_builtins.str] region: The region where route will be created. Default value is `us`.
@@ -103,6 +104,7 @@ class _RouteState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Route resources.
+
         :param pulumi.Input[_builtins.str] expression: A filter expression like `match_recipient('.*@gmail.com')`
         :param pulumi.Input[_builtins.int] priority: Smaller number indicates higher priority. Higher priority routes are handled first.
         :param pulumi.Input[_builtins.str] region: The region where route will be created. Default value is `us`.
@@ -205,6 +207,7 @@ class Route(pulumi.CustomResource):
             ])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] expression: A filter expression like `match_recipient('.*@gmail.com')`
@@ -236,6 +239,7 @@ class Route(pulumi.CustomResource):
                 "stop()",
             ])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param RouteArgs args: The arguments to use to populate this resource's properties.
