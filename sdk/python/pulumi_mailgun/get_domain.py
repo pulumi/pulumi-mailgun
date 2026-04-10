@@ -259,7 +259,7 @@ def get_domain(click_tracking: Optional[_builtins.bool] = None,
     import pulumi_mailgun as mailgun
 
     domain = mailgun.get_domain(name="test.example.com")
-    mailgun_mx = aws.index.Route53Record("mailgun-mx",
+    mailgun_mx = aws.Route53Record("mailgun-mx",
         zone_id=zone_id,
         name=domain_mailgun.name,
         type=MX,
@@ -339,7 +339,7 @@ def get_domain_output(click_tracking: Optional[pulumi.Input[Optional[_builtins.b
     import pulumi_mailgun as mailgun
 
     domain = mailgun.get_domain(name="test.example.com")
-    mailgun_mx = aws.index.Route53Record("mailgun-mx",
+    mailgun_mx = aws.Route53Record("mailgun-mx",
         zone_id=zone_id,
         name=domain_mailgun.name,
         type=MX,

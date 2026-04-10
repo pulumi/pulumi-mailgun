@@ -45,7 +45,7 @@ import * as utilities from "./utilities";
  *     type: record.recordType,
  *     value: record.value,
  *     priority: record.priority,
- * } }))).map(([k, v]) => ({key: k, value: v}))) {
+ * } }), {})).map(([k, v]) => ({key: k, value: v}))) {
  *     defaultReceiving.push(new cloudflare.index.DnsRecord(`default_receiving-${range.key}`, {
  *         zoneId: zoneId,
  *         name: domain,
@@ -60,7 +60,7 @@ import * as utilities from "./utilities";
  *     name: record.name,
  *     type: record.recordType,
  *     value: record.value,
- * } }))).map(([k, v]) => ({key: k, value: v}))) {
+ * } }), {})).map(([k, v]) => ({key: k, value: v}))) {
  *     defaultSending.push(new cloudflare.index.DnsRecord(`default_sending-${range.key}`, {
  *         zoneId: zoneId,
  *         name: range.value.name,
@@ -72,7 +72,7 @@ import * as utilities from "./utilities";
  * // Create MX records pointing to Mailgun
  * // Use "@" for name if using the root domain, or the subdomain name if using a subdomain
  * const mxRecords: cloudflare.index.DnsRecord[] = [];
- * for (const range = {value: 0}; range.value < std.index.toset({
+ * for (const range = {value: 0}; range.value < std.toset({
  *     input: [
  *         "mxa.mailgun.org",
  *         "mxb.mailgun.org",

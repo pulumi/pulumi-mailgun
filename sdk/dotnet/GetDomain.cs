@@ -25,7 +25,7 @@ namespace Pulumi.Mailgun
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var domain = Mailgun.GetDomain.Invoke(new()
+        ///     var domain = Mailgun.Index.GetDomain.Invoke(new()
         ///     {
         ///         Name = "test.example.com",
         ///     });
@@ -63,7 +63,7 @@ namespace Pulumi.Mailgun
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var domain = Mailgun.GetDomain.Invoke(new()
+        ///     var domain = Mailgun.Index.GetDomain.Invoke(new()
         ///     {
         ///         Name = "test.example.com",
         ///     });
@@ -101,7 +101,7 @@ namespace Pulumi.Mailgun
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var domain = Mailgun.GetDomain.Invoke(new()
+        ///     var domain = Mailgun.Index.GetDomain.Invoke(new()
         ///     {
         ///         Name = "test.example.com",
         ///     });

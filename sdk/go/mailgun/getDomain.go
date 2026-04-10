@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			domain, err := mailgun.LookupDomain(ctx, &mailgun.LookupDomainArgs{
+//			domain, err := mailgun.GetDomain(ctx, &mailgun.LookupDomainArgs{
 //				Name: "test.example.com",
 //			}, nil)
 //			if err != nil {

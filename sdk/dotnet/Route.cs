@@ -23,7 +23,7 @@ namespace Pulumi.Mailgun
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new Mailgun route
-    ///     var @default = new Mailgun.Route("default", new()
+    ///     var @default = new Mailgun.Index.Route("default", new()
     ///     {
     ///         Priority = 0,
     ///         Description = "inbound",
