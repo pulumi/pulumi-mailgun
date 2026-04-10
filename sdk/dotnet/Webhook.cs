@@ -24,7 +24,7 @@ namespace Pulumi.Mailgun
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new Mailgun webhook
-    ///     var @default = new Mailgun.Webhook("default", new()
+    ///     var @default = new Mailgun.Index.Webhook("default", new()
     ///     {
     ///         Domain = "test.example.com",
     ///         Region = "us",

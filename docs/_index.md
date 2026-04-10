@@ -85,7 +85,7 @@ using Mailgun = Pulumi.Mailgun;
 return await Deployment.RunAsync(() =>
 {
     // Create a new domain
-    var @default = new Mailgun.Domain("default");
+    var @default = new Mailgun.Index.Domain("default");
 
 });
 

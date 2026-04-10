@@ -26,7 +26,7 @@ namespace Pulumi.Mailgun
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new Mailgun domain
-    ///     var @default = new Mailgun.Domain("default", new()
+    ///     var @default = new Mailgun.Index.Domain("default", new()
     ///     {
     ///         Name = "test.example.com",
     ///         Region = "us",

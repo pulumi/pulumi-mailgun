@@ -573,12 +573,12 @@ class Domain(pulumi.CustomResource):
         # TTL is set to 300 seconds (5 minutes) for faster updates as recommended by Mailgun
         # You can adjust the TTL to your desired value
         default_receiving = []
-        for range in [{"key": k, "value": v} for [k, v] in enumerate({record.id: {
+        for range in [{"key": k, "value": v} for [k, v] in ({record.id: {
             type: record.record_type,
             value: record.value,
             priority: record.priority,
-        } for record in default.receiving_records_set})]:
-            default_receiving.append(cloudflare.index.DnsRecord(f"default_receiving-{range['key']}",
+        } for record in default.receiving_records_set}).items()]:
+            default_receiving.append(cloudflare.DnsRecord(f"default_receiving-{range['key']}",
                 zone_id=zone_id,
                 name=domain,
                 type=range.value.type,
@@ -586,12 +586,12 @@ class Domain(pulumi.CustomResource):
                 priority=range.value.priority,
                 ttl=300))
         default_sending = []
-        for range in [{"key": k, "value": v} for [k, v] in enumerate({record.id: {
+        for range in [{"key": k, "value": v} for [k, v] in ({record.id: {
             name: record.name,
             type: record.record_type,
             value: record.value,
-        } for record in default.sending_records_set})]:
-            default_sending.append(cloudflare.index.DnsRecord(f"default_sending-{range['key']}",
+        } for record in default.sending_records_set}).items()]:
+            default_sending.append(cloudflare.DnsRecord(f"default_sending-{range['key']}",
                 zone_id=zone_id,
                 name=range.value.name,
                 type=range.value.type,
@@ -600,11 +600,11 @@ class Domain(pulumi.CustomResource):
         # Create MX records pointing to Mailgun
         # Use "@" for name if using the root domain, or the subdomain name if using a subdomain
         mx_records = []
-        for range in [{"value": i} for i in range(0, std.index.toset(input=[
+        for range in [{"value": i} for i in range(0, std.toset(input=[
             mxa.mailgun.org,
             mxb.mailgun.org,
         ]).result)]:
-            mx_records.append(cloudflare.index.DnsRecord(f"mx_records-{range['value']}",
+            mx_records.append(cloudflare.DnsRecord(f"mx_records-{range['value']}",
                 zone_id=zone_id,
                 name=@,
                 type=MX,
@@ -672,12 +672,12 @@ class Domain(pulumi.CustomResource):
         # TTL is set to 300 seconds (5 minutes) for faster updates as recommended by Mailgun
         # You can adjust the TTL to your desired value
         default_receiving = []
-        for range in [{"key": k, "value": v} for [k, v] in enumerate({record.id: {
+        for range in [{"key": k, "value": v} for [k, v] in ({record.id: {
             type: record.record_type,
             value: record.value,
             priority: record.priority,
-        } for record in default.receiving_records_set})]:
-            default_receiving.append(cloudflare.index.DnsRecord(f"default_receiving-{range['key']}",
+        } for record in default.receiving_records_set}).items()]:
+            default_receiving.append(cloudflare.DnsRecord(f"default_receiving-{range['key']}",
                 zone_id=zone_id,
                 name=domain,
                 type=range.value.type,
@@ -685,12 +685,12 @@ class Domain(pulumi.CustomResource):
                 priority=range.value.priority,
                 ttl=300))
         default_sending = []
-        for range in [{"key": k, "value": v} for [k, v] in enumerate({record.id: {
+        for range in [{"key": k, "value": v} for [k, v] in ({record.id: {
             name: record.name,
             type: record.record_type,
             value: record.value,
-        } for record in default.sending_records_set})]:
-            default_sending.append(cloudflare.index.DnsRecord(f"default_sending-{range['key']}",
+        } for record in default.sending_records_set}).items()]:
+            default_sending.append(cloudflare.DnsRecord(f"default_sending-{range['key']}",
                 zone_id=zone_id,
                 name=range.value.name,
                 type=range.value.type,
@@ -699,11 +699,11 @@ class Domain(pulumi.CustomResource):
         # Create MX records pointing to Mailgun
         # Use "@" for name if using the root domain, or the subdomain name if using a subdomain
         mx_records = []
-        for range in [{"value": i} for i in range(0, std.index.toset(input=[
+        for range in [{"value": i} for i in range(0, std.toset(input=[
             mxa.mailgun.org,
             mxb.mailgun.org,
         ]).result)]:
-            mx_records.append(cloudflare.index.DnsRecord(f"mx_records-{range['value']}",
+            mx_records.append(cloudflare.DnsRecord(f"mx_records-{range['value']}",
                 zone_id=zone_id,
                 name=@,
                 type=MX,

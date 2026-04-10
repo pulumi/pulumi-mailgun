@@ -27,7 +27,7 @@ namespace Pulumi.Mailgun
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new Mailgun API key
-    ///     var someKey = new Mailgun.ApiKey("some_key", new()
+    ///     var someKey = new Mailgun.Index.ApiKey("some_key", new()
     ///     {
     ///         Role = "basic",
     ///         Kind = "user",
