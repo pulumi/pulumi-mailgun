@@ -21,6 +21,8 @@ import * as utilities from "./utilities";
  *     login: "test",
  *     password: "supersecretpassword1234",
  *     region: "us",
+ * }, {
+ *     ignoreChanges: ["password"],
  * });
  * ```
  */

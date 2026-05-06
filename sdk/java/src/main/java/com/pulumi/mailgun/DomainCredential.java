@@ -31,8 +31,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.mailgun.DomainCredential;
  * import com.pulumi.mailgun.DomainCredentialArgs;
- * import java.util.List;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -50,7 +51,9 @@ import javax.annotation.Nullable;
  *             .login("test")
  *             .password("supersecretpassword1234")
  *             .region("us")
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .ignoreChanges("password")
+ *                 .build());
  * 
  *     }
  * }

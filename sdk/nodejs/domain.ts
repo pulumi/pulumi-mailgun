@@ -45,7 +45,7 @@ import * as utilities from "./utilities";
  *     type: record.recordType,
  *     value: record.value,
  *     priority: record.priority,
- * } }), {})).map(([k, v]) => ({key: k, value: v}))) {
+ * } }), {})).sort().map(([k, v]) => ({key: k, value: v}))) {
  *     defaultReceiving.push(new cloudflare.index.DnsRecord(`default_receiving-${range.key}`, {
  *         zoneId: zoneId,
  *         name: domain,
@@ -60,7 +60,7 @@ import * as utilities from "./utilities";
  *     name: record.name,
  *     type: record.recordType,
  *     value: record.value,
- * } }), {})).map(([k, v]) => ({key: k, value: v}))) {
+ * } }), {})).sort().map(([k, v]) => ({key: k, value: v}))) {
  *     defaultSending.push(new cloudflare.index.DnsRecord(`default_sending-${range.key}`, {
  *         zoneId: zoneId,
  *         name: range.value.name,

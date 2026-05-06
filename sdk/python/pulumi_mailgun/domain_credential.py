@@ -186,7 +186,8 @@ class DomainCredential(pulumi.CustomResource):
             domain="toto.com",
             login="test",
             password="supersecretpassword1234",
-            region="us")
+            region="us",
+            opts = pulumi.ResourceOptions(ignore_changes=["password"]))
         ```
 
 
@@ -219,7 +220,8 @@ class DomainCredential(pulumi.CustomResource):
             domain="toto.com",
             login="test",
             password="supersecretpassword1234",
-            region="us")
+            region="us",
+            opts = pulumi.ResourceOptions(ignore_changes=["password"]))
         ```
 
 

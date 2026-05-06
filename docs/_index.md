@@ -85,7 +85,7 @@ using Mailgun = Pulumi.Mailgun;
 return await Deployment.RunAsync(() =>
 {
     // Create a new domain
-    var @default = new Mailgun.Index.Domain("default");
+    var @default = new Mailgun.Domain("default");
 
 });
 
@@ -161,8 +161,8 @@ import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.mailgun.Domain;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 import java.io.File;
 import java.nio.file.Files;

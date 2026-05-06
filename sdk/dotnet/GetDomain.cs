@@ -25,12 +25,12 @@ namespace Pulumi.Mailgun
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var domain = Mailgun.Index.GetDomain.Invoke(new()
+        ///     var domain = Mailgun.GetDomain.Invoke(new()
         ///     {
         ///         Name = "test.example.com",
         ///     });
         /// 
-        ///     var mailgun_mx = new Aws.Index.Route53Record("mailgun-mx", new()
+        ///     var mailgun_mx = new Aws.Route53Record("mailgun-mx", new()
         ///     {
         ///         ZoneId = zoneId,
         ///         Name = domainMailgun.Name,
@@ -63,12 +63,12 @@ namespace Pulumi.Mailgun
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var domain = Mailgun.Index.GetDomain.Invoke(new()
+        ///     var domain = Mailgun.GetDomain.Invoke(new()
         ///     {
         ///         Name = "test.example.com",
         ///     });
         /// 
-        ///     var mailgun_mx = new Aws.Index.Route53Record("mailgun-mx", new()
+        ///     var mailgun_mx = new Aws.Route53Record("mailgun-mx", new()
         ///     {
         ///         ZoneId = zoneId,
         ///         Name = domainMailgun.Name,
@@ -101,12 +101,12 @@ namespace Pulumi.Mailgun
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var domain = Mailgun.Index.GetDomain.Invoke(new()
+        ///     var domain = Mailgun.GetDomain.Invoke(new()
         ///     {
         ///         Name = "test.example.com",
         ///     });
         /// 
-        ///     var mailgun_mx = new Aws.Index.Route53Record("mailgun-mx", new()
+        ///     var mailgun_mx = new Aws.Route53Record("mailgun-mx", new()
         ///     {
         ///         ZoneId = zoneId,
         ///         Name = domainMailgun.Name,
