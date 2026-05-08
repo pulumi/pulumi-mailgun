@@ -165,55 +165,55 @@ export interface ApiKeyState {
     /**
      * Key description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The reason for the key's disablement.
      */
-    disabledReason?: pulumi.Input<string>;
+    disabledReason?: pulumi.Input<string | undefined>;
     /**
      * Web domain to associate with the key, for keys of `domain` kind.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * API key user's email address; should be provided for all keys of `web` kind.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * When the key will expire.
      */
-    expiresAt?: pulumi.Input<number>;
+    expiresAt?: pulumi.Input<number | undefined>;
     /**
      * Whether or not the key is disabled from use.
      */
-    isDisabled?: pulumi.Input<boolean>;
+    isDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * (Enum:`domain`, `user`, or `web`). API key type. Default: `user`.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The region where domain will be created. Default value is `us`.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * An email address associated with the key.
      */
-    requestor?: pulumi.Input<string>;
+    requestor?: pulumi.Input<string | undefined>;
     /**
      * (Enum: `admin`, `basic`, `sending`, `support`, or `developer`) Key role.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * The full API key secret in plain text.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * API key user's string user ID; should be provided for all keys of `web` kind.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * API key user's name.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -223,27 +223,27 @@ export interface ApiKeyArgs {
     /**
      * Key description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Web domain to associate with the key, for keys of `domain` kind.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * API key user's email address; should be provided for all keys of `web` kind.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * When the key will expire.
      */
-    expiresAt?: pulumi.Input<number>;
+    expiresAt?: pulumi.Input<number | undefined>;
     /**
      * (Enum:`domain`, `user`, or `web`). API key type. Default: `user`.
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The region where domain will be created. Default value is `us`.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * (Enum: `admin`, `basic`, `sending`, `support`, or `developer`) Key role.
      */
@@ -251,9 +251,9 @@ export interface ApiKeyArgs {
     /**
      * API key user's string user ID; should be provided for all keys of `web` kind.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * API key user's name.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }

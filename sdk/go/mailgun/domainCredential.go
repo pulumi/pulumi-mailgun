@@ -36,7 +36,9 @@ import (
 //				Login:    pulumi.String("test"),
 //				Password: pulumi.String("supersecretpassword1234"),
 //				Region:   pulumi.String("us"),
-//			})
+//			}, pulumi.IgnoreChanges([]string{
+//				"password",
+//			}))
 //			if err != nil {
 //				return err
 //			}

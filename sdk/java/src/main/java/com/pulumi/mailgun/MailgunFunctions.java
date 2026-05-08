@@ -31,8 +31,8 @@ public final class MailgunFunctions {
      * import com.pulumi.mailgun.inputs.GetDomainArgs;
      * import com.pulumi.aws.Route53Record;
      * import com.pulumi.aws.Route53RecordArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -53,7 +53,7 @@ public final class MailgunFunctions {
      *             .name(domainMailgun.name())
      *             .type("MX")
      *             .ttl(3600)
-     *             .records(List.of(            
+     *             .records(Arrays.asList(            
      *                 String.format("%s %s.", domain.receivingRecords()[0].priority(),domain.receivingRecords()[0].value()),
      *                 String.format("%s %s.", domain.receivingRecords()[1].priority(),domain.receivingRecords()[1].value())))
      *             .build());
@@ -83,8 +83,8 @@ public final class MailgunFunctions {
      * import com.pulumi.mailgun.inputs.GetDomainArgs;
      * import com.pulumi.aws.Route53Record;
      * import com.pulumi.aws.Route53RecordArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -105,7 +105,7 @@ public final class MailgunFunctions {
      *             .name(domainMailgun.name())
      *             .type("MX")
      *             .ttl(3600)
-     *             .records(List.of(            
+     *             .records(Arrays.asList(            
      *                 String.format("%s %s.", domain.receivingRecords()[0].priority(),domain.receivingRecords()[0].value()),
      *                 String.format("%s %s.", domain.receivingRecords()[1].priority(),domain.receivingRecords()[1].value())))
      *             .build());
@@ -135,8 +135,8 @@ public final class MailgunFunctions {
      * import com.pulumi.mailgun.inputs.GetDomainArgs;
      * import com.pulumi.aws.Route53Record;
      * import com.pulumi.aws.Route53RecordArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -157,7 +157,7 @@ public final class MailgunFunctions {
      *             .name(domainMailgun.name())
      *             .type("MX")
      *             .ttl(3600)
-     *             .records(List.of(            
+     *             .records(Arrays.asList(            
      *                 String.format("%s %s.", domain.receivingRecords()[0].priority(),domain.receivingRecords()[0].value()),
      *                 String.format("%s %s.", domain.receivingRecords()[1].priority(),domain.receivingRecords()[1].value())))
      *             .build());
@@ -187,8 +187,8 @@ public final class MailgunFunctions {
      * import com.pulumi.mailgun.inputs.GetDomainArgs;
      * import com.pulumi.aws.Route53Record;
      * import com.pulumi.aws.Route53RecordArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -209,7 +209,7 @@ public final class MailgunFunctions {
      *             .name(domainMailgun.name())
      *             .type("MX")
      *             .ttl(3600)
-     *             .records(List.of(            
+     *             .records(Arrays.asList(            
      *                 String.format("%s %s.", domain.receivingRecords()[0].priority(),domain.receivingRecords()[0].value()),
      *                 String.format("%s %s.", domain.receivingRecords()[1].priority(),domain.receivingRecords()[1].value())))
      *             .build());
@@ -239,8 +239,8 @@ public final class MailgunFunctions {
      * import com.pulumi.mailgun.inputs.GetDomainArgs;
      * import com.pulumi.aws.Route53Record;
      * import com.pulumi.aws.Route53RecordArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -261,7 +261,7 @@ public final class MailgunFunctions {
      *             .name(domainMailgun.name())
      *             .type("MX")
      *             .ttl(3600)
-     *             .records(List.of(            
+     *             .records(Arrays.asList(            
      *                 String.format("%s %s.", domain.receivingRecords()[0].priority(),domain.receivingRecords()[0].value()),
      *                 String.format("%s %s.", domain.receivingRecords()[1].priority(),domain.receivingRecords()[1].value())))
      *             .build());

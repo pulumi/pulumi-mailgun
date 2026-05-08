@@ -127,19 +127,19 @@ export interface WebhookState {
     /**
      * The domain to add to Mailgun
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * The kind of webhook. Supported values (`accepted` `clicked` `complained` `delivered` `opened` `permanentFail`, `temporaryFail` `unsubscribed`)
      */
-    kind?: pulumi.Input<string>;
+    kind?: pulumi.Input<string | undefined>;
     /**
      * The region where webhook will be created. Default value is `us`.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The urls of webhook
      */
-    urls?: pulumi.Input<pulumi.Input<string>[]>;
+    urls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -157,7 +157,7 @@ export interface WebhookArgs {
     /**
      * The region where webhook will be created. Default value is `us`.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The urls of webhook
      */

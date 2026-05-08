@@ -112,20 +112,20 @@ export class Route extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Route resources.
  */
 export interface RouteState {
-    actions?: pulumi.Input<pulumi.Input<string>[]>;
-    description?: pulumi.Input<string>;
+    actions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A filter expression like `match_recipient('.*@gmail.com')`
      */
-    expression?: pulumi.Input<string>;
+    expression?: pulumi.Input<string | undefined>;
     /**
      * Smaller number indicates higher priority. Higher priority routes are handled first.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The region where route will be created. Default value is `us`.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -133,7 +133,7 @@ export interface RouteState {
  */
 export interface RouteArgs {
     actions: pulumi.Input<pulumi.Input<string>[]>;
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A filter expression like `match_recipient('.*@gmail.com')`
      */
@@ -145,5 +145,5 @@ export interface RouteArgs {
     /**
      * The region where route will be created. Default value is `us`.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

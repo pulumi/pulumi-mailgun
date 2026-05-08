@@ -20,14 +20,14 @@ __all__ = ['ApiKeyArgs', 'ApiKey']
 class ApiKeyArgs:
     def __init__(__self__, *,
                  role: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiKey resource.
 
@@ -73,117 +73,117 @@ class ApiKeyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Web domain to associate with the key, for keys of `domain` kind.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API key user's email address; should be provided for all keys of `web` kind.
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When the key will expire.
         """
         return pulumi.get(self, "expires_at")
 
     @expires_at.setter
-    def expires_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expires_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Enum:`domain`, `user`, or `web`). API key type. Default: `user`.
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where domain will be created. Default value is `us`.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API key user's string user ID; should be provided for all keys of `web` kind.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API key user's name.
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
 
 @pulumi.input_type
 class _ApiKeyState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 is_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 requestor: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 is_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 requestor: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ApiKey resources.
 
@@ -230,158 +230,158 @@ class _ApiKeyState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="disabledReason")
-    def disabled_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disabled_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason for the key's disablement.
         """
         return pulumi.get(self, "disabled_reason")
 
     @disabled_reason.setter
-    def disabled_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disabled_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disabled_reason", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Web domain to associate with the key, for keys of `domain` kind.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API key user's email address; should be provided for all keys of `web` kind.
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email", value)
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When the key will expire.
         """
         return pulumi.get(self, "expires_at")
 
     @expires_at.setter
-    def expires_at(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expires_at", value)
 
     @_builtins.property
     @pulumi.getter(name="isDisabled")
-    def is_disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether or not the key is disabled from use.
         """
         return pulumi.get(self, "is_disabled")
 
     @is_disabled.setter
-    def is_disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kind(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Enum:`domain`, `user`, or `web`). API key type. Default: `user`.
         """
         return pulumi.get(self, "kind")
 
     @kind.setter
-    def kind(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kind(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kind", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where domain will be created. Default value is `us`.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def requestor(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def requestor(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An email address associated with the key.
         """
         return pulumi.get(self, "requestor")
 
     @requestor.setter
-    def requestor(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def requestor(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "requestor", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Enum: `admin`, `basic`, `sending`, `support`, or `developer`) Key role.
         """
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full API key secret in plain text.
         """
         return pulumi.get(self, "secret")
 
     @secret.setter
-    def secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API key user's string user ID; should be provided for all keys of `web` kind.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API key user's name.
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
 
@@ -391,15 +391,15 @@ class ApiKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Mailgun API key resource. This can be used to  create and manage API keys on Mailgun.
@@ -476,15 +476,15 @@ class ApiKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 email: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.int]] = None,
-                 kind: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 email: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.int]] = None,
+                 kind: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -521,19 +521,19 @@ class ApiKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disabled_reason: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            email: Optional[pulumi.Input[_builtins.str]] = None,
-            expires_at: Optional[pulumi.Input[_builtins.int]] = None,
-            is_disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            kind: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            requestor: Optional[pulumi.Input[_builtins.str]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None,
-            secret: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'ApiKey':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.int]] = None,
+            is_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            kind: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            requestor: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            secret: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApiKey':
         """
         Get an existing ApiKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -201,10 +201,10 @@ export interface GetDomainOutputArgs {
     /**
      * The click tracking setting.
      */
-    clickTracking?: pulumi.Input<boolean>;
-    dkimKeySize?: pulumi.Input<number>;
-    dkimSelector?: pulumi.Input<string>;
-    forceDkimAuthority?: pulumi.Input<boolean>;
+    clickTracking?: pulumi.Input<boolean | undefined>;
+    dkimKeySize?: pulumi.Input<number | undefined>;
+    dkimSelector?: pulumi.Input<string | undefined>;
+    forceDkimAuthority?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the domain.
      */
@@ -212,26 +212,26 @@ export interface GetDomainOutputArgs {
     /**
      * The open tracking setting.
      */
-    openTracking?: pulumi.Input<boolean>;
+    openTracking?: pulumi.Input<boolean | undefined>;
     /**
      * The region where domain will be created. Default value is `us`.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The password to the SMTP server.
      */
-    smtpPassword?: pulumi.Input<string>;
+    smtpPassword?: pulumi.Input<string | undefined>;
     /**
      * The spam filtering setting.
      */
-    spamAction?: pulumi.Input<string>;
-    useAutomaticSenderSecurity?: pulumi.Input<boolean>;
+    spamAction?: pulumi.Input<string | undefined>;
+    useAutomaticSenderSecurity?: pulumi.Input<boolean | undefined>;
     /**
      * The tracking web scheme.
      */
-    webScheme?: pulumi.Input<string>;
+    webScheme?: pulumi.Input<string | undefined>;
     /**
      * Whether or not the domain will accept email for sub-domains.
      */
-    wildcard?: pulumi.Input<boolean>;
+    wildcard?: pulumi.Input<boolean | undefined>;
 }

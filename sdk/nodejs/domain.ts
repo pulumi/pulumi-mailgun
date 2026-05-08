@@ -45,7 +45,7 @@ import * as utilities from "./utilities";
  *     type: record.recordType,
  *     value: record.value,
  *     priority: record.priority,
- * } }), {})).map(([k, v]) => ({key: k, value: v}))) {
+ * } }), {})).sort().map(([k, v]) => ({key: k, value: v}))) {
  *     defaultReceiving.push(new cloudflare.index.DnsRecord(`default_receiving-${range.key}`, {
  *         zoneId: zoneId,
  *         name: domain,
@@ -60,7 +60,7 @@ import * as utilities from "./utilities";
  *     name: record.name,
  *     type: record.recordType,
  *     value: record.value,
- * } }), {})).map(([k, v]) => ({key: k, value: v}))) {
+ * } }), {})).sort().map(([k, v]) => ({key: k, value: v}))) {
  *     defaultSending.push(new cloudflare.index.DnsRecord(`default_sending-${range.key}`, {
  *         zoneId: zoneId,
  *         name: range.value.name,
@@ -257,78 +257,78 @@ export interface DomainState {
     /**
      * (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
      */
-    clickTracking?: pulumi.Input<boolean>;
+    clickTracking?: pulumi.Input<boolean | undefined>;
     /**
      * The length of your domain’s generated DKIM key. Default value is `1024`.
      */
-    dkimKeySize?: pulumi.Input<number>;
+    dkimKeySize?: pulumi.Input<number | undefined>;
     /**
      * The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
      */
-    dkimSelector?: pulumi.Input<string>;
+    dkimSelector?: pulumi.Input<string | undefined>;
     /**
      * If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
      */
-    forceDkimAuthority?: pulumi.Input<boolean>;
+    forceDkimAuthority?: pulumi.Input<boolean | undefined>;
     /**
      * The domain to add to Mailgun
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
      */
-    openTracking?: pulumi.Input<boolean>;
+    openTracking?: pulumi.Input<boolean | undefined>;
     /**
      * A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
      *
      * @deprecated Use `receivingRecordsSet` instead.
      */
-    receivingRecords?: pulumi.Input<pulumi.Input<inputs.DomainReceivingRecord>[]>;
+    receivingRecords?: pulumi.Input<pulumi.Input<inputs.DomainReceivingRecord>[] | undefined>;
     /**
      * A set of DNS records for receiving validation.
      */
-    receivingRecordsSets?: pulumi.Input<pulumi.Input<inputs.DomainReceivingRecordsSet>[]>;
+    receivingRecordsSets?: pulumi.Input<pulumi.Input<inputs.DomainReceivingRecordsSet>[] | undefined>;
     /**
      * The region where domain will be created. Default value is `us`.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
      *
      * @deprecated Use `sendingRecordsSet` instead.
      */
-    sendingRecords?: pulumi.Input<pulumi.Input<inputs.DomainSendingRecord>[]>;
+    sendingRecords?: pulumi.Input<pulumi.Input<inputs.DomainSendingRecord>[] | undefined>;
     /**
      * A set of DNS records for sending validation.
      */
-    sendingRecordsSets?: pulumi.Input<pulumi.Input<inputs.DomainSendingRecordsSet>[]>;
+    sendingRecordsSets?: pulumi.Input<pulumi.Input<inputs.DomainSendingRecordsSet>[] | undefined>;
     /**
      * The login email for the SMTP server.
      */
-    smtpLogin?: pulumi.Input<string>;
+    smtpLogin?: pulumi.Input<string | undefined>;
     /**
      * Password for SMTP authentication
      */
-    smtpPassword?: pulumi.Input<string>;
+    smtpPassword?: pulumi.Input<string | undefined>;
     /**
      * `disabled` or `tag` Disable, no spam
      * filtering will occur for inbound messages. Tag, messages
      * will be tagged with a spam header. Default value is `disabled`.
      */
-    spamAction?: pulumi.Input<string>;
+    spamAction?: pulumi.Input<string | undefined>;
     /**
      * If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
      */
-    useAutomaticSenderSecurity?: pulumi.Input<boolean>;
+    useAutomaticSenderSecurity?: pulumi.Input<boolean | undefined>;
     /**
      * (`http` or `https`) The tracking web scheme. Default: `http`
      */
-    webScheme?: pulumi.Input<string>;
+    webScheme?: pulumi.Input<string | undefined>;
     /**
      * Boolean that determines whether
      * the domain will accept email for sub-domains.
      */
-    wildcard?: pulumi.Input<boolean>;
+    wildcard?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -338,52 +338,52 @@ export interface DomainArgs {
     /**
      * (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
      */
-    clickTracking?: pulumi.Input<boolean>;
+    clickTracking?: pulumi.Input<boolean | undefined>;
     /**
      * The length of your domain’s generated DKIM key. Default value is `1024`.
      */
-    dkimKeySize?: pulumi.Input<number>;
+    dkimKeySize?: pulumi.Input<number | undefined>;
     /**
      * The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
      */
-    dkimSelector?: pulumi.Input<string>;
+    dkimSelector?: pulumi.Input<string | undefined>;
     /**
      * If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
      */
-    forceDkimAuthority?: pulumi.Input<boolean>;
+    forceDkimAuthority?: pulumi.Input<boolean | undefined>;
     /**
      * The domain to add to Mailgun
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
      */
-    openTracking?: pulumi.Input<boolean>;
+    openTracking?: pulumi.Input<boolean | undefined>;
     /**
      * The region where domain will be created. Default value is `us`.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Password for SMTP authentication
      */
-    smtpPassword?: pulumi.Input<string>;
+    smtpPassword?: pulumi.Input<string | undefined>;
     /**
      * `disabled` or `tag` Disable, no spam
      * filtering will occur for inbound messages. Tag, messages
      * will be tagged with a spam header. Default value is `disabled`.
      */
-    spamAction?: pulumi.Input<string>;
+    spamAction?: pulumi.Input<string | undefined>;
     /**
      * If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
      */
-    useAutomaticSenderSecurity?: pulumi.Input<boolean>;
+    useAutomaticSenderSecurity?: pulumi.Input<boolean | undefined>;
     /**
      * (`http` or `https`) The tracking web scheme. Default: `http`
      */
-    webScheme?: pulumi.Input<string>;
+    webScheme?: pulumi.Input<string | undefined>;
     /**
      * Boolean that determines whether
      * the domain will accept email for sub-domains.
      */
-    wildcard?: pulumi.Input<boolean>;
+    wildcard?: pulumi.Input<boolean | undefined>;
 }
