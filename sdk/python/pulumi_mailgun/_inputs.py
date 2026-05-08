@@ -26,20 +26,20 @@ __all__ = [
 ]
 
 class DomainReceivingRecordArgsDict(TypedDict):
-    id: NotRequired[pulumi.Input[_builtins.str]]
-    priority: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    priority: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The priority of the record.
     """
-    record_type: NotRequired[pulumi.Input[_builtins.str]]
+    record_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The record type.
     """
-    valid: NotRequired[pulumi.Input[_builtins.str]]
+    valid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     `"valid"` if the record is valid.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of the record.
     """
@@ -47,11 +47,11 @@ class DomainReceivingRecordArgsDict(TypedDict):
 @pulumi.input_type
 class DomainReceivingRecordArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 valid: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 valid: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] priority: The priority of the record.
         :param pulumi.Input[_builtins.str] record_type: The record type.
@@ -71,77 +71,77 @@ class DomainReceivingRecordArgs:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The priority of the record.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="recordType")
-    def record_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def record_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The record type.
         """
         return pulumi.get(self, "record_type")
 
     @record_type.setter
-    def record_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def record_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "record_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def valid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def valid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `"valid"` if the record is valid.
         """
         return pulumi.get(self, "valid")
 
     @valid.setter
-    def valid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def valid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "valid", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the record.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class DomainReceivingRecordsSetArgsDict(TypedDict):
-    id: NotRequired[pulumi.Input[_builtins.str]]
-    priority: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    priority: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The priority of the record.
     """
-    record_type: NotRequired[pulumi.Input[_builtins.str]]
+    record_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The record type.
     """
-    valid: NotRequired[pulumi.Input[_builtins.str]]
+    valid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     `"valid"` if the record is valid.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of the record.
     """
@@ -149,11 +149,11 @@ class DomainReceivingRecordsSetArgsDict(TypedDict):
 @pulumi.input_type
 class DomainReceivingRecordsSetArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 valid: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 valid: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] priority: The priority of the record.
         :param pulumi.Input[_builtins.str] record_type: The record type.
@@ -173,77 +173,77 @@ class DomainReceivingRecordsSetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The priority of the record.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="recordType")
-    def record_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def record_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The record type.
         """
         return pulumi.get(self, "record_type")
 
     @record_type.setter
-    def record_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def record_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "record_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def valid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def valid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `"valid"` if the record is valid.
         """
         return pulumi.get(self, "valid")
 
     @valid.setter
-    def valid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def valid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "valid", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the record.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class DomainSendingRecordArgsDict(TypedDict):
-    id: NotRequired[pulumi.Input[_builtins.str]]
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The domain to add to Mailgun
     """
-    record_type: NotRequired[pulumi.Input[_builtins.str]]
+    record_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The record type.
     """
-    valid: NotRequired[pulumi.Input[_builtins.str]]
+    valid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     `"valid"` if the record is valid.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of the record.
     """
@@ -251,11 +251,11 @@ class DomainSendingRecordArgsDict(TypedDict):
 @pulumi.input_type
 class DomainSendingRecordArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 valid: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 valid: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The domain to add to Mailgun
         :param pulumi.Input[_builtins.str] record_type: The record type.
@@ -275,77 +275,77 @@ class DomainSendingRecordArgs:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain to add to Mailgun
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="recordType")
-    def record_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def record_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The record type.
         """
         return pulumi.get(self, "record_type")
 
     @record_type.setter
-    def record_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def record_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "record_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def valid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def valid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `"valid"` if the record is valid.
         """
         return pulumi.get(self, "valid")
 
     @valid.setter
-    def valid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def valid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "valid", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the record.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class DomainSendingRecordsSetArgsDict(TypedDict):
-    id: NotRequired[pulumi.Input[_builtins.str]]
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The domain to add to Mailgun
     """
-    record_type: NotRequired[pulumi.Input[_builtins.str]]
+    record_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The record type.
     """
-    valid: NotRequired[pulumi.Input[_builtins.str]]
+    valid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     `"valid"` if the record is valid.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of the record.
     """
@@ -353,11 +353,11 @@ class DomainSendingRecordsSetArgsDict(TypedDict):
 @pulumi.input_type
 class DomainSendingRecordsSetArgs:
     def __init__(__self__, *,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 valid: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 valid: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The domain to add to Mailgun
         :param pulumi.Input[_builtins.str] record_type: The record type.
@@ -377,59 +377,59 @@ class DomainSendingRecordsSetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain to add to Mailgun
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="recordType")
-    def record_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def record_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The record type.
         """
         return pulumi.get(self, "record_type")
 
     @record_type.setter
-    def record_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def record_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "record_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def valid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def valid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `"valid"` if the record is valid.
         """
         return pulumi.get(self, "valid")
 
     @valid.setter
-    def valid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def valid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "valid", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the record.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 

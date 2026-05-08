@@ -26,7 +26,7 @@ namespace Pulumi.Mailgun
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new Mailgun domain
-    ///     var @default = new Mailgun.Index.Domain("default", new()
+    ///     var @default = new Mailgun.Domain("default", new()
     ///     {
     ///         Name = "test.example.com",
     ///         Region = "us",
@@ -54,7 +54,7 @@ namespace Pulumi.Mailgun
     ///     // Use receiving/sending set attributes to create DNS entries
     ///     // TTL is set to 300 seconds (5 minutes) for faster updates as recommended by Mailgun
     ///     // You can adjust the TTL to your desired value
-    ///     var defaultReceiving = new List&lt;Cloudflare.Index.DnsRecord&gt;();
+    ///     var defaultReceiving = new List&lt;Cloudflare.DnsRecord&gt;();
     ///     foreach (var range in .ToDictionary(item =&gt; {
     ///         var record = item.Value;
     ///         return record.Id;
@@ -68,7 +68,7 @@ namespace Pulumi.Mailgun
     ///         };
     ///     }).Select(pair =&gt; new { pair.Key, pair.Value }))
     ///     {
-    ///         defaultReceiving.Add(new Cloudflare.Index.DnsRecord($"default_receiving-{range.Key}", new()
+    ///         defaultReceiving.Add(new Cloudflare.DnsRecord($"default_receiving-{range.Key}", new()
     ///         {
     ///             ZoneId = zoneId,
     ///             Name = domain,
@@ -78,7 +78,7 @@ namespace Pulumi.Mailgun
     ///             Ttl = 300,
     ///         }));
     ///     }
-    ///     var defaultSending = new List&lt;Cloudflare.Index.DnsRecord&gt;();
+    ///     var defaultSending = new List&lt;Cloudflare.DnsRecord&gt;();
     ///     foreach (var range in .ToDictionary(item =&gt; {
     ///         var record = item.Value;
     ///         return record.Id;
@@ -92,7 +92,7 @@ namespace Pulumi.Mailgun
     ///         };
     ///     }).Select(pair =&gt; new { pair.Key, pair.Value }))
     ///     {
-    ///         defaultSending.Add(new Cloudflare.Index.DnsRecord($"default_sending-{range.Key}", new()
+    ///         defaultSending.Add(new Cloudflare.DnsRecord($"default_sending-{range.Key}", new()
     ///         {
     ///             ZoneId = zoneId,
     ///             Name = range.Value.Name,
@@ -103,8 +103,8 @@ namespace Pulumi.Mailgun
     ///     }
     ///     // Create MX records pointing to Mailgun
     ///     // Use "@" for name if using the root domain, or the subdomain name if using a subdomain
-    ///     var mxRecords = new List&lt;Cloudflare.Index.DnsRecord&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; Std.Index.Toset.Invoke(new()
+    ///     var mxRecords = new List&lt;Cloudflare.DnsRecord&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; Std.Toset.Invoke(new()
     ///     {
     ///         Input = new[]
     ///         {
@@ -114,7 +114,7 @@ namespace Pulumi.Mailgun
     ///     }).Result; rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
-    ///         mxRecords.Add(new Cloudflare.Index.DnsRecord($"mx_records-{range.Value}", new()
+    ///         mxRecords.Add(new Cloudflare.DnsRecord($"mx_records-{range.Value}", new()
     ///         {
     ///             ZoneId = zoneId,
     ///             Name = "@",

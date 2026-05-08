@@ -21,6 +21,8 @@ import * as utilities from "./utilities";
  *     login: "test",
  *     password: "supersecretpassword1234",
  *     region: "us",
+ * }, {
+ *     ignoreChanges: ["password"],
  * });
  * ```
  */
@@ -116,19 +118,19 @@ export interface DomainCredentialState {
     /**
      * The domain to add credential of Mailgun.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * The local-part of the email address to create.
      */
-    login?: pulumi.Input<string>;
+    login?: pulumi.Input<string | undefined>;
     /**
      * Password for user authentication.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The region where domain credential will be created. Default value is `us`.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -150,5 +152,5 @@ export interface DomainCredentialArgs {
     /**
      * The region where domain credential will be created. Default value is `us`.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

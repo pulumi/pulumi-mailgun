@@ -25,12 +25,18 @@ namespace Pulumi.Mailgun
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new Mailgun credential
-    ///     var foobar = new Mailgun.Index.DomainCredential("foobar", new()
+    ///     var foobar = new Mailgun.DomainCredential("foobar", new()
     ///     {
     ///         Domain = "toto.com",
     ///         Login = "test",
     ///         Password = "supersecretpassword1234",
     ///         Region = "us",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         IgnoreChanges =
+    ///         {
+    ///             "password",
+    ///         },
     ///     });
     /// 
     /// });

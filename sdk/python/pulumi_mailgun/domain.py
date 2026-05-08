@@ -21,18 +21,18 @@ __all__ = ['DomainArgs', 'Domain']
 @pulumi.input_type
 class DomainArgs:
     def __init__(__self__, *,
-                 click_tracking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dkim_key_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 dkim_selector: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_dkim_authority: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 open_tracking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 smtp_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 spam_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_automatic_sender_security: Optional[pulumi.Input[_builtins.bool]] = None,
-                 web_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 wildcard: Optional[pulumi.Input[_builtins.bool]] = None):
+                 click_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dkim_key_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 dkim_selector: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_dkim_authority: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 open_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 smtp_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 spam_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_automatic_sender_security: pulumi.Input[Optional[_builtins.bool]] = None,
+                 web_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 wildcard: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Domain resource.
 
@@ -79,103 +79,103 @@ class DomainArgs:
 
     @_builtins.property
     @pulumi.getter(name="clickTracking")
-    def click_tracking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def click_tracking(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
         """
         return pulumi.get(self, "click_tracking")
 
     @click_tracking.setter
-    def click_tracking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def click_tracking(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "click_tracking", value)
 
     @_builtins.property
     @pulumi.getter(name="dkimKeySize")
-    def dkim_key_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def dkim_key_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The length of your domain’s generated DKIM key. Default value is `1024`.
         """
         return pulumi.get(self, "dkim_key_size")
 
     @dkim_key_size.setter
-    def dkim_key_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def dkim_key_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "dkim_key_size", value)
 
     @_builtins.property
     @pulumi.getter(name="dkimSelector")
-    def dkim_selector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dkim_selector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
         """
         return pulumi.get(self, "dkim_selector")
 
     @dkim_selector.setter
-    def dkim_selector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dkim_selector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dkim_selector", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDkimAuthority")
-    def force_dkim_authority(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_dkim_authority(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
         """
         return pulumi.get(self, "force_dkim_authority")
 
     @force_dkim_authority.setter
-    def force_dkim_authority(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_dkim_authority(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_dkim_authority", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain to add to Mailgun
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="openTracking")
-    def open_tracking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def open_tracking(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
         """
         return pulumi.get(self, "open_tracking")
 
     @open_tracking.setter
-    def open_tracking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def open_tracking(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "open_tracking", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where domain will be created. Default value is `us`.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="smtpPassword")
-    def smtp_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def smtp_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for SMTP authentication
         """
         return pulumi.get(self, "smtp_password")
 
     @smtp_password.setter
-    def smtp_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def smtp_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "smtp_password", value)
 
     @_builtins.property
     @pulumi.getter(name="spamAction")
-    def spam_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spam_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `disabled` or `tag` Disable, no spam
         filtering will occur for inbound messages. Tag, messages
@@ -184,36 +184,36 @@ class DomainArgs:
         return pulumi.get(self, "spam_action")
 
     @spam_action.setter
-    def spam_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spam_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spam_action", value)
 
     @_builtins.property
     @pulumi.getter(name="useAutomaticSenderSecurity")
-    def use_automatic_sender_security(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_automatic_sender_security(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
         """
         return pulumi.get(self, "use_automatic_sender_security")
 
     @use_automatic_sender_security.setter
-    def use_automatic_sender_security(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_automatic_sender_security(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_automatic_sender_security", value)
 
     @_builtins.property
     @pulumi.getter(name="webScheme")
-    def web_scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def web_scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (`http` or `https`) The tracking web scheme. Default: `http`
         """
         return pulumi.get(self, "web_scheme")
 
     @web_scheme.setter
-    def web_scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def web_scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "web_scheme", value)
 
     @_builtins.property
     @pulumi.getter
-    def wildcard(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wildcard(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean that determines whether
         the domain will accept email for sub-domains.
@@ -221,30 +221,30 @@ class DomainArgs:
         return pulumi.get(self, "wildcard")
 
     @wildcard.setter
-    def wildcard(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wildcard(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wildcard", value)
 
 
 @pulumi.input_type
 class _DomainState:
     def __init__(__self__, *,
-                 click_tracking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dkim_key_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 dkim_selector: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_dkim_authority: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 open_tracking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 receiving_records: Optional[pulumi.Input[Sequence[pulumi.Input['DomainReceivingRecordArgs']]]] = None,
-                 receiving_records_sets: Optional[pulumi.Input[Sequence[pulumi.Input['DomainReceivingRecordsSetArgs']]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 sending_records: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSendingRecordArgs']]]] = None,
-                 sending_records_sets: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSendingRecordsSetArgs']]]] = None,
-                 smtp_login: Optional[pulumi.Input[_builtins.str]] = None,
-                 smtp_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 spam_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_automatic_sender_security: Optional[pulumi.Input[_builtins.bool]] = None,
-                 web_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 wildcard: Optional[pulumi.Input[_builtins.bool]] = None):
+                 click_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dkim_key_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 dkim_selector: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_dkim_authority: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 open_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 receiving_records: pulumi.Input[Optional[Sequence[pulumi.Input['DomainReceivingRecordArgs']]]] = None,
+                 receiving_records_sets: pulumi.Input[Optional[Sequence[pulumi.Input['DomainReceivingRecordsSetArgs']]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 sending_records: pulumi.Input[Optional[Sequence[pulumi.Input['DomainSendingRecordArgs']]]] = None,
+                 sending_records_sets: pulumi.Input[Optional[Sequence[pulumi.Input['DomainSendingRecordsSetArgs']]]] = None,
+                 smtp_login: pulumi.Input[Optional[_builtins.str]] = None,
+                 smtp_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 spam_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_automatic_sender_security: pulumi.Input[Optional[_builtins.bool]] = None,
+                 web_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 wildcard: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
 
@@ -312,165 +312,165 @@ class _DomainState:
 
     @_builtins.property
     @pulumi.getter(name="clickTracking")
-    def click_tracking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def click_tracking(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
         """
         return pulumi.get(self, "click_tracking")
 
     @click_tracking.setter
-    def click_tracking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def click_tracking(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "click_tracking", value)
 
     @_builtins.property
     @pulumi.getter(name="dkimKeySize")
-    def dkim_key_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def dkim_key_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The length of your domain’s generated DKIM key. Default value is `1024`.
         """
         return pulumi.get(self, "dkim_key_size")
 
     @dkim_key_size.setter
-    def dkim_key_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def dkim_key_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "dkim_key_size", value)
 
     @_builtins.property
     @pulumi.getter(name="dkimSelector")
-    def dkim_selector(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dkim_selector(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of your DKIM selector if you want to specify it whereas MailGun will make it's own choice.
         """
         return pulumi.get(self, "dkim_selector")
 
     @dkim_selector.setter
-    def dkim_selector(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dkim_selector(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dkim_selector", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDkimAuthority")
-    def force_dkim_authority(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_dkim_authority(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
         """
         return pulumi.get(self, "force_dkim_authority")
 
     @force_dkim_authority.setter
-    def force_dkim_authority(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_dkim_authority(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_dkim_authority", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain to add to Mailgun
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="openTracking")
-    def open_tracking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def open_tracking(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
         """
         return pulumi.get(self, "open_tracking")
 
     @open_tracking.setter
-    def open_tracking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def open_tracking(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "open_tracking", value)
 
     @_builtins.property
     @pulumi.getter(name="receivingRecords")
     @_utilities.deprecated("""Use `receiving_records_set` instead.""")
-    def receiving_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainReceivingRecordArgs']]]]:
+    def receiving_records(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainReceivingRecordArgs']]]]:
         """
         A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
         """
         return pulumi.get(self, "receiving_records")
 
     @receiving_records.setter
-    def receiving_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainReceivingRecordArgs']]]]):
+    def receiving_records(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DomainReceivingRecordArgs']]]]):
         pulumi.set(self, "receiving_records", value)
 
     @_builtins.property
     @pulumi.getter(name="receivingRecordsSets")
-    def receiving_records_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainReceivingRecordsSetArgs']]]]:
+    def receiving_records_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainReceivingRecordsSetArgs']]]]:
         """
         A set of DNS records for receiving validation.
         """
         return pulumi.get(self, "receiving_records_sets")
 
     @receiving_records_sets.setter
-    def receiving_records_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainReceivingRecordsSetArgs']]]]):
+    def receiving_records_sets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DomainReceivingRecordsSetArgs']]]]):
         pulumi.set(self, "receiving_records_sets", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where domain will be created. Default value is `us`.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="sendingRecords")
     @_utilities.deprecated("""Use `sending_records_set` instead.""")
-    def sending_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainSendingRecordArgs']]]]:
+    def sending_records(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainSendingRecordArgs']]]]:
         """
         A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
         """
         return pulumi.get(self, "sending_records")
 
     @sending_records.setter
-    def sending_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSendingRecordArgs']]]]):
+    def sending_records(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DomainSendingRecordArgs']]]]):
         pulumi.set(self, "sending_records", value)
 
     @_builtins.property
     @pulumi.getter(name="sendingRecordsSets")
-    def sending_records_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainSendingRecordsSetArgs']]]]:
+    def sending_records_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainSendingRecordsSetArgs']]]]:
         """
         A set of DNS records for sending validation.
         """
         return pulumi.get(self, "sending_records_sets")
 
     @sending_records_sets.setter
-    def sending_records_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSendingRecordsSetArgs']]]]):
+    def sending_records_sets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DomainSendingRecordsSetArgs']]]]):
         pulumi.set(self, "sending_records_sets", value)
 
     @_builtins.property
     @pulumi.getter(name="smtpLogin")
-    def smtp_login(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def smtp_login(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The login email for the SMTP server.
         """
         return pulumi.get(self, "smtp_login")
 
     @smtp_login.setter
-    def smtp_login(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def smtp_login(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "smtp_login", value)
 
     @_builtins.property
     @pulumi.getter(name="smtpPassword")
-    def smtp_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def smtp_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for SMTP authentication
         """
         return pulumi.get(self, "smtp_password")
 
     @smtp_password.setter
-    def smtp_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def smtp_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "smtp_password", value)
 
     @_builtins.property
     @pulumi.getter(name="spamAction")
-    def spam_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spam_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `disabled` or `tag` Disable, no spam
         filtering will occur for inbound messages. Tag, messages
@@ -479,36 +479,36 @@ class _DomainState:
         return pulumi.get(self, "spam_action")
 
     @spam_action.setter
-    def spam_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spam_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spam_action", value)
 
     @_builtins.property
     @pulumi.getter(name="useAutomaticSenderSecurity")
-    def use_automatic_sender_security(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_automatic_sender_security(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
         """
         return pulumi.get(self, "use_automatic_sender_security")
 
     @use_automatic_sender_security.setter
-    def use_automatic_sender_security(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_automatic_sender_security(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_automatic_sender_security", value)
 
     @_builtins.property
     @pulumi.getter(name="webScheme")
-    def web_scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def web_scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (`http` or `https`) The tracking web scheme. Default: `http`
         """
         return pulumi.get(self, "web_scheme")
 
     @web_scheme.setter
-    def web_scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def web_scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "web_scheme", value)
 
     @_builtins.property
     @pulumi.getter
-    def wildcard(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wildcard(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean that determines whether
         the domain will accept email for sub-domains.
@@ -516,7 +516,7 @@ class _DomainState:
         return pulumi.get(self, "wildcard")
 
     @wildcard.setter
-    def wildcard(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wildcard(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wildcard", value)
 
 
@@ -526,18 +526,18 @@ class Domain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 click_tracking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dkim_key_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 dkim_selector: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_dkim_authority: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 open_tracking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 smtp_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 spam_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_automatic_sender_security: Optional[pulumi.Input[_builtins.bool]] = None,
-                 web_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 wildcard: Optional[pulumi.Input[_builtins.bool]] = None,
+                 click_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dkim_key_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 dkim_selector: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_dkim_authority: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 open_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 smtp_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 spam_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_automatic_sender_security: pulumi.Input[Optional[_builtins.bool]] = None,
+                 web_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 wildcard: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Mailgun App resource. This can be used to
@@ -566,18 +566,19 @@ class Domain(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_cloudflare as cloudflare
         import pulumi_std as std
 
         # Use receiving/sending set attributes to create DNS entries
         # TTL is set to 300 seconds (5 minutes) for faster updates as recommended by Mailgun
         # You can adjust the TTL to your desired value
-        default_receiving = []
-        for range in [{"key": k, "value": v} for [k, v] in ({record.id: {
+        default_receiving: list[Any] = []
+        for range in [{"key": k, "value": v} for [k, v] in sorted(({record.id: {
             type: record.record_type,
             value: record.value,
             priority: record.priority,
-        } for record in default.receiving_records_set}).items()]:
+        } for record in default.receiving_records_set}).items())]:
             default_receiving.append(cloudflare.DnsRecord(f"default_receiving-{range['key']}",
                 zone_id=zone_id,
                 name=domain,
@@ -585,12 +586,12 @@ class Domain(pulumi.CustomResource):
                 content=range.value.value,
                 priority=range.value.priority,
                 ttl=300))
-        default_sending = []
-        for range in [{"key": k, "value": v} for [k, v] in ({record.id: {
+        default_sending: list[Any] = []
+        for range in [{"key": k, "value": v} for [k, v] in sorted(({record.id: {
             name: record.name,
             type: record.record_type,
             value: record.value,
-        } for record in default.sending_records_set}).items()]:
+        } for record in default.sending_records_set}).items())]:
             default_sending.append(cloudflare.DnsRecord(f"default_sending-{range['key']}",
                 zone_id=zone_id,
                 name=range.value.name,
@@ -599,7 +600,7 @@ class Domain(pulumi.CustomResource):
                 ttl=300))
         # Create MX records pointing to Mailgun
         # Use "@" for name if using the root domain, or the subdomain name if using a subdomain
-        mx_records = []
+        mx_records: list[Any] = []
         for range in [{"value": i} for i in range(0, std.toset(input=[
             mxa.mailgun.org,
             mxb.mailgun.org,
@@ -665,18 +666,19 @@ class Domain(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_cloudflare as cloudflare
         import pulumi_std as std
 
         # Use receiving/sending set attributes to create DNS entries
         # TTL is set to 300 seconds (5 minutes) for faster updates as recommended by Mailgun
         # You can adjust the TTL to your desired value
-        default_receiving = []
-        for range in [{"key": k, "value": v} for [k, v] in ({record.id: {
+        default_receiving: list[Any] = []
+        for range in [{"key": k, "value": v} for [k, v] in sorted(({record.id: {
             type: record.record_type,
             value: record.value,
             priority: record.priority,
-        } for record in default.receiving_records_set}).items()]:
+        } for record in default.receiving_records_set}).items())]:
             default_receiving.append(cloudflare.DnsRecord(f"default_receiving-{range['key']}",
                 zone_id=zone_id,
                 name=domain,
@@ -684,12 +686,12 @@ class Domain(pulumi.CustomResource):
                 content=range.value.value,
                 priority=range.value.priority,
                 ttl=300))
-        default_sending = []
-        for range in [{"key": k, "value": v} for [k, v] in ({record.id: {
+        default_sending: list[Any] = []
+        for range in [{"key": k, "value": v} for [k, v] in sorted(({record.id: {
             name: record.name,
             type: record.record_type,
             value: record.value,
-        } for record in default.sending_records_set}).items()]:
+        } for record in default.sending_records_set}).items())]:
             default_sending.append(cloudflare.DnsRecord(f"default_sending-{range['key']}",
                 zone_id=zone_id,
                 name=range.value.name,
@@ -698,7 +700,7 @@ class Domain(pulumi.CustomResource):
                 ttl=300))
         # Create MX records pointing to Mailgun
         # Use "@" for name if using the root domain, or the subdomain name if using a subdomain
-        mx_records = []
+        mx_records: list[Any] = []
         for range in [{"value": i} for i in range(0, std.toset(input=[
             mxa.mailgun.org,
             mxb.mailgun.org,
@@ -728,18 +730,18 @@ class Domain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 click_tracking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dkim_key_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 dkim_selector: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_dkim_authority: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 open_tracking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 smtp_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 spam_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_automatic_sender_security: Optional[pulumi.Input[_builtins.bool]] = None,
-                 web_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 wildcard: Optional[pulumi.Input[_builtins.bool]] = None,
+                 click_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dkim_key_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 dkim_selector: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_dkim_authority: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 open_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 smtp_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 spam_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_automatic_sender_security: pulumi.Input[Optional[_builtins.bool]] = None,
+                 web_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 wildcard: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -778,23 +780,23 @@ class Domain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            click_tracking: Optional[pulumi.Input[_builtins.bool]] = None,
-            dkim_key_size: Optional[pulumi.Input[_builtins.int]] = None,
-            dkim_selector: Optional[pulumi.Input[_builtins.str]] = None,
-            force_dkim_authority: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            open_tracking: Optional[pulumi.Input[_builtins.bool]] = None,
-            receiving_records: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainReceivingRecordArgs', 'DomainReceivingRecordArgsDict']]]]] = None,
-            receiving_records_sets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainReceivingRecordsSetArgs', 'DomainReceivingRecordsSetArgsDict']]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            sending_records: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainSendingRecordArgs', 'DomainSendingRecordArgsDict']]]]] = None,
-            sending_records_sets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainSendingRecordsSetArgs', 'DomainSendingRecordsSetArgsDict']]]]] = None,
-            smtp_login: Optional[pulumi.Input[_builtins.str]] = None,
-            smtp_password: Optional[pulumi.Input[_builtins.str]] = None,
-            spam_action: Optional[pulumi.Input[_builtins.str]] = None,
-            use_automatic_sender_security: Optional[pulumi.Input[_builtins.bool]] = None,
-            web_scheme: Optional[pulumi.Input[_builtins.str]] = None,
-            wildcard: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Domain':
+            click_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
+            dkim_key_size: pulumi.Input[Optional[_builtins.int]] = None,
+            dkim_selector: pulumi.Input[Optional[_builtins.str]] = None,
+            force_dkim_authority: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            open_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
+            receiving_records: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainReceivingRecordArgs', 'DomainReceivingRecordArgsDict']]]]] = None,
+            receiving_records_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainReceivingRecordsSetArgs', 'DomainReceivingRecordsSetArgsDict']]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            sending_records: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSendingRecordArgs', 'DomainSendingRecordArgsDict']]]]] = None,
+            sending_records_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSendingRecordsSetArgs', 'DomainSendingRecordsSetArgsDict']]]]] = None,
+            smtp_login: pulumi.Input[Optional[_builtins.str]] = None,
+            smtp_password: pulumi.Input[Optional[_builtins.str]] = None,
+            spam_action: pulumi.Input[Optional[_builtins.str]] = None,
+            use_automatic_sender_security: pulumi.Input[Optional[_builtins.bool]] = None,
+            web_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+            wildcard: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Domain':
         """
         Get an existing Domain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
