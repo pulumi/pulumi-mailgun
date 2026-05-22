@@ -24,7 +24,7 @@ with the proper credentials before it can be used.
 Use the navigation to the left to read about the available resources.
 ## Example Usage
 
-{{< chooser language "typescript,python,go,csharp,java,yaml" >}}
+{{< chooser language "typescript,python,go,csharp,java,yaml,hcl" >}}
 {{% choosable language typescript %}}
 ```yaml
 # Pulumi.yaml provider configuration file
@@ -178,6 +178,22 @@ public class App {
         var default_ = new Domain("default");
 
     }
+}
+```
+
+{{% /choosable %}}
+{{% choosable language hcl %}}
+```hcl
+pulumi {
+  required_providers {
+    mailgun = {
+      source = "pulumi/mailgun"
+    }
+  }
+}
+
+# Create a new domain
+resource "mailgun_domain" "default" {
 }
 ```
 
