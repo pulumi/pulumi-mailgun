@@ -40,49 +40,49 @@ import * as utilities from "./utilities";
  * // Use receiving/sending set attributes to create DNS entries
  * // TTL is set to 300 seconds (5 minutes) for faster updates as recommended by Mailgun
  * // You can adjust the TTL to your desired value
- * const defaultReceiving: cloudflare.index.DnsRecord[] = [];
+ * const defaultReceiving: {[key: string]: cloudflare.index.DnsRecord} = {};
  * for (const range of Object.entries(.reduce((__obj, record) => ({ ...__obj, [record.id]: {
  *     type: record.recordType,
  *     value: record.value,
  *     priority: record.priority,
  * } }), {})).sort().map(([k, v]) => ({key: k, value: v}))) {
- *     defaultReceiving.push(new cloudflare.index.DnsRecord(`default_receiving-${range.key}`, {
+ *     defaultReceiving[range.key] = new cloudflare.index.DnsRecord(`default_receiving-${range.key}`, {
  *         zoneId: zoneId,
  *         name: domain,
  *         type: range.value.type,
  *         content: range.value.value,
  *         priority: range.value.priority,
  *         ttl: 300,
- *     }));
+ *     });
  * }
- * const defaultSending: cloudflare.index.DnsRecord[] = [];
+ * const defaultSending: {[key: string]: cloudflare.index.DnsRecord} = {};
  * for (const range of Object.entries(.reduce((__obj, record) => ({ ...__obj, [record.id]: {
  *     name: record.name,
  *     type: record.recordType,
  *     value: record.value,
  * } }), {})).sort().map(([k, v]) => ({key: k, value: v}))) {
- *     defaultSending.push(new cloudflare.index.DnsRecord(`default_sending-${range.key}`, {
+ *     defaultSending[range.key] = new cloudflare.index.DnsRecord(`default_sending-${range.key}`, {
  *         zoneId: zoneId,
  *         name: range.value.name,
  *         type: range.value.type,
  *         content: range.value.value,
  *         ttl: 300,
- *     }));
+ *     });
  * }
  * // Create MX records pointing to Mailgun
  * // Use "@" for name if using the root domain, or the subdomain name if using a subdomain
  * const mxRecords: cloudflare.index.DnsRecord[] = [];
- * for (const range = {value: 0}; range.value < std.toset({
+ * for (let range = 0; range < std.toset({
  *     input: [
  *         "mxa.mailgun.org",
  *         "mxb.mailgun.org",
  *     ],
- * }).result; range.value++) {
- *     mxRecords.push(new cloudflare.index.DnsRecord(`mx_records-${range.value}`, {
+ * }).result; range++) {
+ *     mxRecords.push(new cloudflare.index.DnsRecord(`mx_records-${range}`, {
  *         zoneId: zoneId,
  *         name: "@",
  *         type: "MX",
- *         content: range.value,
+ *         content: range,
  *         priority: 10,
  *         ttl: 300,
  *     }));

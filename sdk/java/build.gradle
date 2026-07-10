@@ -95,7 +95,7 @@ publishing {
                 inceptionYear = "2022"
                 name = "pulumi-mailgun"
                 packaging = "jar"
-                description = "A Pulumi package for creating and managing Mailgun resources."
+                description = $/A Pulumi package for creating and managing Mailgun resources./$
 
                 url = "https://github.com/pulumi/pulumi-mailgun"
 
