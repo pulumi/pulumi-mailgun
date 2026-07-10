@@ -573,43 +573,43 @@ class Domain(pulumi.CustomResource):
         # Use receiving/sending set attributes to create DNS entries
         # TTL is set to 300 seconds (5 minutes) for faster updates as recommended by Mailgun
         # You can adjust the TTL to your desired value
-        default_receiving: list[Any] = []
-        for range in [{"key": k, "value": v} for [k, v] in sorted(({record.id: {
+        default_receiving: dict[str, cloudflare.DnsRecord] = {}
+        for default_receiving_range in [{"key": k, "value": v} for [k, v] in sorted(({record.id: {
             type: record.record_type,
             value: record.value,
             priority: record.priority,
         } for record in default.receiving_records_set}).items())]:
-            default_receiving.append(cloudflare.DnsRecord(f"default_receiving-{range['key']}",
+            default_receiving[default_receiving_range['key']] = cloudflare.DnsRecord(f"default_receiving-{default_receiving_range['key']}",
                 zone_id=zone_id,
                 name=domain,
-                type=range.value.type,
-                content=range.value.value,
-                priority=range.value.priority,
-                ttl=300))
-        default_sending: list[Any] = []
-        for range in [{"key": k, "value": v} for [k, v] in sorted(({record.id: {
+                type=default_receiving_range.value.type,
+                content=default_receiving_range.value.value,
+                priority=default_receiving_range.value.priority,
+                ttl=300)
+        default_sending: dict[str, cloudflare.DnsRecord] = {}
+        for default_sending_range in [{"key": k, "value": v} for [k, v] in sorted(({record.id: {
             name: record.name,
             type: record.record_type,
             value: record.value,
         } for record in default.sending_records_set}).items())]:
-            default_sending.append(cloudflare.DnsRecord(f"default_sending-{range['key']}",
+            default_sending[default_sending_range['key']] = cloudflare.DnsRecord(f"default_sending-{default_sending_range['key']}",
                 zone_id=zone_id,
-                name=range.value.name,
-                type=range.value.type,
-                content=range.value.value,
-                ttl=300))
+                name=default_sending_range.value.name,
+                type=default_sending_range.value.type,
+                content=default_sending_range.value.value,
+                ttl=300)
         # Create MX records pointing to Mailgun
         # Use "@" for name if using the root domain, or the subdomain name if using a subdomain
-        mx_records: list[Any] = []
-        for range in [{"value": i} for i in range(0, std.toset(input=[
+        mx_records: list[cloudflare.DnsRecord] = []
+        for mx_records_range in [{"value": i} for i in range(0, std.toset(input=[
             mxa.mailgun.org,
             mxb.mailgun.org,
         ]).result)]:
-            mx_records.append(cloudflare.DnsRecord(f"mx_records-{range['value']}",
+            mx_records.append(cloudflare.DnsRecord(f"mx_records-{mx_records_range['value']}",
                 zone_id=zone_id,
                 name=@,
                 type=MX,
-                content=range.value,
+                content=mx_records_range.value,
                 priority=10,
                 ttl=300))
         ```
@@ -673,43 +673,43 @@ class Domain(pulumi.CustomResource):
         # Use receiving/sending set attributes to create DNS entries
         # TTL is set to 300 seconds (5 minutes) for faster updates as recommended by Mailgun
         # You can adjust the TTL to your desired value
-        default_receiving: list[Any] = []
-        for range in [{"key": k, "value": v} for [k, v] in sorted(({record.id: {
+        default_receiving: dict[str, cloudflare.DnsRecord] = {}
+        for default_receiving_range in [{"key": k, "value": v} for [k, v] in sorted(({record.id: {
             type: record.record_type,
             value: record.value,
             priority: record.priority,
         } for record in default.receiving_records_set}).items())]:
-            default_receiving.append(cloudflare.DnsRecord(f"default_receiving-{range['key']}",
+            default_receiving[default_receiving_range['key']] = cloudflare.DnsRecord(f"default_receiving-{default_receiving_range['key']}",
                 zone_id=zone_id,
                 name=domain,
-                type=range.value.type,
-                content=range.value.value,
-                priority=range.value.priority,
-                ttl=300))
-        default_sending: list[Any] = []
-        for range in [{"key": k, "value": v} for [k, v] in sorted(({record.id: {
+                type=default_receiving_range.value.type,
+                content=default_receiving_range.value.value,
+                priority=default_receiving_range.value.priority,
+                ttl=300)
+        default_sending: dict[str, cloudflare.DnsRecord] = {}
+        for default_sending_range in [{"key": k, "value": v} for [k, v] in sorted(({record.id: {
             name: record.name,
             type: record.record_type,
             value: record.value,
         } for record in default.sending_records_set}).items())]:
-            default_sending.append(cloudflare.DnsRecord(f"default_sending-{range['key']}",
+            default_sending[default_sending_range['key']] = cloudflare.DnsRecord(f"default_sending-{default_sending_range['key']}",
                 zone_id=zone_id,
-                name=range.value.name,
-                type=range.value.type,
-                content=range.value.value,
-                ttl=300))
+                name=default_sending_range.value.name,
+                type=default_sending_range.value.type,
+                content=default_sending_range.value.value,
+                ttl=300)
         # Create MX records pointing to Mailgun
         # Use "@" for name if using the root domain, or the subdomain name if using a subdomain
-        mx_records: list[Any] = []
-        for range in [{"value": i} for i in range(0, std.toset(input=[
+        mx_records: list[cloudflare.DnsRecord] = []
+        for mx_records_range in [{"value": i} for i in range(0, std.toset(input=[
             mxa.mailgun.org,
             mxb.mailgun.org,
         ]).result)]:
-            mx_records.append(cloudflare.DnsRecord(f"mx_records-{range['value']}",
+            mx_records.append(cloudflare.DnsRecord(f"mx_records-{mx_records_range['value']}",
                 zone_id=zone_id,
                 name=@,
                 type=MX,
-                content=range.value,
+                content=mx_records_range.value,
                 priority=10,
                 ttl=300))
         ```
