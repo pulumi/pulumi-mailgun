@@ -203,4 +203,4 @@ resource "mailgun_domain" "default" {
 
 The following configuration inputs are supported:
 
-* `apiKey` - (Required) Mailgun API key
+* `apiKey` - (Required, Sensitive) Mailgun API key. Can also be supplied via the `MAILGUN_API_KEY` environment variable.

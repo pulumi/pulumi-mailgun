@@ -71,7 +71,7 @@ namespace Pulumi.Mailgun
         /// The region where webhook will be created. Default value is `Us`.
         /// </summary>
         [Output("region")]
-        public Output<string?> Region { get; private set; } = null!;
+        public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
         /// The urls of webhook

@@ -5,52 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
-export interface DomainReceivingRecord {
-    id?: pulumi.Input<string | undefined>;
-    /**
-     * The priority of the record.
-     */
-    priority?: pulumi.Input<string | undefined>;
-    /**
-     * The record type.
-     */
-    recordType?: pulumi.Input<string | undefined>;
-    /**
-     * `"valid"` if the record is valid.
-     */
-    valid?: pulumi.Input<string | undefined>;
-    /**
-     * The value of the record.
-     */
-    value?: pulumi.Input<string | undefined>;
-}
-
 export interface DomainReceivingRecordsSet {
     id?: pulumi.Input<string | undefined>;
     /**
      * The priority of the record.
      */
     priority?: pulumi.Input<string | undefined>;
-    /**
-     * The record type.
-     */
-    recordType?: pulumi.Input<string | undefined>;
-    /**
-     * `"valid"` if the record is valid.
-     */
-    valid?: pulumi.Input<string | undefined>;
-    /**
-     * The value of the record.
-     */
-    value?: pulumi.Input<string | undefined>;
-}
-
-export interface DomainSendingRecord {
-    id?: pulumi.Input<string | undefined>;
-    /**
-     * The domain to add to Mailgun
-     */
-    name?: pulumi.Input<string | undefined>;
     /**
      * The record type.
      */

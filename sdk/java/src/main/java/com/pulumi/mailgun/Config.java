@@ -5,11 +5,12 @@ package com.pulumi.mailgun;
 
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 
 public final class Config {
 
     private static final com.pulumi.Config config = com.pulumi.Config.of("mailgun");
-    public String apiKey() {
-        return Codegen.stringProp("apiKey").config(config).require();
+    public Optional<String> apiKey() {
+        return Codegen.stringProp("apiKey").config(config).get();
     }
 }

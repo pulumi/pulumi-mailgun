@@ -28,7 +28,7 @@ class DomainCredentialArgs:
 
         :param pulumi.Input[_builtins.str] domain: The domain to add credential of Mailgun.
         :param pulumi.Input[_builtins.str] login: The local-part of the email address to create.
-        :param pulumi.Input[_builtins.str] password: Password for user authentication.
+        :param pulumi.Input[_builtins.str] password: Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
         :param pulumi.Input[_builtins.str] region: The region where domain credential will be created. Default value is `us`.
         """
         pulumi.set(__self__, "domain", domain)
@@ -65,7 +65,7 @@ class DomainCredentialArgs:
     @pulumi.getter
     def password(self) -> pulumi.Input[_builtins.str]:
         """
-        Password for user authentication.
+        Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
         """
         return pulumi.get(self, "password")
 
@@ -98,7 +98,7 @@ class _DomainCredentialState:
 
         :param pulumi.Input[_builtins.str] domain: The domain to add credential of Mailgun.
         :param pulumi.Input[_builtins.str] login: The local-part of the email address to create.
-        :param pulumi.Input[_builtins.str] password: Password for user authentication.
+        :param pulumi.Input[_builtins.str] password: Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
         :param pulumi.Input[_builtins.str] region: The region where domain credential will be created. Default value is `us`.
         """
         if domain is not None:
@@ -138,7 +138,7 @@ class _DomainCredentialState:
     @pulumi.getter
     def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Password for user authentication.
+        Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
         """
         return pulumi.get(self, "password")
 
@@ -173,7 +173,7 @@ class DomainCredential(pulumi.CustomResource):
         """
         Provides a Mailgun domain credential resource. This can be used to create and manage credential in domain of Mailgun.
 
-        > **Note:** Please note that starting of v0.6.1 due to using new Mailgun Client API (v4), there is no possibility to retrieve previously created secrets via API. In order get it worked, it's recommended to mark `password` as ignored under `lifecycle` block. See below.
+        > **Note:** The Mailgun API does not return previously created credential passwords on read. The provider therefore does not refresh `password` from the API and only sends it to Mailgun on create or when the value in configuration changes. If your configured `password` value drifts (for example you rotate it out-of-band), use a `lifecycle.ignore_changes = [ password ]` block to avoid spurious updates.
 
         ## Example Usage
 
@@ -186,8 +186,7 @@ class DomainCredential(pulumi.CustomResource):
             domain="toto.com",
             login="test",
             password="supersecretpassword1234",
-            region="us",
-            opts = pulumi.ResourceOptions(ignore_changes=["password"]))
+            region="us")
         ```
 
 
@@ -195,7 +194,7 @@ class DomainCredential(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain: The domain to add credential of Mailgun.
         :param pulumi.Input[_builtins.str] login: The local-part of the email address to create.
-        :param pulumi.Input[_builtins.str] password: Password for user authentication.
+        :param pulumi.Input[_builtins.str] password: Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
         :param pulumi.Input[_builtins.str] region: The region where domain credential will be created. Default value is `us`.
         """
         ...
@@ -207,7 +206,7 @@ class DomainCredential(pulumi.CustomResource):
         """
         Provides a Mailgun domain credential resource. This can be used to create and manage credential in domain of Mailgun.
 
-        > **Note:** Please note that starting of v0.6.1 due to using new Mailgun Client API (v4), there is no possibility to retrieve previously created secrets via API. In order get it worked, it's recommended to mark `password` as ignored under `lifecycle` block. See below.
+        > **Note:** The Mailgun API does not return previously created credential passwords on read. The provider therefore does not refresh `password` from the API and only sends it to Mailgun on create or when the value in configuration changes. If your configured `password` value drifts (for example you rotate it out-of-band), use a `lifecycle.ignore_changes = [ password ]` block to avoid spurious updates.
 
         ## Example Usage
 
@@ -220,8 +219,7 @@ class DomainCredential(pulumi.CustomResource):
             domain="toto.com",
             login="test",
             password="supersecretpassword1234",
-            region="us",
-            opts = pulumi.ResourceOptions(ignore_changes=["password"]))
+            region="us")
         ```
 
 
@@ -288,7 +286,7 @@ class DomainCredential(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain: The domain to add credential of Mailgun.
         :param pulumi.Input[_builtins.str] login: The local-part of the email address to create.
-        :param pulumi.Input[_builtins.str] password: Password for user authentication.
+        :param pulumi.Input[_builtins.str] password: Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
         :param pulumi.Input[_builtins.str] region: The region where domain credential will be created. Default value is `us`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -321,13 +319,13 @@ class DomainCredential(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[_builtins.str]:
         """
-        Password for user authentication.
+        Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
         """
         return pulumi.get(self, "password")
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def region(self) -> pulumi.Output[_builtins.str]:
         """
         The region where domain credential will be created. Default value is `us`.
         """

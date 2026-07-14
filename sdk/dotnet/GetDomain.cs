@@ -130,70 +130,16 @@ namespace Pulumi.Mailgun
     public sealed class GetDomainArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The click tracking setting.
-        /// </summary>
-        [Input("clickTracking")]
-        public bool? ClickTracking { get; set; }
-
-        [Input("dkimKeySize")]
-        public int? DkimKeySize { get; set; }
-
-        [Input("dkimSelector")]
-        public string? DkimSelector { get; set; }
-
-        [Input("forceDkimAuthority")]
-        public bool? ForceDkimAuthority { get; set; }
-
-        /// <summary>
         /// The name of the domain.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// The open tracking setting.
-        /// </summary>
-        [Input("openTracking")]
-        public bool? OpenTracking { get; set; }
-
-        /// <summary>
         /// The region where domain will be created. Default value is `Us`.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
-
-        [Input("smtpPassword")]
-        private string? _smtpPassword;
-
-        /// <summary>
-        /// The password to the SMTP server.
-        /// </summary>
-        public string? SmtpPassword
-        {
-            get => _smtpPassword;
-            set => _smtpPassword = value;
-        }
-
-        /// <summary>
-        /// The spam filtering setting.
-        /// </summary>
-        [Input("spamAction")]
-        public string? SpamAction { get; set; }
-
-        [Input("useAutomaticSenderSecurity")]
-        public bool? UseAutomaticSenderSecurity { get; set; }
-
-        /// <summary>
-        /// The tracking web scheme.
-        /// </summary>
-        [Input("webScheme")]
-        public string? WebScheme { get; set; }
-
-        /// <summary>
-        /// Whether or not the domain will accept email for sub-domains.
-        /// </summary>
-        [Input("wildcard")]
-        public bool? Wildcard { get; set; }
 
         public GetDomainArgs()
         {
@@ -204,74 +150,16 @@ namespace Pulumi.Mailgun
     public sealed class GetDomainInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The click tracking setting.
-        /// </summary>
-        [Input("clickTracking")]
-        public Input<bool>? ClickTracking { get; set; }
-
-        [Input("dkimKeySize")]
-        public Input<int>? DkimKeySize { get; set; }
-
-        [Input("dkimSelector")]
-        public Input<string>? DkimSelector { get; set; }
-
-        [Input("forceDkimAuthority")]
-        public Input<bool>? ForceDkimAuthority { get; set; }
-
-        /// <summary>
         /// The name of the domain.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The open tracking setting.
-        /// </summary>
-        [Input("openTracking")]
-        public Input<bool>? OpenTracking { get; set; }
-
-        /// <summary>
         /// The region where domain will be created. Default value is `Us`.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
-
-        [Input("smtpPassword")]
-        private Input<string>? _smtpPassword;
-
-        /// <summary>
-        /// The password to the SMTP server.
-        /// </summary>
-        public Input<string>? SmtpPassword
-        {
-            get => _smtpPassword;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _smtpPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
-        /// <summary>
-        /// The spam filtering setting.
-        /// </summary>
-        [Input("spamAction")]
-        public Input<string>? SpamAction { get; set; }
-
-        [Input("useAutomaticSenderSecurity")]
-        public Input<bool>? UseAutomaticSenderSecurity { get; set; }
-
-        /// <summary>
-        /// The tracking web scheme.
-        /// </summary>
-        [Input("webScheme")]
-        public Input<string>? WebScheme { get; set; }
-
-        /// <summary>
-        /// Whether or not the domain will accept email for sub-domains.
-        /// </summary>
-        [Input("wildcard")]
-        public Input<bool>? Wildcard { get; set; }
 
         public GetDomainInvokeArgs()
         {
@@ -286,13 +174,10 @@ namespace Pulumi.Mailgun
         /// <summary>
         /// The click tracking setting.
         /// </summary>
-        public readonly bool? ClickTracking;
-        public readonly int? DkimKeySize;
-        public readonly string? DkimSelector;
-        public readonly bool? ForceDkimAuthority;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
+        public readonly bool ClickTracking;
+        public readonly int DkimKeySize;
+        public readonly string DkimSelector;
+        public readonly bool ForceDkimAuthority;
         public readonly string Id;
         /// <summary>
         /// The name of the record.
@@ -301,17 +186,9 @@ namespace Pulumi.Mailgun
         /// <summary>
         /// The open tracking setting.
         /// </summary>
-        public readonly bool? OpenTracking;
-        /// <summary>
-        /// A list of DNS records for receiving validation.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetDomainReceivingRecordResult> ReceivingRecords;
+        public readonly bool OpenTracking;
         public readonly ImmutableArray<Outputs.GetDomainReceivingRecordsSetResult> ReceivingRecordsSets;
-        public readonly string? Region;
-        /// <summary>
-        /// A list of DNS records for sending validation.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetDomainSendingRecordResult> SendingRecords;
+        public readonly string Region;
         public readonly ImmutableArray<Outputs.GetDomainSendingRecordsSetResult> SendingRecordsSets;
         /// <summary>
         /// The login email for the SMTP server.
@@ -320,58 +197,54 @@ namespace Pulumi.Mailgun
         /// <summary>
         /// The password to the SMTP server.
         /// </summary>
-        public readonly string? SmtpPassword;
+        public readonly string SmtpPassword;
         /// <summary>
         /// The spam filtering setting.
         /// </summary>
-        public readonly string? SpamAction;
-        public readonly bool? UseAutomaticSenderSecurity;
+        public readonly string SpamAction;
+        public readonly bool UseAutomaticSenderSecurity;
         /// <summary>
         /// The tracking web scheme.
         /// </summary>
-        public readonly string? WebScheme;
+        public readonly string WebScheme;
         /// <summary>
         /// Whether or not the domain will accept email for sub-domains.
         /// </summary>
-        public readonly bool? Wildcard;
+        public readonly bool Wildcard;
 
         [OutputConstructor]
         private GetDomainResult(
-            bool? clickTracking,
+            bool clickTracking,
 
-            int? dkimKeySize,
+            int dkimKeySize,
 
-            string? dkimSelector,
+            string dkimSelector,
 
-            bool? forceDkimAuthority,
+            bool forceDkimAuthority,
 
             string id,
 
             string name,
 
-            bool? openTracking,
-
-            ImmutableArray<Outputs.GetDomainReceivingRecordResult> receivingRecords,
+            bool openTracking,
 
             ImmutableArray<Outputs.GetDomainReceivingRecordsSetResult> receivingRecordsSets,
 
-            string? region,
-
-            ImmutableArray<Outputs.GetDomainSendingRecordResult> sendingRecords,
+            string region,
 
             ImmutableArray<Outputs.GetDomainSendingRecordsSetResult> sendingRecordsSets,
 
             string smtpLogin,
 
-            string? smtpPassword,
+            string smtpPassword,
 
-            string? spamAction,
+            string spamAction,
 
-            bool? useAutomaticSenderSecurity,
+            bool useAutomaticSenderSecurity,
 
-            string? webScheme,
+            string webScheme,
 
-            bool? wildcard)
+            bool wildcard)
         {
             ClickTracking = clickTracking;
             DkimKeySize = dkimKeySize;
@@ -380,10 +253,8 @@ namespace Pulumi.Mailgun
             Id = id;
             Name = name;
             OpenTracking = openTracking;
-            ReceivingRecords = receivingRecords;
             ReceivingRecordsSets = receivingRecordsSets;
             Region = region;
-            SendingRecords = sendingRecords;
             SendingRecordsSets = sendingRecordsSets;
             SmtpLogin = smtpLogin;
             SmtpPassword = smtpPassword;

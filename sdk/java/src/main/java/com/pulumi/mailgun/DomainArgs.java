@@ -123,14 +123,14 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Password for SMTP authentication
+     * Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
      * 
      */
     @Import(name="smtpPassword")
     private @Nullable Output<String> smtpPassword;
 
     /**
-     * @return Password for SMTP authentication
+     * @return Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
      * 
      */
     public Optional<Output<String>> smtpPassword() {
@@ -386,7 +386,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smtpPassword Password for SMTP authentication
+         * @param smtpPassword Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
          * 
          * @return builder
          * 
@@ -397,7 +397,7 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smtpPassword Password for SMTP authentication
+         * @param smtpPassword Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
          * 
          * @return builder
          * 

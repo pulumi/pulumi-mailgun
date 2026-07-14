@@ -50,13 +50,13 @@ type Route struct {
 	pulumi.CustomResourceState
 
 	Actions     pulumi.StringArrayOutput `pulumi:"actions"`
-	Description pulumi.StringPtrOutput   `pulumi:"description"`
+	Description pulumi.StringOutput      `pulumi:"description"`
 	// A filter expression like `match_recipient('.*@gmail.com')`
 	Expression pulumi.StringOutput `pulumi:"expression"`
 	// Smaller number indicates higher priority. Higher priority routes are handled first.
 	Priority pulumi.IntOutput `pulumi:"priority"`
 	// The region where route will be created. Default value is `us`.
-	Region pulumi.StringPtrOutput `pulumi:"region"`
+	Region pulumi.StringOutput `pulumi:"region"`
 }
 
 // NewRoute registers a new resource with the given unique name, arguments, and options.
@@ -237,8 +237,8 @@ func (o RouteOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringArrayOutput { return v.Actions }).(pulumi.StringArrayOutput)
 }
 
-func (o RouteOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Route) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o RouteOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // A filter expression like `match_recipient('.*@gmail.com')`
@@ -252,8 +252,8 @@ func (o RouteOutput) Priority() pulumi.IntOutput {
 }
 
 // The region where route will be created. Default value is `us`.
-func (o RouteOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Route) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+func (o RouteOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 type RouteArrayOutput struct{ *pulumi.OutputState }

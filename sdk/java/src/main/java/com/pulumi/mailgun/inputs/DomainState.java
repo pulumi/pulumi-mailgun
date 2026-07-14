@@ -5,9 +5,7 @@ package com.pulumi.mailgun.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.mailgun.inputs.DomainReceivingRecordArgs;
 import com.pulumi.mailgun.inputs.DomainReceivingRecordsSetArgs;
-import com.pulumi.mailgun.inputs.DomainSendingRecordArgs;
 import com.pulumi.mailgun.inputs.DomainSendingRecordsSetArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -113,29 +111,6 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
-     * 
-     * @deprecated
-     * Use `receivingRecordsSet` instead.
-     * 
-     */
-    @Deprecated /* Use `receivingRecordsSet` instead. */
-    @Import(name="receivingRecords")
-    private @Nullable Output<List<DomainReceivingRecordArgs>> receivingRecords;
-
-    /**
-     * @return A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
-     * 
-     * @deprecated
-     * Use `receivingRecordsSet` instead.
-     * 
-     */
-    @Deprecated /* Use `receivingRecordsSet` instead. */
-    public Optional<Output<List<DomainReceivingRecordArgs>>> receivingRecords() {
-        return Optional.ofNullable(this.receivingRecords);
-    }
-
-    /**
      * A set of DNS records for receiving validation.
      * 
      */
@@ -163,29 +138,6 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
-    }
-
-    /**
-     * A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
-     * 
-     * @deprecated
-     * Use `sendingRecordsSet` instead.
-     * 
-     */
-    @Deprecated /* Use `sendingRecordsSet` instead. */
-    @Import(name="sendingRecords")
-    private @Nullable Output<List<DomainSendingRecordArgs>> sendingRecords;
-
-    /**
-     * @return A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
-     * 
-     * @deprecated
-     * Use `sendingRecordsSet` instead.
-     * 
-     */
-    @Deprecated /* Use `sendingRecordsSet` instead. */
-    public Optional<Output<List<DomainSendingRecordArgs>>> sendingRecords() {
-        return Optional.ofNullable(this.sendingRecords);
     }
 
     /**
@@ -219,14 +171,14 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Password for SMTP authentication
+     * Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
      * 
      */
     @Import(name="smtpPassword")
     private @Nullable Output<String> smtpPassword;
 
     /**
-     * @return Password for SMTP authentication
+     * @return Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
      * 
      */
     public Optional<Output<String>> smtpPassword() {
@@ -308,10 +260,8 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         this.forceDkimAuthority = $.forceDkimAuthority;
         this.name = $.name;
         this.openTracking = $.openTracking;
-        this.receivingRecords = $.receivingRecords;
         this.receivingRecordsSets = $.receivingRecordsSets;
         this.region = $.region;
-        this.sendingRecords = $.sendingRecords;
         this.sendingRecordsSets = $.sendingRecordsSets;
         this.smtpLogin = $.smtpLogin;
         this.smtpPassword = $.smtpPassword;
@@ -466,49 +416,6 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param receivingRecords A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `receivingRecordsSet` instead.
-         * 
-         */
-        @Deprecated /* Use `receivingRecordsSet` instead. */
-        public Builder receivingRecords(@Nullable Output<List<DomainReceivingRecordArgs>> receivingRecords) {
-            $.receivingRecords = receivingRecords;
-            return this;
-        }
-
-        /**
-         * @param receivingRecords A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `receivingRecordsSet` instead.
-         * 
-         */
-        @Deprecated /* Use `receivingRecordsSet` instead. */
-        public Builder receivingRecords(List<DomainReceivingRecordArgs> receivingRecords) {
-            return receivingRecords(Output.of(receivingRecords));
-        }
-
-        /**
-         * @param receivingRecords A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `receivingRecordsSet` instead.
-         * 
-         */
-        @Deprecated /* Use `receivingRecordsSet` instead. */
-        public Builder receivingRecords(DomainReceivingRecordArgs... receivingRecords) {
-            return receivingRecords(List.of(receivingRecords));
-        }
-
-        /**
          * @param receivingRecordsSets A set of DNS records for receiving validation.
          * 
          * @return builder
@@ -558,49 +465,6 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
-        }
-
-        /**
-         * @param sendingRecords A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `sendingRecordsSet` instead.
-         * 
-         */
-        @Deprecated /* Use `sendingRecordsSet` instead. */
-        public Builder sendingRecords(@Nullable Output<List<DomainSendingRecordArgs>> sendingRecords) {
-            $.sendingRecords = sendingRecords;
-            return this;
-        }
-
-        /**
-         * @param sendingRecords A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `sendingRecordsSet` instead.
-         * 
-         */
-        @Deprecated /* Use `sendingRecordsSet` instead. */
-        public Builder sendingRecords(List<DomainSendingRecordArgs> sendingRecords) {
-            return sendingRecords(Output.of(sendingRecords));
-        }
-
-        /**
-         * @param sendingRecords A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * Use `sendingRecordsSet` instead.
-         * 
-         */
-        @Deprecated /* Use `sendingRecordsSet` instead. */
-        public Builder sendingRecords(DomainSendingRecordArgs... sendingRecords) {
-            return sendingRecords(List.of(sendingRecords));
         }
 
         /**
@@ -656,7 +520,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smtpPassword Password for SMTP authentication
+         * @param smtpPassword Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
          * 
          * @return builder
          * 
@@ -667,7 +531,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param smtpPassword Password for SMTP authentication
+         * @param smtpPassword Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
          * 
          * @return builder
          * 

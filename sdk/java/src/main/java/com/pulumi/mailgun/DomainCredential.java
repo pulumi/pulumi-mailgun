@@ -12,13 +12,12 @@ import com.pulumi.mailgun.Utilities;
 import com.pulumi.mailgun.inputs.DomainCredentialState;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides a Mailgun domain credential resource. This can be used to create and manage credential in domain of Mailgun.
  * 
- * &gt; **Note:** Please note that starting of v0.6.1 due to using new Mailgun Client API (v4), there is no possibility to retrieve previously created secrets via API. In order get it worked, it&#39;s recommended to mark `password` as ignored under `lifecycle` block. See below.
+ * &gt; **Note:** The Mailgun API does not return previously created credential passwords on read. The provider therefore does not refresh `password` from the API and only sends it to Mailgun on create or when the value in configuration changes. If your configured `password` value drifts (for example you rotate it out-of-band), use a `lifecycle.ignore_changes = [ password ]` block to avoid spurious updates.
  * 
  * ## Example Usage
  * 
@@ -31,7 +30,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.mailgun.DomainCredential;
  * import com.pulumi.mailgun.DomainCredentialArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -51,9 +49,7 @@ import javax.annotation.Nullable;
  *             .login("test")
  *             .password("supersecretpassword1234")
  *             .region("us")
- *             .build(), CustomResourceOptions.builder()
- *                 .ignoreChanges("password")
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -92,14 +88,14 @@ public class DomainCredential extends com.pulumi.resources.CustomResource {
         return this.login;
     }
     /**
-     * Password for user authentication.
+     * Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
      * 
      */
     @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
-     * @return Password for user authentication.
+     * @return Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
      * 
      */
     public Output<String> password() {
@@ -110,14 +106,14 @@ public class DomainCredential extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> region;
+    private Output<String> region;
 
     /**
      * @return The region where domain credential will be created. Default value is `us`.
      * 
      */
-    public Output<Optional<String>> region() {
-        return Codegen.optional(this.region);
+    public Output<String> region() {
+        return this.region;
     }
 
     /**

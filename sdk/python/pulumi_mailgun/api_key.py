@@ -197,7 +197,7 @@ class _ApiKeyState:
         :param pulumi.Input[_builtins.str] region: The region where domain will be created. Default value is `us`.
         :param pulumi.Input[_builtins.str] requestor: An email address associated with the key.
         :param pulumi.Input[_builtins.str] role: (Enum: `admin`, `basic`, `sending`, `support`, or `developer`) Key role.
-        :param pulumi.Input[_builtins.str] secret: The full API key secret in plain text.
+        :param pulumi.Input[_builtins.str] secret: The full API key secret in plain text (marked sensitive; only available immediately after creation).
         :param pulumi.Input[_builtins.str] user_id: API key user's string user ID; should be provided for all keys of `web` kind.
         :param pulumi.Input[_builtins.str] user_name: API key user's name.
         """
@@ -352,7 +352,7 @@ class _ApiKeyState:
     @pulumi.getter
     def secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The full API key secret in plain text.
+        The full API key secret in plain text (marked sensitive; only available immediately after creation).
         """
         return pulumi.get(self, "secret")
 
@@ -551,7 +551,7 @@ class ApiKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The region where domain will be created. Default value is `us`.
         :param pulumi.Input[_builtins.str] requestor: An email address associated with the key.
         :param pulumi.Input[_builtins.str] role: (Enum: `admin`, `basic`, `sending`, `support`, or `developer`) Key role.
-        :param pulumi.Input[_builtins.str] secret: The full API key secret in plain text.
+        :param pulumi.Input[_builtins.str] secret: The full API key secret in plain text (marked sensitive; only available immediately after creation).
         :param pulumi.Input[_builtins.str] user_id: API key user's string user ID; should be provided for all keys of `web` kind.
         :param pulumi.Input[_builtins.str] user_name: API key user's name.
         """
@@ -624,7 +624,7 @@ class ApiKey(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def kind(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def kind(self) -> pulumi.Output[_builtins.str]:
         """
         (Enum:`domain`, `user`, or `web`). API key type. Default: `user`.
         """
@@ -632,7 +632,7 @@ class ApiKey(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def region(self) -> pulumi.Output[_builtins.str]:
         """
         The region where domain will be created. Default value is `us`.
         """
@@ -658,7 +658,7 @@ class ApiKey(pulumi.CustomResource):
     @pulumi.getter
     def secret(self) -> pulumi.Output[_builtins.str]:
         """
-        The full API key secret in plain text.
+        The full API key secret in plain text (marked sensitive; only available immediately after creation).
         """
         return pulumi.get(self, "secret")
 

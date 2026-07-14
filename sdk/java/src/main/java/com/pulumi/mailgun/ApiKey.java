@@ -152,28 +152,28 @@ public class ApiKey extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="kind", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> kind;
+    private Output<String> kind;
 
     /**
      * @return (Enum:`domain`, `user`, or `web`). API key type. Default: `user`.
      * 
      */
-    public Output<Optional<String>> kind() {
-        return Codegen.optional(this.kind);
+    public Output<String> kind() {
+        return this.kind;
     }
     /**
      * The region where domain will be created. Default value is `us`.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> region;
+    private Output<String> region;
 
     /**
      * @return The region where domain will be created. Default value is `us`.
      * 
      */
-    public Output<Optional<String>> region() {
-        return Codegen.optional(this.region);
+    public Output<String> region() {
+        return this.region;
     }
     /**
      * An email address associated with the key.
@@ -204,14 +204,14 @@ public class ApiKey extends com.pulumi.resources.CustomResource {
         return this.role;
     }
     /**
-     * The full API key secret in plain text.
+     * The full API key secret in plain text (marked sensitive; only available immediately after creation).
      * 
      */
     @Export(name="secret", refs={String.class}, tree="[0]")
     private Output<String> secret;
 
     /**
-     * @return The full API key secret in plain text.
+     * @return The full API key secret in plain text (marked sensitive; only available immediately after creation).
      * 
      */
     public Output<String> secret() {

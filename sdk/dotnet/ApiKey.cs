@@ -80,13 +80,13 @@ namespace Pulumi.Mailgun
         /// (Enum:`Domain`, `User`, or `Web`). API key type. Default: `User`.
         /// </summary>
         [Output("kind")]
-        public Output<string?> Kind { get; private set; } = null!;
+        public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
         /// The region where domain will be created. Default value is `Us`.
         /// </summary>
         [Output("region")]
-        public Output<string?> Region { get; private set; } = null!;
+        public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
         /// An email address associated with the key.
@@ -101,7 +101,7 @@ namespace Pulumi.Mailgun
         public Output<string> Role { get; private set; } = null!;
 
         /// <summary>
-        /// The full API key secret in plain text.
+        /// The full API key secret in plain text (marked sensitive; only available immediately after creation).
         /// </summary>
         [Output("secret")]
         public Output<string> Secret { get; private set; } = null!;
@@ -294,7 +294,7 @@ namespace Pulumi.Mailgun
         private Input<string>? _secret;
 
         /// <summary>
-        /// The full API key secret in plain text.
+        /// The full API key secret in plain text (marked sensitive; only available immediately after creation).
         /// </summary>
         public Input<string>? Secret
         {

@@ -14,7 +14,7 @@ import (
 
 // Provides a Mailgun domain credential resource. This can be used to create and manage credential in domain of Mailgun.
 //
-// > **Note:** Please note that starting of v0.6.1 due to using new Mailgun Client API (v4), there is no possibility to retrieve previously created secrets via API. In order get it worked, it's recommended to mark `password` as ignored under `lifecycle` block. See below.
+// > **Note:** The Mailgun API does not return previously created credential passwords on read. The provider therefore does not refresh `password` from the API and only sends it to Mailgun on create or when the value in configuration changes. If your configured `password` value drifts (for example you rotate it out-of-band), use a `lifecycle.ignore_changes = [ password ]` block to avoid spurious updates.
 //
 // ## Example Usage
 //
@@ -36,9 +36,7 @@ import (
 //				Login:    pulumi.String("test"),
 //				Password: pulumi.String("supersecretpassword1234"),
 //				Region:   pulumi.String("us"),
-//			}, pulumi.IgnoreChanges([]string{
-//				"password",
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -54,10 +52,10 @@ type DomainCredential struct {
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// The local-part of the email address to create.
 	Login pulumi.StringOutput `pulumi:"login"`
-	// Password for user authentication.
+	// Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The region where domain credential will be created. Default value is `us`.
-	Region pulumi.StringPtrOutput `pulumi:"region"`
+	Region pulumi.StringOutput `pulumi:"region"`
 }
 
 // NewDomainCredential registers a new resource with the given unique name, arguments, and options.
@@ -110,7 +108,7 @@ type domainCredentialState struct {
 	Domain *string `pulumi:"domain"`
 	// The local-part of the email address to create.
 	Login *string `pulumi:"login"`
-	// Password for user authentication.
+	// Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
 	Password *string `pulumi:"password"`
 	// The region where domain credential will be created. Default value is `us`.
 	Region *string `pulumi:"region"`
@@ -121,7 +119,7 @@ type DomainCredentialState struct {
 	Domain pulumi.StringPtrInput
 	// The local-part of the email address to create.
 	Login pulumi.StringPtrInput
-	// Password for user authentication.
+	// Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
 	Password pulumi.StringPtrInput
 	// The region where domain credential will be created. Default value is `us`.
 	Region pulumi.StringPtrInput
@@ -136,7 +134,7 @@ type domainCredentialArgs struct {
 	Domain string `pulumi:"domain"`
 	// The local-part of the email address to create.
 	Login string `pulumi:"login"`
-	// Password for user authentication.
+	// Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
 	Password string `pulumi:"password"`
 	// The region where domain credential will be created. Default value is `us`.
 	Region *string `pulumi:"region"`
@@ -148,7 +146,7 @@ type DomainCredentialArgs struct {
 	Domain pulumi.StringInput
 	// The local-part of the email address to create.
 	Login pulumi.StringInput
-	// Password for user authentication.
+	// Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
 	Password pulumi.StringInput
 	// The region where domain credential will be created. Default value is `us`.
 	Region pulumi.StringPtrInput
@@ -251,14 +249,14 @@ func (o DomainCredentialOutput) Login() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainCredential) pulumi.StringOutput { return v.Login }).(pulumi.StringOutput)
 }
 
-// Password for user authentication.
+// Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
 func (o DomainCredentialOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainCredential) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
 // The region where domain credential will be created. Default value is `us`.
-func (o DomainCredentialOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainCredential) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+func (o DomainCredentialOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainCredential) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 type DomainCredentialArrayOutput struct{ *pulumi.OutputState }

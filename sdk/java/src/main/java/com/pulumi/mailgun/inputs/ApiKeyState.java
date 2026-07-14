@@ -168,14 +168,14 @@ public final class ApiKeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The full API key secret in plain text.
+     * The full API key secret in plain text (marked sensitive; only available immediately after creation).
      * 
      */
     @Import(name="secret")
     private @Nullable Output<String> secret;
 
     /**
-     * @return The full API key secret in plain text.
+     * @return The full API key secret in plain text (marked sensitive; only available immediately after creation).
      * 
      */
     public Optional<Output<String>> secret() {
@@ -459,7 +459,7 @@ public final class ApiKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secret The full API key secret in plain text.
+         * @param secret The full API key secret in plain text (marked sensitive; only available immediately after creation).
          * 
          * @return builder
          * 
@@ -470,7 +470,7 @@ public final class ApiKeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secret The full API key secret in plain text.
+         * @param secret The full API key secret in plain text (marked sensitive; only available immediately after creation).
          * 
          * @return builder
          * 

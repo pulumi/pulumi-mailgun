@@ -34,18 +34,8 @@ import * as utilities from "./utilities";
 export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("mailgun:index/getDomain:getDomain", {
-        "clickTracking": args.clickTracking,
-        "dkimKeySize": args.dkimKeySize,
-        "dkimSelector": args.dkimSelector,
-        "forceDkimAuthority": args.forceDkimAuthority,
         "name": args.name,
-        "openTracking": args.openTracking,
         "region": args.region,
-        "smtpPassword": args.smtpPassword,
-        "spamAction": args.spamAction,
-        "useAutomaticSenderSecurity": args.useAutomaticSenderSecurity,
-        "webScheme": args.webScheme,
-        "wildcard": args.wildcard,
     }, opts);
 }
 
@@ -54,41 +44,13 @@ export function getDomain(args: GetDomainArgs, opts?: pulumi.InvokeOptions): Pro
  */
 export interface GetDomainArgs {
     /**
-     * The click tracking setting.
-     */
-    clickTracking?: boolean;
-    dkimKeySize?: number;
-    dkimSelector?: string;
-    forceDkimAuthority?: boolean;
-    /**
      * The name of the domain.
      */
     name: string;
     /**
-     * The open tracking setting.
-     */
-    openTracking?: boolean;
-    /**
      * The region where domain will be created. Default value is `us`.
      */
     region?: string;
-    /**
-     * The password to the SMTP server.
-     */
-    smtpPassword?: string;
-    /**
-     * The spam filtering setting.
-     */
-    spamAction?: string;
-    useAutomaticSenderSecurity?: boolean;
-    /**
-     * The tracking web scheme.
-     */
-    webScheme?: string;
-    /**
-     * Whether or not the domain will accept email for sub-domains.
-     */
-    wildcard?: boolean;
 }
 
 /**
@@ -98,13 +60,10 @@ export interface GetDomainResult {
     /**
      * The click tracking setting.
      */
-    readonly clickTracking?: boolean;
-    readonly dkimKeySize?: number;
-    readonly dkimSelector?: string;
-    readonly forceDkimAuthority?: boolean;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
+    readonly clickTracking: boolean;
+    readonly dkimKeySize: number;
+    readonly dkimSelector: string;
+    readonly forceDkimAuthority: boolean;
     readonly id: string;
     /**
      * The name of the record.
@@ -113,21 +72,9 @@ export interface GetDomainResult {
     /**
      * The open tracking setting.
      */
-    readonly openTracking?: boolean;
-    /**
-     * A list of DNS records for receiving validation.
-     *
-     * @deprecated Use `receivingRecordsSet` instead.
-     */
-    readonly receivingRecords: outputs.GetDomainReceivingRecord[];
+    readonly openTracking: boolean;
     readonly receivingRecordsSets: outputs.GetDomainReceivingRecordsSet[];
-    readonly region?: string;
-    /**
-     * A list of DNS records for sending validation.
-     *
-     * @deprecated Use `sendingRecordsSet` instead.
-     */
-    readonly sendingRecords: outputs.GetDomainSendingRecord[];
+    readonly region: string;
     readonly sendingRecordsSets: outputs.GetDomainSendingRecordsSet[];
     /**
      * The login email for the SMTP server.
@@ -136,20 +83,20 @@ export interface GetDomainResult {
     /**
      * The password to the SMTP server.
      */
-    readonly smtpPassword?: string;
+    readonly smtpPassword: string;
     /**
      * The spam filtering setting.
      */
-    readonly spamAction?: string;
-    readonly useAutomaticSenderSecurity?: boolean;
+    readonly spamAction: string;
+    readonly useAutomaticSenderSecurity: boolean;
     /**
      * The tracking web scheme.
      */
-    readonly webScheme?: string;
+    readonly webScheme: string;
     /**
      * Whether or not the domain will accept email for sub-domains.
      */
-    readonly wildcard?: boolean;
+    readonly wildcard: boolean;
 }
 /**
  * `mailgun.Domain` provides details about a Mailgun domain.
@@ -179,18 +126,8 @@ export interface GetDomainResult {
 export function getDomainOutput(args: GetDomainOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDomainResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("mailgun:index/getDomain:getDomain", {
-        "clickTracking": args.clickTracking,
-        "dkimKeySize": args.dkimKeySize,
-        "dkimSelector": args.dkimSelector,
-        "forceDkimAuthority": args.forceDkimAuthority,
         "name": args.name,
-        "openTracking": args.openTracking,
         "region": args.region,
-        "smtpPassword": args.smtpPassword,
-        "spamAction": args.spamAction,
-        "useAutomaticSenderSecurity": args.useAutomaticSenderSecurity,
-        "webScheme": args.webScheme,
-        "wildcard": args.wildcard,
     }, opts);
 }
 
@@ -199,39 +136,11 @@ export function getDomainOutput(args: GetDomainOutputArgs, opts?: pulumi.InvokeO
  */
 export interface GetDomainOutputArgs {
     /**
-     * The click tracking setting.
-     */
-    clickTracking?: pulumi.Input<boolean | undefined>;
-    dkimKeySize?: pulumi.Input<number | undefined>;
-    dkimSelector?: pulumi.Input<string | undefined>;
-    forceDkimAuthority?: pulumi.Input<boolean | undefined>;
-    /**
      * The name of the domain.
      */
     name: pulumi.Input<string>;
     /**
-     * The open tracking setting.
-     */
-    openTracking?: pulumi.Input<boolean | undefined>;
-    /**
      * The region where domain will be created. Default value is `us`.
      */
     region?: pulumi.Input<string | undefined>;
-    /**
-     * The password to the SMTP server.
-     */
-    smtpPassword?: pulumi.Input<string | undefined>;
-    /**
-     * The spam filtering setting.
-     */
-    spamAction?: pulumi.Input<string | undefined>;
-    useAutomaticSenderSecurity?: pulumi.Input<boolean | undefined>;
-    /**
-     * The tracking web scheme.
-     */
-    webScheme?: pulumi.Input<string | undefined>;
-    /**
-     * Whether or not the domain will accept email for sub-domains.
-     */
-    wildcard?: pulumi.Input<boolean | undefined>;
 }

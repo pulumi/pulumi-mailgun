@@ -5,52 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
-export interface DomainReceivingRecord {
-    id: string;
-    /**
-     * The priority of the record.
-     */
-    priority: string;
-    /**
-     * The record type.
-     */
-    recordType: string;
-    /**
-     * `"valid"` if the record is valid.
-     */
-    valid: string;
-    /**
-     * The value of the record.
-     */
-    value: string;
-}
-
 export interface DomainReceivingRecordsSet {
     id: string;
     /**
      * The priority of the record.
      */
     priority: string;
-    /**
-     * The record type.
-     */
-    recordType: string;
-    /**
-     * `"valid"` if the record is valid.
-     */
-    valid: string;
-    /**
-     * The value of the record.
-     */
-    value: string;
-}
-
-export interface DomainSendingRecord {
-    id: string;
-    /**
-     * The domain to add to Mailgun
-     */
-    name: string;
     /**
      * The record type.
      */
@@ -85,52 +45,12 @@ export interface DomainSendingRecordsSet {
     value: string;
 }
 
-export interface GetDomainReceivingRecord {
-    id: string;
-    /**
-     * The priority of the record.
-     */
-    priority: string;
-    /**
-     * The record type.
-     */
-    recordType: string;
-    /**
-     * `"valid"` if the record is valid.
-     */
-    valid: string;
-    /**
-     * The value of the record.
-     */
-    value: string;
-}
-
 export interface GetDomainReceivingRecordsSet {
     id: string;
     /**
      * The priority of the record.
      */
     priority: string;
-    /**
-     * The record type.
-     */
-    recordType: string;
-    /**
-     * `"valid"` if the record is valid.
-     */
-    valid: string;
-    /**
-     * The value of the record.
-     */
-    value: string;
-}
-
-export interface GetDomainSendingRecord {
-    id: string;
-    /**
-     * The name of the domain.
-     */
-    name: string;
     /**
      * The record type.
      */

@@ -76,7 +76,7 @@ export class Webhook extends pulumi.CustomResource {
     /**
      * The region where webhook will be created. Default value is `us`.
      */
-    declare public readonly region: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The urls of webhook
      */

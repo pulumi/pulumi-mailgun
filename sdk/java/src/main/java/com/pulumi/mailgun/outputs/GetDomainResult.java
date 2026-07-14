@@ -5,17 +5,13 @@ package com.pulumi.mailgun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import com.pulumi.mailgun.outputs.GetDomainReceivingRecord;
 import com.pulumi.mailgun.outputs.GetDomainReceivingRecordsSet;
-import com.pulumi.mailgun.outputs.GetDomainSendingRecord;
 import com.pulumi.mailgun.outputs.GetDomainSendingRecordsSet;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDomainResult {
@@ -23,14 +19,10 @@ public final class GetDomainResult {
      * @return The click tracking setting.
      * 
      */
-    private @Nullable Boolean clickTracking;
-    private @Nullable Integer dkimKeySize;
-    private @Nullable String dkimSelector;
-    private @Nullable Boolean forceDkimAuthority;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
+    private Boolean clickTracking;
+    private Integer dkimKeySize;
+    private String dkimSelector;
+    private Boolean forceDkimAuthority;
     private String id;
     /**
      * @return The name of the record.
@@ -41,27 +33,9 @@ public final class GetDomainResult {
      * @return The open tracking setting.
      * 
      */
-    private @Nullable Boolean openTracking;
-    /**
-     * @return A list of DNS records for receiving validation.
-     * 
-     * @deprecated
-     * Use `receivingRecordsSet` instead.
-     * 
-     */
-    @Deprecated /* Use `receivingRecordsSet` instead. */
-    private List<GetDomainReceivingRecord> receivingRecords;
+    private Boolean openTracking;
     private List<GetDomainReceivingRecordsSet> receivingRecordsSets;
-    private @Nullable String region;
-    /**
-     * @return A list of DNS records for sending validation.
-     * 
-     * @deprecated
-     * Use `sendingRecordsSet` instead.
-     * 
-     */
-    @Deprecated /* Use `sendingRecordsSet` instead. */
-    private List<GetDomainSendingRecord> sendingRecords;
+    private String region;
     private List<GetDomainSendingRecordsSet> sendingRecordsSets;
     /**
      * @return The login email for the SMTP server.
@@ -72,45 +46,41 @@ public final class GetDomainResult {
      * @return The password to the SMTP server.
      * 
      */
-    private @Nullable String smtpPassword;
+    private String smtpPassword;
     /**
      * @return The spam filtering setting.
      * 
      */
-    private @Nullable String spamAction;
-    private @Nullable Boolean useAutomaticSenderSecurity;
+    private String spamAction;
+    private Boolean useAutomaticSenderSecurity;
     /**
      * @return The tracking web scheme.
      * 
      */
-    private @Nullable String webScheme;
+    private String webScheme;
     /**
      * @return Whether or not the domain will accept email for sub-domains.
      * 
      */
-    private @Nullable Boolean wildcard;
+    private Boolean wildcard;
 
     private GetDomainResult() {}
     /**
      * @return The click tracking setting.
      * 
      */
-    public Optional<Boolean> clickTracking() {
-        return Optional.ofNullable(this.clickTracking);
+    public Boolean clickTracking() {
+        return this.clickTracking;
     }
-    public Optional<Integer> dkimKeySize() {
-        return Optional.ofNullable(this.dkimKeySize);
+    public Integer dkimKeySize() {
+        return this.dkimKeySize;
     }
-    public Optional<String> dkimSelector() {
-        return Optional.ofNullable(this.dkimSelector);
+    public String dkimSelector() {
+        return this.dkimSelector;
     }
-    public Optional<Boolean> forceDkimAuthority() {
-        return Optional.ofNullable(this.forceDkimAuthority);
+    public Boolean forceDkimAuthority() {
+        return this.forceDkimAuthority;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }
@@ -125,36 +95,14 @@ public final class GetDomainResult {
      * @return The open tracking setting.
      * 
      */
-    public Optional<Boolean> openTracking() {
-        return Optional.ofNullable(this.openTracking);
-    }
-    /**
-     * @return A list of DNS records for receiving validation.
-     * 
-     * @deprecated
-     * Use `receivingRecordsSet` instead.
-     * 
-     */
-    @Deprecated /* Use `receivingRecordsSet` instead. */
-    public List<GetDomainReceivingRecord> receivingRecords() {
-        return this.receivingRecords;
+    public Boolean openTracking() {
+        return this.openTracking;
     }
     public List<GetDomainReceivingRecordsSet> receivingRecordsSets() {
         return this.receivingRecordsSets;
     }
-    public Optional<String> region() {
-        return Optional.ofNullable(this.region);
-    }
-    /**
-     * @return A list of DNS records for sending validation.
-     * 
-     * @deprecated
-     * Use `sendingRecordsSet` instead.
-     * 
-     */
-    @Deprecated /* Use `sendingRecordsSet` instead. */
-    public List<GetDomainSendingRecord> sendingRecords() {
-        return this.sendingRecords;
+    public String region() {
+        return this.region;
     }
     public List<GetDomainSendingRecordsSet> sendingRecordsSets() {
         return this.sendingRecordsSets;
@@ -170,32 +118,32 @@ public final class GetDomainResult {
      * @return The password to the SMTP server.
      * 
      */
-    public Optional<String> smtpPassword() {
-        return Optional.ofNullable(this.smtpPassword);
+    public String smtpPassword() {
+        return this.smtpPassword;
     }
     /**
      * @return The spam filtering setting.
      * 
      */
-    public Optional<String> spamAction() {
-        return Optional.ofNullable(this.spamAction);
+    public String spamAction() {
+        return this.spamAction;
     }
-    public Optional<Boolean> useAutomaticSenderSecurity() {
-        return Optional.ofNullable(this.useAutomaticSenderSecurity);
+    public Boolean useAutomaticSenderSecurity() {
+        return this.useAutomaticSenderSecurity;
     }
     /**
      * @return The tracking web scheme.
      * 
      */
-    public Optional<String> webScheme() {
-        return Optional.ofNullable(this.webScheme);
+    public String webScheme() {
+        return this.webScheme;
     }
     /**
      * @return Whether or not the domain will accept email for sub-domains.
      * 
      */
-    public Optional<Boolean> wildcard() {
-        return Optional.ofNullable(this.wildcard);
+    public Boolean wildcard() {
+        return this.wildcard;
     }
 
     public static Builder builder() {
@@ -207,24 +155,22 @@ public final class GetDomainResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable Boolean clickTracking;
-        private @Nullable Integer dkimKeySize;
-        private @Nullable String dkimSelector;
-        private @Nullable Boolean forceDkimAuthority;
+        private Boolean clickTracking;
+        private Integer dkimKeySize;
+        private String dkimSelector;
+        private Boolean forceDkimAuthority;
         private String id;
         private String name;
-        private @Nullable Boolean openTracking;
-        private List<GetDomainReceivingRecord> receivingRecords;
+        private Boolean openTracking;
         private List<GetDomainReceivingRecordsSet> receivingRecordsSets;
-        private @Nullable String region;
-        private List<GetDomainSendingRecord> sendingRecords;
+        private String region;
         private List<GetDomainSendingRecordsSet> sendingRecordsSets;
         private String smtpLogin;
-        private @Nullable String smtpPassword;
-        private @Nullable String spamAction;
-        private @Nullable Boolean useAutomaticSenderSecurity;
-        private @Nullable String webScheme;
-        private @Nullable Boolean wildcard;
+        private String smtpPassword;
+        private String spamAction;
+        private Boolean useAutomaticSenderSecurity;
+        private String webScheme;
+        private Boolean wildcard;
         public Builder() {}
         public Builder(GetDomainResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -235,10 +181,8 @@ public final class GetDomainResult {
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.openTracking = defaults.openTracking;
-    	      this.receivingRecords = defaults.receivingRecords;
     	      this.receivingRecordsSets = defaults.receivingRecordsSets;
     	      this.region = defaults.region;
-    	      this.sendingRecords = defaults.sendingRecords;
     	      this.sendingRecordsSets = defaults.sendingRecordsSets;
     	      this.smtpLogin = defaults.smtpLogin;
     	      this.smtpPassword = defaults.smtpPassword;
@@ -249,26 +193,34 @@ public final class GetDomainResult {
         }
 
         @CustomType.Setter
-        public Builder clickTracking(@Nullable Boolean clickTracking) {
-
+        public Builder clickTracking(Boolean clickTracking) {
+            if (clickTracking == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "clickTracking");
+            }
             this.clickTracking = clickTracking;
             return this;
         }
         @CustomType.Setter
-        public Builder dkimKeySize(@Nullable Integer dkimKeySize) {
-
+        public Builder dkimKeySize(Integer dkimKeySize) {
+            if (dkimKeySize == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "dkimKeySize");
+            }
             this.dkimKeySize = dkimKeySize;
             return this;
         }
         @CustomType.Setter
-        public Builder dkimSelector(@Nullable String dkimSelector) {
-
+        public Builder dkimSelector(String dkimSelector) {
+            if (dkimSelector == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "dkimSelector");
+            }
             this.dkimSelector = dkimSelector;
             return this;
         }
         @CustomType.Setter
-        public Builder forceDkimAuthority(@Nullable Boolean forceDkimAuthority) {
-
+        public Builder forceDkimAuthority(Boolean forceDkimAuthority) {
+            if (forceDkimAuthority == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "forceDkimAuthority");
+            }
             this.forceDkimAuthority = forceDkimAuthority;
             return this;
         }
@@ -289,21 +241,12 @@ public final class GetDomainResult {
             return this;
         }
         @CustomType.Setter
-        public Builder openTracking(@Nullable Boolean openTracking) {
-
+        public Builder openTracking(Boolean openTracking) {
+            if (openTracking == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "openTracking");
+            }
             this.openTracking = openTracking;
             return this;
-        }
-        @CustomType.Setter
-        public Builder receivingRecords(List<GetDomainReceivingRecord> receivingRecords) {
-            if (receivingRecords == null) {
-              throw new MissingRequiredPropertyException("GetDomainResult", "receivingRecords");
-            }
-            this.receivingRecords = receivingRecords;
-            return this;
-        }
-        public Builder receivingRecords(GetDomainReceivingRecord... receivingRecords) {
-            return receivingRecords(List.of(receivingRecords));
         }
         @CustomType.Setter
         public Builder receivingRecordsSets(List<GetDomainReceivingRecordsSet> receivingRecordsSets) {
@@ -317,21 +260,12 @@ public final class GetDomainResult {
             return receivingRecordsSets(List.of(receivingRecordsSets));
         }
         @CustomType.Setter
-        public Builder region(@Nullable String region) {
-
+        public Builder region(String region) {
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "region");
+            }
             this.region = region;
             return this;
-        }
-        @CustomType.Setter
-        public Builder sendingRecords(List<GetDomainSendingRecord> sendingRecords) {
-            if (sendingRecords == null) {
-              throw new MissingRequiredPropertyException("GetDomainResult", "sendingRecords");
-            }
-            this.sendingRecords = sendingRecords;
-            return this;
-        }
-        public Builder sendingRecords(GetDomainSendingRecord... sendingRecords) {
-            return sendingRecords(List.of(sendingRecords));
         }
         @CustomType.Setter
         public Builder sendingRecordsSets(List<GetDomainSendingRecordsSet> sendingRecordsSets) {
@@ -353,32 +287,42 @@ public final class GetDomainResult {
             return this;
         }
         @CustomType.Setter
-        public Builder smtpPassword(@Nullable String smtpPassword) {
-
+        public Builder smtpPassword(String smtpPassword) {
+            if (smtpPassword == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "smtpPassword");
+            }
             this.smtpPassword = smtpPassword;
             return this;
         }
         @CustomType.Setter
-        public Builder spamAction(@Nullable String spamAction) {
-
+        public Builder spamAction(String spamAction) {
+            if (spamAction == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "spamAction");
+            }
             this.spamAction = spamAction;
             return this;
         }
         @CustomType.Setter
-        public Builder useAutomaticSenderSecurity(@Nullable Boolean useAutomaticSenderSecurity) {
-
+        public Builder useAutomaticSenderSecurity(Boolean useAutomaticSenderSecurity) {
+            if (useAutomaticSenderSecurity == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "useAutomaticSenderSecurity");
+            }
             this.useAutomaticSenderSecurity = useAutomaticSenderSecurity;
             return this;
         }
         @CustomType.Setter
-        public Builder webScheme(@Nullable String webScheme) {
-
+        public Builder webScheme(String webScheme) {
+            if (webScheme == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "webScheme");
+            }
             this.webScheme = webScheme;
             return this;
         }
         @CustomType.Setter
-        public Builder wildcard(@Nullable Boolean wildcard) {
-
+        public Builder wildcard(Boolean wildcard) {
+            if (wildcard == null) {
+              throw new MissingRequiredPropertyException("GetDomainResult", "wildcard");
+            }
             this.wildcard = wildcard;
             return this;
         }
@@ -391,10 +335,8 @@ public final class GetDomainResult {
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.openTracking = openTracking;
-            _resultValue.receivingRecords = receivingRecords;
             _resultValue.receivingRecordsSets = receivingRecordsSets;
             _resultValue.region = region;
-            _resultValue.sendingRecords = sendingRecords;
             _resultValue.sendingRecordsSets = sendingRecordsSets;
             _resultValue.smtpLogin = smtpLogin;
             _resultValue.smtpPassword = smtpPassword;

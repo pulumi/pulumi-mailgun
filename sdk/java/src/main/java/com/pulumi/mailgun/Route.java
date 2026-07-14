@@ -13,7 +13,6 @@ import com.pulumi.mailgun.inputs.RouteState;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -68,10 +67,10 @@ public class Route extends com.pulumi.resources.CustomResource {
         return this.actions;
     }
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> description;
+    private Output<String> description;
 
-    public Output<Optional<String>> description() {
-        return Codegen.optional(this.description);
+    public Output<String> description() {
+        return this.description;
     }
     /**
      * A filter expression like `match_recipient(&#39;.*{@literal @}gmail.com&#39;)`
@@ -106,14 +105,14 @@ public class Route extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> region;
+    private Output<String> region;
 
     /**
      * @return The region where route will be created. Default value is `us`.
      * 
      */
-    public Output<Optional<String>> region() {
-        return Codegen.optional(this.region);
+    public Output<String> region() {
+        return this.region;
     }
 
     /**

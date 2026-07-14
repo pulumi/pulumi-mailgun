@@ -54,7 +54,7 @@ export class Route extends pulumi.CustomResource {
     }
 
     declare public readonly actions: pulumi.Output<string[]>;
-    declare public readonly description: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * A filter expression like `match_recipient('.*@gmail.com')`
      */
@@ -66,7 +66,7 @@ export class Route extends pulumi.CustomResource {
     /**
      * The region where route will be created. Default value is `us`.
      */
-    declare public readonly region: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a Route resource with the given unique name, arguments, and options.
