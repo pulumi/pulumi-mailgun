@@ -7,13 +7,7 @@
             "mailgun_domain": {
                 "current": "mailgun:index/domain:Domain",
                 "fields": {
-                    "receiving_records": {
-                        "maxItemsOne": false
-                    },
                     "receiving_records_set": {
-                        "maxItemsOne": false
-                    },
-                    "sending_records": {
                         "maxItemsOne": false
                     },
                     "sending_records_set": {
@@ -45,13 +39,7 @@
             "mailgun_domain": {
                 "current": "mailgun:index/getDomain:getDomain",
                 "fields": {
-                    "receiving_records": {
-                        "maxItemsOne": false
-                    },
                     "receiving_records_set": {
-                        "maxItemsOne": false
-                    },
-                    "sending_records": {
                         "maxItemsOne": false
                     },
                     "sending_records_set": {
@@ -62,6 +50,15 @@
         }
     },
     "auto-settings": {},
+    "default-resource-schema-fixups": {
+        "resources": {
+            "mailgun_api_key": {},
+            "mailgun_domain": {},
+            "mailgun_domain_credential": {},
+            "mailgun_route": {},
+            "mailgun_webhook": {}
+        }
+    },
     "renames": {
         "resources": {
             "mailgun:index/domain:Domain": "mailgun_domain",

@@ -17,13 +17,15 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"context"
+
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 
 	mailgun "github.com/pulumi/pulumi-mailgun/provider/v3"
-	"github.com/pulumi/pulumi-mailgun/provider/v3/pkg/version"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfbridge.Main("mailgun", version.Version, mailgun.Provider(), pulumiSchema)
+	meta := tfbridge.ProviderMetadata{PackageSchema: pulumiSchema}
+	tfbridge.Main(context.Background(), "mailgun", mailgun.Provider(), meta)
 }
