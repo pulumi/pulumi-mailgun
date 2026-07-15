@@ -40,5 +40,8 @@ sdk/python/venv
 # Ignore local mise config
 mise.local.toml
 
+# Ignore local agent harness files
+.opencode/
+
 # Don't ignore schema.go if it's part of the Go SDK
 !sdk/go/**/schema.go
