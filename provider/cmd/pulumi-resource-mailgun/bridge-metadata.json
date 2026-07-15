@@ -2,10 +2,12 @@
     "auto-aliasing": {
         "resources": {
             "mailgun_api_key": {
-                "current": "mailgun:index/apiKey:ApiKey"
+                "current": "mailgun:index/apiKey:ApiKey",
+                "majorVersion": 3
             },
             "mailgun_domain": {
                 "current": "mailgun:index/domain:Domain",
+                "majorVersion": 3,
                 "fields": {
                     "receiving_records_set": {
                         "maxItemsOne": false
@@ -16,10 +18,12 @@
                 }
             },
             "mailgun_domain_credential": {
-                "current": "mailgun:index/domainCredential:DomainCredential"
+                "current": "mailgun:index/domainCredential:DomainCredential",
+                "majorVersion": 3
             },
             "mailgun_route": {
                 "current": "mailgun:index/route:Route",
+                "majorVersion": 3,
                 "fields": {
                     "actions": {
                         "maxItemsOne": false
@@ -28,6 +32,7 @@
             },
             "mailgun_webhook": {
                 "current": "mailgun:index/webhook:Webhook",
+                "majorVersion": 3,
                 "fields": {
                     "urls": {
                         "maxItemsOne": false
@@ -38,6 +43,7 @@
         "datasources": {
             "mailgun_domain": {
                 "current": "mailgun:index/getDomain:getDomain",
+                "majorVersion": 3,
                 "fields": {
                     "receiving_records_set": {
                         "maxItemsOne": false
