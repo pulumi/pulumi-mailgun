@@ -5,8 +5,6 @@ package com.pulumi.mailgun.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,42 +14,6 @@ import javax.annotation.Nullable;
 public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetDomainPlainArgs Empty = new GetDomainPlainArgs();
-
-    /**
-     * The click tracking setting.
-     * 
-     */
-    @Import(name="clickTracking")
-    private @Nullable Boolean clickTracking;
-
-    /**
-     * @return The click tracking setting.
-     * 
-     */
-    public Optional<Boolean> clickTracking() {
-        return Optional.ofNullable(this.clickTracking);
-    }
-
-    @Import(name="dkimKeySize")
-    private @Nullable Integer dkimKeySize;
-
-    public Optional<Integer> dkimKeySize() {
-        return Optional.ofNullable(this.dkimKeySize);
-    }
-
-    @Import(name="dkimSelector")
-    private @Nullable String dkimSelector;
-
-    public Optional<String> dkimSelector() {
-        return Optional.ofNullable(this.dkimSelector);
-    }
-
-    @Import(name="forceDkimAuthority")
-    private @Nullable Boolean forceDkimAuthority;
-
-    public Optional<Boolean> forceDkimAuthority() {
-        return Optional.ofNullable(this.forceDkimAuthority);
-    }
 
     /**
      * The name of the domain.
@@ -69,21 +31,6 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The open tracking setting.
-     * 
-     */
-    @Import(name="openTracking")
-    private @Nullable Boolean openTracking;
-
-    /**
-     * @return The open tracking setting.
-     * 
-     */
-    public Optional<Boolean> openTracking() {
-        return Optional.ofNullable(this.openTracking);
-    }
-
-    /**
      * The region where domain will be created. Default value is `us`.
      * 
      */
@@ -98,88 +45,11 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.region);
     }
 
-    /**
-     * The password to the SMTP server.
-     * 
-     */
-    @Import(name="smtpPassword")
-    private @Nullable String smtpPassword;
-
-    /**
-     * @return The password to the SMTP server.
-     * 
-     */
-    public Optional<String> smtpPassword() {
-        return Optional.ofNullable(this.smtpPassword);
-    }
-
-    /**
-     * The spam filtering setting.
-     * 
-     */
-    @Import(name="spamAction")
-    private @Nullable String spamAction;
-
-    /**
-     * @return The spam filtering setting.
-     * 
-     */
-    public Optional<String> spamAction() {
-        return Optional.ofNullable(this.spamAction);
-    }
-
-    @Import(name="useAutomaticSenderSecurity")
-    private @Nullable Boolean useAutomaticSenderSecurity;
-
-    public Optional<Boolean> useAutomaticSenderSecurity() {
-        return Optional.ofNullable(this.useAutomaticSenderSecurity);
-    }
-
-    /**
-     * The tracking web scheme.
-     * 
-     */
-    @Import(name="webScheme")
-    private @Nullable String webScheme;
-
-    /**
-     * @return The tracking web scheme.
-     * 
-     */
-    public Optional<String> webScheme() {
-        return Optional.ofNullable(this.webScheme);
-    }
-
-    /**
-     * Whether or not the domain will accept email for sub-domains.
-     * 
-     */
-    @Import(name="wildcard")
-    private @Nullable Boolean wildcard;
-
-    /**
-     * @return Whether or not the domain will accept email for sub-domains.
-     * 
-     */
-    public Optional<Boolean> wildcard() {
-        return Optional.ofNullable(this.wildcard);
-    }
-
     private GetDomainPlainArgs() {}
 
     private GetDomainPlainArgs(GetDomainPlainArgs $) {
-        this.clickTracking = $.clickTracking;
-        this.dkimKeySize = $.dkimKeySize;
-        this.dkimSelector = $.dkimSelector;
-        this.forceDkimAuthority = $.forceDkimAuthority;
         this.name = $.name;
-        this.openTracking = $.openTracking;
         this.region = $.region;
-        this.smtpPassword = $.smtpPassword;
-        this.spamAction = $.spamAction;
-        this.useAutomaticSenderSecurity = $.useAutomaticSenderSecurity;
-        this.webScheme = $.webScheme;
-        this.wildcard = $.wildcard;
     }
 
     public static Builder builder() {
@@ -201,32 +71,6 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param clickTracking The click tracking setting.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder clickTracking(@Nullable Boolean clickTracking) {
-            $.clickTracking = clickTracking;
-            return this;
-        }
-
-        public Builder dkimKeySize(@Nullable Integer dkimKeySize) {
-            $.dkimKeySize = dkimKeySize;
-            return this;
-        }
-
-        public Builder dkimSelector(@Nullable String dkimSelector) {
-            $.dkimSelector = dkimSelector;
-            return this;
-        }
-
-        public Builder forceDkimAuthority(@Nullable Boolean forceDkimAuthority) {
-            $.forceDkimAuthority = forceDkimAuthority;
-            return this;
-        }
-
-        /**
          * @param name The name of the domain.
          * 
          * @return builder
@@ -238,17 +82,6 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param openTracking The open tracking setting.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder openTracking(@Nullable Boolean openTracking) {
-            $.openTracking = openTracking;
-            return this;
-        }
-
-        /**
          * @param region The region where domain will be created. Default value is `us`.
          * 
          * @return builder
@@ -256,55 +89,6 @@ public final class GetDomainPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder region(@Nullable String region) {
             $.region = region;
-            return this;
-        }
-
-        /**
-         * @param smtpPassword The password to the SMTP server.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder smtpPassword(@Nullable String smtpPassword) {
-            $.smtpPassword = smtpPassword;
-            return this;
-        }
-
-        /**
-         * @param spamAction The spam filtering setting.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder spamAction(@Nullable String spamAction) {
-            $.spamAction = spamAction;
-            return this;
-        }
-
-        public Builder useAutomaticSenderSecurity(@Nullable Boolean useAutomaticSenderSecurity) {
-            $.useAutomaticSenderSecurity = useAutomaticSenderSecurity;
-            return this;
-        }
-
-        /**
-         * @param webScheme The tracking web scheme.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder webScheme(@Nullable String webScheme) {
-            $.webScheme = webScheme;
-            return this;
-        }
-
-        /**
-         * @param wildcard Whether or not the domain will accept email for sub-domains.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder wildcard(@Nullable Boolean wildcard) {
-            $.wildcard = wildcard;
             return this;
         }
 

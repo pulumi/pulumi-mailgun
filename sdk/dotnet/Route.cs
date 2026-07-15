@@ -45,7 +45,7 @@ namespace Pulumi.Mailgun
         public Output<ImmutableArray<string>> Actions { get; private set; } = null!;
 
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// A filter expression like `match_recipient('.*@gmail.com')`
@@ -63,7 +63,7 @@ namespace Pulumi.Mailgun
         /// The region where route will be created. Default value is `Us`.
         /// </summary>
         [Output("region")]
-        public Output<string?> Region { get; private set; } = null!;
+        public Output<string> Region { get; private set; } = null!;
 
 
         /// <summary>

@@ -46,14 +46,14 @@ public final class DomainCredentialState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Password for user authentication.
+     * Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return Password for user authentication.
+     * @return Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
      * 
      */
     public Optional<Output<String>> password() {
@@ -145,7 +145,7 @@ public final class DomainCredentialState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param password Password for user authentication.
+         * @param password Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class DomainCredentialState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param password Password for user authentication.
+         * @param password Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
          * 
          * @return builder
          * 

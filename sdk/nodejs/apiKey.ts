@@ -80,11 +80,11 @@ export class ApiKey extends pulumi.CustomResource {
     /**
      * (Enum:`domain`, `user`, or `web`). API key type. Default: `user`.
      */
-    declare public readonly kind: pulumi.Output<string | undefined>;
+    declare public readonly kind: pulumi.Output<string>;
     /**
      * The region where domain will be created. Default value is `us`.
      */
-    declare public readonly region: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * An email address associated with the key.
      */
@@ -94,7 +94,7 @@ export class ApiKey extends pulumi.CustomResource {
      */
     declare public readonly role: pulumi.Output<string>;
     /**
-     * The full API key secret in plain text.
+     * The full API key secret in plain text (marked sensitive; only available immediately after creation).
      */
     declare public /*out*/ readonly secret: pulumi.Output<string>;
     /**
@@ -203,7 +203,7 @@ export interface ApiKeyState {
      */
     role?: pulumi.Input<string | undefined>;
     /**
-     * The full API key secret in plain text.
+     * The full API key secret in plain text (marked sensitive; only available immediately after creation).
      */
     secret?: pulumi.Input<string | undefined>;
     /**

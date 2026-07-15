@@ -10,9 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.mailgun.DomainArgs;
 import com.pulumi.mailgun.Utilities;
 import com.pulumi.mailgun.inputs.DomainState;
-import com.pulumi.mailgun.outputs.DomainReceivingRecord;
 import com.pulumi.mailgun.outputs.DomainReceivingRecordsSet;
-import com.pulumi.mailgun.outputs.DomainSendingRecord;
 import com.pulumi.mailgun.outputs.DomainSendingRecordsSet;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -77,14 +75,14 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="clickTracking", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> clickTracking;
+    private Output<Boolean> clickTracking;
 
     /**
      * @return (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
      * 
      */
-    public Output<Optional<Boolean>> clickTracking() {
-        return Codegen.optional(this.clickTracking);
+    public Output<Boolean> clickTracking() {
+        return this.clickTracking;
     }
     /**
      * The length of your domain’s generated DKIM key. Default value is `1024`.
@@ -147,32 +145,14 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="openTracking", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> openTracking;
+    private Output<Boolean> openTracking;
 
     /**
      * @return (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
      * 
      */
-    public Output<Optional<Boolean>> openTracking() {
-        return Codegen.optional(this.openTracking);
-    }
-    /**
-     * A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
-     * 
-     * @deprecated
-     * Use `receivingRecordsSet` instead.
-     * 
-     */
-    @Deprecated /* Use `receivingRecordsSet` instead. */
-    @Export(name="receivingRecords", refs={List.class,DomainReceivingRecord.class}, tree="[0,1]")
-    private Output<List<DomainReceivingRecord>> receivingRecords;
-
-    /**
-     * @return A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
-     * 
-     */
-    public Output<List<DomainReceivingRecord>> receivingRecords() {
-        return this.receivingRecords;
+    public Output<Boolean> openTracking() {
+        return this.openTracking;
     }
     /**
      * A set of DNS records for receiving validation.
@@ -193,32 +173,14 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> region;
+    private Output<String> region;
 
     /**
      * @return The region where domain will be created. Default value is `us`.
      * 
      */
-    public Output<Optional<String>> region() {
-        return Codegen.optional(this.region);
-    }
-    /**
-     * A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
-     * 
-     * @deprecated
-     * Use `sendingRecordsSet` instead.
-     * 
-     */
-    @Deprecated /* Use `sendingRecordsSet` instead. */
-    @Export(name="sendingRecords", refs={List.class,DomainSendingRecord.class}, tree="[0,1]")
-    private Output<List<DomainSendingRecord>> sendingRecords;
-
-    /**
-     * @return A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
-     * 
-     */
-    public Output<List<DomainSendingRecord>> sendingRecords() {
-        return this.sendingRecords;
+    public Output<String> region() {
+        return this.region;
     }
     /**
      * A set of DNS records for sending validation.
@@ -249,18 +211,18 @@ public class Domain extends com.pulumi.resources.CustomResource {
         return this.smtpLogin;
     }
     /**
-     * Password for SMTP authentication
+     * Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
      * 
      */
     @Export(name="smtpPassword", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> smtpPassword;
+    private Output<String> smtpPassword;
 
     /**
-     * @return Password for SMTP authentication
+     * @return Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
      * 
      */
-    public Output<Optional<String>> smtpPassword() {
-        return Codegen.optional(this.smtpPassword);
+    public Output<String> smtpPassword() {
+        return this.smtpPassword;
     }
     /**
      * `disabled` or `tag` Disable, no spam
@@ -269,7 +231,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="spamAction", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> spamAction;
+    private Output<String> spamAction;
 
     /**
      * @return `disabled` or `tag` Disable, no spam
@@ -277,36 +239,36 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * will be tagged with a spam header. Default value is `disabled`.
      * 
      */
-    public Output<Optional<String>> spamAction() {
-        return Codegen.optional(this.spamAction);
+    public Output<String> spamAction() {
+        return this.spamAction;
     }
     /**
      * If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
      * 
      */
     @Export(name="useAutomaticSenderSecurity", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> useAutomaticSenderSecurity;
+    private Output<Boolean> useAutomaticSenderSecurity;
 
     /**
      * @return If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
      * 
      */
-    public Output<Optional<Boolean>> useAutomaticSenderSecurity() {
-        return Codegen.optional(this.useAutomaticSenderSecurity);
+    public Output<Boolean> useAutomaticSenderSecurity() {
+        return this.useAutomaticSenderSecurity;
     }
     /**
      * (`http` or `https`) The tracking web scheme. Default: `http`
      * 
      */
     @Export(name="webScheme", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> webScheme;
+    private Output<String> webScheme;
 
     /**
      * @return (`http` or `https`) The tracking web scheme. Default: `http`
      * 
      */
-    public Output<Optional<String>> webScheme() {
-        return Codegen.optional(this.webScheme);
+    public Output<String> webScheme() {
+        return this.webScheme;
     }
     /**
      * Boolean that determines whether
@@ -314,15 +276,15 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="wildcard", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> wildcard;
+    private Output<Boolean> wildcard;
 
     /**
      * @return Boolean that determines whether
      * the domain will accept email for sub-domains.
      * 
      */
-    public Output<Optional<Boolean>> wildcard() {
-        return Codegen.optional(this.wildcard);
+    public Output<Boolean> wildcard() {
+        return this.wildcard;
     }
 
     /**

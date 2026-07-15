@@ -12,7 +12,7 @@ namespace Pulumi.Mailgun
     /// <summary>
     /// Provides a Mailgun domain credential resource. This can be used to create and manage credential in domain of Mailgun.
     /// 
-    /// &gt; **Note:** Please note that starting of v0.6.1 due to using new Mailgun Client API (v4), there is no possibility to retrieve previously created secrets via API. In order get it worked, it's recommended to mark `Password` as ignored under `Lifecycle` block. See below.
+    /// &gt; **Note:** The Mailgun API does not return previously created credential passwords on read. The provider therefore does not refresh `Password` from the API and only sends it to Mailgun on create or when the value in configuration changes. If your configured `Password` value drifts (for example you rotate it out-of-band), use a `lifecycle.ignore_changes = [ password ]` block to avoid spurious updates.
     /// 
     /// ## Example Usage
     /// 
@@ -31,12 +31,6 @@ namespace Pulumi.Mailgun
     ///         Login = "test",
     ///         Password = "supersecretpassword1234",
     ///         Region = "us",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         IgnoreChanges =
-    ///         {
-    ///             "password",
-    ///         },
     ///     });
     /// 
     /// });
@@ -58,7 +52,7 @@ namespace Pulumi.Mailgun
         public Output<string> Login { get; private set; } = null!;
 
         /// <summary>
-        /// Password for user authentication.
+        /// Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
@@ -67,7 +61,7 @@ namespace Pulumi.Mailgun
         /// The region where domain credential will be created. Default value is `Us`.
         /// </summary>
         [Output("region")]
-        public Output<string?> Region { get; private set; } = null!;
+        public Output<string> Region { get; private set; } = null!;
 
 
         /// <summary>
@@ -135,7 +129,7 @@ namespace Pulumi.Mailgun
         private Input<string>? _password;
 
         /// <summary>
-        /// Password for user authentication.
+        /// Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
         /// </summary>
         public Input<string>? Password
         {
@@ -177,7 +171,7 @@ namespace Pulumi.Mailgun
         private Input<string>? _password;
 
         /// <summary>
-        /// Password for user authentication.
+        /// Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
         /// </summary>
         public Input<string>? Password
         {

@@ -15,95 +15,11 @@ else:
 from . import _utilities
 
 __all__ = [
-    'DomainReceivingRecord',
     'DomainReceivingRecordsSet',
-    'DomainSendingRecord',
     'DomainSendingRecordsSet',
-    'GetDomainReceivingRecordResult',
     'GetDomainReceivingRecordsSetResult',
-    'GetDomainSendingRecordResult',
     'GetDomainSendingRecordsSetResult',
 ]
-
-@pulumi.output_type
-class DomainReceivingRecord(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "recordType":
-            suggest = "record_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DomainReceivingRecord. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DomainReceivingRecord.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DomainReceivingRecord.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 id: Optional[_builtins.str] = None,
-                 priority: Optional[_builtins.str] = None,
-                 record_type: Optional[_builtins.str] = None,
-                 valid: Optional[_builtins.str] = None,
-                 value: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str priority: The priority of the record.
-        :param _builtins.str record_type: The record type.
-        :param _builtins.str valid: `"valid"` if the record is valid.
-        :param _builtins.str value: The value of the record.
-        """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if priority is not None:
-            pulumi.set(__self__, "priority", priority)
-        if record_type is not None:
-            pulumi.set(__self__, "record_type", record_type)
-        if valid is not None:
-            pulumi.set(__self__, "valid", valid)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def priority(self) -> Optional[_builtins.str]:
-        """
-        The priority of the record.
-        """
-        return pulumi.get(self, "priority")
-
-    @_builtins.property
-    @pulumi.getter(name="recordType")
-    def record_type(self) -> Optional[_builtins.str]:
-        """
-        The record type.
-        """
-        return pulumi.get(self, "record_type")
-
-    @_builtins.property
-    @pulumi.getter
-    def valid(self) -> Optional[_builtins.str]:
-        """
-        `"valid"` if the record is valid.
-        """
-        return pulumi.get(self, "valid")
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> Optional[_builtins.str]:
-        """
-        The value of the record.
-        """
-        return pulumi.get(self, "value")
-
 
 @pulumi.output_type
 class DomainReceivingRecordsSet(dict):
@@ -159,86 +75,6 @@ class DomainReceivingRecordsSet(dict):
         The priority of the record.
         """
         return pulumi.get(self, "priority")
-
-    @_builtins.property
-    @pulumi.getter(name="recordType")
-    def record_type(self) -> Optional[_builtins.str]:
-        """
-        The record type.
-        """
-        return pulumi.get(self, "record_type")
-
-    @_builtins.property
-    @pulumi.getter
-    def valid(self) -> Optional[_builtins.str]:
-        """
-        `"valid"` if the record is valid.
-        """
-        return pulumi.get(self, "valid")
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> Optional[_builtins.str]:
-        """
-        The value of the record.
-        """
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
-class DomainSendingRecord(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "recordType":
-            suggest = "record_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DomainSendingRecord. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        DomainSendingRecord.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        DomainSendingRecord.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 id: Optional[_builtins.str] = None,
-                 name: Optional[_builtins.str] = None,
-                 record_type: Optional[_builtins.str] = None,
-                 valid: Optional[_builtins.str] = None,
-                 value: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str name: The domain to add to Mailgun
-        :param _builtins.str record_type: The record type.
-        :param _builtins.str valid: `"valid"` if the record is valid.
-        :param _builtins.str value: The value of the record.
-        """
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if record_type is not None:
-            pulumi.set(__self__, "record_type", record_type)
-        if valid is not None:
-            pulumi.set(__self__, "valid", valid)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> Optional[_builtins.str]:
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
-        """
-        The domain to add to Mailgun
-        """
-        return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="recordType")
@@ -346,64 +182,6 @@ class DomainSendingRecordsSet(dict):
 
 
 @pulumi.output_type
-class GetDomainReceivingRecordResult(dict):
-    def __init__(__self__, *,
-                 id: _builtins.str,
-                 priority: _builtins.str,
-                 record_type: _builtins.str,
-                 valid: _builtins.str,
-                 value: _builtins.str):
-        """
-        :param _builtins.str priority: The priority of the record.
-        :param _builtins.str record_type: The record type.
-        :param _builtins.str valid: `"valid"` if the record is valid.
-        :param _builtins.str value: The value of the record.
-        """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "record_type", record_type)
-        pulumi.set(__self__, "valid", valid)
-        pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def priority(self) -> _builtins.str:
-        """
-        The priority of the record.
-        """
-        return pulumi.get(self, "priority")
-
-    @_builtins.property
-    @pulumi.getter(name="recordType")
-    def record_type(self) -> _builtins.str:
-        """
-        The record type.
-        """
-        return pulumi.get(self, "record_type")
-
-    @_builtins.property
-    @pulumi.getter
-    def valid(self) -> _builtins.str:
-        """
-        `"valid"` if the record is valid.
-        """
-        return pulumi.get(self, "valid")
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> _builtins.str:
-        """
-        The value of the record.
-        """
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
 class GetDomainReceivingRecordsSetResult(dict):
     def __init__(__self__, *,
                  id: _builtins.str,
@@ -435,64 +213,6 @@ class GetDomainReceivingRecordsSetResult(dict):
         The priority of the record.
         """
         return pulumi.get(self, "priority")
-
-    @_builtins.property
-    @pulumi.getter(name="recordType")
-    def record_type(self) -> _builtins.str:
-        """
-        The record type.
-        """
-        return pulumi.get(self, "record_type")
-
-    @_builtins.property
-    @pulumi.getter
-    def valid(self) -> _builtins.str:
-        """
-        `"valid"` if the record is valid.
-        """
-        return pulumi.get(self, "valid")
-
-    @_builtins.property
-    @pulumi.getter
-    def value(self) -> _builtins.str:
-        """
-        The value of the record.
-        """
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
-class GetDomainSendingRecordResult(dict):
-    def __init__(__self__, *,
-                 id: _builtins.str,
-                 name: _builtins.str,
-                 record_type: _builtins.str,
-                 valid: _builtins.str,
-                 value: _builtins.str):
-        """
-        :param _builtins.str name: The name of the domain.
-        :param _builtins.str record_type: The record type.
-        :param _builtins.str valid: `"valid"` if the record is valid.
-        :param _builtins.str value: The value of the record.
-        """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "record_type", record_type)
-        pulumi.set(__self__, "valid", valid)
-        pulumi.set(__self__, "value", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
-        """
-        The name of the domain.
-        """
-        return pulumi.get(self, "name")
 
     @_builtins.property
     @pulumi.getter(name="recordType")

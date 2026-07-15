@@ -134,7 +134,7 @@ namespace Pulumi.Mailgun
         /// (Enum: `Yes` or `No`) The click tracking settings for the domain. Default: `No`
         /// </summary>
         [Output("clickTracking")]
-        public Output<bool?> ClickTracking { get; private set; } = null!;
+        public Output<bool> ClickTracking { get; private set; } = null!;
 
         /// <summary>
         /// The length of your domain’s generated DKIM key. Default value is `1024`.
@@ -164,13 +164,7 @@ namespace Pulumi.Mailgun
         /// (Enum: `Yes` or `No`) The open tracking settings for the domain. Default: `No`
         /// </summary>
         [Output("openTracking")]
-        public Output<bool?> OpenTracking { get; private set; } = null!;
-
-        /// <summary>
-        /// A list of DNS records for receiving validation.  **Deprecated** Use `ReceivingRecordsSet` instead.
-        /// </summary>
-        [Output("receivingRecords")]
-        public Output<ImmutableArray<Outputs.DomainReceivingRecord>> ReceivingRecords { get; private set; } = null!;
+        public Output<bool> OpenTracking { get; private set; } = null!;
 
         /// <summary>
         /// A set of DNS records for receiving validation.
@@ -182,13 +176,7 @@ namespace Pulumi.Mailgun
         /// The region where domain will be created. Default value is `Us`.
         /// </summary>
         [Output("region")]
-        public Output<string?> Region { get; private set; } = null!;
-
-        /// <summary>
-        /// A list of DNS records for sending validation. **Deprecated** Use `SendingRecordsSet` instead.
-        /// </summary>
-        [Output("sendingRecords")]
-        public Output<ImmutableArray<Outputs.DomainSendingRecord>> SendingRecords { get; private set; } = null!;
+        public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
         /// A set of DNS records for sending validation.
@@ -203,10 +191,10 @@ namespace Pulumi.Mailgun
         public Output<string> SmtpLogin { get; private set; } = null!;
 
         /// <summary>
-        /// Password for SMTP authentication
+        /// Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
         /// </summary>
         [Output("smtpPassword")]
-        public Output<string?> SmtpPassword { get; private set; } = null!;
+        public Output<string> SmtpPassword { get; private set; } = null!;
 
         /// <summary>
         /// `Disabled` or `Tag` Disable, no spam
@@ -214,26 +202,26 @@ namespace Pulumi.Mailgun
         /// will be tagged with a spam header. Default value is `Disabled`.
         /// </summary>
         [Output("spamAction")]
-        public Output<string?> SpamAction { get; private set; } = null!;
+        public Output<string> SpamAction { get; private set; } = null!;
 
         /// <summary>
         /// If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `False`
         /// </summary>
         [Output("useAutomaticSenderSecurity")]
-        public Output<bool?> UseAutomaticSenderSecurity { get; private set; } = null!;
+        public Output<bool> UseAutomaticSenderSecurity { get; private set; } = null!;
 
         /// <summary>
         /// (`Http` or `Https`) The tracking web scheme. Default: `Http`
         /// </summary>
         [Output("webScheme")]
-        public Output<string?> WebScheme { get; private set; } = null!;
+        public Output<string> WebScheme { get; private set; } = null!;
 
         /// <summary>
         /// Boolean that determines whether
         /// the domain will accept email for sub-domains.
         /// </summary>
         [Output("wildcard")]
-        public Output<bool?> Wildcard { get; private set; } = null!;
+        public Output<bool> Wildcard { get; private set; } = null!;
 
 
         /// <summary>
@@ -331,7 +319,7 @@ namespace Pulumi.Mailgun
         private Input<string>? _smtpPassword;
 
         /// <summary>
-        /// Password for SMTP authentication
+        /// Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
         /// </summary>
         public Input<string>? SmtpPassword
         {
@@ -414,19 +402,6 @@ namespace Pulumi.Mailgun
         [Input("openTracking")]
         public Input<bool>? OpenTracking { get; set; }
 
-        [Input("receivingRecords")]
-        private InputList<Inputs.DomainReceivingRecordGetArgs>? _receivingRecords;
-
-        /// <summary>
-        /// A list of DNS records for receiving validation.  **Deprecated** Use `ReceivingRecordsSet` instead.
-        /// </summary>
-        [Obsolete(@"Use `ReceivingRecordsSet` instead.")]
-        public InputList<Inputs.DomainReceivingRecordGetArgs> ReceivingRecords
-        {
-            get => _receivingRecords ?? (_receivingRecords = new InputList<Inputs.DomainReceivingRecordGetArgs>());
-            set => _receivingRecords = value;
-        }
-
         [Input("receivingRecordsSets")]
         private InputList<Inputs.DomainReceivingRecordsSetGetArgs>? _receivingRecordsSets;
 
@@ -444,19 +419,6 @@ namespace Pulumi.Mailgun
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
-
-        [Input("sendingRecords")]
-        private InputList<Inputs.DomainSendingRecordGetArgs>? _sendingRecords;
-
-        /// <summary>
-        /// A list of DNS records for sending validation. **Deprecated** Use `SendingRecordsSet` instead.
-        /// </summary>
-        [Obsolete(@"Use `SendingRecordsSet` instead.")]
-        public InputList<Inputs.DomainSendingRecordGetArgs> SendingRecords
-        {
-            get => _sendingRecords ?? (_sendingRecords = new InputList<Inputs.DomainSendingRecordGetArgs>());
-            set => _sendingRecords = value;
-        }
 
         [Input("sendingRecordsSets")]
         private InputList<Inputs.DomainSendingRecordsSetGetArgs>? _sendingRecordsSets;
@@ -480,7 +442,7 @@ namespace Pulumi.Mailgun
         private Input<string>? _smtpPassword;
 
         /// <summary>
-        /// Password for SMTP authentication
+        /// Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
         /// </summary>
         public Input<string>? SmtpPassword
         {

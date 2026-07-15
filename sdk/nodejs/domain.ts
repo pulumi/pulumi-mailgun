@@ -120,7 +120,7 @@ export class Domain extends pulumi.CustomResource {
     /**
      * (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
      */
-    declare public readonly clickTracking: pulumi.Output<boolean | undefined>;
+    declare public readonly clickTracking: pulumi.Output<boolean>;
     /**
      * The length of your domain’s generated DKIM key. Default value is `1024`.
      */
@@ -140,13 +140,7 @@ export class Domain extends pulumi.CustomResource {
     /**
      * (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
      */
-    declare public readonly openTracking: pulumi.Output<boolean | undefined>;
-    /**
-     * A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
-     *
-     * @deprecated Use `receivingRecordsSet` instead.
-     */
-    declare public /*out*/ readonly receivingRecords: pulumi.Output<outputs.DomainReceivingRecord[]>;
+    declare public readonly openTracking: pulumi.Output<boolean>;
     /**
      * A set of DNS records for receiving validation.
      */
@@ -154,13 +148,7 @@ export class Domain extends pulumi.CustomResource {
     /**
      * The region where domain will be created. Default value is `us`.
      */
-    declare public readonly region: pulumi.Output<string | undefined>;
-    /**
-     * A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
-     *
-     * @deprecated Use `sendingRecordsSet` instead.
-     */
-    declare public /*out*/ readonly sendingRecords: pulumi.Output<outputs.DomainSendingRecord[]>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * A set of DNS records for sending validation.
      */
@@ -170,28 +158,28 @@ export class Domain extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly smtpLogin: pulumi.Output<string>;
     /**
-     * Password for SMTP authentication
+     * Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
      */
-    declare public readonly smtpPassword: pulumi.Output<string | undefined>;
+    declare public readonly smtpPassword: pulumi.Output<string>;
     /**
      * `disabled` or `tag` Disable, no spam
      * filtering will occur for inbound messages. Tag, messages
      * will be tagged with a spam header. Default value is `disabled`.
      */
-    declare public readonly spamAction: pulumi.Output<string | undefined>;
+    declare public readonly spamAction: pulumi.Output<string>;
     /**
      * If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
      */
-    declare public readonly useAutomaticSenderSecurity: pulumi.Output<boolean | undefined>;
+    declare public readonly useAutomaticSenderSecurity: pulumi.Output<boolean>;
     /**
      * (`http` or `https`) The tracking web scheme. Default: `http`
      */
-    declare public readonly webScheme: pulumi.Output<string | undefined>;
+    declare public readonly webScheme: pulumi.Output<string>;
     /**
      * Boolean that determines whether
      * the domain will accept email for sub-domains.
      */
-    declare public readonly wildcard: pulumi.Output<boolean | undefined>;
+    declare public readonly wildcard: pulumi.Output<boolean>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -212,10 +200,8 @@ export class Domain extends pulumi.CustomResource {
             resourceInputs["forceDkimAuthority"] = state?.forceDkimAuthority;
             resourceInputs["name"] = state?.name;
             resourceInputs["openTracking"] = state?.openTracking;
-            resourceInputs["receivingRecords"] = state?.receivingRecords;
             resourceInputs["receivingRecordsSets"] = state?.receivingRecordsSets;
             resourceInputs["region"] = state?.region;
-            resourceInputs["sendingRecords"] = state?.sendingRecords;
             resourceInputs["sendingRecordsSets"] = state?.sendingRecordsSets;
             resourceInputs["smtpLogin"] = state?.smtpLogin;
             resourceInputs["smtpPassword"] = state?.smtpPassword;
@@ -237,9 +223,7 @@ export class Domain extends pulumi.CustomResource {
             resourceInputs["useAutomaticSenderSecurity"] = args?.useAutomaticSenderSecurity;
             resourceInputs["webScheme"] = args?.webScheme;
             resourceInputs["wildcard"] = args?.wildcard;
-            resourceInputs["receivingRecords"] = undefined /*out*/;
             resourceInputs["receivingRecordsSets"] = undefined /*out*/;
-            resourceInputs["sendingRecords"] = undefined /*out*/;
             resourceInputs["sendingRecordsSets"] = undefined /*out*/;
             resourceInputs["smtpLogin"] = undefined /*out*/;
         }
@@ -279,12 +263,6 @@ export interface DomainState {
      */
     openTracking?: pulumi.Input<boolean | undefined>;
     /**
-     * A list of DNS records for receiving validation.  **Deprecated** Use `receivingRecordsSet` instead.
-     *
-     * @deprecated Use `receivingRecordsSet` instead.
-     */
-    receivingRecords?: pulumi.Input<pulumi.Input<inputs.DomainReceivingRecord>[] | undefined>;
-    /**
      * A set of DNS records for receiving validation.
      */
     receivingRecordsSets?: pulumi.Input<pulumi.Input<inputs.DomainReceivingRecordsSet>[] | undefined>;
@@ -292,12 +270,6 @@ export interface DomainState {
      * The region where domain will be created. Default value is `us`.
      */
     region?: pulumi.Input<string | undefined>;
-    /**
-     * A list of DNS records for sending validation. **Deprecated** Use `sendingRecordsSet` instead.
-     *
-     * @deprecated Use `sendingRecordsSet` instead.
-     */
-    sendingRecords?: pulumi.Input<pulumi.Input<inputs.DomainSendingRecord>[] | undefined>;
     /**
      * A set of DNS records for sending validation.
      */
@@ -307,7 +279,7 @@ export interface DomainState {
      */
     smtpLogin?: pulumi.Input<string | undefined>;
     /**
-     * Password for SMTP authentication
+     * Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
      */
     smtpPassword?: pulumi.Input<string | undefined>;
     /**
@@ -364,7 +336,7 @@ export interface DomainArgs {
      */
     region?: pulumi.Input<string | undefined>;
     /**
-     * Password for SMTP authentication
+     * Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
      */
     smtpPassword?: pulumi.Input<string | undefined>;
     /**

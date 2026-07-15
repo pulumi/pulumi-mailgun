@@ -15,13 +15,12 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfgen"
 
 	mailgun "github.com/pulumi/pulumi-mailgun/provider/v3"
-	"github.com/pulumi/pulumi-mailgun/provider/v3/pkg/version"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfgen.Main("mailgun", version.Version, mailgun.Provider())
+	tfgen.Main("mailgun", mailgun.Provider())
 }

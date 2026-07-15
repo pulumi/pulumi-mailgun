@@ -43,7 +43,7 @@ class DomainArgs:
         :param pulumi.Input[_builtins.str] name: The domain to add to Mailgun
         :param pulumi.Input[_builtins.bool] open_tracking: (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
         :param pulumi.Input[_builtins.str] region: The region where domain will be created. Default value is `us`.
-        :param pulumi.Input[_builtins.str] smtp_password: Password for SMTP authentication
+        :param pulumi.Input[_builtins.str] smtp_password: Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
         :param pulumi.Input[_builtins.str] spam_action: `disabled` or `tag` Disable, no spam
                filtering will occur for inbound messages. Tag, messages
                will be tagged with a spam header. Default value is `disabled`.
@@ -165,7 +165,7 @@ class DomainArgs:
     @pulumi.getter(name="smtpPassword")
     def smtp_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Password for SMTP authentication
+        Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
         """
         return pulumi.get(self, "smtp_password")
 
@@ -234,10 +234,8 @@ class _DomainState:
                  force_dkim_authority: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  open_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
-                 receiving_records: pulumi.Input[Optional[Sequence[pulumi.Input['DomainReceivingRecordArgs']]]] = None,
                  receiving_records_sets: pulumi.Input[Optional[Sequence[pulumi.Input['DomainReceivingRecordsSetArgs']]]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 sending_records: pulumi.Input[Optional[Sequence[pulumi.Input['DomainSendingRecordArgs']]]] = None,
                  sending_records_sets: pulumi.Input[Optional[Sequence[pulumi.Input['DomainSendingRecordsSetArgs']]]] = None,
                  smtp_login: pulumi.Input[Optional[_builtins.str]] = None,
                  smtp_password: pulumi.Input[Optional[_builtins.str]] = None,
@@ -254,13 +252,11 @@ class _DomainState:
         :param pulumi.Input[_builtins.bool] force_dkim_authority: If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
         :param pulumi.Input[_builtins.str] name: The domain to add to Mailgun
         :param pulumi.Input[_builtins.bool] open_tracking: (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
-        :param pulumi.Input[Sequence[pulumi.Input['DomainReceivingRecordArgs']]] receiving_records: A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
         :param pulumi.Input[Sequence[pulumi.Input['DomainReceivingRecordsSetArgs']]] receiving_records_sets: A set of DNS records for receiving validation.
         :param pulumi.Input[_builtins.str] region: The region where domain will be created. Default value is `us`.
-        :param pulumi.Input[Sequence[pulumi.Input['DomainSendingRecordArgs']]] sending_records: A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
         :param pulumi.Input[Sequence[pulumi.Input['DomainSendingRecordsSetArgs']]] sending_records_sets: A set of DNS records for sending validation.
         :param pulumi.Input[_builtins.str] smtp_login: The login email for the SMTP server.
-        :param pulumi.Input[_builtins.str] smtp_password: Password for SMTP authentication
+        :param pulumi.Input[_builtins.str] smtp_password: Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
         :param pulumi.Input[_builtins.str] spam_action: `disabled` or `tag` Disable, no spam
                filtering will occur for inbound messages. Tag, messages
                will be tagged with a spam header. Default value is `disabled`.
@@ -281,20 +277,10 @@ class _DomainState:
             pulumi.set(__self__, "name", name)
         if open_tracking is not None:
             pulumi.set(__self__, "open_tracking", open_tracking)
-        if receiving_records is not None:
-            warnings.warn("""Use `receiving_records_set` instead.""", DeprecationWarning)
-            pulumi.log.warn("""receiving_records is deprecated: Use `receiving_records_set` instead.""")
-        if receiving_records is not None:
-            pulumi.set(__self__, "receiving_records", receiving_records)
         if receiving_records_sets is not None:
             pulumi.set(__self__, "receiving_records_sets", receiving_records_sets)
         if region is not None:
             pulumi.set(__self__, "region", region)
-        if sending_records is not None:
-            warnings.warn("""Use `sending_records_set` instead.""", DeprecationWarning)
-            pulumi.log.warn("""sending_records is deprecated: Use `sending_records_set` instead.""")
-        if sending_records is not None:
-            pulumi.set(__self__, "sending_records", sending_records)
         if sending_records_sets is not None:
             pulumi.set(__self__, "sending_records_sets", sending_records_sets)
         if smtp_login is not None:
@@ -383,19 +369,6 @@ class _DomainState:
         pulumi.set(self, "open_tracking", value)
 
     @_builtins.property
-    @pulumi.getter(name="receivingRecords")
-    @_utilities.deprecated("""Use `receiving_records_set` instead.""")
-    def receiving_records(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainReceivingRecordArgs']]]]:
-        """
-        A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
-        """
-        return pulumi.get(self, "receiving_records")
-
-    @receiving_records.setter
-    def receiving_records(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DomainReceivingRecordArgs']]]]):
-        pulumi.set(self, "receiving_records", value)
-
-    @_builtins.property
     @pulumi.getter(name="receivingRecordsSets")
     def receiving_records_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainReceivingRecordsSetArgs']]]]:
         """
@@ -418,19 +391,6 @@ class _DomainState:
     @region.setter
     def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
-
-    @_builtins.property
-    @pulumi.getter(name="sendingRecords")
-    @_utilities.deprecated("""Use `sending_records_set` instead.""")
-    def sending_records(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainSendingRecordArgs']]]]:
-        """
-        A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
-        """
-        return pulumi.get(self, "sending_records")
-
-    @sending_records.setter
-    def sending_records(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DomainSendingRecordArgs']]]]):
-        pulumi.set(self, "sending_records", value)
 
     @_builtins.property
     @pulumi.getter(name="sendingRecordsSets")
@@ -460,7 +420,7 @@ class _DomainState:
     @pulumi.getter(name="smtpPassword")
     def smtp_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Password for SMTP authentication
+        Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
         """
         return pulumi.get(self, "smtp_password")
 
@@ -624,7 +584,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The domain to add to Mailgun
         :param pulumi.Input[_builtins.bool] open_tracking: (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
         :param pulumi.Input[_builtins.str] region: The region where domain will be created. Default value is `us`.
-        :param pulumi.Input[_builtins.str] smtp_password: Password for SMTP authentication
+        :param pulumi.Input[_builtins.str] smtp_password: Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
         :param pulumi.Input[_builtins.str] spam_action: `disabled` or `tag` Disable, no spam
                filtering will occur for inbound messages. Tag, messages
                will be tagged with a spam header. Default value is `disabled`.
@@ -763,9 +723,7 @@ class Domain(pulumi.CustomResource):
             __props__.__dict__["use_automatic_sender_security"] = use_automatic_sender_security
             __props__.__dict__["web_scheme"] = web_scheme
             __props__.__dict__["wildcard"] = wildcard
-            __props__.__dict__["receiving_records"] = None
             __props__.__dict__["receiving_records_sets"] = None
-            __props__.__dict__["sending_records"] = None
             __props__.__dict__["sending_records_sets"] = None
             __props__.__dict__["smtp_login"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["smtpPassword"])
@@ -786,10 +744,8 @@ class Domain(pulumi.CustomResource):
             force_dkim_authority: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             open_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
-            receiving_records: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainReceivingRecordArgs', 'DomainReceivingRecordArgsDict']]]]] = None,
             receiving_records_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainReceivingRecordsSetArgs', 'DomainReceivingRecordsSetArgsDict']]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            sending_records: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSendingRecordArgs', 'DomainSendingRecordArgsDict']]]]] = None,
             sending_records_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSendingRecordsSetArgs', 'DomainSendingRecordsSetArgsDict']]]]] = None,
             smtp_login: pulumi.Input[Optional[_builtins.str]] = None,
             smtp_password: pulumi.Input[Optional[_builtins.str]] = None,
@@ -810,13 +766,11 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force_dkim_authority: If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
         :param pulumi.Input[_builtins.str] name: The domain to add to Mailgun
         :param pulumi.Input[_builtins.bool] open_tracking: (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainReceivingRecordArgs', 'DomainReceivingRecordArgsDict']]]] receiving_records: A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DomainReceivingRecordsSetArgs', 'DomainReceivingRecordsSetArgsDict']]]] receiving_records_sets: A set of DNS records for receiving validation.
         :param pulumi.Input[_builtins.str] region: The region where domain will be created. Default value is `us`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSendingRecordArgs', 'DomainSendingRecordArgsDict']]]] sending_records: A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSendingRecordsSetArgs', 'DomainSendingRecordsSetArgsDict']]]] sending_records_sets: A set of DNS records for sending validation.
         :param pulumi.Input[_builtins.str] smtp_login: The login email for the SMTP server.
-        :param pulumi.Input[_builtins.str] smtp_password: Password for SMTP authentication
+        :param pulumi.Input[_builtins.str] smtp_password: Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
         :param pulumi.Input[_builtins.str] spam_action: `disabled` or `tag` Disable, no spam
                filtering will occur for inbound messages. Tag, messages
                will be tagged with a spam header. Default value is `disabled`.
@@ -835,10 +789,8 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["force_dkim_authority"] = force_dkim_authority
         __props__.__dict__["name"] = name
         __props__.__dict__["open_tracking"] = open_tracking
-        __props__.__dict__["receiving_records"] = receiving_records
         __props__.__dict__["receiving_records_sets"] = receiving_records_sets
         __props__.__dict__["region"] = region
-        __props__.__dict__["sending_records"] = sending_records
         __props__.__dict__["sending_records_sets"] = sending_records_sets
         __props__.__dict__["smtp_login"] = smtp_login
         __props__.__dict__["smtp_password"] = smtp_password
@@ -850,7 +802,7 @@ class Domain(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="clickTracking")
-    def click_tracking(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def click_tracking(self) -> pulumi.Output[_builtins.bool]:
         """
         (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
         """
@@ -890,20 +842,11 @@ class Domain(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="openTracking")
-    def open_tracking(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def open_tracking(self) -> pulumi.Output[_builtins.bool]:
         """
         (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
         """
         return pulumi.get(self, "open_tracking")
-
-    @_builtins.property
-    @pulumi.getter(name="receivingRecords")
-    @_utilities.deprecated("""Use `receiving_records_set` instead.""")
-    def receiving_records(self) -> pulumi.Output[Sequence['outputs.DomainReceivingRecord']]:
-        """
-        A list of DNS records for receiving validation.  **Deprecated** Use `receiving_records_set` instead.
-        """
-        return pulumi.get(self, "receiving_records")
 
     @_builtins.property
     @pulumi.getter(name="receivingRecordsSets")
@@ -915,20 +858,11 @@ class Domain(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def region(self) -> pulumi.Output[_builtins.str]:
         """
         The region where domain will be created. Default value is `us`.
         """
         return pulumi.get(self, "region")
-
-    @_builtins.property
-    @pulumi.getter(name="sendingRecords")
-    @_utilities.deprecated("""Use `sending_records_set` instead.""")
-    def sending_records(self) -> pulumi.Output[Sequence['outputs.DomainSendingRecord']]:
-        """
-        A list of DNS records for sending validation. **Deprecated** Use `sending_records_set` instead.
-        """
-        return pulumi.get(self, "sending_records")
 
     @_builtins.property
     @pulumi.getter(name="sendingRecordsSets")
@@ -948,15 +882,15 @@ class Domain(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="smtpPassword")
-    def smtp_password(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def smtp_password(self) -> pulumi.Output[_builtins.str]:
         """
-        Password for SMTP authentication
+        Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
         """
         return pulumi.get(self, "smtp_password")
 
     @_builtins.property
     @pulumi.getter(name="spamAction")
-    def spam_action(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def spam_action(self) -> pulumi.Output[_builtins.str]:
         """
         `disabled` or `tag` Disable, no spam
         filtering will occur for inbound messages. Tag, messages
@@ -966,7 +900,7 @@ class Domain(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="useAutomaticSenderSecurity")
-    def use_automatic_sender_security(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def use_automatic_sender_security(self) -> pulumi.Output[_builtins.bool]:
         """
         If true Mailgun manages DKIM key generation and DNS record configuration automatically. Default: `false`
         """
@@ -974,7 +908,7 @@ class Domain(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="webScheme")
-    def web_scheme(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def web_scheme(self) -> pulumi.Output[_builtins.str]:
         """
         (`http` or `https`) The tracking web scheme. Default: `http`
         """
@@ -982,7 +916,7 @@ class Domain(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def wildcard(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def wildcard(self) -> pulumi.Output[_builtins.bool]:
         """
         Boolean that determines whether
         the domain will accept email for sub-domains.

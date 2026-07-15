@@ -22,11 +22,11 @@ import (
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 
-	"github.com/wgebis/terraform-provider-mailgun/mailgun"
+	"github.com/wgebis/terraform-provider-mailgun/shim"
 
+	pf "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
-	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
 	"github.com/pulumi/pulumi-mailgun/provider/v3/pkg/version"
@@ -67,10 +67,11 @@ func makeDataSource(mod string, res string) tokens.ModuleMember {
 }
 
 func Provider() tfbridge.ProviderInfo {
-	p := shimv2.NewProvider(mailgun.Provider())
+	p := pf.ShimProvider(shim.NewProvider())
 	prov := tfbridge.ProviderInfo{
 		P:                p,
 		Name:             "mailgun",
+		Version:          version.Version,
 		Description:      "A Pulumi package for creating and managing Mailgun resources.",
 		Keywords:         []string{"pulumi", "mailgun"},
 		License:          "Apache-2.0",

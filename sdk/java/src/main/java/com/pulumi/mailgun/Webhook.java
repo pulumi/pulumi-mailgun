@@ -12,7 +12,6 @@ import com.pulumi.mailgun.WebhookArgs;
 import com.pulumi.mailgun.inputs.WebhookState;
 import java.lang.String;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -106,14 +105,14 @@ public class Webhook extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> region;
+    private Output<String> region;
 
     /**
      * @return The region where webhook will be created. Default value is `us`.
      * 
      */
-    public Output<Optional<String>> region() {
-        return Codegen.optional(this.region);
+    public Output<String> region() {
+        return this.region;
     }
     /**
      * The urls of webhook

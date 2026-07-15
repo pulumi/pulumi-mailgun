@@ -62,14 +62,14 @@ type ApiKey struct {
 	// Whether or not the key is disabled from use.
 	IsDisabled pulumi.BoolOutput `pulumi:"isDisabled"`
 	// (Enum:`domain`, `user`, or `web`). API key type. Default: `user`.
-	Kind pulumi.StringPtrOutput `pulumi:"kind"`
+	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The region where domain will be created. Default value is `us`.
-	Region pulumi.StringPtrOutput `pulumi:"region"`
+	Region pulumi.StringOutput `pulumi:"region"`
 	// An email address associated with the key.
 	Requestor pulumi.StringOutput `pulumi:"requestor"`
 	// (Enum: `admin`, `basic`, `sending`, `support`, or `developer`) Key role.
 	Role pulumi.StringOutput `pulumi:"role"`
-	// The full API key secret in plain text.
+	// The full API key secret in plain text (marked sensitive; only available immediately after creation).
 	Secret pulumi.StringOutput `pulumi:"secret"`
 	// API key user's string user ID; should be provided for all keys of `web` kind.
 	UserId pulumi.StringPtrOutput `pulumi:"userId"`
@@ -134,7 +134,7 @@ type apiKeyState struct {
 	Requestor *string `pulumi:"requestor"`
 	// (Enum: `admin`, `basic`, `sending`, `support`, or `developer`) Key role.
 	Role *string `pulumi:"role"`
-	// The full API key secret in plain text.
+	// The full API key secret in plain text (marked sensitive; only available immediately after creation).
 	Secret *string `pulumi:"secret"`
 	// API key user's string user ID; should be provided for all keys of `web` kind.
 	UserId *string `pulumi:"userId"`
@@ -163,7 +163,7 @@ type ApiKeyState struct {
 	Requestor pulumi.StringPtrInput
 	// (Enum: `admin`, `basic`, `sending`, `support`, or `developer`) Key role.
 	Role pulumi.StringPtrInput
-	// The full API key secret in plain text.
+	// The full API key secret in plain text (marked sensitive; only available immediately after creation).
 	Secret pulumi.StringPtrInput
 	// API key user's string user ID; should be provided for all keys of `web` kind.
 	UserId pulumi.StringPtrInput
@@ -336,13 +336,13 @@ func (o ApiKeyOutput) IsDisabled() pulumi.BoolOutput {
 }
 
 // (Enum:`domain`, `user`, or `web`). API key type. Default: `user`.
-func (o ApiKeyOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApiKey) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
+func (o ApiKeyOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiKey) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
 // The region where domain will be created. Default value is `us`.
-func (o ApiKeyOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApiKey) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+func (o ApiKeyOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiKey) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // An email address associated with the key.
@@ -355,7 +355,7 @@ func (o ApiKeyOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiKey) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
-// The full API key secret in plain text.
+// The full API key secret in plain text (marked sensitive; only available immediately after creation).
 func (o ApiKeyOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiKey) pulumi.StringOutput { return v.Secret }).(pulumi.StringOutput)
 }

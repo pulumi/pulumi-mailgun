@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * Provides a Mailgun domain credential resource. This can be used to create and manage credential in domain of Mailgun.
  *
- * > **Note:** Please note that starting of v0.6.1 due to using new Mailgun Client API (v4), there is no possibility to retrieve previously created secrets via API. In order get it worked, it's recommended to mark `password` as ignored under `lifecycle` block. See below.
+ * > **Note:** The Mailgun API does not return previously created credential passwords on read. The provider therefore does not refresh `password` from the API and only sends it to Mailgun on create or when the value in configuration changes. If your configured `password` value drifts (for example you rotate it out-of-band), use a `lifecycle.ignore_changes = [ password ]` block to avoid spurious updates.
  *
  * ## Example Usage
  *
@@ -21,8 +21,6 @@ import * as utilities from "./utilities";
  *     login: "test",
  *     password: "supersecretpassword1234",
  *     region: "us",
- * }, {
- *     ignoreChanges: ["password"],
  * });
  * ```
  */
@@ -63,13 +61,13 @@ export class DomainCredential extends pulumi.CustomResource {
      */
     declare public readonly login: pulumi.Output<string>;
     /**
-     * Password for user authentication.
+     * Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
      */
     declare public readonly password: pulumi.Output<string>;
     /**
      * The region where domain credential will be created. Default value is `us`.
      */
-    declare public readonly region: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a DomainCredential resource with the given unique name, arguments, and options.
@@ -124,7 +122,7 @@ export interface DomainCredentialState {
      */
     login?: pulumi.Input<string | undefined>;
     /**
-     * Password for user authentication.
+     * Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
      */
     password?: pulumi.Input<string | undefined>;
     /**
@@ -146,7 +144,7 @@ export interface DomainCredentialArgs {
      */
     login: pulumi.Input<string>;
     /**
-     * Password for user authentication.
+     * Password for user authentication. Marked sensitive; not returned by the Mailgun API on read.
      */
     password: pulumi.Input<string>;
     /**
