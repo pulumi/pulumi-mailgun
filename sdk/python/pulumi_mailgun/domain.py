@@ -528,7 +528,6 @@ class Domain(pulumi.CustomResource):
         import pulumi
         from typing import Any
         import pulumi_cloudflare as cloudflare
-        import pulumi_std as std
 
         # Use receiving/sending set attributes to create DNS entries
         # TTL is set to 300 seconds (5 minutes) for faster updates as recommended by Mailgun
@@ -560,18 +559,18 @@ class Domain(pulumi.CustomResource):
                 ttl=300)
         # Create MX records pointing to Mailgun
         # Use "@" for name if using the root domain, or the subdomain name if using a subdomain
-        mx_records: list[cloudflare.DnsRecord] = []
-        for mx_records_range in [{"value": i} for i in range(0, std.toset(input=[
+        mx_records: dict[str, cloudflare.DnsRecord] = {}
+        for mx_records_range in [{"key": k, "value": v} for [k, v] in sorted(({entry: entry for entry in [
             mxa.mailgun.org,
             mxb.mailgun.org,
-        ]).result)]:
-            mx_records.append(cloudflare.DnsRecord(f"mx_records-{mx_records_range['value']}",
+        ]}).items())]:
+            mx_records[mx_records_range['key']] = cloudflare.DnsRecord(f"mx_records-{mx_records_range['key']}",
                 zone_id=zone_id,
                 name=@,
                 type=MX,
                 content=mx_records_range.value,
                 priority=10,
-                ttl=300))
+                ttl=300)
         ```
 
 
@@ -628,7 +627,6 @@ class Domain(pulumi.CustomResource):
         import pulumi
         from typing import Any
         import pulumi_cloudflare as cloudflare
-        import pulumi_std as std
 
         # Use receiving/sending set attributes to create DNS entries
         # TTL is set to 300 seconds (5 minutes) for faster updates as recommended by Mailgun
@@ -660,18 +658,18 @@ class Domain(pulumi.CustomResource):
                 ttl=300)
         # Create MX records pointing to Mailgun
         # Use "@" for name if using the root domain, or the subdomain name if using a subdomain
-        mx_records: list[cloudflare.DnsRecord] = []
-        for mx_records_range in [{"value": i} for i in range(0, std.toset(input=[
+        mx_records: dict[str, cloudflare.DnsRecord] = {}
+        for mx_records_range in [{"key": k, "value": v} for [k, v] in sorted(({entry: entry for entry in [
             mxa.mailgun.org,
             mxb.mailgun.org,
-        ]).result)]:
-            mx_records.append(cloudflare.DnsRecord(f"mx_records-{mx_records_range['value']}",
+        ]}).items())]:
+            mx_records[mx_records_range['key']] = cloudflare.DnsRecord(f"mx_records-{mx_records_range['key']}",
                 zone_id=zone_id,
                 name=@,
                 type=MX,
                 content=mx_records_range.value,
                 priority=10,
-                ttl=300))
+                ttl=300)
         ```
 
 
@@ -744,9 +742,9 @@ class Domain(pulumi.CustomResource):
             force_dkim_authority: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             open_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
-            receiving_records_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainReceivingRecordsSetArgs', 'DomainReceivingRecordsSetArgsDict']]]]] = None,
+            receiving_records_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainReceivingRecordsSetArgs', 'DomainReceivingRecordsSetArgsDict', 'outputs.DomainReceivingRecordsSet']]]]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            sending_records_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSendingRecordsSetArgs', 'DomainSendingRecordsSetArgsDict']]]]] = None,
+            sending_records_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSendingRecordsSetArgs', 'DomainSendingRecordsSetArgsDict', 'outputs.DomainSendingRecordsSet']]]]] = None,
             smtp_login: pulumi.Input[Optional[_builtins.str]] = None,
             smtp_password: pulumi.Input[Optional[_builtins.str]] = None,
             spam_action: pulumi.Input[Optional[_builtins.str]] = None,
@@ -766,9 +764,9 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] force_dkim_authority: If set to true, the domain will be the DKIM authority for itself even if the root domain is registered on the same mailgun account. If set to false, the domain will have the same DKIM authority as the root domain registered on the same mailgun account. The default is `false`.
         :param pulumi.Input[_builtins.str] name: The domain to add to Mailgun
         :param pulumi.Input[_builtins.bool] open_tracking: (Enum: `yes` or `no`) The open tracking settings for the domain. Default: `no`
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainReceivingRecordsSetArgs', 'DomainReceivingRecordsSetArgsDict']]]] receiving_records_sets: A set of DNS records for receiving validation.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainReceivingRecordsSetArgs', 'DomainReceivingRecordsSetArgsDict', 'outputs.DomainReceivingRecordsSet']]]] receiving_records_sets: A set of DNS records for receiving validation.
         :param pulumi.Input[_builtins.str] region: The region where domain will be created. Default value is `us`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSendingRecordsSetArgs', 'DomainSendingRecordsSetArgsDict']]]] sending_records_sets: A set of DNS records for sending validation.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DomainSendingRecordsSetArgs', 'DomainSendingRecordsSetArgsDict', 'outputs.DomainSendingRecordsSet']]]] sending_records_sets: A set of DNS records for sending validation.
         :param pulumi.Input[_builtins.str] smtp_login: The login email for the SMTP server.
         :param pulumi.Input[_builtins.str] smtp_password: Password for SMTP authentication. Marked sensitive; only sent to Mailgun on create or when the configured value changes (the Mailgun API does not return it on read).
         :param pulumi.Input[_builtins.str] spam_action: `disabled` or `tag` Disable, no spam
