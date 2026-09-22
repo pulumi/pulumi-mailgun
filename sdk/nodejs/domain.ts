@@ -35,7 +35,6 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * import * as std from "@pulumi/std";
  *
  * // Use receiving/sending set attributes to create DNS entries
  * // TTL is set to 300 seconds (5 minutes) for faster updates as recommended by Mailgun
@@ -71,21 +70,19 @@ import * as utilities from "./utilities";
  * }
  * // Create MX records pointing to Mailgun
  * // Use "@" for name if using the root domain, or the subdomain name if using a subdomain
- * const mxRecords: cloudflare.index.DnsRecord[] = [];
- * for (let range = 0; range < std.toset({
- *     input: [
- *         "mxa.mailgun.org",
- *         "mxb.mailgun.org",
- *     ],
- * }).result; range++) {
- *     mxRecords.push(new cloudflare.index.DnsRecord(`mx_records-${range}`, {
+ * const mxRecords: {[key: string]: cloudflare.index.DnsRecord} = {};
+ * for (const range of Object.entries([
+ *     "mxa.mailgun.org",
+ *     "mxb.mailgun.org",
+ * ].reduce((__obj, entry) => ({ ...__obj, [entry]: entry }), {})).sort().map(([k, v]) => ({key: k, value: v}))) {
+ *     mxRecords[range.key] = new cloudflare.index.DnsRecord(`mx_records-${range.key}`, {
  *         zoneId: zoneId,
  *         name: "@",
  *         type: "MX",
- *         content: range,
+ *         content: range.value,
  *         priority: 10,
  *         ttl: 300,
- *     }));
+ *     });
  * }
  * ```
  */

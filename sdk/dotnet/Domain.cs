@@ -47,7 +47,6 @@ namespace Pulumi.Mailgun
     /// using System.Linq;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
-    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -104,17 +103,19 @@ namespace Pulumi.Mailgun
     ///     // Create MX records pointing to Mailgun
     ///     // Use "@" for name if using the root domain, or the subdomain name if using a subdomain
     ///     var mxRecords = new List&lt;Cloudflare.DnsRecord&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; Std.Toset.Invoke(new()
+    ///     foreach (var range in new[]
     ///     {
-    ///         Input = new[]
-    ///         {
-    ///             "mxa.mailgun.org",
-    ///             "mxb.mailgun.org",
-    ///         },
-    ///     }).Result; rangeIndex++)
+    ///         "mxa.mailgun.org",
+    ///         "mxb.mailgun.org",
+    ///     }.ToDictionary(item =&gt; {
+    ///         var entry = item.Value;
+    ///         return entry;
+    ///     }, item =&gt; {
+    ///         var entry = item.Value;
+    ///         return entry;
+    ///     }).Select(pair =&gt; new { pair.Key, pair.Value }))
     ///     {
-    ///         var range = new { Value = rangeIndex };
-    ///         mxRecords.Add(new Cloudflare.DnsRecord($"mx_records-{range.Value}", new()
+    ///         mxRecords.Add(new Cloudflare.DnsRecord($"mx_records-{range.Key}", new()
     ///         {
     ///             ZoneId = zoneId,
     ///             Name = "@",
