@@ -184,7 +184,7 @@ public class App {
 {{% /choosable %}}
 {{% choosable language hcl %}}
 ```hcl
-pulumi {
+terraform {
   required_providers {
     mailgun = {
       source = "pulumi/mailgun"
@@ -194,6 +194,9 @@ pulumi {
 
 # Create a new domain
 resource "mailgun_domain" "default" {
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 ```
 
