@@ -56,7 +56,7 @@ namespace Pulumi.Mailgun
     ///     var defaultReceiving = new List&lt;Cloudflare.DnsRecord&gt;();
     ///     foreach (var range in .ToDictionary(item =&gt; {
     ///         var record = item.Value;
-    ///         return record.Id;
+    ///         return record.Id.ToString(System.Globalization.CultureInfo.InvariantCulture);
     ///     }, item =&gt; {
     ///         var record = item.Value;
     ///         return 
@@ -80,7 +80,7 @@ namespace Pulumi.Mailgun
     ///     var defaultSending = new List&lt;Cloudflare.DnsRecord&gt;();
     ///     foreach (var range in .ToDictionary(item =&gt; {
     ///         var record = item.Value;
-    ///         return record.Id;
+    ///         return record.Id.ToString(System.Globalization.CultureInfo.InvariantCulture);
     ///     }, item =&gt; {
     ///         var record = item.Value;
     ///         return 

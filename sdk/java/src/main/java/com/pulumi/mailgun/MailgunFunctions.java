@@ -50,7 +50,7 @@ public final class MailgunFunctions {
      * 
      *         var mailgun_mx = new Route53Record("mailgun-mx", Route53RecordArgs.builder()
      *             .zoneId(zoneId)
-     *             .name(domainMailgun.name())
+     *             .name(domainMailgun.get("name"))
      *             .type("MX")
      *             .ttl(3600)
      *             .records(Arrays.asList(            
@@ -102,7 +102,7 @@ public final class MailgunFunctions {
      * 
      *         var mailgun_mx = new Route53Record("mailgun-mx", Route53RecordArgs.builder()
      *             .zoneId(zoneId)
-     *             .name(domainMailgun.name())
+     *             .name(domainMailgun.get("name"))
      *             .type("MX")
      *             .ttl(3600)
      *             .records(Arrays.asList(            
@@ -154,7 +154,7 @@ public final class MailgunFunctions {
      * 
      *         var mailgun_mx = new Route53Record("mailgun-mx", Route53RecordArgs.builder()
      *             .zoneId(zoneId)
-     *             .name(domainMailgun.name())
+     *             .name(domainMailgun.get("name"))
      *             .type("MX")
      *             .ttl(3600)
      *             .records(Arrays.asList(            
@@ -206,7 +206,7 @@ public final class MailgunFunctions {
      * 
      *         var mailgun_mx = new Route53Record("mailgun-mx", Route53RecordArgs.builder()
      *             .zoneId(zoneId)
-     *             .name(domainMailgun.name())
+     *             .name(domainMailgun.get("name"))
      *             .type("MX")
      *             .ttl(3600)
      *             .records(Arrays.asList(            
@@ -258,7 +258,7 @@ public final class MailgunFunctions {
      * 
      *         var mailgun_mx = new Route53Record("mailgun-mx", Route53RecordArgs.builder()
      *             .zoneId(zoneId)
-     *             .name(domainMailgun.name())
+     *             .name(domainMailgun.get("name"))
      *             .type("MX")
      *             .ttl(3600)
      *             .records(Arrays.asList(            
