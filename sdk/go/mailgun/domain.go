@@ -200,6 +200,12 @@ func (DomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainState)(nil)).Elem()
 }
 
+// DomainExists checks whether an existing Domain resource with the given ID exists.
+func DomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("mailgun:index/domain:Domain", id, state, "", opts...)
+}
+
 type domainArgs struct {
 	// (Enum: `yes` or `no`) The click tracking settings for the domain. Default: `no`
 	ClickTracking *bool `pulumi:"clickTracking"`

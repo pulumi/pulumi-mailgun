@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * Provides a Mailgun App resource. This can be used to
  * create and manage applications on Mailgun.
  * 
- * After DNS records are set, domain verification should be triggered manually using [PUT /domains/\&lt;domain\&gt;/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
+ * After DNS records are set, domain verification should be triggered manually using [PUT /domains/&#92;&lt;domain&#92;&gt;/verify](https://documentation.mailgun.com/en/latest/api-domains.html#domains)
  * 
  * ## Example Usage
  * 

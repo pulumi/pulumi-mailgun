@@ -798,6 +798,42 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["wildcard"] = wildcard
         return Domain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            click_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
+            dkim_key_size: pulumi.Input[Optional[_builtins.int]] = None,
+            dkim_selector: pulumi.Input[Optional[_builtins.str]] = None,
+            force_dkim_authority: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            open_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
+            receiving_records_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainReceivingRecordsSetArgs', 'DomainReceivingRecordsSetArgsDict', 'outputs.DomainReceivingRecordsSet']]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            sending_records_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSendingRecordsSetArgs', 'DomainSendingRecordsSetArgsDict', 'outputs.DomainSendingRecordsSet']]]]] = None,
+            smtp_login: pulumi.Input[Optional[_builtins.str]] = None,
+            smtp_password: pulumi.Input[Optional[_builtins.str]] = None,
+            spam_action: pulumi.Input[Optional[_builtins.str]] = None,
+            use_automatic_sender_security: pulumi.Input[Optional[_builtins.bool]] = None,
+            web_scheme: pulumi.Input[Optional[_builtins.str]] = None,
+            wildcard: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clickTracking"] = click_tracking
+        __props__["dkimKeySize"] = dkim_key_size
+        __props__["dkimSelector"] = dkim_selector
+        __props__["forceDkimAuthority"] = force_dkim_authority
+        __props__["name"] = name
+        __props__["openTracking"] = open_tracking
+        __props__["receivingRecordsSets"] = receiving_records_sets
+        __props__["region"] = region
+        __props__["sendingRecordsSets"] = sending_records_sets
+        __props__["smtpLogin"] = smtp_login
+        __props__["smtpPassword"] = smtp_password
+        __props__["spamAction"] = spam_action
+        __props__["useAutomaticSenderSecurity"] = use_automatic_sender_security
+        __props__["webScheme"] = web_scheme
+        __props__["wildcard"] = wildcard
+        return pulumi.runtime.exists_resource(None, 'mailgun:index/domain:Domain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clickTracking")
     def click_tracking(self) -> pulumi.Output[_builtins.bool]:
