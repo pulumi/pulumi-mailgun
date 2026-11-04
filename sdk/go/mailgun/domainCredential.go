@@ -129,6 +129,12 @@ func (DomainCredentialState) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainCredentialState)(nil)).Elem()
 }
 
+// DomainCredentialExists checks whether an existing DomainCredential resource with the given ID exists.
+func DomainCredentialExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DomainCredentialState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("mailgun:index/domainCredential:DomainCredential", id, state, "", opts...)
+}
+
 type domainCredentialArgs struct {
 	// The domain to add credential of Mailgun.
 	Domain string `pulumi:"domain"`
